@@ -1,0 +1,541 @@
+/* UI theme overrides (no logic changes). Keep this file loaded AFTER bootstrap. */
+
+:root{
+  --bg:#f6f8fc;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#475569;
+  --brand:#f28c00;          /* orange */
+  --brand-dark:#d97706;     /* darker orange */
+  --brand-light:#ffb34d;    /* lighter orange */
+  --border:rgba(15,23,42,.10);
+}
+
+html, body { height: 100%; }
+
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* -----------------------------
+   Header bar (Site1.master style)
+--------------------------------*/
+
+.header-bar{
+  position: relative;
+  background:
+    linear-gradient(135deg, #193546 0%, #065B98 30%, #1B7FDC 65%, #0DB8D3 100%),
+    linear-gradient(60deg, rgba(13,184,211,0.12), rgba(27,127,220,0.06)),
+    linear-gradient(240deg, rgba(0,0,0,0.06), transparent 40%);
+  color: #fff;
+  padding: 10px 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.22);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-left{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-left img{
+  height: 70px;
+  width: auto;
+  display: block;
+}
+.brand-name{
+  color: rgba(255,255,255,.95);
+  font-weight: 700;
+  font-size: 14px;
+}
+.brand-subtitle{
+  color: rgba(255,255,255,.90);
+  font-size: 12px;
+}
+
+.brand-center{
+  flex: 1;
+  text-align: center;
+  line-height: 1.1;
+}
+.system-title{
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: rgba(255,255,255,.98);
+}
+.system-subtitle{
+  display: inline-block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: rgba(255,255,255,.92);
+}
+
+.header-user{
+  margin-left: auto;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: rgba(255,255,255,.95);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+/* Menu row */
+.navbar{
+  min-height: 46px !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+.navbar-inverse{
+  background: transparent !important; /* container is .nav-pill */
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* pill container behind nav */
+.nav-pill{
+  background: rgba(255,255,255,0.95) !important;
+  border-radius: 25px;
+  padding: 10px 14px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  margin: 10px 0; /* widen to match reference */
+}
+
+/* Remove bootstrap container padding so header/nav spans wider */
+.header-bar.container-fluid{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.container-fluid.nav-pill{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.navbar-nav{
+  margin: 0 !important;
+}
+
+.navbar-inverse .navbar-nav > li > a{
+  color: #0b2a4a !important; /* dark blue */
+  padding: 14px 12px !important; /* ref spacing */
+  line-height: 18px !important;
+  font-weight: 600;
+  border-radius: 999px;
+}
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus{
+  background: rgba(11,94,215,.10) !important;
+  color: #0b2a4a !important;
+}
+
+/* Active tab (Bootstrap adds .active on LI) */
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus{
+  background: linear-gradient(90deg, #0b3d91 0%, #1e88e5 100%) !important; /* blue gradient */
+  color: #fff !important;
+  border-radius: 999px;
+  margin: 0 !important;          /* prevent width jump */
+  padding: 14px 12px !important; /* keep same size as normal */
+}
+
+/* Caret (dropdown arrow) */
+.navbar-inverse .caret{
+  border-top-color: currentColor !important;
+  border-bottom-color: currentColor !important;
+  margin-left: 6px;
+}
+
+/* -----------------------------
+   Dropdown menu (reference match)
+--------------------------------*/
+
+@media (min-width: 768px){
+  /* Make hover-driven dropdown with smooth animation */
+  .navbar-nav > li.dropdown{
+    position: relative;
+  }
+
+  .navbar-nav > li.dropdown > .dropdown-menu{
+    display: block; /* allow transitions */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    pointer-events: none;
+
+    top: 100%;
+    left: 0;
+    margin-top: 0; /* align directly under parent */
+    padding: 6px 0;
+
+    background: #f5f5f5;
+    border: 0;
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 18px 40px rgba(15,23,42,.18);
+    width: auto;              /* compact width */
+    min-width: 210px;         /* avoid too small */
+    max-width: 360px;         /* prevent huge dropdown */
+    z-index: 2000;
+
+    transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
+  }
+
+  .navbar-nav > li.dropdown:hover > .dropdown-menu,
+  .navbar-nav > li.dropdown.open > .dropdown-menu{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+/* Dropdown items */
+.dropdown-menu > li > a{
+  padding: 10px 14px !important;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0b2a4a !important;
+  border-radius: 12px;
+  margin: 3px 8px;
+  white-space: nowrap;         /* keep single line like reference */
+  overflow: hidden;
+  text-overflow: ellipsis;     /* if still too long */
+  transition: background 160ms ease, color 160ms ease;
+}
+
+/* Nested submenu alignment (RFID etc.) */
+.dropdown-submenu{
+  position: relative;
+}
+.dropdown-submenu > .dropdown-menu{
+  top: 0 !important;
+  left: 100% !important;
+  margin-left: 6px;
+  border-radius: 0 18px 18px 18px;
+  width: auto;
+  min-width: 200px;
+  max-width: 340px;
+}
+.dropdown-submenu > a{
+  padding-right: 34px !important; /* room for caret */
+}
+.dropdown-submenu > a .caret{
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus{
+  background: linear-gradient(90deg, #0b3d91 0%, #1e88e5 100%) !important; /* light blue gradient look */
+  color: #fff !important;
+  border-radius: 14px;
+}
+
+.dropdown-menu > li.active > a,
+.dropdown-menu > li.active > a:hover,
+.dropdown-menu > li.active > a:focus{
+  background: linear-gradient(90deg, #0b3d91 0%, #1e88e5 100%) !important;
+  color: #fff !important;
+}
+
+/* Better page width on large screens */
+.container{
+  width: auto !important; /* overrides inline master style */
+  max-width: 1200px;
+}
+
+/* Modern "card" content wrapper */
+.content{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(15,23,42,.08);
+  padding: 22px;
+  margin-top: 18px;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5{
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+p{ color: var(--muted); }
+
+/* Navbar toggle for mobile */
+.navbar-inverse .navbar-toggle{
+  border-color: rgba(51,65,85,.35) !important;
+}
+.navbar-inverse .navbar-toggle .icon-bar{
+  background-color: rgba(51,65,85,.9) !important;
+}
+
+/* Prevent old dropdown rules from affecting reference menu */
+.dropdown-menu{
+  box-shadow: none;
+}
+
+/* Buttons - unify WebForms + Bootstrap look */
+.btn,
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"]{
+  border-radius: 999px !important; /* pill / oval shape */
+  padding: 10px 18px !important;
+  font-weight: 600;
+  letter-spacing: .01em;
+  box-shadow: none !important;
+}
+
+/* DevExpress ASPxButton (SoftOrange) - make it oval like reference */
+.dxbButton_SoftOrange,
+.dxbButton_SoftOrange .dx{
+  border-radius: 999px !important;
+  padding: 10px 26px !important;
+  border: none !important;
+  color: #ffffff !important;
+  background: linear-gradient(90deg, var(--brand-dark) 0%, var(--brand) 55%, var(--brand-light) 100%) !important;
+  box-shadow: 0 10px 22px rgba(242,140,0,.25) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* Smaller button only for Grid Customization/Column Chooser */
+.dxbButton_SoftOrange.cust-window-btn,
+.dxbButton_SoftOrange.cust-window-btn .dx{
+  padding: 7px 14px !important;
+  font-size: 12px !important;
+  letter-spacing: .02em !important;
+  text-transform: none !important; /* keep original text casing if needed */
+}
+.dxbButton_SoftOrange:hover,
+.dxbButton_SoftOrange:focus,
+.dxbButton_SoftOrange .dx:hover,
+.dxbButton_SoftOrange .dx:focus{
+  background: linear-gradient(90deg, #c2410c 0%, var(--brand-dark) 45%, var(--brand) 100%) !important;
+}
+
+/* Bootstrap 3 buttons */
+.btn{
+  border: 1px solid rgba(15,23,42,.14) !important;
+}
+.btn:hover{ filter: brightness(1.03); }
+.btn:active{ transform: translateY(0); }
+
+.btn-primary{
+  color: #fff !important;
+  border-color: rgba(0,0,0,.06) !important;
+  background: linear-gradient(90deg, var(--brand-dark) 0%, var(--brand) 55%, var(--brand-light) 100%) !important;
+  box-shadow: 0 10px 22px rgba(242,140,0,.25) !important;
+}
+.btn-primary:hover,
+.btn-primary:focus{
+  background: linear-gradient(90deg, #c2410c 0%, var(--brand-dark) 45%, var(--brand) 100%) !important;
+}
+
+/* Default WebForms buttons that don't use .btn */
+input[type="submit"]:not(.btn),
+input[type="button"]:not(.btn),
+input[type="reset"]:not(.btn){
+  background: linear-gradient(90deg, var(--brand-dark) 0%, var(--brand) 55%, var(--brand-light) 100%);
+  border: 1px solid rgba(0,0,0,.06);
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(242,140,0,.25);
+}
+input[type="submit"]:not(.btn):hover,
+input[type="button"]:not(.btn):hover,
+input[type="reset"]:not(.btn):hover{
+  background: linear-gradient(90deg, #c2410c 0%, var(--brand-dark) 45%, var(--brand) 100%);
+}
+
+/* Focus visibility */
+.btn:focus,
+button:focus,
+input[type="button"]:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+.form-control:focus{
+  outline: none;
+  border-color: rgba(0,0,0,.85) !important;
+  box-shadow: none !important; /* no shadow/glow on click */
+}
+
+/* Form controls */
+.form-control,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select,
+textarea{
+  border-radius: 10px;
+}
+
+/* Tables */
+table{
+  background: transparent;
+}
+.table > thead > tr > th{
+  border-bottom-color: rgba(15,23,42,.12);
+}
+.table > tbody > tr > td{
+  border-top-color: rgba(15,23,42,.10);
+}
+
+/* -----------------------------
+   DevExpress input polish (pink area)
+--------------------------------*/
+.form_div{
+  margin-top: 14px !important;
+}
+
+/* Better label rhythm */
+label,
+.dxmLite_Glass,
+.dxeBase{
+  color: #0f172a;
+}
+
+.style5{ /* required star used in several pages */
+  color: #e11d48 !important;
+  font-weight: 700;
+}
+
+.dxeTextBoxSys,
+.dxeEditAreaSys,
+.dxeSpinEditSys,
+.dxeComboBoxSys,
+.dxeDropDownSys,
+.dxeDateEditSys,
+.dxeButtonEdit,
+.dxeButtonEditSys{
+  border: 1px solid rgba(15,23,42,.22) !important;
+  border-radius: 10px !important; /* sleek rounded like reference */
+  background: #ffffff !important;
+  transition: border-color 160ms ease;
+}
+
+.dxeTextBoxSys,
+.dxeEditAreaSys{
+  height: 36px !important;
+}
+
+.dxeTextBoxSys input,
+.dxeEditAreaSys input,
+.dxeSpinEditSys input{
+  padding: 8px 12px !important;
+  border-radius: 10px !important;
+  font-size: 14px;
+  border: 0 !important;       /* remove inner border (prevents "double line") */
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* DevExpress textarea/memo: remove inner border as well */
+.dxeMemoEditAreaSys{
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.dxeTextBoxSys:focus-within,
+.dxeEditAreaSys:focus-within,
+.dxeButtonEdit:focus-within,
+.dxeComboBoxSys:focus-within,
+.dxeDropDownSys:focus-within{
+  border-color: rgba(0,0,0,.85) !important;
+  box-shadow: none !important; /* keep only border, remove shadow */
+}
+
+/* DevExpress grid filter/search button sizing (reduce width) */
+.dxgvControl .dxeButtonEditButton,
+.dxgvControl .dxeButtonEditButton_PlasticBlue,
+.dxgvControl .dxeSpinIncButton,
+.dxgvControl .dxeSpinDecButton{
+  width: 26px !important;
+  min-width: 26px !important;
+  padding: 0 !important;
+}
+.dxgvControl .dxeButtonEditButton .dx,
+.dxgvControl .dxeButtonEditButton_PlasticBlue .dx{
+  padding: 0 !important;
+}
+
+/* (Removed) Reset styling inside GridView Customization window */
+
+/* Make inputs align better inside Bootstrap columns */
+.cnt_div .dxeTextBoxSys,
+.cnt_div .dxeEditAreaSys,
+.cnt_div .dxeButtonEdit,
+.cnt_div .dxeComboBoxSys,
+.cnt_div .dxeDropDownSys,
+.cnt_div .dxeDateEditSys{
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* DevExpress dropdown button area */
+.dxeButtonEditButton,
+.dxeButtonEditButton_PlasticBlue,
+.dxeSpinIncButton,
+.dxeSpinDecButton{
+  background: linear-gradient(180deg, #5066ac 0%, #2c4182 100%) !important;
+  border-left: 1px solid rgba(15,23,42,.10) !important;
+  color: #fff !important;
+}
+
+.dxeButtonEditButton .dx,
+.dxeButtonEditButton_PlasticBlue .dx{
+  color: #fff !important;
+}
+
+/* Textarea */
+textarea,
+.dxeMemoEditAreaSys{
+  border-radius: 10px !important;
+}
+
+/* (Removed) Customization button icon/row styling */
+
+/* -----------------------------
+   Export icons (PDF/XLS) - modern minimal buttons
+--------------------------------*/
+input[type="image"][src*="PDF"],
+input[type="image"][src*="pdf"],
+input[type="image"][src*="XLS"],
+input[type="image"][src*="xls"]{
+  width: 34px !important;
+  height: 34px !important;
+ 
+}
+input[type="image"][src*="PDF"]:hover,
+input[type="image"][src*="pdf"]:hover,
+input[type="image"][src*="XLS"]:hover,
+input[type="image"][src*="xls"]:hover{
+  background: #f3f6fb !important;
+  box-shadow: 0 10px 18px rgba(15,23,42,.10) !important;
+  transform: translateY(-1px);
+  transition: transform 120ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+/* -----------------------------
+   Navbar hamburger: circle + centered bars
+--------------------------------*/
+.navbar-inverse .navbar-toggle{
+  display: none !important; /* remove left hamburger (green marked) */
+}

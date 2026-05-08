@@ -5,12 +5,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>INSTEM-Asset Management System</title>
-	<link rel="shortcut icon" href="Images/Instem_logo.png" />
+	<title>RCB-Asset Management System</title>
+	<link rel="shortcut icon" href="Images/logoRCB.png" />
 	<link href="Content/bootstrap.min.css" rel="stylesheet" />
+	<link href="Content/theme.css" rel="stylesheet" />
 	 <link href="Content/fontawesome.css" rel="stylesheet" />
     <script src="Scripts/jquery-3.3.1.min.js"></script>
      <script src="Scripts/bootstrap.min.js"></script>
+	 <script src="Scripts/navbar-hover.js"></script>
+	<script src="Scripts/customization-icon.js"></script>
 
 
 <%--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
@@ -154,29 +157,45 @@
     <form id="form1" runat="server">
     <div>
        <div class="container-fluid" runat="server">
-        <div class="row header " runat="server">
-            <div class="logo">
-        <img src="../Images/Instem_logo.png" alt="Logo Image">
-    </div>
-    
-            <%--<img src="Images/BEL_Logo.png"   style="top: -11px; left:0px;  padding: 10px"; />--%>
-            <div class="container head" runat="server">
-                <div class="title"><h2 style="color:black;">Institute for Stem Cell Science and Regenerative Medicine</h2>
-                <h4 style="color:black;"> Asset Management System</h4></div>
-                </div>
-          
 
-   <nav class=" navbar navbar-inverse">
-  <div class="container-fluid" >
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse"    data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-     
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
+		<asp:PlaceHolder ID="phHeaderNav" runat="server">
+			<!-- Header bar (match Site1.master / reference screenshot layout) -->
+			<div class="row">
+				<div class="header-bar container-fluid">
+					<div class="brand-left">
+						<img src="../Images/rcblg.png" alt="logo" />
+						<span>
+							<span class="brand-name">Regional Centre for Biotechnology Faridabad </span>
+							<br />
+							<small class="brand-subtitle">An Institution of National Importance ,Govt. of India</small>
+						</span>
+					</div>
+
+					<div class="brand-center">
+						<span class="system-title">Material Management  and Inventory Control</span>
+						<br />
+						<%--<small class="system-subtitle">Asset, Tools and Equipment Management</small>--%>
+					</div>
+
+					<div class="header-user">
+						<div>
+							<asp:Label runat="server" Text="Welcome: "></asp:Label>
+							<asp:Label ID="lblusername" runat="server"></asp:Label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid nav-pill" >
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"    data-target="#myNavbar">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span> 
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="myNavbar">
 
         <%--====================================================REQUESTER =============================================================- --%>
        
@@ -829,11 +848,13 @@
 
             <ul class="nav navbar-nav pull-right" >
              <%-- <li><a href="">Change Password</a></li> --%>
-                <li id="Li1"><a>Welcome: <asp:Label ID="lblusername" runat="server"></asp:Label></a></li>
                 <li><a href="/SignOutPage.aspx"><span class="glyphicon glyphicon-log-in"></span></a></li>
              </ul>
 
-                 </div></div></nav>
+					</div>
+				</div>
+			</nav>
+		</asp:PlaceHolder>
   </div>
     
      
