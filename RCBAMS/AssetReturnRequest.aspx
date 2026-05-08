@@ -407,18 +407,18 @@
   </ContentTemplate>
 </asp:UpdatePanel>
       
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" 
-        SelectCommand="Select * From InstemSAP..vAssetMaster where CustodianID=@EmployeeID and vAssetMaster.Status !='NVAL'">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" 
+        SelectCommand="Select * From RCBSAP..vAssetMaster where CustodianID=@EmployeeID and vAssetMaster.Status !='NVAL'">
     <SelectParameters>
         <asp:SessionParameter name="EmployeeID" SessionField="UserID"/>
     </SelectParameters>
     </asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT AssetReturnID,EmployeeAssetReturn.AssetID,AssetMaster. Assetclass,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetDesc as AssetTypeName,concat(EmployeeAssetReturn.EmployeeID+'__',EmployeeAssetReturn.ReturnSequene) as ReturnSequene,
                       RequestBy as Requestedby,EmployeeAssetReturn.CustodianDepartment,CustDesignation,EmployeeAssetReturn.Status,Date,CustodianComments 
                       FROM EmployeeAssetReturn
-            inner join InstemSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetReturn.AssetID 
+            inner join RCBSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetReturn.AssetID 
                       where EmployeeAssetReturn.EmployeeID=@EmployeeID order by AssetReturnID desc">
        
          <SelectParameters>

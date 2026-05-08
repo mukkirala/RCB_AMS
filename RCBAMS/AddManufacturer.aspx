@@ -144,7 +144,7 @@
                    </ProgressBar>
                </StylesEditors>
            </dx:ASPxGridView>
-           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>"
+           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
                 SelectCommand="SELECT [ManufacturerID], [ManufacturerName], [ManufacturerCode] FROM [ManufacturerMaster] WHERE Status='Active'"
                 UpdateCommand="UPDATE ManufacturerMaster SET ManufacturerName=@ManufacturerName,ManufacturerCode=@ManufacturerCode WHERE ManufacturerID=@ManufacturerID  "></asp:SqlDataSource>
            <br />

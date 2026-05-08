@@ -150,7 +150,7 @@
         </table>
  
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT [AuditID], [AuditDate], [AuditName] FROM [AuditMaster]">
     </asp:SqlDataSource>
 
@@ -249,12 +249,12 @@
         </StylesEditors>
     </dx:ASPxGridView>
     <asp:SqlDataSource ID="SqlDSAssetunitList" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT AuditDetails.AuditDetailsID,AuditMaster.AuditName, AuditDetails.AssetID,AuditDetails.Status,LocationMaster.LocationCode,LocationMaster.Block,LocationMaster.Location,
                        AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetDesc from AuditDetails
                        inner join AuditMaster on AuditMaster.AuditID=AuditDetails.AuditID
                        inner join LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID 
-                       inner join InstemSAP..AssetMaster on AssetMaster.AssetID=AuditDetails.AssetID
+                       inner join RCBSAP..AssetMaster on AssetMaster.AssetID=AuditDetails.AssetID
                        Where AuditDetails.AuditID=@AuditID and AuditDetails.AuditStatus=@AuditStatus">
   <SelectParameters>
   <asp:SessionParameter Name="AuditID" SessionField="ID" />
@@ -262,8 +262,8 @@
  
   </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="AuditStatus" runat="server"   ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
-        SelectCommand="SELECT [StatusID],[StatusName],[StatusCode],[Status] FROM [InstemAMS]..StatusMaster">
+    <asp:SqlDataSource ID="AuditStatus" runat="server"   ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
+        SelectCommand="SELECT [StatusID],[StatusName],[StatusCode],[Status] FROM [RCBAMS]..StatusMaster">
 
     </asp:SqlDataSource>
    

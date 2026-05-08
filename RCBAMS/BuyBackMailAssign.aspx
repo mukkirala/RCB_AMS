@@ -251,7 +251,7 @@
         </StylesEditors>
     </dx:ASPxGridView>
 
-   <asp:SqlDataSource ID="Sql_Role" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+   <asp:SqlDataSource ID="Sql_Role" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="Select distinct RoleMaster.ROLE_ID,RoleMaster.ROLE_NAME as CustodianDepartment, RoleMaster.CustodianID ,
  CustodianName,Designation,email,RoleMaster.ROLE_STATUS from RoleMaster
 inner join CustodianMaster  ON  CustodianMaster.CustodianID=RoleMaster.CustodianID

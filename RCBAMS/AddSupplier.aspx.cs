@@ -14,7 +14,7 @@ using System.Collections;
 
 public partial class VendorMaster : System.Web.UI.Page
 {
-    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     SqlCommand myCommand;
     private const string PAGENAME = "Masters-Add_Supplier";
     private const string PAGEURL = "AddSupplier.aspx";

@@ -266,7 +266,7 @@
     
 
 
-    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="Select * from InstemSAP..vAssetMaster"></asp:SqlDataSource>                                     
+    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="Select * from RCBSAP..vAssetMaster"></asp:SqlDataSource>                                     
     
       </div>
         <br/>

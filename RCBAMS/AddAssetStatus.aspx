@@ -144,7 +144,7 @@
              </StylesEditors>
          </dx:ASPxGridView>
 
-         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="SELECT [StatusID], [StatusName],[StatusCode] FROM [StatusMaster] WHERE  Status='Active'">
+         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="SELECT [StatusID], [StatusName],[StatusCode] FROM [StatusMaster] WHERE  Status='Active'">
 
          </asp:SqlDataSource>
            </div>

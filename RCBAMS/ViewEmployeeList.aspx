@@ -141,7 +141,7 @@
             </ProgressBar>
         </StylesEditors>
     </dx:ASPxGridView>
-    <asp:SqlDataSource ID="SqlCustodianMaster" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+    <asp:SqlDataSource ID="SqlCustodianMaster" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT * from CustodianMaster">
 
     </asp:SqlDataSource>                                     

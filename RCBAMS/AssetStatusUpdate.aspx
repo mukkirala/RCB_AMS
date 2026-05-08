@@ -434,7 +434,7 @@
             </ProgressBar>
         </StylesEditors>
     </dx:ASPxGridView>
-    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="Select * from InstemSAP..AssetMaster where Status !='InActive' and StatusDesc !='Asset Deleted' "></asp:SqlDataSource>                                     
+    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="Select * from RCBSAP..AssetMaster where Status !='InActive' and StatusDesc !='Asset Deleted' "></asp:SqlDataSource>                                     
     
       </div>
         <br/>
@@ -442,10 +442,10 @@
 </div>
 </div>
 </div>
-  <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="SELECT [AssetID],[MainAssetNumber],[AssetSubNumber],[AssetDesc] FROM [AssetMaster] where Status !='InActive' and StatusDesc !='Asset Deleted'">
+  <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="SELECT [AssetID],[MainAssetNumber],[AssetSubNumber],[AssetDesc] FROM [AssetMaster] where Status !='InActive' and StatusDesc !='Asset Deleted'">
   </asp:SqlDataSource>
- <asp:SqlDataSource ID="StatusDS" runat="server"  ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
-     SelectCommand="SELECT [StatusCode],[StatusName] FROM [InstemAMS]..[StatusMaster] ">
+ <asp:SqlDataSource ID="StatusDS" runat="server"  ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
+     SelectCommand="SELECT [StatusCode],[StatusName] FROM [RCBAMS]..[StatusMaster] ">
      </asp:SqlDataSource>
 <%--</ContentTemplate>
 </asp:UpdatePanel>--%>

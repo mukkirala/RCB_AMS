@@ -136,7 +136,7 @@
                 </dx:ASPxGridViewExporter>
          </div>
       </div>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="SELECT * FROM [SAPUpdateLogInfo] where Log_Message!='No changes made'">
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="SELECT * FROM [SAPUpdateLogInfo] where Log_Message!='No changes made'">
          </asp:SqlDataSource>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">

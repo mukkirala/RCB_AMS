@@ -65,7 +65,7 @@
                     </dx:ASPxComboBox>                   
   
                  <asp:SqlDataSource ID="SqbDBaircraft" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="SELECT DISTINCT [AssetUser] FROM [AssetMaster]">
          </asp:SqlDataSource>
 
@@ -260,20 +260,20 @@
             </ProgressBar>
         </StylesEditors>
     </dx:ASPxGridView>
-     <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" 
+     <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="Select AssetAllocation.AllocationID,AssetAllocation.AssetID,AssetAllocation.MainAssetNumber,AssetAllocation.AssetRequestID,AssetAllocation.Date as AllocatedDate,AssetAllocation.Status as AllocatedStatus,
 EmployeeAssetRequest.RequestBy,EmployeeAssetRequest.EmployeeID,EmployeeAssetRequest.Date as RequestedDate,EmployeeAssetRequest.CustodianDepartment,EmployeeAssetRequest.CustDesignation,
 AssetMaster.AssetSubNumber,AssetMaster.AssetDesc,AssetMaster.AssetClass,AssetMaster.Location,AssetMaster.LocationDesc,AssetMaster.Status as AssetStatus
-From InstemAMS..AssetAllocation
-inner join InstemAMS..EmployeeAssetRequest on EmployeeAssetRequest.AssetRequestID=AssetAllocation.AssetRequestID
-inner join InstemSAP..AssetMaster on AssetMaster.AssetID=AssetAllocation.AssetID
+From RCBAMS..AssetAllocation
+inner join RCBAMS..EmployeeAssetRequest on EmployeeAssetRequest.AssetRequestID=AssetAllocation.AssetRequestID
+inner join RCBSAP..AssetMaster on AssetMaster.AssetID=AssetAllocation.AssetID
 where AssetAllocation.Status='Approved' and EmployeeAssetRequest.EmployeeID=@CustodianID order by AssetAllocation.Date desc">
    <SelectParameters>
       <asp:SessionParameter Name="CustodianID" SessionField="CustodianID" />
    </SelectParameters>
     </asp:SqlDataSource> --%>  
 
-       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="Select * from AssetMaster
       where AssetUser=@AssetUser  ">
        

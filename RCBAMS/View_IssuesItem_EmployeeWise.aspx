@@ -53,7 +53,7 @@ Select Employee :</td>
     EnableCallbackMode="true" IncrementalFilteringMode="StartsWith">
 </dx:ASPxComboBox>
 
- <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="SELECT [CustodianID], [CustodianName] FROM [CustodianMaster]"></asp:SqlDataSource>
+ <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="SELECT [CustodianID], [CustodianName] FROM [CustodianMaster]"></asp:SqlDataSource>
            
             </td>
             <td>&nbsp;</td>
@@ -101,7 +101,7 @@ Select Employee :</td>
             </ProgressBar>
         </StylesEditors>
     </dx:ASPxGridView>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="SELECT [AssetOutBoundDetailID], AssetOutBoundDetails.AssetOutBoundID, AssetOutBoundDetails.AssetID, AssetOutBoundDetails.Quantity, AssetOutBoundDetails.Status,AssetDesc  FROM AssetOutBoundDetails INNER JOIN AssetMaster ON AssetMaster.AssetID=AssetOutBoundDetails.AssetID INNER JOIN AssetOutBoundMaster ON AssetOutBoundMaster.AssetOutBoundID=AssetOutBoundDetails.[AssetOutBoundID]  WHERE itemStatus='Assign' AND EmployeeID=@cmb_employee">
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="SELECT [AssetOutBoundDetailID], AssetOutBoundDetails.AssetOutBoundID, AssetOutBoundDetails.AssetID, AssetOutBoundDetails.Quantity, AssetOutBoundDetails.Status,AssetDesc  FROM AssetOutBoundDetails INNER JOIN AssetMaster ON AssetMaster.AssetID=AssetOutBoundDetails.AssetID INNER JOIN AssetOutBoundMaster ON AssetOutBoundMaster.AssetOutBoundID=AssetOutBoundDetails.[AssetOutBoundID]  WHERE itemStatus='Assign' AND EmployeeID=@cmb_employee">
        <SelectParameters>
            <asp:ControlParameter Name="cmb_employee" ControlID="cmb_employee" />
        </SelectParameters>

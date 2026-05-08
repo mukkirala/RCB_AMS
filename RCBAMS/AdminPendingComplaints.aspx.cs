@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 public partial class AdminPendingComplaints : System.Web.UI.Page
 {
-    private static string connection = ConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString;
+    private static string connection = ConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString;
     private SqlConnection con = new SqlConnection(connection);
     protected void Page_Load(object sender, EventArgs e)
     {

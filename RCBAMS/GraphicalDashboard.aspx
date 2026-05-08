@@ -88,7 +88,7 @@
                                     </dxchartsui:webchartcontrol>
           
      <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                                        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+                                        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
                                         SelectCommand="SELECT COUNT(AssetMaster.AssetDesc),AssetDesc as NoOfAssets  FROM AssetMaster group by AssetDesc">
                                                       <SelectParameters>
                                 <asp:SessionParameter Name=" " SessionField=" " />
@@ -160,7 +160,7 @@
                 </asp:ChartArea>
             </ChartAreas>
         </asp:Chart>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>"
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
             SelectCommand="SELECT AssetDesc, COUNT(AssetDesc) AS NOOFASSETS FROM AssetMaster GROUP BY AssetDesc">
         </asp:SqlDataSource>
     </td>

@@ -171,7 +171,7 @@
              </StylesEditors>
          </dx:ASPxGridView>
 
-         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="SELECT [LocationID], [Location],[Block],[LocationCode] FROM [LocationMaster] WHERE  Status='Active'"
+         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="SELECT [LocationID], [Location],[Block],[LocationCode] FROM [LocationMaster] WHERE  Status='Active'"
              UpdateCommand="UPDATE  LocationMaster SET  [Location]=@Location,[Block]=@Block, [LocationCode]=@LocationCode WHERE [LocationID]=@LocationID"></asp:SqlDataSource>
              </div>
    </div>

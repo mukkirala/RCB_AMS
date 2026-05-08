@@ -11,7 +11,7 @@ using DevExpress.XtraPrinting.Export.Pdf;
 
 public partial class AssetDescrptionMaster : System.Web.UI.Page
 {
-    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     SqlCommand myCommand;
     protected void Page_Load(object sender, EventArgs e)
     {

@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 public partial class BuyBackMailAssign : System.Web.UI.Page
 {
-    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
         SqlCommand myCommand;
 
     protected void Page_Load(object sender, EventArgs e)

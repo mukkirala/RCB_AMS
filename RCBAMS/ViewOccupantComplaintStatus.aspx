@@ -176,11 +176,11 @@
                  </StylesEditors>
                   </dx:ASPxGridView>
                        
-                       <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand=" SELECT AssetClassID,AssetMaster.AssetClass,ComplaintRegistration.ComplaintID,EmployeeID,MainAssetNumber,AssetDesc,EmployeeName,EmployeeDepartment, Complaint_Description,ApproverID,ApproverName,EmployeeDesignation,
-InstemAMS..[ServiceTypeMaster].ServiceTypeName, ComplaintTransaction.CreatedDate,ComplaintTransaction.Status,ComplaintTransaction.ProgressDate,Concat(ComplaintTransaction.USR_ID+'__','C0',ComplaintTransaction.Sequence) as complaintsequence,ComplaintTransaction.Comments,Complaint_Description FROM InstemAMS..[ComplaintRegistration] 
-inner join InstemAMS..[ComplaintTransaction] on InstemAMS..[ComplaintTransaction].ComplaintID=InstemAMS..[ComplaintRegistration].ComplaintID
-inner join InstemSAP..AssetMaster on InstemSAP..AssetMaster.AssetID=[ComplaintRegistration].AssetID
-inner join InstemAMS..[ServiceTypeMaster] on InstemAMS..[ServiceTypeMaster].ServiceTypeID=ComplaintRegistration.ServiceTypeID  Where EmployeeID=@EmployeeID">
+                       <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand=" SELECT AssetClassID,AssetMaster.AssetClass,ComplaintRegistration.ComplaintID,EmployeeID,MainAssetNumber,AssetDesc,EmployeeName,EmployeeDepartment, Complaint_Description,ApproverID,ApproverName,EmployeeDesignation,
+RCBAMS..[ServiceTypeMaster].ServiceTypeName, ComplaintTransaction.CreatedDate,ComplaintTransaction.Status,ComplaintTransaction.ProgressDate,Concat(ComplaintTransaction.USR_ID+'__','C0',ComplaintTransaction.Sequence) as complaintsequence,ComplaintTransaction.Comments,Complaint_Description FROM RCBAMS..[ComplaintRegistration] 
+inner join RCBAMS..[ComplaintTransaction] on RCBAMS..[ComplaintTransaction].ComplaintID=RCBAMS..[ComplaintRegistration].ComplaintID
+inner join RCBSAP..AssetMaster on RCBSAP..AssetMaster.AssetID=[ComplaintRegistration].AssetID
+inner join RCBAMS..[ServiceTypeMaster] on RCBAMS..[ServiceTypeMaster].ServiceTypeID=ComplaintRegistration.ServiceTypeID  Where EmployeeID=@EmployeeID">
                                    <SelectParameters>
         <asp:SessionParameter Name="EmployeeID" SessionField="UserID" />
         </SelectParameters>

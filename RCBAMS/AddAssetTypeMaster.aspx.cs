@@ -12,7 +12,7 @@ using DevExpress.Xpo.DB.Helpers;
 
 public partial class AddAssetTypeMaster : System.Web.UI.Page
 {
-    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
+    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
     SqlCommand myCommand;
     string date = System.DateTime.Now.Date.ToString("yyyy-MM-dd");
     protected void Page_Load(object sender, EventArgs e)

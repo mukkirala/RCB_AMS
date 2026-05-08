@@ -134,7 +134,7 @@
             </ProgressBar>
         </StylesEditors>
     </dx:ASPxGridView>
-    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="Select *,DepartmentMaster.DepartmentName from  CustodianMaster
         inner join DepartmentMaster on DepartmentMaster.DepartmentCode=CustodianMaster.CustodianDepartmentCode">
         </asp:SqlDataSource>                                     

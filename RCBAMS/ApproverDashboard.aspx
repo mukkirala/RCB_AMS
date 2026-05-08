@@ -261,11 +261,11 @@
             <Settings ShowFilterRow="True" ShowGroupPanel="True" />
            
         </dx:ASPxGridView>
-        <asp:SqlDataSource ID="ds_AllocatedAssets" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="Select AssetAllocation.AllocationID,AssetAllocation.AssetID,AssetAllocation.MainAssetNumber,
+        <asp:SqlDataSource ID="ds_AllocatedAssets" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="Select AssetAllocation.AllocationID,AssetAllocation.AssetID,AssetAllocation.MainAssetNumber,
 AssetMaster.AssetSubNumber,AssetMaster.AssetDesc,AssetMaster.AssetClass,AssetMaster.Status as AssetStatus
-From InstemAMS..AssetAllocation
-inner join InstemAMS..EmployeeAssetRequest on EmployeeAssetRequest.AssetRequestID=AssetAllocation.AssetRequestID
-inner join InstemSAP..AssetMaster on AssetMaster.AssetID=AssetAllocation.AssetID
+From RCBAMS..AssetAllocation
+inner join RCBAMS..EmployeeAssetRequest on EmployeeAssetRequest.AssetRequestID=AssetAllocation.AssetRequestID
+inner join RCBSAP..AssetMaster on AssetMaster.AssetID=AssetAllocation.AssetID
 where AssetAllocation.Status='Approved' and EmployeeAssetRequest.EmployeeID=@CustodianID">
    <SelectParameters>
        <asp:SessionParameter SessionField="UserID" Name="CustodianID" />

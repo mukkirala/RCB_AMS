@@ -162,14 +162,14 @@
                      </ProgressBar>
                  </StylesEditors>
                   </dx:ASPxGridView>--%>
-                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="
-select ComplaintRegistration.Status,ComplaintTransaction.CreatedDate,[InstemSAP].[dbo].[AssetMaster].[AssetDesc],[InstemSAP].[dbo].[AssetMaster].[MainAssetNumber],ComplaintTransaction.ComplaintType,Concat(ComplaintTransaction.USR_ID+'_','C0',ComplaintTransaction.Sequence) as complaintsequence,
+                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="
+select ComplaintRegistration.Status,ComplaintTransaction.CreatedDate,[RCBSAP].[dbo].[AssetMaster].[AssetDesc],[RCBSAP].[dbo].[AssetMaster].[MainAssetNumber],ComplaintTransaction.ComplaintType,Concat(ComplaintTransaction.USR_ID+'_','C0',ComplaintTransaction.Sequence) as complaintsequence,
 ComplaintCode,EmployeeName,ServiceTypeName,ComplaintTransaction.ComplaintTransactionID,ComplaintRegistration.ComplaintID
 from ComplaintRegistration
 inner join ComplaintTransaction on ComplaintTransaction.ComplaintID=ComplaintRegistration.ComplaintID
-inner join [InstemSAP].[dbo].[AssetMaster] on [InstemSAP].[dbo].[AssetMaster].AssetID = ComplaintRegistration.AssetID
+inner join [RCBSAP].[dbo].[AssetMaster] on [RCBSAP].[dbo].[AssetMaster].AssetID = ComplaintRegistration.AssetID
 inner join ServiceTypeMaster on ServiceTypeMaster.ServiceTypeID=ComplaintRegistration.ServiceTypeID
-                           where ComplaintTransaction.Status='Work In Progress' and   InstemAMS..ComplaintTransaction.AssignedTo=@AssignedTo  order by ComplaintTransaction.ProgressDate Desc ">
+                           where ComplaintTransaction.Status='Work In Progress' and   RCBAMS..ComplaintTransaction.AssignedTo=@AssignedTo  order by ComplaintTransaction.ProgressDate Desc ">
                              <SelectParameters>
                          <asp:SessionParameter Name="AssignedTo" SessionField="UserID" />
                      </SelectParameters>

@@ -174,7 +174,7 @@
     </dx:ASPxGridView>
 
     <asp:SqlDataSource ID="SqlDSAssetGroup" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="SELECT [AssetClassID],[AssetClassName],[AssetClassCode] FROM [AssetClassMaster] where Status='Active'">
     </asp:SqlDataSource>
     </div>

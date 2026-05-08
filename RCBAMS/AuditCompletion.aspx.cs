@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 public partial class AuditCompletion : System.Web.UI.Page
 {
-    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -27,7 +27,7 @@ public partial class AuditCompletion : System.Web.UI.Page
         else
         {
             AuditDetails.Visible = true;
-            string query = " select * from InstemAMS..AuditMaster left join InstemAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID where AuditID = '" + Audit_Gridlookup.Value  + "'";
+            string query = " select * from RCBAMS..AuditMaster left join RCBAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID where AuditID = '" + Audit_Gridlookup.Value  + "'";
             SqlDataAdapter da = new SqlDataAdapter(query, myConnection);
             DataTable dt = new DataTable();
             da.Fill(dt);

@@ -86,7 +86,7 @@
                  </StylesEditors>
                   </dx:ASPxGridView>
                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString=
-                           "<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="
+                           "<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="
 select ComplaintRegistration.Status,ComplaintRegistration.CreatedDate,ComplaintCode,EmployeeName,
  Complaint_Description,
 ServiceTypeName,ComplaintRegistration.ComplaintID from ComplaintRegistration 
@@ -170,7 +170,7 @@ where ComplaintRegistration.Status='Pending' and ComplaintTransaction.Status='Pe
                      </ProgressBar>
                  </StylesEditors>
                   </dx:ASPxGridView>
-                       <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="
+                       <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="
 select ComplaintRegistration.Status,ComplaintRegistration.CreatedDate,ComplaintCode,EmployeeName,ServiceTypeName,ComplaintRegistration.Complaint_Description,
                            ComplaintRegistration.ComplaintID
 from ComplaintRegistration

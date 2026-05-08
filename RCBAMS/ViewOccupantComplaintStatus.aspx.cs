@@ -17,7 +17,7 @@ using System.Data.Sql;
 public partial class ViewOccupantComplaintStatus : System.Web.UI.Page
 {
 
-    private static string connection = ConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString;
+    private static string connection = ConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString;
     private SqlConnection con = new SqlConnection(connection);
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -26,7 +26,7 @@ public partial class ViewOccupantComplaintStatus : System.Web.UI.Page
             Response.Redirect("~/ErrorPage.aspx");
         }
         //SqlDataAdapter da = new SqlDataAdapter("select OccupantID from tblUSER where USR_ID='" + Session["UserID"] + "'", con);
-        SqlDataAdapter da = new SqlDataAdapter("select AssetClassID from InstemAMS..[ComplaintRegistration] where EmployeeID='" + Session["EmployeeID"] + "'", con);
+        SqlDataAdapter da = new SqlDataAdapter("select AssetClassID from RCBAMS..[ComplaintRegistration] where EmployeeID='" + Session["EmployeeID"] + "'", con);
         DataTable dt = new DataTable();
         da.Fill(dt);
         if (dt.Rows.Count > 0)

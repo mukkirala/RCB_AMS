@@ -108,7 +108,7 @@
 
 
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+                ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
            SelectCommand="SELECT [AssetClassID], [AssetClassName], [DepartmentCode],DepartmentName FROM [AssetClassMaster]  where Status='Active'"></asp:SqlDataSource>
         </div>
     
@@ -166,7 +166,7 @@
                <asp:SqlDataSource ID="CustSqlDataSource" runat="server" 
         ConnectionString="<%$ ConnectionStrings:ASSETManagementConnectionString %>" 
         SelectCommand="SELECT [CustodianID], [CustodianName] FROM [vEmpDtlsAssetApp]
-inner join InstemSAP..AssetClassMaster on AssetClassMaster.DepartmentCode=vEmpDtlsAssetApp.CustodianDepartmentCode
+inner join RCBSAP..AssetClassMaster on AssetClassMaster.DepartmentCode=vEmpDtlsAssetApp.CustodianDepartmentCode
  where AssetClassID=@AssetClassID">
             <SelectParameters>
                 <asp:ControlParameter Name="AssetClassID" ControlID="cmb_assetclass" />
@@ -267,9 +267,9 @@ inner join InstemSAP..AssetClassMaster on AssetClassMaster.DepartmentCode=vEmpDt
         <br />
         <br />
   <asp:SqlDataSource ID="Sql_Role" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT ROLE_ID,ROLE_NAME,CustodianID,ROLE_STATUS,CREATE_DATE,AssetClassMaster.DepartmentName,AssetClassName,RoleMaster.AssetClassID FROM [RoleMaster] 
- left join InstemSAP..AssetClassMaster on AssetClassMaster.AssetClassID=RoleMaster.AssetClassID where ROLE_NAME in('Auditor','IT-Admin','HR-Admin') and ROLE_STATUS='Active'">
+ left join RCBSAP..AssetClassMaster on AssetClassMaster.AssetClassID=RoleMaster.AssetClassID where ROLE_NAME in('Auditor','IT-Admin','HR-Admin') and ROLE_STATUS='Active'">
          </asp:SqlDataSource>
 
         

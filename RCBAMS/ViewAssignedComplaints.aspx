@@ -110,14 +110,14 @@
                      </ProgressBar>
                  </StylesEditors>
                   </dx:ASPxGridView>
-                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="select ComplaintTransaction.Status,AssetMaster.AssetDesc,ComplaintRegistration.AssetID,Concat(ComplaintTransaction.USR_ID+'_','C0',ComplaintTransaction.Sequence) as complaintsequence,ComplaintTransaction.ComplaintType,
+                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="select ComplaintTransaction.Status,AssetMaster.AssetDesc,ComplaintRegistration.AssetID,Concat(ComplaintTransaction.USR_ID+'_','C0',ComplaintTransaction.Sequence) as complaintsequence,ComplaintTransaction.ComplaintType,
  ComplaintRegistration.EmployeeID,CustodianMaster.email,ComplaintTransaction.ComplaintID,ComplaintTransaction.ComplaintTransactionID,ComplaintTransaction.AssignedDate,ComplaintRegistration.Complaint_Description,
 ComplaintRegistration.ComplaintCode,ServiceTypeName,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,ComplaintRegistration.EmployeeName,ComplaintTransaction.ApproverComments,
  ComplaintTransaction.Remarks from ComplaintTransaction 
  inner join ComplaintRegistration on ComplaintRegistration.ComplaintID=ComplaintTransaction.ComplaintID 
  inner join ServiceTypeMaster on ServiceTypeMaster.ServiceTypeID=ComplaintRegistration.ServiceTypeID
  inner join CustodianMaster on CustodianMaster.CustodianID=ComplaintRegistration.EmployeeID 
- inner join InstemSAP..AssetMaster on AssetMaster.AssetID=ComplaintRegistration.AssetID where ComplaintTransaction.Status='Assign' and  InstemAMS..ComplaintTransaction.AssignedTo=@AssignedTo  order by ComplaintTransaction.AssignedDate Desc ">
+ inner join RCBSAP..AssetMaster on AssetMaster.AssetID=ComplaintRegistration.AssetID where ComplaintTransaction.Status='Assign' and  RCBAMS..ComplaintTransaction.AssignedTo=@AssignedTo  order by ComplaintTransaction.AssignedDate Desc ">
                      <%--     <SelectParameters>
         <asp:SessionParameter Name="ComplaintID" SessionField="ComplaintID" />
         </SelectParameters>

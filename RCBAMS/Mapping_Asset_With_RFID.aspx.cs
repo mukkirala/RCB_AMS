@@ -13,7 +13,7 @@ using System.Web.UI.WebControls;
 
 public partial class Mapping_Asset_With_RFID : System.Web.UI.Page
 {
-    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
+    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
     SqlCommand myCommand;
     string AssetSLNO = "";
     //string AssetID = "";

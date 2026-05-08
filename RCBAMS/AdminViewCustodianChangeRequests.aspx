@@ -206,8 +206,8 @@
 
        
 <asp:SqlDataSource ID="DetailDS" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
-    SelectCommand="select AssetMaster.AssetID,AssetMaster.SerialNumber,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc from InstemAMS..CustodianChangeRequest inner join InstemSAP..AssetMaster on AssetMaster.AssetID=CustodianChangeRequest.AssetID where CustodianChangeRequest.CustodianChangeID=@ID">
+                ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
+    SelectCommand="select AssetMaster.AssetID,AssetMaster.SerialNumber,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc from RCBAMS..CustodianChangeRequest inner join RCBSAP..AssetMaster on AssetMaster.AssetID=CustodianChangeRequest.AssetID where CustodianChangeRequest.CustodianChangeID=@ID">
     <SelectParameters>
     <asp:SessionParameter Name="ID" SessionField="ID" />
     </SelectParameters>
@@ -406,29 +406,29 @@
 
   
       <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT CustodianChangeID,CustodianChangeRequest.AssetID,AssetDesc as AssetTypeName,CustodianChangeRequest.ApproverComments,CustodianChangeRequest.ToCustodian,Concat(CustodianChangeRequest.EmployeeID+'__',CustodianChangeRequest.CustodianSequence) as EmployeeID,RequestBy as Requestedby,CustodianChangeRequest.CustodianDepartment,CustDesignation,CustodianChangeRequest.Status,Date,CustodianComments,ApproverID,ApproverName,ApproverDesignation,ApproverDeptCode,ApproverDepartment,ApproverComments,
-          RequestedChangeCustodian,CustodianMaster.CustodianName as TransferTo,CONCAT(RequestedChangeCustodian , '-' , CustodianName) as TransferToEmployee,DepartmentName as TDept FROM CustodianChangeRequest inner join InstemAMS..CustodianMaster on  CustodianMaster.CustodianID=CustodianChangeRequest.RequestedChangeCustodian left join InstemAMS..DepartmentMaster on  DepartmentMaster.DepartmentCode=CustodianMaster.CustodianDepartmentCode inner join InstemSAP..AssetMaster on AssetMaster.AssetID=CustodianChangeRequest.AssetID Where CustodianChangeRequest.Status='Request Sent To Admin' order by CustodianChangeID desc">
+          RequestedChangeCustodian,CustodianMaster.CustodianName as TransferTo,CONCAT(RequestedChangeCustodian , '-' , CustodianName) as TransferToEmployee,DepartmentName as TDept FROM CustodianChangeRequest inner join RCBAMS..CustodianMaster on  CustodianMaster.CustodianID=CustodianChangeRequest.RequestedChangeCustodian left join RCBAMS..DepartmentMaster on  DepartmentMaster.DepartmentCode=CustodianMaster.CustodianDepartmentCode inner join RCBSAP..AssetMaster on AssetMaster.AssetID=CustodianChangeRequest.AssetID Where CustodianChangeRequest.Status='Request Sent To Admin' order by CustodianChangeID desc">
         </asp:SqlDataSource>
   
    <%--   <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
-        SelectCommand="SELECT CustodianChangeID,CustodianChangeRequest.AssetID,AssetDesc as AssetTypeName,CustodianChangeRequest.EmployeeID,RequestBy as Requestedby,CustodianChangeRequest.CustodianDepartment,CustDesignation,CustodianChangeRequest.Status,Date,CustodianComments,ApproverID,ApproverName,ApproverDesignation,ApproverDeptCode,ApproverDepartment,ApproverComments,AdminID,AdminName,AdminComments FROM CustodianChangeRequest inner join InstemSAP..AssetMaster on AssetMaster.AssetID=CustodianChangeRequest.AssetID Where CustodianChangeRequest.Status='Approved' order by CustodianChangeID desc">
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
+        SelectCommand="SELECT CustodianChangeID,CustodianChangeRequest.AssetID,AssetDesc as AssetTypeName,CustodianChangeRequest.EmployeeID,RequestBy as Requestedby,CustodianChangeRequest.CustodianDepartment,CustDesignation,CustodianChangeRequest.Status,Date,CustodianComments,ApproverID,ApproverName,ApproverDesignation,ApproverDeptCode,ApproverDepartment,ApproverComments,AdminID,AdminName,AdminComments FROM CustodianChangeRequest inner join RCBSAP..AssetMaster on AssetMaster.AssetID=CustodianChangeRequest.AssetID Where CustodianChangeRequest.Status='Approved' order by CustodianChangeID desc">
         </asp:SqlDataSource>--%>
           <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand=" SELECT CustodianChangeID,CustodianChangeRequest.AssetID,AssetDesc as AssetTypeName,Concat(CustodianChangeRequest.EmployeeID+'__',CustodianChangeRequest.CustodianSequence) as EmployeeID,RequestBy as Requestedby,CustodianChangeRequest.CustodianDepartment,
  CustDesignation,CustodianChangeRequest.Status,Date,CustodianComments,ApproverID,ApproverName,ApproverDesignation,ApproverDeptCode,ApproverDepartment,ApproverComments,
  AdminID,AdminName,AdminComments,RequestedChangeCustodian,CustodianMaster.CustodianName as TransferTo,
 		  CONCAT(RequestedChangeCustodian , '-' , CustodianName) as TransferToEmployee FROM CustodianChangeRequest 
-		   inner join InstemAMS..CustodianMaster on  CustodianMaster.CustodianID=CustodianChangeRequest.RequestedChangeCustodian
-     inner join InstemSAP..AssetMaster on AssetMaster.AssetID=CustodianChangeRequest.AssetID
+		   inner join RCBAMS..CustodianMaster on  CustodianMaster.CustodianID=CustodianChangeRequest.RequestedChangeCustodian
+     inner join RCBSAP..AssetMaster on AssetMaster.AssetID=CustodianChangeRequest.AssetID
   Where CustodianChangeRequest.Status='Approved' order by CustodianChangeID desc">
         </asp:SqlDataSource>
        
           <asp:SqlDataSource ID="DetailDS2" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
-    SelectCommand="select AssetMaster.AssetID,AssetMaster.SerialNumber,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc from InstemAMS..CustodianChangeRequest inner join InstemSAP..AssetMaster on AssetMaster.AssetID=CustodianChangeRequest.AssetID where CustodianChangeRequest.CustodianChangeID=@RequestID">
+                ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
+    SelectCommand="select AssetMaster.AssetID,AssetMaster.SerialNumber,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc from RCBAMS..CustodianChangeRequest inner join RCBSAP..AssetMaster on AssetMaster.AssetID=CustodianChangeRequest.AssetID where CustodianChangeRequest.CustodianChangeID=@RequestID">
     <SelectParameters>
     <asp:SessionParameter Name="RequestID" SessionField="RequestID" />
     </SelectParameters>

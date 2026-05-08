@@ -99,7 +99,7 @@
         </table>
      
   <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT [AuditID], [AuditDate], [AuditName] FROM [AuditMaster] ">
     </asp:SqlDataSource>
      <table style="margin-right:20px">
@@ -198,15 +198,15 @@
     </dx:ASPxGridView>
     <br />
   <asp:SqlDataSource ID="SqlDS_AuditedAssetList" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT AuditDetailsID,AuditDetails.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,
         AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.Status as AssetStatus, AuditDetails.Status,Comments,AuditDetails.AuditID,Date as AuditedDate,
         AuditName,AuditDetails.CustodianID as AuditBy,StatusMaster.StatusName,StatusMaster.StatusCode,AuditDetails.AdminRemarks,AuditDetails.AuditStatus,AuditDetails.Location
-        FROM InstemAMS..[AuditDetails] 
-        inner join InstemSAP..AssetMaster on AssetMaster.AssetID=AuditDetails.AssetID
-        inner join InstemAMS..AuditMaster on AuditMaster.AuditID=AuditDetails.AuditID
+        FROM RCBAMS..[AuditDetails] 
+        inner join RCBSAP..AssetMaster on AssetMaster.AssetID=AuditDetails.AssetID
+        inner join RCBAMS..AuditMaster on AuditMaster.AuditID=AuditDetails.AuditID
         
-        inner join InstemAMS..StatusMaster on StatusMaster.StatusCode=AssetMaster.Status
+        inner join RCBAMS..StatusMaster on StatusMaster.StatusCode=AssetMaster.Status
         where AuditDetails.Status='Approved' and AuditDetails.AuditID=@AuditID Order by AuditDetailsID Desc">
         <SelectParameters>
             <asp:SessionParameter name="AuditID" SessionField="AuditID"/>

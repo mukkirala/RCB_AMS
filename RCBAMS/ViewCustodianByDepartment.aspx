@@ -198,7 +198,7 @@
         </StylesEditors>
     </dx:ASPxGridView>
     <asp:SqlDataSource ID="SqlDSCustodianDetails" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="select *,DepartmentMaster.DepartmentName from CustodianMaster
         left join DepartmentMaster on DepartmentMaster.DepartmentCode = CustodianMaster.CustodianDepartmentCode ">
   <SelectParameters>

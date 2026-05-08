@@ -83,7 +83,7 @@
                      </ProgressBar>
                  </StylesEditors>
                   </dx:ASPxGridView>
-                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="
+                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="
 select EmployeeName,Complaint_Description,[ComplaintRegistration].Status,ServiceTypeName,ComplaintCode,ComplaintTransaction.AssignedTo,
 [ComplaintRegistration].ComplaintID,FilePath from [dbo].[ComplaintRegistration]
                            inner join ComplaintTransaction on ComplaintTransaction.ComplaintID=ComplaintRegistration.ComplaintID

@@ -99,11 +99,11 @@
                  </StylesEditors>
                   </dx:ASPxGridView>
                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString=
-                           "<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="
-select ComplaintTransaction.Status,ComplaintTransaction.CreatedDate,ComplaintTransaction.ComplaintTransactionID,ComplaintRegistration.EmployeeName,ComplaintTransaction.Remarks,Concat(ComplaintTransaction.USR_ID+'__','C0',ComplaintTransaction.Sequence) as complaintsequence,[InstemSAP].[dbo].[AssetMaster].[AssetDesc],[InstemSAP].[dbo].[AssetMaster].[MainAssetNumber],ComplaintTransaction.ComplaintType,
+                           "<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="
+select ComplaintTransaction.Status,ComplaintTransaction.CreatedDate,ComplaintTransaction.ComplaintTransactionID,ComplaintRegistration.EmployeeName,ComplaintTransaction.Remarks,Concat(ComplaintTransaction.USR_ID+'__','C0',ComplaintTransaction.Sequence) as complaintsequence,[RCBSAP].[dbo].[AssetMaster].[AssetDesc],[RCBSAP].[dbo].[AssetMaster].[MainAssetNumber],ComplaintTransaction.ComplaintType,
  ComplaintRegistration.Complaint_Description,ServiceTypeName,ComplaintRegistration.ComplaintID from ComplaintRegistration 
  inner join ComplaintTransaction on ComplaintTransaction.ComplaintID=ComplaintRegistration.ComplaintID
- inner join [InstemSAP].[dbo].[AssetMaster] on [InstemSAP].[dbo].[AssetMaster].AssetID = ComplaintRegistration.AssetID
+ inner join [RCBSAP].[dbo].[AssetMaster] on [RCBSAP].[dbo].[AssetMaster].AssetID = ComplaintRegistration.AssetID
  inner join ServiceTypeMaster on ServiceTypeMaster.ServiceTypeID=ComplaintRegistration.ServiceTypeID
 where (ComplaintTransaction.Status='Pending'or ComplaintTransaction.Status='Re_open') order by ComplaintTransaction.CreatedDate Desc ">
                            
@@ -206,11 +206,11 @@ where (ComplaintTransaction.Status='Pending'or ComplaintTransaction.Status='Re_o
                      </ProgressBar>
                  </StylesEditors>
                   </dx:ASPxGridView>
-                       <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="
+                       <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="
 select ComplaintTransaction.AsnStatus,ComplaintTransaction.Remarks,ComplaintTransaction.AssignedDate,ComplaintRegistration.CreatedDate,
-ComplaintCode,EmployeeName,ServiceTypeName,ComplaintTransaction.ApproverComments,ComplaintRegistration.Complaint_Description,ComplaintTransaction.AssignedTo,Concat(ComplaintTransaction.USR_ID+'__',ComplaintTransaction.Sequence) as complaintsequence,[InstemSAP].[dbo].[AssetMaster].[AssetDesc],[InstemSAP].[dbo].[AssetMaster].[MainAssetNumber],ComplaintRegistration.ComplaintID,ComplaintTransaction.ComplaintType from ComplaintRegistration
+ComplaintCode,EmployeeName,ServiceTypeName,ComplaintTransaction.ApproverComments,ComplaintRegistration.Complaint_Description,ComplaintTransaction.AssignedTo,Concat(ComplaintTransaction.USR_ID+'__',ComplaintTransaction.Sequence) as complaintsequence,[RCBSAP].[dbo].[AssetMaster].[AssetDesc],[RCBSAP].[dbo].[AssetMaster].[MainAssetNumber],ComplaintRegistration.ComplaintID,ComplaintTransaction.ComplaintType from ComplaintRegistration
 inner join ComplaintTransaction on ComplaintTransaction.ComplaintID=ComplaintRegistration.ComplaintID
-                           inner join [InstemSAP].[dbo].[AssetMaster] on [InstemSAP].[dbo].[AssetMaster].AssetID = ComplaintRegistration.AssetID
+                           inner join [RCBSAP].[dbo].[AssetMaster] on [RCBSAP].[dbo].[AssetMaster].AssetID = ComplaintRegistration.AssetID
 inner join ServiceTypeMaster on ServiceTypeMaster.ServiceTypeID=ComplaintRegistration.ServiceTypeID
  where  ComplaintTransaction.AsnStatus='Assign' ">
                            

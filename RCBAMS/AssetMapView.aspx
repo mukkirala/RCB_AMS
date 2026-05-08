@@ -146,7 +146,7 @@
             </ProgressBar>
         </StylesEditors>
     </dx:ASPxGridView>
-    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="Select AssetID,MainAssetNumber,AssetDesc,Latitude,Longitude from AssetMaster where Latitude is not null and Longitude is not null">
 
     </asp:SqlDataSource>                                     

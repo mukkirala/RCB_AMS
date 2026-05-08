@@ -16,8 +16,8 @@ using DevExpress.Web.ASPxGridView;
 
 public partial class ViewAssetsByAssetType : System.Web.UI.Page
 {
-    SqlConnection conSAP = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
-    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection conSAP = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
+    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     SqlCommand cmd;
     SqlCommand myCommand;
     SqlDataAdapter da;
@@ -54,7 +54,7 @@ public partial class ViewAssetsByAssetType : System.Web.UI.Page
 
     protected void btn_Printbarcode_Click(object sender, EventArgs e)
     {
-        string query = " Select QRCodeMaster.MainAssetNumber,QRCodeMaster.AssetSubNumber,QRImage from InstemAMS..QRCodeMaster inner  join InstemSAP..AssetMaster on AssetMaster.AssetID=QRCodeMaster.AssetID where AssetMaster.AssetDesc='" + Session["AssetType"]+"'";
+        string query = " Select QRCodeMaster.MainAssetNumber,QRCodeMaster.AssetSubNumber,QRImage from RCBAMS..QRCodeMaster inner  join RCBSAP..AssetMaster on AssetMaster.AssetID=QRCodeMaster.AssetID where AssetMaster.AssetDesc='" + Session["AssetType"]+"'";
         da = new SqlDataAdapter(query, conAMS);
         DataTable dt = new DataTable();
         da.Fill(dt);
@@ -119,7 +119,7 @@ public partial class ViewAssetsByAssetType : System.Web.UI.Page
 
     protected void btn_printItems_Click(object sender, EventArgs e)
     {
-        string query = "Select QRCodeMaster.MainAssetNumber,QRCode,QRImage from InstemAMS..QRCodeMaster inner  join InstemSAP..AssetMaster on AssetMaster.AssetID=QRCodeMaster.AssetID where AssetMaster.AssetDesc='" + Session["AssetType"] + "'";
+        string query = "Select QRCodeMaster.MainAssetNumber,QRCode,QRImage from RCBAMS..QRCodeMaster inner  join RCBSAP..AssetMaster on AssetMaster.AssetID=QRCodeMaster.AssetID where AssetMaster.AssetDesc='" + Session["AssetType"] + "'";
         da = new SqlDataAdapter(query, conAMS);
         DataTable dtt = new DataTable();
         da.Fill(dtt);

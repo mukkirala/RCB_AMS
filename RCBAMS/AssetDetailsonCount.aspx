@@ -157,13 +157,13 @@
                  </dx:ASPxGridView>
 
              </div>
-                       <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="select Name as occpantname,MobileNumber,[ComplaintRegistration].Status,ServiceTypeName,[ComplaintRegistration].ComplaintID,FilePath from [dbo].[ComplaintRegistration] inner join OccupantDetails on OccupantDetails.OccupantID=ComplaintRegistration.OccupantID inner join ServiceTypeMaster on ServiceTypeMaster.ServiceTypeID=ComplaintRegistration.ServiceTypeID inner join LocationMaster on LocationMaster.LocationID=OccupantDetails.LocationID where ComplaintRegistration.Status!='' and LocationMaster.LocationID=@LocationID">
+                       <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="select Name as occpantname,MobileNumber,[ComplaintRegistration].Status,ServiceTypeName,[ComplaintRegistration].ComplaintID,FilePath from [dbo].[ComplaintRegistration] inner join OccupantDetails on OccupantDetails.OccupantID=ComplaintRegistration.OccupantID inner join ServiceTypeMaster on ServiceTypeMaster.ServiceTypeID=ComplaintRegistration.ServiceTypeID inner join LocationMaster on LocationMaster.LocationID=OccupantDetails.LocationID where ComplaintRegistration.Status!='' and LocationMaster.LocationID=@LocationID">
                            <SelectParameters>
                          <asp:SessionParameter Name="LocationID" SessionField="LocationID" />
                      </SelectParameters>
                        </asp:SqlDataSource>--%>
 
-             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="  Select AssetDesc as AssetName,AssetID,MainAssetNumber,AssetSubNumber,AssetDesc,AssetOwner,AssetUser,Location,LocationDesc,BLOCK from AssetMaster
+             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="  Select AssetDesc as AssetName,AssetID,MainAssetNumber,AssetSubNumber,AssetDesc,AssetOwner,AssetUser,Location,LocationDesc,BLOCK from AssetMaster
                Where   Status !='InActive' and  AssetDesc=@AssetName">
                            <SelectParameters>
                          <asp:SessionParameter Name="AssetName" SessionField="AssetName" />

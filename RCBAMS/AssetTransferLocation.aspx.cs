@@ -6,8 +6,8 @@ using System.Data;
 
 public partial class AssetTransferLocation : System.Web.UI.Page
 {
-    SqlConnection conSAP = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
-    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection conSAP = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
+    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     SqlCommand myCommand,mycommand1;
     static string AssetID;
     protected void Page_Load(object sender, EventArgs e)
@@ -114,7 +114,7 @@ public partial class AssetTransferLocation : System.Web.UI.Page
         AssetDetails.Visible = true;
         AssetID= gridlkup_Asset.Value.ToString();
         DataTable dt = new DataTable();
-        SqlDataAdapter da = new SqlDataAdapter("SELECT AssetID,MainAssetNumber,AssetSubNumber,AssetDesc,AssetClass,Location,SerialNumber,CustVeriBy from InstemSAP..AssetMaster where AssetID = '" + AssetID+"'", conSAP);
+        SqlDataAdapter da = new SqlDataAdapter("SELECT AssetID,MainAssetNumber,AssetSubNumber,AssetDesc,AssetClass,Location,SerialNumber,CustVeriBy from RCBSAP..AssetMaster where AssetID = '" + AssetID+"'", conSAP);
         da.Fill(dt);
         if(dt.Rows.Count>0)
         {

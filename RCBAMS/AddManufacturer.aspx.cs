@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 using System.Collections;
 public partial class AddManufacturer : System.Web.UI.Page
 {
-    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     SqlCommand myCommand;
     string date = System.DateTime.Now.Date.ToString("yyyy-MM-dd");
     protected void Page_Load(object sender, EventArgs e)

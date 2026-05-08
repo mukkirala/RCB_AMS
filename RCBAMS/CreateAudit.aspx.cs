@@ -12,7 +12,7 @@ using System.Windows.Forms;
 public partial class CreateAudit : System.Web.UI.Page
 {
 
-    static string cs = WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString;
+    static string cs = WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString;
     SqlConnection con = new SqlConnection(cs);
     SqlCommand cmd;
     SqlDataReader dr;

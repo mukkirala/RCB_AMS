@@ -255,11 +255,11 @@
     <dx:ASPxButton ID="btnprint" runat="server" Text="Receive &amp; Print " OnClick="btnprint_Click" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css"
          CssPostfix="SoftOrange" SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css" Width="141px" CssClass="auto-style25">
     </dx:ASPxButton>
-    <asp:SqlDataSource ID="db_returnData" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="SELECT [AssetOutBoundDetailID], AssetOutBoundDetails.AssetOutBoundID, AssetOutBoundDetails.AssetID, AssetOutBoundDetails.Quantity, AssetOutBoundDetails.Status,AssetDesc  FROM AssetOutBoundDetails INNER JOIN AssetMaster ON AssetMaster.AssetID=AssetOutBoundDetails.AssetID INNER JOIN AssetOutBoundMaster ON AssetOutBoundMaster.AssetOutBoundID=AssetOutBoundDetails.[AssetOutBoundID] WHERE (AssetOutBoundDetails.AssetOutBoundID = @AssetOutBoundID)">
+    <asp:SqlDataSource ID="db_returnData" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="SELECT [AssetOutBoundDetailID], AssetOutBoundDetails.AssetOutBoundID, AssetOutBoundDetails.AssetID, AssetOutBoundDetails.Quantity, AssetOutBoundDetails.Status,AssetDesc  FROM AssetOutBoundDetails INNER JOIN AssetMaster ON AssetMaster.AssetID=AssetOutBoundDetails.AssetID INNER JOIN AssetOutBoundMaster ON AssetOutBoundMaster.AssetOutBoundID=AssetOutBoundDetails.[AssetOutBoundID] WHERE (AssetOutBoundDetails.AssetOutBoundID = @AssetOutBoundID)">
         <SelectParameters>
             <asp:ControlParameter ControlID="ASPxGridLookup1" Name="AssetOutBoundID" PropertyName="Value" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="SELECT [AssetOutBoundID], [Date] FROM [AssetOutBoundMaster] WHERE ReturnableStatus='YES'"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="SELECT [AssetOutBoundID], [Date] FROM [AssetOutBoundMaster] WHERE ReturnableStatus='YES'"></asp:SqlDataSource>
 </asp:Content>
 

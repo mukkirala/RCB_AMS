@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 public partial class DeletedAssetList : System.Web.UI.Page
 {
-    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
+    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
     SqlCommand myCommand;
     protected void Page_Load(object sender, EventArgs e)
     {

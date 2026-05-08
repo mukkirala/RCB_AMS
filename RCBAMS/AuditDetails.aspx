@@ -170,7 +170,7 @@
                          </ErrorFrameStyle>
                      </ValidationSettings>
                 </dx:ASPxGridLookup>
-                 <asp:SqlDataSource ID="AuditDS" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+                 <asp:SqlDataSource ID="AuditDS" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
                      SelectCommand="SELECT [AuditID], [AuditName], [AuditBy], AuditMaster.[LocationID],LocationCode,Block FROM [AuditMaster] 
                      inner join LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID 
                      WHERE (AuditMaster.[LocationID] = @LocationID) and (AuditMaster.AuditStatus='Active') ">
@@ -508,7 +508,7 @@
                     </ValidationSettings>
                 </dx:ASPxGridLookup>
                  <asp:SqlDataSource ID="CustSqlDataSource" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT [CustodianID], [CustodianName] FROM [CustodianMaster]">
          </asp:SqlDataSource>
              </div>
@@ -658,20 +658,20 @@
 </div>
         
     <asp:SqlDataSource ID="AssetDS" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="select AssetID,MainAssetNumber,AssetSubNumber,AssetDesc,AssetClass,SerialNumber from AssetMaster">
     </asp:SqlDataSource>
    
-     <asp:SqlDataSource ID="LocationDS" runat="server"  ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="SELECT [LocationID],[Location],[LocationCode],Block FROM [InstemAMS]..[LocationMaster]">
+     <asp:SqlDataSource ID="LocationDS" runat="server"  ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="SELECT [LocationID],[Location],[LocationCode],Block FROM [RCBAMS]..[LocationMaster]">
      </asp:SqlDataSource>
 
-      <asp:SqlDataSource ID="StatusDS" runat="server"  ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="SELECT [StatusCode],[StatusName] FROM [InstemAMS]..[StatusMaster]">
+      <asp:SqlDataSource ID="StatusDS" runat="server"  ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="SELECT [StatusCode],[StatusName] FROM [RCBAMS]..[StatusMaster]">
      </asp:SqlDataSource>
        
   
    
       <asp:SqlDataSource ID="SqlDS_AuditedAssetList" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT AuditDetailsID,AssetID,AuditStatus,Comments,AuditID,Date FROM [AuditDetails] Order by AuditDetailsID Desc">
       
     </asp:SqlDataSource>

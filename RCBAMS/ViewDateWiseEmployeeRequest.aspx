@@ -238,7 +238,7 @@
         </StylesEditors>
     </dx:ASPxGridView>
         <asp:SqlDataSource ID="LocationChange" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+    ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
     SelectCommand="SELECT [AssetTypeID],[EmployeeID],[Quantity],[Status],[Date],[ApproverName],[ApproverComments],[AdminDate],[ApproverName],[RequestBy],[RequestType] FROM [EmployeeAssetRequest] WHERE (CAST([AdminDate] AS date) >= @fromdate) AND (CAST([AdminDate] AS date) <=@todate) ">
             <SelectParameters>
                  <asp:SessionParameter Name="fromdate" SessionField="fromdate"  />

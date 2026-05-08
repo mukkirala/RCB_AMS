@@ -262,7 +262,7 @@
             <Settings ShowFilterRow="True" ShowGroupPanel="True" />
            
         </dx:ASPxGridView>
-        <asp:SqlDataSource ID="ds_Createdaudits" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>"
+        <asp:SqlDataSource ID="ds_Createdaudits" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
             SelectCommand="SELECT AuditMaster.[AuditID],AuditMaster.[AuditName],count(AssetID)as AssetCount FROM [AuditMaster]
 inner join AuditDetails on  AuditDetails.AuditID=AuditMaster.AuditID
 where AuditMaster.AuditStatus='Active' and AuditDetails.AuditBy=@UserID group by AuditMaster.[AuditID],AuditMaster.[AuditName]">

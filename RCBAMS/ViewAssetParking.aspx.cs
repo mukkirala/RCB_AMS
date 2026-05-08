@@ -7,7 +7,7 @@ using System.Web.Configuration;
 public partial class ViewAssetParking : System.Web.UI.Page
 {
     SqlConnection conCommon = new SqlConnection(WebConfigurationManager.ConnectionStrings["ASSETManagementConnectionString"].ConnectionString);
-    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
    
     int id = 1;
     protected void Page_Load(object sender, EventArgs e)

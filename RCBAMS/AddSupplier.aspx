@@ -434,23 +434,23 @@
             </StylesEditors>
           
         </dx:ASPxGridView>
-               <%-- <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+               <%-- <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
                   SelectCommand="SELECT [MaterialId], [MaterialName], [MaterialCode], [ReceivedUnit], [ConsumptionUnit], [UnitRatio] FROM [MaterialMaster]">
                 </asp:SqlDataSource>--%>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+            ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
             SelectCommand="SELECT [SupplierID], [VendorCode], [CompanyName], [ContactPerson],[State], [City], [ContactNumber],[Address],[Area],[Pincode],[PhoneNumber],[Fax],[EMail] FROM [SupplierMaster] WHERE Status='Active'"
             UpdateCommand="UPDATE SupplierMaster SET [VendorCode]=@VendorCode, [CompanyName]=@CompanyName, [ContactPerson]=@ContactPerson, [City]=@City, [ContactNumber]=@ContactNumber,[Address]=@Address,Area=@Area,Pincode=@Pincode,[PhoneNumber]=@PhoneNumber,[Fax]=@Fax,State=@State,[EMail]=@EMail WHERE [SupplierID]=@SupplierID">
         </asp:SqlDataSource>
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+                    ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
                     SelectCommand="SELECT [city_name] FROM [tblcitylist] where state=@state ">
                     <SelectParameters>
                     <asp:SessionParameter  Name="state" SessionField="state"/>
                     </SelectParameters>
                     </asp:SqlDataSource>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+                    ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
                     SelectCommand="SELECT distinct [state] FROM [tblcitylist]"></asp:SqlDataSource>
     </div>
 

@@ -182,12 +182,12 @@
     </StylesEditors>
 </dx:ASPxGridView>
 
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="SELECT * FROM InstemSAP..AssetOutBoundDetails">
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="SELECT * FROM RCBSAP..AssetOutBoundDetails">
        <%--<SelectParameters>
            <asp:ControlParameter Name="cmb_employee" ControlID="cmb_employee" />
        </SelectParameters>--%>
     </asp:SqlDataSource>
-        <asp:SqlDataSource ID="db_returnData" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="SELECT * FROM InstemSAP..AssetReceivedDetails">
+        <asp:SqlDataSource ID="db_returnData" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="SELECT * FROM RCBSAP..AssetReceivedDetails">
     <%--<SelectParameters>
         <asp:ControlParameter ControlID="ASPxGridLookup1" Name="AssetOutBoundID" PropertyName="Value" Type="Int32" />
     </SelectParameters>--%>

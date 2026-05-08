@@ -379,12 +379,12 @@
         </StylesEditors>
     </dx:ASPxGridView>
     
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemAMSConnectionString %>" 
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="select AllocationID,AssetAllocation.AssetID,AssetAllocation.MainAssetNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc, AssetAllocation.AssetRequestID,AssetAllocation.Date as AllocatedDate,AssetAllocation.Status,AssetMaster.StatusDesc as AssetStatus, 
   Requestby as RequestedBy,concat(EmployeeAssetRequest.EmployeeID+'__'EmployeeAssetRequest.RequestSequene) as EmployeeID ,EmployeeAssetRequest.Date as RequestedDate
-  from InstemAMS..AssetAllocation 
-  inner join InstemAMS..EmployeeAssetRequest on EmployeeAssetRequest.AssetRequestID=AssetAllocation.AssetRequestID
-  inner join InstemSAP..AssetMaster on AssetMaster.AssetID=AssetAllocation.AssetID
+  from RCBAMS..AssetAllocation 
+  inner join RCBAMS..EmployeeAssetRequest on EmployeeAssetRequest.AssetRequestID=AssetAllocation.AssetRequestID
+  inner join RCBSAP..AssetMaster on AssetMaster.AssetID=AssetAllocation.AssetID
    where   AssetAllocation.AssetRequestID=@RequestID">
   <SelectParameters>
       <asp:SessionParameter Name="RequestID" SessionField="RequestID" />

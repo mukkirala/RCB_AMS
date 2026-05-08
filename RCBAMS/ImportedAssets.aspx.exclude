@@ -72,9 +72,9 @@
         </GridViewProperties>
     </dx:ASPxGridLookup>
                  <asp:SqlDataSource ID="SqlDSAssetGroup" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+                        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
                         SelectCommand="SELECT distinct AssetClassMaster.[AssetClassID],[AssetClassName],[AssetClassCode] FROM [AssetClassMaster] 
-                     inner join InstemAMS..RoleMaster on RoleMaster.AssetClassID=AssetClassMaster.AssetClassID where RoleMaster.CustodianID=@AdminID and ROLE_NAME in('IT-Admin','HR-Admin')  and ROLE_STATUS='Active'">
+                     inner join RCBAMS..RoleMaster on RoleMaster.AssetClassID=AssetClassMaster.AssetClassID where RoleMaster.CustodianID=@AdminID and ROLE_NAME in('IT-Admin','HR-Admin')  and ROLE_STATUS='Active'">
                       <SelectParameters>
            <asp:SessionParameter Name="AdminID" SessionField="UserID" />
        </SelectParameters> 

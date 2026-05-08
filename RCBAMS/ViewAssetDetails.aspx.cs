@@ -12,9 +12,9 @@ using System.Data.SqlClient;
 
 public partial class ViewAssetDetails : System.Web.UI.Page
 {
-    SqlConnection myConnection1 = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection myConnection1 = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
 
-    SqlConnection myConnection2 = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
+    SqlConnection myConnection2 = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["UserID"] == null)
@@ -67,7 +67,7 @@ public partial class ViewAssetDetails : System.Web.UI.Page
             {
                 string mainnumber = dt11.Rows[0]["MainAssetNumber"].ToString();
                 //string query1 = "select DocumentMapID,DocumentName,ImageLocation from AssetDocumentMapping inner join DocumentMaster on AssetDocumentMapping.DocumentID = DocumentMaster.DocumentID WHERE AssetDocumentMapping.AssetID ='" + gridlkup_Asset.Value + "'";
-                string query1 = "select DocumentMapID,DocumentName,ImageLocation, InstemSAP..AssetMaster.MainAssetNumber from AssetDocumentMapping inner join DocumentMaster on AssetDocumentMapping.DocumentID = DocumentMaster.DocumentID inner join InstemSAP..AssetMaster on AssetMaster.AssetID = InstemAMS..AssetDocumentMapping.AssetID WHERE InstemSAP..AssetMaster.MainAssetNumber = '" + mainnumber + "'";
+                string query1 = "select DocumentMapID,DocumentName,ImageLocation, RCBSAP..AssetMaster.MainAssetNumber from AssetDocumentMapping inner join DocumentMaster on AssetDocumentMapping.DocumentID = DocumentMaster.DocumentID inner join RCBSAP..AssetMaster on AssetMaster.AssetID = RCBAMS..AssetDocumentMapping.AssetID WHERE RCBSAP..AssetMaster.MainAssetNumber = '" + mainnumber + "'";
                 SqlDataAdapter dadoc = new SqlDataAdapter(query1, myConnection1);
                 DataTable dtdoc = new DataTable();
                 dadoc.Fill(dtdoc);

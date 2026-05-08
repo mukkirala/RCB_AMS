@@ -210,7 +210,7 @@
         </StylesEditors>
     </dx:ASPxGridView>
 
-   <asp:SqlDataSource ID="NonUserDB" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+   <asp:SqlDataSource ID="NonUserDB" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="Select * from ServiceTypeMaster where Status='Active'">
          </asp:SqlDataSource>
        

@@ -68,7 +68,7 @@
             </ValidationSettings>
         </dx:ASPxComboBox>
         <asp:SqlDataSource ID="location" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="SELECT DISTINCT [Location] FROM [LocationMaster]">            
  </asp:SqlDataSource>
                         </div>
@@ -94,7 +94,7 @@ SelectCommand="SELECT DISTINCT [Location] FROM [LocationMaster]">
             </ValidationSettings>
         </dx:ASPxComboBox>
         <asp:SqlDataSource ID="Blockid" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="SELECT DISTINCT [Block] FROM [LocationMaster]  where Location=@Location">
          <SelectParameters>             
              <asp:ControlParameter ControlID="txt_Locationid" Name="Location" />
@@ -124,7 +124,7 @@ SelectCommand="SELECT DISTINCT [Block] FROM [LocationMaster]  where Location=@Lo
             </ValidationSettings>
         </dx:ASPxComboBox>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster] WHERE Location=@Location AND Block=@Block">
             <SelectParameters>
                 <asp:ControlParameter ControlID="txt_Locationid" Name="Location"/>
@@ -156,7 +156,7 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
 </ValidationSettings>
             </dx:ASPxComboBox>
                                          <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="select * from AuditMaster where LocationID=@LocationID">
          <SelectParameters>             
              <asp:ControlParameter ControlID="txt_Lab" Name="LocationID" />
@@ -372,29 +372,29 @@ SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css">
 </dx:ASPxGridView>
 </div>
 
-  <asp:SqlDataSource ID="SqlDSGrid1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>"
+  <asp:SqlDataSource ID="SqlDSGrid1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
       SelectCommand="select distinct AuditDetails.AuditDetailsID, AssetMaster.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,
 AssetMaster.AssetDesc,AssetMaster.AssetClass,LocationMaster.Location,LocationMaster.LocationCode,LocationMaster.Block ,AuditDetails.Date as AuditDate, 
 AuditDetails.AuditStatus,AuditDetails.RFIDCardNumber,
-AuditDetails.AuditBy  from InstemAMS..AuditDetails 
-inner join InstemAMS..AuditMaster on AuditMaster.AuditID=AuditDetails.AuditID
-inner join InstemSAP..AssetMaster on AssetMaster.AssetID=AuditDetails.AssetID
-inner join InstemAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID
-where InstemAMS..AuditDetails.AuditID=@AuditID  order by AuditDate desc">
+AuditDetails.AuditBy  from RCBAMS..AuditDetails 
+inner join RCBAMS..AuditMaster on AuditMaster.AuditID=AuditDetails.AuditID
+inner join RCBSAP..AssetMaster on AssetMaster.AssetID=AuditDetails.AssetID
+inner join RCBAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID
+where RCBAMS..AuditDetails.AuditID=@AuditID  order by AuditDate desc">
       <SelectParameters>
           <asp:SessionParameter SessionField="AuditID" Name="AuditID" />
       </SelectParameters>
   </asp:SqlDataSource> 
-          <asp:SqlDataSource ID="SqlDSGrid2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>"
+          <asp:SqlDataSource ID="SqlDSGrid2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
       SelectCommand="select distinct AssetMaster.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,
 AssetMaster.AssetDesc,AssetMaster.AssetClass,LocationMaster.Location,LocationMaster.LocationCode,LocationMaster.Block , 
 AuditMaster.AuditStatus,AssetMaster.RFIDCardNumber,
 AuditMaster.AuditBy
-              from InstemSAP..AssetMaster 
-inner join InstemAMS..LocationMaster on LocationMaster.LocationID=AssetMaster.LocationID
-inner join InstemAMS..AuditMaster on AuditMaster.LocationID=LocationMaster.LocationID
-left join InstemAMS..AuditDetails ON AuditDetails.AssetID = AssetMaster.AssetID AND AuditDetails.AuditID = @AuditID
-WHERE AuditMaster.AuditID=@AuditID AND AssetMaster.AssetID NOT IN (SELECT AssetID FROM InstemAMS..AuditDetails WHERE AuditID=@AuditID)">
+              from RCBSAP..AssetMaster 
+inner join RCBAMS..LocationMaster on LocationMaster.LocationID=AssetMaster.LocationID
+inner join RCBAMS..AuditMaster on AuditMaster.LocationID=LocationMaster.LocationID
+left join RCBAMS..AuditDetails ON AuditDetails.AssetID = AssetMaster.AssetID AND AuditDetails.AuditID = @AuditID
+WHERE AuditMaster.AuditID=@AuditID AND AssetMaster.AssetID NOT IN (SELECT AssetID FROM RCBAMS..AuditDetails WHERE AuditID=@AuditID)">
       <SelectParameters>
           <asp:SessionParameter SessionField="AuditID" Name="AuditID" />
       </SelectParameters>

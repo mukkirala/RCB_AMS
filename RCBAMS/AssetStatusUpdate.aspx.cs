@@ -15,7 +15,7 @@ using DevExpress.Web.ASPxGridView.Export;
 
 public partial class AssetStatusUpdate : System.Web.UI.Page
 {
-    SqlConnection conSAP = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
+    SqlConnection conSAP = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
 
     protected void Page_Load(object sender, EventArgs e)
     {

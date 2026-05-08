@@ -78,7 +78,7 @@
                     </dx:ASPxComboBox>                   
   
                  <asp:SqlDataSource ID="SqbDBaircraft" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT DISTINCT [ServiceTypeName] FROM [ServiceTypeMaster]">
          </asp:SqlDataSource>
 
@@ -199,7 +199,7 @@
         </StylesEditors>
     </dx:ASPxGridView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT * FROM [TaskListMaster] WHERE Status='Active'"></asp:SqlDataSource>
     <br />
     </strong></span>

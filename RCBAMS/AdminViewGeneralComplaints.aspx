@@ -105,19 +105,19 @@
                  </dx:ASPxGridView>
 
              </div>
-                       <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="select Name as occpantname,MobileNumber,[ComplaintRegistration].Status,ServiceTypeName,[ComplaintRegistration].ComplaintID,FilePath from [dbo].[ComplaintRegistration] inner join OccupantDetails on OccupantDetails.OccupantID=ComplaintRegistration.OccupantID inner join ServiceTypeMaster on ServiceTypeMaster.ServiceTypeID=ComplaintRegistration.ServiceTypeID inner join LocationMaster on LocationMaster.LocationID=OccupantDetails.LocationID where ComplaintRegistration.Status!='' and LocationMaster.LocationID=@LocationID">
+                       <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="select Name as occpantname,MobileNumber,[ComplaintRegistration].Status,ServiceTypeName,[ComplaintRegistration].ComplaintID,FilePath from [dbo].[ComplaintRegistration] inner join OccupantDetails on OccupantDetails.OccupantID=ComplaintRegistration.OccupantID inner join ServiceTypeMaster on ServiceTypeMaster.ServiceTypeID=ComplaintRegistration.ServiceTypeID inner join LocationMaster on LocationMaster.LocationID=OccupantDetails.LocationID where ComplaintRegistration.Status!='' and LocationMaster.LocationID=@LocationID">
                            <SelectParameters>
                          <asp:SessionParameter Name="LocationID" SessionField="LocationID" />
                      </SelectParameters>
                        </asp:SqlDataSource>--%>
 
-             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
                  
                  
-       SelectCommand=" select distinct EmployeeName,EmployeeID,[ComplaintTransaction].Status,ServiceTypeName,[ComplaintRegistration].ComplaintID,[ComplaintRegistration].ApproverID,[ComplaintRegistration].ApproverName,Concat(ComplaintTransaction.USR_ID+'__','C0',ComplaintTransaction.Sequence) as complaintsequence,CustodianMaster.CustodianName,CustodianMaster.CustodianID,[InstemSAP].[dbo].[AssetMaster].[AssetDesc],[InstemSAP].[dbo].[AssetMaster].[MainAssetNumber],FilePath from [dbo].[ComplaintRegistration]
+       SelectCommand=" select distinct EmployeeName,EmployeeID,[ComplaintTransaction].Status,ServiceTypeName,[ComplaintRegistration].ComplaintID,[ComplaintRegistration].ApproverID,[ComplaintRegistration].ApproverName,Concat(ComplaintTransaction.USR_ID+'__','C0',ComplaintTransaction.Sequence) as complaintsequence,CustodianMaster.CustodianName,CustodianMaster.CustodianID,[RCBSAP].[dbo].[AssetMaster].[AssetDesc],[RCBSAP].[dbo].[AssetMaster].[MainAssetNumber],FilePath from [dbo].[ComplaintRegistration]
 inner join ComplaintTransaction on ComplaintTransaction.ComplaintID=ComplaintRegistration.ComplaintID
 left join CustodianMaster on CustodianMaster.CustodianID=ComplaintTransaction.AssignedTo
- inner join [InstemSAP].[dbo].[AssetMaster] on [InstemSAP].[dbo].[AssetMaster].AssetID = ComplaintRegistration.AssetID
+ inner join [RCBSAP].[dbo].[AssetMaster] on [RCBSAP].[dbo].[AssetMaster].AssetID = ComplaintRegistration.AssetID
 inner join ServiceTypeMaster on ServiceTypeMaster.ServiceTypeID=ComplaintRegistration.ServiceTypeID where ComplaintRegistration.ComplaintType='General'">
           <%--       select  EmployeeName,EmployeeID,[ComplaintRegistration].Status,ServiceTypeName,
 [ComplaintRegistration].ComplaintID,FilePath from [dbo].[ComplaintRegistration]

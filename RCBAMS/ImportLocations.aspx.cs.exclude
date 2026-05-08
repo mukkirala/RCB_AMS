@@ -14,7 +14,7 @@ using SAP.Middleware.Connector;
 
 public partial class ImportLocations : System.Web.UI.Page
 {
-    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     SqlDataAdapter da;
     SqlCommand cmd;
     ECCDestinationConfig cfg = null;

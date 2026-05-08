@@ -40,7 +40,7 @@ public class QRUtilities
         {
         }
     static SqlDataAdapter adapter = new SqlDataAdapter();
-    static SqlConnection sqlcon = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    static SqlConnection sqlcon = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
 
 
     public static string picturecall(DevExpress.Web.ASPxClasses.CallbackEventArgsBase e)

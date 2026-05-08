@@ -9,7 +9,7 @@ using System.Web.Configuration;
 
 public partial class ViewPendingAudits : System.Web.UI.Page
 {
-    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     SqlCommand myCommand;
     SqlDataAdapter da,da1;
     DataTable dt = new DataTable(); 
@@ -32,7 +32,7 @@ public partial class ViewPendingAudits : System.Web.UI.Page
                 {
 
                     string AuditID = dt.Rows[i].ItemArray[0].ToString();
-                    string query1 = "select * from AuditMaster inner join InstemAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID where AuditID='" + AuditID + "'";
+                    string query1 = "select * from AuditMaster inner join RCBAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID where AuditID='" + AuditID + "'";
                     da1 = new SqlDataAdapter(query1, myConnection);
                     DataTable dt1 = new DataTable();
                     da1.Fill(dt1);

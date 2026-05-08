@@ -84,7 +84,7 @@
                         </ErrorFrameStyle>
                     </ValidationSettings>
                 </dx:ASPxComboBox>
-                <asp:SqlDataSource ID="AuditdetailsDS" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="SELECT  AuditMaster.AuditID, AuditMaster.AuditName,LocationMaster.LocationID FROM AuditMaster INNER JOIN LocationMaster ON AuditMaster.LocationID = LocationMaster.LocationID where AuditMaster.LocationID=@LocationID" >
+                <asp:SqlDataSource ID="AuditdetailsDS" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="SELECT  AuditMaster.AuditID, AuditMaster.AuditName,LocationMaster.LocationID FROM AuditMaster INNER JOIN LocationMaster ON AuditMaster.LocationID = LocationMaster.LocationID where AuditMaster.LocationID=@LocationID" >
                     <SelectParameters>
                         <asp:ControlParameter ControlID="cmb_location"  Name="LocationID" />
                     </SelectParameters>
@@ -98,7 +98,7 @@
             <td class="auto-style5"></td>
         </tr>
      </table>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server"  ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="SELECT [LocationID],[Location] FROM  [InstemAMS]..[LocationMaster]">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server"  ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="SELECT [LocationID],[Location] FROM  [RCBAMS]..[LocationMaster]">
 
     </asp:SqlDataSource>
 

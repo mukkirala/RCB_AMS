@@ -9,7 +9,7 @@ using System.Web.Configuration;
 
 public partial class AddLocation : System.Web.UI.Page
 {
-    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     SqlCommand myCommand;
     protected void Page_Load(object sender, EventArgs e)
     {

@@ -237,18 +237,18 @@
             </div>
         </div>
 
-    <asp:SqlDataSource ID="ClientSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>"
+    <asp:SqlDataSource ID="ClientSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
         SelectCommand="select * from ClientMaster">
 
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="AssetClassSqlDataSource" runat="server"  ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>"
+    <asp:SqlDataSource ID="AssetClassSqlDataSource" runat="server"  ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
         SelectCommand="select * from AssetClassMaster">
 
     </asp:SqlDataSource>
 
-    <asp:SqlDataSource ID="AssetGridView" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>"
-          SelectCommand="select *,QRCodeMaster.QRID,QRCodeMaster.QRCode,QRCodeMaster.QRImage from InstemSAP..AssetMaster
-            inner join InstemAMS..QRCodeMaster
+    <asp:SqlDataSource ID="AssetGridView" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
+          SelectCommand="select *,QRCodeMaster.QRID,QRCodeMaster.QRCode,QRCodeMaster.QRImage from RCBSAP..AssetMaster
+            inner join RCBAMS..QRCodeMaster
              on AssetMaster.MainAssetNumber=QRCodeMaster.MainAssetNumber where Client=@Client and AssetClass=@AssetClass">
         <SelectParameters>
             <asp:SessionParameter Name="Client" SessionField="Client"/>

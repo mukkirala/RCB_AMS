@@ -259,7 +259,7 @@
      </div>
     </div>
 
- <asp:SqlDataSource ID="AssetTypesGridViewDS" runat="server"  ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="select * from AssetMaster inner join AssetTypeMaster on AssetTypeMaster.AssetTypeName=AssetMaster.AssetDesc where AssetTypeMaster.AssetTypeID=@AssetTypeID">
+ <asp:SqlDataSource ID="AssetTypesGridViewDS" runat="server"  ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="select * from AssetMaster inner join AssetTypeMaster on AssetTypeMaster.AssetTypeName=AssetMaster.AssetDesc where AssetTypeMaster.AssetTypeID=@AssetTypeID">
          <SelectParameters>
              <asp:SessionParameter Name="AssetTypeID" SessionField="AssetTypeID" />
          </SelectParameters>

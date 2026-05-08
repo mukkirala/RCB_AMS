@@ -92,14 +92,14 @@
                      </ProgressBar>
                  </StylesEditors>
                   </dx:ASPxGridView>
-                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="select ComplaintTransaction.Status,AssetMaster.AssetDesc,ComplaintRegistration.AssetID,
+                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="select ComplaintTransaction.Status,AssetMaster.AssetDesc,ComplaintRegistration.AssetID,
                            ComplaintRegistration.EmployeeID,CustodianMaster.email,ComplaintTransaction.ComplaintID,ComplaintTransaction.AssignedDate,
                            ComplaintRegistration.ComplaintCode,ServiceTypeName,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,ComplaintRegistration.EmployeeName,
                            ComplaintTransaction.Remarks from ComplaintTransaction 
                            inner join ComplaintRegistration on ComplaintRegistration.ComplaintID=ComplaintTransaction.ComplaintID 
                            inner join ServiceTypeMaster on ServiceTypeMaster.ServiceTypeID=ComplaintRegistration.ServiceTypeID
                            inner join CustodianMaster on CustodianMaster.CustodianID=ComplaintRegistration.EmployeeID 
-                           inner join InstemSAP..AssetMaster on AssetMaster.AssetID=ComplaintRegistration.AssetID where ComplaintTransaction.Status='Assign'">
+                           inner join RCBSAP..AssetMaster on AssetMaster.AssetID=ComplaintRegistration.AssetID where ComplaintTransaction.Status='Assign'">
    <%--                       <SelectParameters>
         <asp:SessionParameter Name="ComplaintID" SessionField="ComplaintID" />
         </SelectParameters>

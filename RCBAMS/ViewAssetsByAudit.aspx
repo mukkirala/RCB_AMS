@@ -210,20 +210,20 @@
                     Landscape="True" MaxColumnWidth="150" GridViewID="ASPxGridView2" 
                     LeftMargin="0" RightMargin="0" TopMargin="0">
   </dx:ASPxGridViewExporter>
-  <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>"
+  <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
       SelectCommand="select distinct AuditDetails.AuditDetailsID, AssetMaster.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,
 AssetMaster.AssetDesc,AssetMaster.AssetClass,LocationMaster.Location,LocationMaster.LocationCode,LocationMaster.Block ,AuditDetails.Date as AuditDate, AuditDetails.AuditStatus,
-AuditDetails.AuditBy  from InstemAMS..AuditDetails 
-inner join InstemAMS..AuditMaster on AuditMaster.AuditID=AuditDetails.AuditID
-inner join InstemSAP..AssetMaster on AssetMaster.AssetID=AuditDetails.AssetID
-inner join InstemAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID
+AuditDetails.AuditBy  from RCBAMS..AuditDetails 
+inner join RCBAMS..AuditMaster on AuditMaster.AuditID=AuditDetails.AuditID
+inner join RCBSAP..AssetMaster on AssetMaster.AssetID=AuditDetails.AssetID
+inner join RCBAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID
 where AuditDetails.AuditID=@AuditID  order by AuditDate desc">
       <SelectParameters>
           <asp:SessionParameter SessionField="AuditID" Name="AuditID" />
       </SelectParameters>
   </asp:SqlDataSource>                                     
   <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT [AuditID], [AuditDate], [AuditName] FROM [AuditMaster]">
     </asp:SqlDataSource>
 

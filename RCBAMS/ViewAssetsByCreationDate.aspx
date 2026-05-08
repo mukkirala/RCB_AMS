@@ -205,7 +205,7 @@
             </ProgressBar>
         </StylesEditors>
     </dx:ASPxGridView>
-    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="Select * from InstemSAP..vAssetMaster where CreatedDate=@CreationDate">
+    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="Select * from RCBSAP..vAssetMaster where CreatedDate=@CreationDate">
         <SelectParameters>
             <asp:SessionParameter name="CreationDate" SessionField="CreationDate"/>
         </SelectParameters>

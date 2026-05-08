@@ -215,20 +215,20 @@
                     Landscape="True" MaxColumnWidth="150" GridViewID="ASPxGridView2" 
                     LeftMargin="0" RightMargin="0" TopMargin="0">
   </dx:ASPxGridViewExporter>
-  <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>"
+  <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
       SelectCommand="select AuditDetails.AuditDetailsID, AssetMaster.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,
 AssetMaster.AssetDesc,AssetMaster.AssetClass,LocationMaster.Location ,AuditMaster.AuditDate, AuditDetails.AuditStatus,
-AuditDetails.AuditBy,AuditMaster.AuditName,AssetMaster.CustodianID,AssetMaster.BLOCK,AssetMaster.LocationDesc,AuditDetails.Status  from InstemAMS..AuditDetails 
-inner join InstemAMS..AuditMaster on AuditMaster.AuditID=AuditDetails.AuditID
-inner join InstemSAP..AssetMaster on AssetMaster.AssetID=AuditDetails.AssetID
-inner join InstemAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID where AuditMaster.LocationID=@LocationID">
+AuditDetails.AuditBy,AuditMaster.AuditName,AssetMaster.CustodianID,AssetMaster.BLOCK,AssetMaster.LocationDesc,AuditDetails.Status  from RCBAMS..AuditDetails 
+inner join RCBAMS..AuditMaster on AuditMaster.AuditID=AuditDetails.AuditID
+inner join RCBSAP..AssetMaster on AssetMaster.AssetID=AuditDetails.AssetID
+inner join RCBAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID where AuditMaster.LocationID=@LocationID">
    <SelectParameters>
        <asp:SessionParameter Name="LocationID" SessionField="LocationID" />
    </SelectParameters>  
   </asp:SqlDataSource>                                     
   
     <asp:SqlDataSource ID="LocationSqlDataSource" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT [LocationID], [LocationCode],[Location],Block FROM [LocationMaster]">
     </asp:SqlDataSource>
 </div>

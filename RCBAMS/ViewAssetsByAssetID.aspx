@@ -50,7 +50,7 @@
                         </ErrorFrameStyle>
                     </ValidationSettings>
     </dx:ASPxComboBox>  
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server"  ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="Select MainAssetNumber,AssetSubNumber from AssetMaster"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server"  ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="Select MainAssetNumber,AssetSubNumber from AssetMaster"></asp:SqlDataSource>
 
             </td>
            
@@ -236,7 +236,7 @@
             </ProgressBar>
         </StylesEditors>
     </dx:ASPxGridView>
-    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="Select * from InstemSAP..AssetMaster left JOIN InstemAMS..QRCodeMaster ON AssetMaster.AssetID=QRCodeMaster.AssetID where AssetDesc=@AssetType">
+    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="Select * from RCBSAP..AssetMaster left JOIN RCBAMS..QRCodeMaster ON AssetMaster.AssetID=QRCodeMaster.AssetID where AssetDesc=@AssetType">
          <SelectParameters>
           <asp:SessionParameter SessionField="AssetType" Name="AssetType" />
       </SelectParameters>

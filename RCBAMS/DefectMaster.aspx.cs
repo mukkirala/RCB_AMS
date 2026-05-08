@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 using System.Collections;
 public partial class DefectMaster : System.Web.UI.Page
 {
-    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     SqlCommand myCommand;
     private const string PAGENAME = "Masters-Add_Defects";
     private const string PAGEURL = "DefectMaster.aspx";

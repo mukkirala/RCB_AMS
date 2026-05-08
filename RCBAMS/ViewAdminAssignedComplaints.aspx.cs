@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 public partial class ViewAdminAssignedComplaints : System.Web.UI.Page
 {
-    private static string connection = ConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString;
+    private static string connection = ConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString;
     private SqlConnection con = new SqlConnection(connection);
     string CreatedDate;
     DateTime date;

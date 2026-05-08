@@ -11,7 +11,7 @@ using System.Web.Configuration;
 
 public partial class ViewAssetDocuments : System.Web.UI.Page
 {
-    SqlConnection myconnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection myconnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     protected void Page_Load(object sender, EventArgs e)
     {
 

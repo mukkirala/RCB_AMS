@@ -57,7 +57,7 @@
             </ProgressBar>
         </StylesEditors>
     </dx:ASPxGridView>            
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="select AssetClassCode from AssetClassMaster">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="select AssetClassCode from AssetClassMaster">
 
     </asp:SqlDataSource>
                 <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server" 

@@ -16,8 +16,8 @@ using System.Activities;
 public partial class SingleQRPrint : System.Web.UI.Page
 {
    
-    SqlConnection conSAP = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
-    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection conSAP = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
+    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     SqlCommand cmd;
     SqlCommand myCommand;
     SqlDataAdapter da;
@@ -235,7 +235,7 @@ public partial class SingleQRPrint : System.Web.UI.Page
         {
                 // j = 1;
                 AssetID = grid.GetRowValues(i, "AssetID").ToString();
-                string query = "Select qr.MainAssetNumber,qr.AssetSubNumber,qr.QRImage, asset.AssetDesc, asset.Location, asset.BLOCK, asset.LocationDesc , asset.Code from InstemAMS.dbo.QRCodeMaster as qr inner join InstemSAP.dbo. AssetMaster as asset on asset.AssetID = qr.AssetID where qr.AssetID ='" + AssetID + "'";
+                string query = "Select qr.MainAssetNumber,qr.AssetSubNumber,qr.QRImage, asset.AssetDesc, asset.Location, asset.BLOCK, asset.LocationDesc , asset.Code from RCBAMS.dbo.QRCodeMaster as qr inner join RCBSAP.dbo. AssetMaster as asset on asset.AssetID = qr.AssetID where qr.AssetID ='" + AssetID + "'";
                 da = new SqlDataAdapter(query, conAMS);
 
                 da.Fill(dt);

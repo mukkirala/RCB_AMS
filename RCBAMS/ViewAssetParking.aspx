@@ -161,8 +161,8 @@
    </dx:ASPxGridView>
 
   <asp:SqlDataSource ID="DetailGrid1" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
-    SelectCommand="	select AssetMaster.AssetID,AssetMaster.MainAssetNumber,AssetMaster.SerialNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc from AssetParking inner join InstemSAP..AssetMaster on AssetMaster.AssetID=AssetParking.AssetID  where AssetParking.CustodianID=@CustodianID and AssetParking.Status='Active'">
+                ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
+    SelectCommand="	select AssetMaster.AssetID,AssetMaster.MainAssetNumber,AssetMaster.SerialNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc from AssetParking inner join RCBSAP..AssetMaster on AssetMaster.AssetID=AssetParking.AssetID  where AssetParking.CustodianID=@CustodianID and AssetParking.Status='Active'">
     <SelectParameters>
     <asp:SessionParameter Name="CustodianID" SessionField="CustodianID" />
     </SelectParameters>

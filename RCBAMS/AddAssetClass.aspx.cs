@@ -9,7 +9,7 @@ using System.Web.Configuration;
 
 public partial class AddAssetClass : System.Web.UI.Page
 {
-    static string myConnectionString = myConnectionString = WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString;
+    static string myConnectionString = myConnectionString = WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString;
     SqlConnection myConnection = new SqlConnection(myConnectionString);
     SqlCommand myCommand;
     protected void Page_Load(object sender, EventArgs e)

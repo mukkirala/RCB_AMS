@@ -10,8 +10,8 @@ using System.Web.UI.WebControls;
 
 public partial class AssetClassMapping : System.Web.UI.Page
 {
-    SqlConnection con1 = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
-    SqlConnection sqlcon = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection con1 = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
+    SqlConnection sqlcon = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     protected void Page_Load(object sender, EventArgs e)
     {
         string RoleType = WebConfigurationManager.AppSettings.Get("Roles");

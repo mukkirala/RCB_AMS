@@ -269,7 +269,7 @@
         </StylesEditors>
     </dx:ASPxGridView>
     <asp:SqlDataSource ID="ComplaintResolved" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+    ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
     SelectCommand="SELECT *
 FROM AssetMaster
 WHERE CreationDate BETWEEN @fromdate AND @todate AND Status != 'InActive'">

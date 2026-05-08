@@ -12,7 +12,7 @@ using DevExpress.Web.ASPxEditors;
 
 public partial class RFID_Reader_Issues_Items_To_Employee_Using_RFID_Reader : System.Web.UI.Page
 {
-    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
+    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
     SqlDataAdapter da;
     SqlCommand myCommand;
     static DataTable dt1 = new DataTable();

@@ -184,7 +184,7 @@
 			
 			
 			
-						            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="SELECT ComplaintRegistration.ComplaintID,ComplaintTransaction.ComplaintTransactionID, ComplaintCode, [FilePath] FROM [ComplaintRegistration] inner join ComplaintTransaction on ComplaintTransaction.ComplaintID=ComplaintRegistration.ComplaintID where ComplaintTransactionID=@ComplaintTransactionID">
+						            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="SELECT ComplaintRegistration.ComplaintID,ComplaintTransaction.ComplaintTransactionID, ComplaintCode, [FilePath] FROM [ComplaintRegistration] inner join ComplaintTransaction on ComplaintTransaction.ComplaintID=ComplaintRegistration.ComplaintID where ComplaintTransactionID=@ComplaintTransactionID">
                                         <SelectParameters>
                                             <asp:SessionParameter  Name="ComplaintTransactionID" SessionField="ComplaintTransactionID"/>
                                         </SelectParameters>
@@ -244,7 +244,7 @@
                          </ErrorFrameStyle>
                      </ValidationSettings>
                 </dx:ASPxGridLookup>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
                     SelectCommand="SELECT Distinct CustodianMaster.CustodianName,RoleMaster.CustodianID from RoleMaster inner join CustodianMaster on CustodianMaster.CustodianID=RoleMaster.CustodianID where ROLE_NAME ='Engineer'"></asp:SqlDataSource>  
             
                         <%--<dx:ASPxComboBox ID="cmb_jobDefect" runat="server"  Width="300px" Height="25px" DataSourceID="cmbJobIdDB" ValueType="System.Int32" 
@@ -295,7 +295,7 @@
 						<RequiredField ErrorText="Please Select the Technician  " IsRequired="True" />
 					</ValidationSettings>
                 </dx:ASPxComboBox>
-                     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="Select Name,OfficeTable.OfficeID from OfficeTable 
+                     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="Select Name,OfficeTable.OfficeID from OfficeTable 
 inner join LocationMaster on LocationMaster.LocationName=OfficeTable.Location
  where OfficeType='TECH' and LocationID=@LocationID">
 
@@ -383,7 +383,7 @@ inner join LocationMaster on LocationMaster.LocationName=OfficeTable.Location
             <div class="clearfix"></div><br />
                 <strong>
     <span class="auto-style59">
-                <asp:SqlDataSource ID="cmbJobIdDB" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+                <asp:SqlDataSource ID="cmbJobIdDB" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
                     SelectCommand="SELECT  CustodianID ,CustodianName FROM  CustodianMaster"></asp:SqlDataSource>
      
     

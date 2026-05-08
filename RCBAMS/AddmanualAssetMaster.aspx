@@ -170,7 +170,7 @@
 </ValidationSettings>
 </dx:aspxcombobox>
                         <asp:SqlDataSource ID="SupplierDS" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="SELECT DISTINCT [SupplierID],VendorCode,[CompanyName] FROM [SupplierMaster] ">
  </asp:SqlDataSource>
   </td>      
@@ -217,7 +217,7 @@ SelectCommand="SELECT DISTINCT [SupplierID],VendorCode,[CompanyName] FROM [Suppl
 </ValidationSettings>
 </dx:aspxcombobox>
                         <asp:SqlDataSource ID="InstituteDS" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="SELECT DISTINCT [InstitutePKID], [InstituteID],[InstituteName] FROM [InstituteMaster] ">
  </asp:SqlDataSource>
 
@@ -277,7 +277,7 @@ SelectCommand="SELECT DISTINCT [InstitutePKID], [InstituteID],[InstituteName] FR
         CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" Height="25px" CssPostfix="PlasticBlue" 
         SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">                     
           </dx:ASPxComboBox>
-    <asp:SqlDataSource ID="AssetClassDS" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+    <asp:SqlDataSource ID="AssetClassDS" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
                          SelectCommand="SELECT [AssetClassName] FROM [AssetClassMaster] WHERE ([Status] = @Status)">
                          <SelectParameters>
                              <asp:Parameter DefaultValue="Active" Name="Status" Type="String" />
@@ -303,7 +303,7 @@ SelectCommand="SELECT DISTINCT [InstitutePKID], [InstituteID],[InstituteName] FR
             </ValidationSettings>
         </dx:ASPxComboBox>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
 SelectCommand="SELECT DISTINCT [AssetTypeName] FROM [AssetTypeMaster] WHERE [AssetClassName]=@AssetClassName">
     <SelectParameters>
         <asp:ControlParameter ControlID="cmb_AssetClass" Name="AssetClassName" PropertyName="Value" Type="String" />
@@ -391,7 +391,7 @@ SelectCommand="SELECT DISTINCT [AssetTypeName] FROM [AssetTypeMaster] WHERE [Ass
                         </ErrorFrameStyle>
                     </ValidationSettings>
                 </dx:ASPxGridLookup>
-                <asp:SqlDataSource ID="custodiands" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>"
+                <asp:SqlDataSource ID="custodiands" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
                     SelectCommand="SELECT [CustodianID], [CustodianName] FROM [CustodianMaster] WHERE ([CustodianStatus] = @CustodianStatus)">
                     <SelectParameters>
                         <asp:Parameter DefaultValue="Active" Name="CustodianStatus" Type="String" />
@@ -446,7 +446,7 @@ SelectCommand="SELECT DISTINCT [AssetTypeName] FROM [AssetTypeMaster] WHERE [Ass
             </ValidationSettings>
         </dx:ASPxComboBox>
         <asp:SqlDataSource ID="locationid" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="SELECT DISTINCT [LocationID] FROM [LocationMaster] ">
  </asp:SqlDataSource>
     </td>   --%>
@@ -472,7 +472,7 @@ SelectCommand="SELECT DISTINCT [LocationID] FROM [LocationMaster] ">
         </ValidationSettings>
     </dx:ASPxComboBox>
     <asp:SqlDataSource ID="locationid" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT DISTINCT Location, Block, LocationCode FROM LocationMaster">
     </asp:SqlDataSource>
 </td>--%>                                
@@ -493,7 +493,7 @@ SelectCommand="SELECT DISTINCT [LocationID] FROM [LocationMaster] ">
             </ValidationSettings>
         </dx:ASPxComboBox>
         <asp:SqlDataSource ID="location" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="SELECT DISTINCT [Location] FROM [LocationMaster]">
  </asp:SqlDataSource>
     </td>   
@@ -519,7 +519,7 @@ SelectCommand="SELECT DISTINCT [Location] FROM [LocationMaster]">
             </ValidationSettings>
         </dx:ASPxComboBox>
         <asp:SqlDataSource ID="Blockid" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="SELECT DISTINCT [BLOCK] FROM [LocationMaster]  where Location=@Location">
          <SelectParameters>             
              <asp:ControlParameter ControlID="txtLocationid" Name="Location" />
@@ -547,7 +547,7 @@ SelectCommand="SELECT DISTINCT [BLOCK] FROM [LocationMaster]  where Location=@Lo
             </ValidationSettings>--%>
         </dx:ASPxComboBox>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster] WHERE Location=@Location AND Block=@Block">
             <SelectParameters>                  
                 <asp:ControlParameter ControlID="txtLocationid" Name="Location"/>
@@ -831,7 +831,7 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
                     </ValidationSettings>
                 </dx:ASPxComboBox>
                 <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT DISTINCT [DepartmentCode],[DepartmentName] FROM [DepartmentMaster] ">
          </asp:SqlDataSource>
             </td>
@@ -1107,18 +1107,18 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
                          </dx:GridViewDataDateColumn>
                          <dx:GridViewDataTextColumn FieldName="CostCenter" VisibleIndex="66">
                          </dx:GridViewDataTextColumn>--%>
-<%--                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="SELECT * FROM [AssetMaster] where Status !='InActive' ORDER BY SLNO Desc"></asp:SqlDataSource>--%>
-             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+<%--                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="SELECT * FROM [AssetMaster] where Status !='InActive' ORDER BY SLNO Desc"></asp:SqlDataSource>--%>
+             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
                      SelectCommand="SELECT 
                                 AssetMaster.*, 
-                               InstemAMS..SupplierMaster.CompanyName,
-                              InstemAMS..InstituteMaster.InstituteName
+                               RCBAMS..SupplierMaster.CompanyName,
+                              RCBAMS..InstituteMaster.InstituteName
                             FROM 
-                              InstemSAP..[AssetMaster]
+                              RCBSAP..[AssetMaster]
                             INNER JOIN 
-                              InstemAMS..[SupplierMaster] ON AssetMaster.SupplierID = [SupplierMaster].SupplierID
+                              RCBAMS..[SupplierMaster] ON AssetMaster.SupplierID = [SupplierMaster].SupplierID
                             INNER JOIN 
-                                InstemAMS..[InstituteMaster] ON AssetMaster.InstitutePKID = InstituteMaster.InstitutePKID
+                                RCBAMS..[InstituteMaster] ON AssetMaster.InstitutePKID = InstituteMaster.InstitutePKID
                             WHERE 
                                 AssetMaster.Status != 'InActive'
                             ORDER BY 

@@ -195,8 +195,8 @@
 
         
 <asp:SqlDataSource ID="DetailDS" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
-    SelectCommand="select AssetMaster.AssetID,AssetMaster.SerialNumber,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc from InstemAMS..EmployeeAssetBuyback inner join InstemSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetBuyback.AssetID where EmployeeAssetBuyback.BuybackRequestID=@ID">
+                ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
+    SelectCommand="select AssetMaster.AssetID,AssetMaster.SerialNumber,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc from RCBAMS..EmployeeAssetBuyback inner join RCBSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetBuyback.AssetID where EmployeeAssetBuyback.BuybackRequestID=@ID">
     <SelectParameters>
     <asp:SessionParameter Name="ID" SessionField="ID" />
     </SelectParameters>
@@ -382,8 +382,8 @@
     </dx:ASPxGridView>
 
          <asp:SqlDataSource ID="DetailDS2" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
-    SelectCommand="select AssetMaster.AssetID,AssetMaster.SerialNumber,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc from InstemAMS..EmployeeAssetBuyback inner join InstemSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetBuyback.AssetID where EmployeeAssetBuyback.BuybackRequestID=@RequestID">
+                ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
+    SelectCommand="select AssetMaster.AssetID,AssetMaster.SerialNumber,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc from RCBAMS..EmployeeAssetBuyback inner join RCBSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetBuyback.AssetID where EmployeeAssetBuyback.BuybackRequestID=@RequestID">
     <SelectParameters>
     <asp:SessionParameter Name="RequestID" SessionField="RequestID" />
     </SelectParameters>
@@ -396,18 +396,18 @@
 </div>
  
       <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT BuybackRequestID,EmployeeAssetBuyback.AssetID,AssetDesc as AssetTypeName,AssetMaster.MainAssetNumber,
-AssetMaster.AssetSubNumber,AssetMaster.AssetClass,EmployeeAssetBuyback.EmployeeID,RequestBy as Requestedby,EmployeeAssetBuyback.CustodianDepartment,CustDesignation,EmployeeAssetBuyback.Status,Date,Comments,AdminID,AdminName FROM EmployeeAssetBuyback inner join InstemSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetBuyback.AssetID
+AssetMaster.AssetSubNumber,AssetMaster.AssetClass,EmployeeAssetBuyback.EmployeeID,RequestBy as Requestedby,EmployeeAssetBuyback.CustodianDepartment,CustDesignation,EmployeeAssetBuyback.Status,Date,Comments,AdminID,AdminName FROM EmployeeAssetBuyback inner join RCBSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetBuyback.AssetID
  where EmployeeAssetBuyback.Status='Request Sent To Admin' order by BuybackRequestID desc">
         </asp:SqlDataSource>
 
       <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand=" SELECT BuybackRequestID,EmployeeAssetBuyback.AssetID,AssetDesc as AssetTypeName,AssetMaster.MainAssetNumber,
  AssetMaster.AssetSubNumber,AssetMaster.AssetClass,EmployeeAssetBuyback.EmployeeID,RequestBy as Requestedby,EmployeeAssetBuyback.CustodianDepartment,CustDesignation,
  EmployeeAssetBuyback.Status,Date,Comments,AdminID,AdminName,AdminComments FROM EmployeeAssetBuyback 
- inner join InstemSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetBuyback.AssetID 
+ inner join RCBSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetBuyback.AssetID 
  where EmployeeAssetBuyback.Status='Approved' order by BuybackRequestID desc">
         </asp:SqlDataSource>
 </asp:Content>

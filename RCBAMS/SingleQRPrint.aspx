@@ -266,8 +266,8 @@
     
 
 
-    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>"
-        SelectCommand="Select * from InstemSAP..vAssetMaster
+    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
+        SelectCommand="Select * from RCBSAP..vAssetMaster
         ">
          <SelectParameters>
            <asp:SessionParameter Name="AdminID" SessionField="UserID" />

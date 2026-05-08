@@ -53,7 +53,7 @@
                     </dx:ASPxComboBox>                   
   
                  <asp:SqlDataSource ID="SqbDBaircraft" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="SELECT DISTINCT [YearofPurchase] FROM [AssetMaster]">
          </asp:SqlDataSource>
 
@@ -118,7 +118,7 @@
                                     </dxchartsui:webchartcontrol>
           
      <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                                        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+                                        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
                                         SelectCommand="SELECT COUNT(AssetMaster.AssetDesc),AssetDesc as NoOfAssets  FROM AssetMaster group by AssetDesc">
                                                       <SelectParameters>
                                 <asp:SessionParameter Name=" " SessionField=" " />

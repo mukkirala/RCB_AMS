@@ -150,10 +150,10 @@
                     </Templates>
                 </dx:ASPxGridView>
                 <br />
-                 <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="Select * from InstemSAP..AssetMaster"></asp:SqlDataSource>         
+                 <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="Select * from RCBSAP..AssetMaster"></asp:SqlDataSource>         
 
     <asp:SqlDataSource ID="DetailDS" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+                ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
     SelectCommand="select DocumentMapID,ImageLocation,AssetDocumentMapping.AssetID,DocumentName
 from AssetDocumentMapping
 inner join DocumentMaster on AssetDocumentMapping.DocumentID=DocumentMaster.DocumentID WHERE AssetDocumentMapping.AssetID=@AssetID">

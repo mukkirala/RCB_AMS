@@ -271,7 +271,7 @@
                     </dx:ASPxComboBox>                   
   
                  <asp:SqlDataSource ID="SqbDBaircraft" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="SELECT DISTINCT [YearofPurchase] FROM [AssetMaster]">
          </asp:SqlDataSource>
 
@@ -336,7 +336,7 @@
                                     </dxchartsui:webchartcontrol>
           
      <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                                        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+                                        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
                                         SelectCommand="SELECT COUNT(AssetMaster.AssetDesc),AssetDesc as NoOfAssets  FROM AssetMaster group by AssetDesc">
                                                       <SelectParameters>
                                 <asp:SessionParameter Name=" " SessionField=" " />
@@ -392,7 +392,7 @@
             <Settings ShowFilterRow="True" ShowGroupPanel="True" />
            
         </dx:ASPxGridView>
-        <asp:SqlDataSource ID="ds_Createdaudits" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="SELECT AuditMaster.[AuditID],AuditMaster.[AuditName],count(AssetID)as AssetCount FROM [AuditMaster]
+        <asp:SqlDataSource ID="ds_Createdaudits" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="SELECT AuditMaster.[AuditID],AuditMaster.[AuditName],count(AssetID)as AssetCount FROM [AuditMaster]
 inner join AuditDetails on  AuditDetails.AuditID=AuditMaster.AuditID
 where AuditMaster.AuditStatus='Active' group by AuditMaster.[AuditID],AuditMaster.[AuditName]">
            
@@ -469,7 +469,7 @@ where AuditMaster.AuditStatus='Active' group by AuditMaster.[AuditID],AuditMaste
                 </ChartAreas>
             </asp:Chart>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server"
-                ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+                ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
                 SelectCommand="SELECT COUNT(ApprovedQuantity)as ApprovedAsset,COUNT(EmployeeAssetRequest.Quantity)as NoOfAssetsFROM [EmployeeAssetRequest] WHERE (CAST([AdminDate] AS Date) >= '@fromDate') AND (CAST([AdminDate] AS Date) <= 'todate') group by [ApprovedQuantity]">
              <SelectParameters>
                        <asp:ControlParameter ControlID="fromDate" Name="fromDate" />
@@ -547,7 +547,7 @@ where AuditMaster.AuditStatus='Active' group by AuditMaster.[AuditID],AuditMaste
                 </ChartAreas>
             </asp:Chart>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server"
-                ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+                ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
                 SelectCommand="SELECT AssetDesc, COUNT(AssetDesc) AS NOOFASSETS FROM AssetMaster GROUP BY AssetDesc">--%>
              <%--<SelectParameters>
                        <asp:ControlParameter ControlID="fromDate" Name="fromDate" />
@@ -638,7 +638,7 @@ where AuditMaster.AuditStatus='Active' group by AuditMaster.[AuditID],AuditMaste
         </StylesEditors>
     </dx:ASPxGridView>
     <asp:SqlDataSource ID="ComplaintResolved" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+    ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
     SelectCommand="Select COUNT (AssetMaster.AssetDesc) As noofAssets,AssetDesc as AssetName From AssetMaster Where Status !='InActive' group by AssetDesc">
 </asp:SqlDataSource>
 

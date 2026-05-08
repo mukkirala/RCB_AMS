@@ -319,17 +319,17 @@
         </StylesEditors>
     </dx:ASPxGridView>       
       
-       <asp:SqlDataSource ID="AssetclassDS" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="SELECT [AssetClassID],[AssetClassName],[AssetClassCode] FROM [AssetClassMaster] WHERE Status='Active'">
+       <asp:SqlDataSource ID="AssetclassDS" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="SELECT [AssetClassID],[AssetClassName],[AssetClassCode] FROM [AssetClassMaster] WHERE Status='Active'">
                     
        </asp:SqlDataSource>
      <asp:SqlDataSource ID="AssetDS" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="select AssetID,MainAssetNumber,TechnicalAssetNumber,AssetClassName from AssetMaster inner join AssetClassMaster on AssetClassMaster.AssetClassCode = AssetMaster.AssetClass where AssetClassCode=@AssetClassCode and AssetMaster.Status='AVAL'">
       <SelectParameters>
           <asp:SessionParameter Name="AssetClassCode" SessionField="AssetClassCode"/>
       </SelectParameters>
      </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDS_RetiredAssetList" runat="server"  ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>"
+    <asp:SqlDataSource ID="SqlDS_RetiredAssetList" runat="server"  ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
        SelectCommand="SELECT [AssetRetirementID],[MainAssetNumber],[AssetClass],[Status],[PlannedRetirementDate],[LastRetirementDate],[DeActivationDate],[PurchaseOrderDate] FROM [AssetRetirement] where [Status]='Retired' order by AssetRetirementID desc" >
 
     </asp:SqlDataSource>

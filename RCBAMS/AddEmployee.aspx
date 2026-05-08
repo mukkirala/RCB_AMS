@@ -214,7 +214,7 @@
         </StylesEditors>
     </dx:ASPxGridView>
 
-   <asp:SqlDataSource ID="NonUserDB" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+   <asp:SqlDataSource ID="NonUserDB" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="Select CustodianID,CustodianName,Designation,email,NonBel_Password from CustodianMaster where CustodianMaster.Designation in('Non User')">
          </asp:SqlDataSource>
        

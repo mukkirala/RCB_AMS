@@ -170,10 +170,10 @@
     </dx:ASPxGridView>
 
        <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT  AssetRequestID,EmployeeAssetRequest.AssetTypeID,AssetTypename,RequestBy,CustodianDepartment,CustDesignation,Concat(EmployeeAssetRequest.EmployeeID+'__',EmployeeAssetRequest.RequestSequene) as EmployeeID,Quantity,EmployeeAssetRequest.Status,Date,LocationMaster.LocationCode,LocationMaster.Block,AssetTypeMaster.AssetClassName
-           from InstemAMS..EmployeeAssetRequest inner join InstemAMS..LocationMaster on LocationMaster.LocationID=EmployeeAssetRequest.LocationID
-           inner join InstemSAP..AssetTypeMaster on AssetTypeMaster.AssetTypeID=EmployeeAssetRequest.AssetTypeID
+           from RCBAMS..EmployeeAssetRequest inner join RCBAMS..LocationMaster on LocationMaster.LocationID=EmployeeAssetRequest.LocationID
+           inner join RCBSAP..AssetTypeMaster on AssetTypeMaster.AssetTypeID=EmployeeAssetRequest.AssetTypeID
 
            where [EmployeeAssetRequest].Status='Request Sent To Approver' and ApproverID=@ApproverID order by AssetRequestID desc">
        <SelectParameters>
@@ -297,8 +297,8 @@
     </dx:ASPxGridView>
 
        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
-        SelectCommand="SELECT  AssetRequestID,EmployeeAssetRequest.AssetTypeID,AssetTypename,RequestBy,CustodianDepartment,CustDesignation,Concat(EmployeeAssetRequest.EmployeeID+'__',EmployeeAssetRequest.RequestSequene) as EmployeeID,Quantity as RequestedQuantity,ApproverID,ApproverName,ApprovedQuantity,ApproverComments As ApproverRemarks, EmployeeAssetRequest.Status,Date,LocationMaster.LocationCode,LocationMaster.Block,AssetTypeMaster.AssetClassName from InstemAMS..EmployeeAssetRequest inner join InstemAMS..LocationMaster on LocationMaster.LocationID=EmployeeAssetRequest.LocationID  inner join InstemSAP..AssetTypeMaster on AssetTypeMaster.AssetTypeID=EmployeeAssetRequest.AssetTypeID where [EmployeeAssetRequest].Status='Request Sent To Admin' and ApproverID=@ApproverID order by AssetRequestID desc">
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
+        SelectCommand="SELECT  AssetRequestID,EmployeeAssetRequest.AssetTypeID,AssetTypename,RequestBy,CustodianDepartment,CustDesignation,Concat(EmployeeAssetRequest.EmployeeID+'__',EmployeeAssetRequest.RequestSequene) as EmployeeID,Quantity as RequestedQuantity,ApproverID,ApproverName,ApprovedQuantity,ApproverComments As ApproverRemarks, EmployeeAssetRequest.Status,Date,LocationMaster.LocationCode,LocationMaster.Block,AssetTypeMaster.AssetClassName from RCBAMS..EmployeeAssetRequest inner join RCBAMS..LocationMaster on LocationMaster.LocationID=EmployeeAssetRequest.LocationID  inner join RCBSAP..AssetTypeMaster on AssetTypeMaster.AssetTypeID=EmployeeAssetRequest.AssetTypeID where [EmployeeAssetRequest].Status='Request Sent To Admin' and ApproverID=@ApproverID order by AssetRequestID desc">
         <SelectParameters>
            <asp:SessionParameter Name="ApproverID" SessionField="UserID" />
        </SelectParameters>

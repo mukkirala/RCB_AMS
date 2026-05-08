@@ -142,7 +142,7 @@
             </ProgressBar>
         </StylesEditors>
     </dx:ASPxGridView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="SELECT [DepartmentCode], [DepartmentName] FROM [DepartmentMaster] 
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="SELECT [DepartmentCode], [DepartmentName] FROM [DepartmentMaster] 
         Where DepartmentStatus='Active'"></asp:SqlDataSource>
     <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server">
     </dx:ASPxGridViewExporter>

@@ -203,7 +203,7 @@
             </ProgressBar>
         </StylesEditors>
     </dx:ASPxGridView>
-    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="Select * from InstemSAP..AssetMaster where AssetMaster.Status='AREP'"></asp:SqlDataSource>                                     
+    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="Select * from RCBSAP..AssetMaster where AssetMaster.Status='AREP'"></asp:SqlDataSource>                                     
     
       </div>
         <br/>

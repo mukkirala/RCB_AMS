@@ -251,8 +251,8 @@
         </StylesEditors>
     </dx:ASPxGridView>
     <asp:SqlDataSource ID="ComplaintResolved" runat="server" 
-    ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
-    SelectCommand="SELECT distinct [ComplaintTransaction]. [ComplaintID],[USR_ID],ComplaintRegistration.EmployeeName,ComplaintTransaction.[Remarks],[ComplaintTransaction].[Comments],ProgressDate,AssetMaster.AssetDesc,AssetMaster.MainAssetNumber,Concat(ComplaintTransaction.USR_ID+'__','C0',ComplaintTransaction.Sequence) as complaintsequence, ComplaintTransaction.Status,ServiceTypeMaster.ServiceTypeName,ComplaintTransaction.CreatedDate,ComplaintRegistration.ComplaintType,[AssignedTo] FROM [ComplaintTransaction] inner join ComplaintRegistration on ComplaintRegistration.ComplaintID=ComplaintTransaction.ComplaintID inner join ServiceTypeMaster on ServiceTypeMaster.ServiceTypeID=[ComplaintRegistration].ServiceTypeID inner join  InstemSAP..AssetMaster on InstemSAP..AssetMaster.AssetID=InstemAMS..ComplaintRegistration.AssetID  WHERE (CAST([ProgressDate] AS date) >= @fromdate) AND (CAST([ProgressDate] AS date) <=@todate)  ">
+    ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
+    SelectCommand="SELECT distinct [ComplaintTransaction]. [ComplaintID],[USR_ID],ComplaintRegistration.EmployeeName,ComplaintTransaction.[Remarks],[ComplaintTransaction].[Comments],ProgressDate,AssetMaster.AssetDesc,AssetMaster.MainAssetNumber,Concat(ComplaintTransaction.USR_ID+'__','C0',ComplaintTransaction.Sequence) as complaintsequence, ComplaintTransaction.Status,ServiceTypeMaster.ServiceTypeName,ComplaintTransaction.CreatedDate,ComplaintRegistration.ComplaintType,[AssignedTo] FROM [ComplaintTransaction] inner join ComplaintRegistration on ComplaintRegistration.ComplaintID=ComplaintTransaction.ComplaintID inner join ServiceTypeMaster on ServiceTypeMaster.ServiceTypeID=[ComplaintRegistration].ServiceTypeID inner join  RCBSAP..AssetMaster on RCBSAP..AssetMaster.AssetID=RCBAMS..ComplaintRegistration.AssetID  WHERE (CAST([ProgressDate] AS date) >= @fromdate) AND (CAST([ProgressDate] AS date) <=@todate)  ">
 
                                      
     <SelectParameters>

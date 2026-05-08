@@ -424,7 +424,7 @@
                         </ErrorFrameStyle>
                     </ValidationSettings>
                 </dx:ASPxComboBox>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
                     SelectCommand="SELECT [DocumentID], [DocumentName] FROM [DocumentMaster]"></asp:SqlDataSource>
                         
              </div> 
@@ -463,7 +463,7 @@
         <br/>
    <div class="col-sm-12">
     <asp:SqlDataSource ID="AssetDS" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="select * from AssetMaster">
     </asp:SqlDataSource>
     <strong><span class="dxmLite">Documents List :</span></strong><br />

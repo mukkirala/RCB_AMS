@@ -231,7 +231,7 @@
 
 
             <td>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>"
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
                      SelectCommand="SELECT SLNO, AssetID, MainAssetNumber,AssetDesc FROM AssetMaster WHERE RFIDCardNumber IS NULL"></asp:SqlDataSource>
             </td>
         </tr>
@@ -417,8 +417,8 @@
             </ProgressBar>
         </StylesEditors>
     </dx:ASPxGridView>                       
-<%--                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="SELECT * FROM [AssetMaster] where Status !='InActive' ORDER BY SLNO Desc"></asp:SqlDataSource>--%>
-             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+<%--                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="SELECT * FROM [AssetMaster] where Status !='InActive' ORDER BY SLNO Desc"></asp:SqlDataSource>--%>
+             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
                      SelectCommand="SELECT * FROM AssetMaster WHERE RFIDCardNumber IS NOT NULL">
 
              </asp:SqlDataSource>

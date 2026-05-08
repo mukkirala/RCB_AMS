@@ -168,7 +168,7 @@
                          </ErrorFrameStyle>
                      </ValidationSettings>
                 </dx:ASPxGridLookup>
-                    <asp:SqlDataSource ID="LocationDS" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="SELECT [LocationID], [Location],[LocationCode],Block  FROM [LocationMaster]">                
+                    <asp:SqlDataSource ID="LocationDS" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="SELECT [LocationID], [Location],[LocationCode],Block  FROM [LocationMaster]">                
                 </asp:SqlDataSource>  
              </div   > 
              </div>        
@@ -307,8 +307,8 @@
            </div>
            
 
-    <asp:SqlDataSource ID="AuditListSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>"
-        SelectCommand="select * from AuditMaster inner join InstemAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID
+    <asp:SqlDataSource ID="AuditListSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
+        SelectCommand="select * from AuditMaster inner join RCBAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID
         order by AuditID desc">
 
     </asp:SqlDataSource>

@@ -12,9 +12,9 @@ using System.Data.SqlClient;
 
 public partial class QRDocuments : System.Web.UI.Page
 {
-    SqlConnection myConnection1 = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection myConnection1 = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
 
-    SqlConnection myConnection2 = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
+    SqlConnection myConnection2 = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
     protected void Page_Load(object sender, EventArgs e)
     {
         string AID = Request.QueryString["ID"];

@@ -400,23 +400,23 @@
    <%-- <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="<%$ConnectionStrings:ASSETManagementConnectionString %>" SelectCommand="select AssetRequestID,AssetID,AssetName from EmployeeAssetRequest where Status='Approved'">
    
     </asp:SqlDataSource>--%>
-    <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="<%$ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="select * from InstemSAP..AssetMaster where AssetMaster.AssetClass=@AssetClassCode and AssetMaster.Status='LTRF'">
+    <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="<%$ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="select * from RCBSAP..AssetMaster where AssetMaster.AssetClass=@AssetClassCode and AssetMaster.Status='LTRF'">
     <SelectParameters>
         <asp:SessionParameter Name="AssetClassCode" SessionField="AssetClassCode"/>
       <%--  <asp:SessionParameter Name="EmployeeID" SessionField="EmployeeID" />--%>
     </SelectParameters>
     </asp:SqlDataSource>
    
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="select *  from LocationMaster">
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="select *  from LocationMaster">
 
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
-        SelectCommand="Select AssetTransfer.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetDesc,AssetTransfer.ToLocation,AssetTransfer.Date,AssetTransfer.Status from InstemAMS..AssetTransfer inner join InstemSAP..AssetMaster on AssetMaster.AssetID=AssetTransfer.AssetID inner join LocationMaster on LocationMaster.LocationCode=AssetTransfer.ToLocation where AssetTransfer.Status='Transferred' order by AssetTransferId desc">    
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
+        SelectCommand="Select AssetTransfer.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetDesc,AssetTransfer.ToLocation,AssetTransfer.Date,AssetTransfer.Status from RCBAMS..AssetTransfer inner join RCBSAP..AssetMaster on AssetMaster.AssetID=AssetTransfer.AssetID inner join LocationMaster on LocationMaster.LocationCode=AssetTransfer.ToLocation where AssetTransfer.Status='Transferred' order by AssetTransferId desc">    
      </asp:SqlDataSource>
 
      <asp:SqlDataSource ID="AssetGrpSqlDataSource" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="SELECT * FROM [AssetClassMaster]">
       
         </asp:SqlDataSource>

@@ -500,7 +500,7 @@
      </div>
 
 
-<asp:SqlDataSource ID="AssetTypesGridViewDS" runat="server"  ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" 
+<asp:SqlDataSource ID="AssetTypesGridViewDS" runat="server"  ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" 
     SelectCommand="select * from AssetMaster
     inner join AssetTypeMaster on AssetTypeMaster.AssetTypeName=AssetMaster.AssetDesc where AssetMaster.AssetDesc=@AssetTypename
     and AssetMaster.Status in('AVAL','') and AssetMaster.CustodianID is NULL">
@@ -508,10 +508,10 @@
              <asp:SessionParameter Name="AssetTypename" SessionField="AssetTypename" />
          </SelectParameters>
      </asp:SqlDataSource>
- <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="select AssetTypeID,AssetTypeName,AssetTypeCode from AssetTypeMaster">
+ <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="select AssetTypeID,AssetTypeName,AssetTypeCode from AssetTypeMaster">
 
     </asp:SqlDataSource>
- <asp:SqlDataSource ID="LocationSqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="select * from LocationMaster">
+ <asp:SqlDataSource ID="LocationSqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="select * from LocationMaster">
 
  </asp:SqlDataSource>
       <%--</ContentTemplate>

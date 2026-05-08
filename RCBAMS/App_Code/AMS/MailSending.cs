@@ -14,7 +14,7 @@ using System.Web.Services.Description;
 /// </summary>
 public class MailSending
 {
-   static SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+   static SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
    static  SqlConnection myConnectionString = new SqlConnection(WebConfigurationManager.ConnectionStrings["ASSETManagementConnectionString"].ConnectionString);
 
     public MailSending()
@@ -142,7 +142,7 @@ public class MailSending
         message.IsBodyHtml = true;        
         string msg1 = "<h3>Dear " + approvername + ",</h3><br/>";
         string msg4 = body;
-        string msg5 = "<br/><br/>" + " Thanks and Regards, <br/>" + "INSTEM Asset Track";
+        string msg5 = "<br/><br/>" + " Thanks and Regards, <br/>" + "RCB Asset Track";
         message.Body = msg1 + "<br/>" + msg4 + " <br/>" + "http://" + host + ":" + port.ToString() + "  click here" + "</a>" + "<br/>" + "" + msg5;       
         try
         {
@@ -194,7 +194,7 @@ public class MailSending
         message.IsBodyHtml = true;
         string msg1 = "<h3>Dear Admin</h3><br/>";
         string msg4 = body;
-        string msg5 = "<br/><br/>" + " Thanks and Regards, <br/>" + "INSTEM Asset Track";
+        string msg5 = "<br/><br/>" + " Thanks and Regards, <br/>" + "RCB Asset Track";
         message.Body = msg1 + "<br/>" + msg4 + " <br/>" + "http://" + host + ":" + port.ToString() + "  click here" + "</a>" + "<br/>" + "" + msg5;
         try
         {
@@ -244,7 +244,7 @@ public class MailSending
         message.IsBodyHtml = true;
         string msg1 = "<h3>Dear " + requestername + ",</h3><br/>";
         string msg4 = body;
-        string msg5 = "<br/><br/>" + " Thanks and Regards, <br/>" + "INSTEM Asset Track";
+        string msg5 = "<br/><br/>" + " Thanks and Regards, <br/>" + "RCB Asset Track";
         message.Body = msg1 + "<br/>" + msg4 + " <br/>" + "" + msg5;
         try
         {
@@ -339,7 +339,7 @@ public class MailSending
         message.IsBodyHtml = true;
         string msg1 = "<h3>Dear " + approvername + ",</h3><br/>";
         string msg4 = body;
-        string msg5 = "<br/><br/>" + " Thanks and Regards, <br/>" + "INSTEM Asset Track";
+        string msg5 = "<br/><br/>" + " Thanks and Regards, <br/>" + "RCB Asset Track";
         message.Body = msg1 + "<br/>" + msg4 + " <br/>" + "http://" + host + ":" + port.ToString() + "  click here" + "</a>" + "<br/>" + "" + msg5;
         try
         {
@@ -389,7 +389,7 @@ public class MailSending
         message.IsBodyHtml = true;
         string msg1 = "<h3>Dear" + approvername + ",</h3><br/>";
         string msg4 = body;
-        string msg5 = "<br/><br/>" + " Thanks and Regards, <br/>" + "INSTEM Asset Track";
+        string msg5 = "<br/><br/>" + " Thanks and Regards, <br/>" + "RCB Asset Track";
         message.Body = msg1 + "<br/>" + msg4 + " <br/>" + "http://" + host + ":" + port.ToString() + "  click here" + "</a>" + "<br/>" + "" + msg5;
         try
         {
@@ -440,7 +440,7 @@ public class MailSending
         message.IsBodyHtml = true;
         string msg1 = "<h3>Dear " + approvername + ",</h3><br/>";
         string msg4 = body;
-        string msg5 = "<br/><br/>" + " Thanks and Regards, <br/>" + "INSTEM Asset Track";
+        string msg5 = "<br/><br/>" + " Thanks and Regards, <br/>" + "RCB Asset Track";
         message.Body = msg1 + "<br/>" + msg4 + " <br/>" + "http://" + host + ":" + port.ToString() + "  click here" + "</a>" + "<br/>" + "" + msg5;
         try
         {
@@ -491,7 +491,7 @@ public class MailSending
         message.IsBodyHtml = true;
         string msg1 = "<h3>Dear " + approvername + ",</h3><br/>";
         string msg4 = body;
-        string msg5 = "<br/><br/>" + " Thanks and Regards, <br/>" + "INSTEM Asset Track";
+        string msg5 = "<br/><br/>" + " Thanks and Regards, <br/>" + "RCB Asset Track";
         message.Body = msg1 + "<br/>" + msg4 + " <br/>" + "http://" + host + ":" + port.ToString() + "  click here" + "</a>" + "<br/>" + "" + msg5;
         try
         {
@@ -539,7 +539,7 @@ public class MailSending
         message.IsBodyHtml = true;
         string msg1 = "<h3>Dear " + authname + "</h3><br/>";
         string msg4 = body;
-        string msg5 = "<br/><br/>" + " Thanks and Regards, <br/>" + "INSTEM Asset Track";
+        string msg5 = "<br/><br/>" + " Thanks and Regards, <br/>" + "RCB Asset Track";
         message.Body = msg1 + "<br/>" + msg4 + " <br/>" + "http://" + host + ":" + port.ToString() +"click here" + "</a>" + "<br/>" + "" + msg5;
         try
         {

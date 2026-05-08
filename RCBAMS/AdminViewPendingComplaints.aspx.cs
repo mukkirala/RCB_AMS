@@ -9,7 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 public partial class AdminViewPendingComplaints : System.Web.UI.Page
 {
-    private static string connection = ConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString;
+    private static string connection = ConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString;
     private SqlConnection con = new SqlConnection(connection);
     string CreatedDate;
     DateTime date;

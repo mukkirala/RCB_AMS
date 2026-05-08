@@ -17,7 +17,7 @@ using System.DirectoryServices.AccountManagement;
 public partial class Login : System.Web.UI.Page
 {
     Utilities db = new Utilities();
-    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     SqlDataAdapter da;
 
 

@@ -262,7 +262,7 @@
             <Settings ShowFilterRow="True" ShowGroupPanel="True" />
            
         </dx:ASPxGridView>
-        <asp:SqlDataSource ID="ds_AllocatedAssets" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="Select * from vAssetMaster
+        <asp:SqlDataSource ID="ds_AllocatedAssets" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="Select * from vAssetMaster
 where vAssetMaster.Status !='NVAL' and vAssetMaster.CustodianID=@CustodianID">
    <SelectParameters>
        <asp:SessionParameter SessionField="UserID" Name="CustodianID" />

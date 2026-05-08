@@ -143,7 +143,7 @@
              </StylesEditors>
          </dx:ASPxGridView>
 
-         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="SELECT [AssetDescID], [AssetDescription] FROM [AssetDescriptionMaster] WHERE  Status='Active'"
+         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="SELECT [AssetDescID], [AssetDescription] FROM [AssetDescriptionMaster] WHERE  Status='Active'"
              UpdateCommand="UPDATE  AssetDescriptionMaster SET  [AssetDescription]=@AssetDescription WHERE [AssetDescID]=@AssetDescID"></asp:SqlDataSource>
              </div>
    </div>

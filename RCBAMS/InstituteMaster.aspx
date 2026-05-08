@@ -274,7 +274,7 @@
     </StylesEditors>
 </dx:ASPxGridView>
 
-      <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+      <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT * from InstituteMaster  Where Status='Active' ">
 
            </asp:SqlDataSource>

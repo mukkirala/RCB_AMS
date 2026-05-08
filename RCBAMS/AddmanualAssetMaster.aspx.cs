@@ -14,9 +14,9 @@ using System.Web.UI.WebControls;
 
 public partial class AddmanualAssetMaster : System.Web.UI.Page
 {
-    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
+    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
     SqlCommand myCommand;
-    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     SqlCommand cmd;
     SqlDataAdapter da;
     string currentDateTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
@@ -400,7 +400,7 @@ public partial class AddmanualAssetMaster : System.Web.UI.Page
         string Sub = txtsubassetno.Text;
         string Class = cmb_AssetClass.Text;
         string SN = "0" + Sub + "";
-        string myList = "" + ID + "-INSTEM-" + Asset + "-" + SN + "";
+        string myList = "" + ID + "-RCB-" + Asset + "-" + SN + "";
         //ArrayList myList = new ArrayList();
         //// Adding elements to ArrayList 
         //myList.Add(ID);

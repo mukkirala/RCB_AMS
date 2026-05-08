@@ -225,7 +225,7 @@
 			
 			
 			
-						            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="SELECT ComplaintRegistration.ComplaintID,ComplaintTransaction.ComplaintTransactionID, ComplaintCode, [FilePath] FROM [ComplaintRegistration] inner join ComplaintTransaction on ComplaintTransaction.ComplaintID=ComplaintRegistration.ComplaintID where ComplaintTransactionID=@ComplaintTransactionID">
+						            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="SELECT ComplaintRegistration.ComplaintID,ComplaintTransaction.ComplaintTransactionID, ComplaintCode, [FilePath] FROM [ComplaintRegistration] inner join ComplaintTransaction on ComplaintTransaction.ComplaintID=ComplaintRegistration.ComplaintID where ComplaintTransactionID=@ComplaintTransactionID">
                                         <SelectParameters>
                                             <asp:SessionParameter  Name="ComplaintTransactionID" SessionField="ComplaintTransactionID"/>
                                         </SelectParameters>

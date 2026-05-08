@@ -186,10 +186,10 @@ namespace ARP.DataLayer
             {
 
                 //string str = WebConfigurationManager.ConnectionStrings["ASSETManagementConnectionString"].ConnectionString;
-                string str = WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString;
+                string str = WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString;
                 //  string str = ConfigurationSettings.AppSettings["ConnectionString"];
                 if (str == null || str.Length <= 0)
-                    throw (new ApplicationException("ConnectionString configuration is missing from you web.config. It should contain  <appSettings><add key=\"InstemAMSConnectionString\" value=\"database=IssueTrackerStarterKit;server=localhost;Trusted_Connection=true\" /></appSettings> "));
+                    throw (new ApplicationException("ConnectionString configuration is missing from you web.config. It should contain  <appSettings><add key=\"RCBAMSConnectionString\" value=\"database=IssueTrackerStarterKit;server=localhost;Trusted_Connection=true\" /></appSettings> "));
                 else
                     return (str);
             }

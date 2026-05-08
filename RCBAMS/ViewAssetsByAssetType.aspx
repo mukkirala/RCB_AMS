@@ -248,7 +248,7 @@
             </ProgressBar>
         </StylesEditors>
     </dx:ASPxGridView>
-    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="Select * from InstemSAP..vAssetMaster where AssetDesc=@AssetType">
+    <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="Select * from RCBSAP..vAssetMaster where AssetDesc=@AssetType">
          <SelectParameters>
        <%--   <asp:SessionParameter SessionField="AssetType" Name="AssetType" />--%>
              <asp:ControlParameter ControlID="gl_assettype" Name="AssetType" />
@@ -290,7 +290,7 @@
                 </dx:ASPxGridViewExporter>
  </div>  
 
-      <asp:SqlDataSource ID="AssetTypesDataSource"  ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="Select * from AssetTypeMaster" runat="server"></asp:SqlDataSource>
+      <asp:SqlDataSource ID="AssetTypesDataSource"  ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="Select * from AssetTypeMaster" runat="server"></asp:SqlDataSource>
 </asp:Content>
 
 

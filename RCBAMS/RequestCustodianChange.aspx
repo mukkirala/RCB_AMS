@@ -310,7 +310,7 @@
                 </dx:ASPxGridLookup>
                  
                  <asp:SqlDataSource ID="CustSqlDataSource" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT [CustodianID], [CustodianName] FROM [CustodianMaster]">
          </asp:SqlDataSource>
 
@@ -447,29 +447,29 @@
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ConnectionStrings:ASSETManagementConnectionString%>" SelectCommand="select CustodianID,CustodianName from vEmpDtlsAssetApp">
 
     </asp:SqlDataSource>
-   <%-- <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="Select AssetAllocation.AssetID,AssetAllocation.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetDesc,AssetMaster.Location,AssetMaster.LocationDesc
-From InstemAMS..AssetAllocation
-inner join InstemAMS..EmployeeAssetRequest on EmployeeAssetRequest.AssetRequestID=AssetAllocation.AssetRequestID
-inner join InstemSAP..AssetMaster on AssetMaster.AssetID=AssetAllocation.AssetID
+   <%-- <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="Select AssetAllocation.AssetID,AssetAllocation.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetDesc,AssetMaster.Location,AssetMaster.LocationDesc
+From RCBAMS..AssetAllocation
+inner join RCBAMS..EmployeeAssetRequest on EmployeeAssetRequest.AssetRequestID=AssetAllocation.AssetRequestID
+inner join RCBSAP..AssetMaster on AssetMaster.AssetID=AssetAllocation.AssetID
 where AssetAllocation.Status='Approved' and EmployeeAssetRequest.EmployeeID=@EmployeeID order by AssetAllocation.Date desc">
     <SelectParameters>
         <asp:SessionParameter name="EmployeeID" SessionField="UserID"/>
     </SelectParameters>
     </asp:SqlDataSource>--%>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" 
-    SelectCommand="Select * From InstemSAP..vAssetMaster where CustodianID=@EmployeeID and vAssetMaster.Status !='NVAL'">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" 
+    SelectCommand="Select * From RCBSAP..vAssetMaster where CustodianID=@EmployeeID and vAssetMaster.Status !='NVAL'">
     <SelectParameters>
         <asp:SessionParameter name="EmployeeID" SessionField="UserID"/>
     </SelectParameters>
     </asp:SqlDataSource>
 
       <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT CustodianChangeID,CustodianChangeRequest.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,
 AssetDesc as AssetTypeName,Concat(CustodianChangeRequest.EmployeeID+'__',CustodianChangeRequest.CustodianSequence) as CustodianSequence,RequestBy as Requestedby,CustodianChangeRequest.CustodianDepartment,CustDesignation,RequestedChangeCustodian,CustodianMaster.CustodianName as TransferTo,
 CustodianChangeRequest.Status,Date,CustodianComments FROM CustodianChangeRequest 
-inner join InstemSAP..AssetMaster on AssetMaster.AssetID=CustodianChangeRequest.AssetID
-inner join InstemAMS..CustodianMaster on  CustodianMaster.CustodianID=CustodianChangeRequest.RequestedChangeCustodian
+inner join RCBSAP..AssetMaster on AssetMaster.AssetID=CustodianChangeRequest.AssetID
+inner join RCBAMS..CustodianMaster on  CustodianMaster.CustodianID=CustodianChangeRequest.RequestedChangeCustodian
 where CustodianChangeRequest.EmployeeID=@EmployeeID order by CustodianChangeID desc">
         <SelectParameters>
         <asp:SessionParameter Name="EmployeeID" SessionField="UserID" />

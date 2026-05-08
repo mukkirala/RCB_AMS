@@ -303,10 +303,10 @@
             </ProgressBar>
         </StylesEditors>
     </dx:ASPxGridView>
-      <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+      <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="Select * from  AssetMaster 
         "></asp:SqlDataSource> 
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="select AssetID,MainAssetNumber from AssetMaster">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="select AssetID,MainAssetNumber from AssetMaster">
 
     </asp:SqlDataSource>
 

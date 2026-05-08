@@ -109,7 +109,7 @@
                         <dx:ASPxComboBox ID="cmb_AssetClass" runat="server" TextField="AssetClassName" ValueField="AssetClassName" ValueType="System.String" AutoPostBack="True" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"
                             Height="25px" CssPostfix="PlasticBlue" Width="300px" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" DataSourceID="AssetClassDS">                     
                       </dx:ASPxComboBox>
-                                 <asp:SqlDataSource ID="AssetClassDS" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+                                 <asp:SqlDataSource ID="AssetClassDS" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
                                      SelectCommand="SELECT [AssetClassName] FROM [AssetClassMaster] WHERE ([Status] = @Status)">
                                      <SelectParameters>
                                          <asp:Parameter DefaultValue="Active" Name="Status" Type="String" />
@@ -202,7 +202,7 @@
             </ValidationSettings>
         </dx:ASPxComboBox>
         <asp:SqlDataSource ID="location" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="SELECT DISTINCT [Location] FROM [LocationMaster]">
  </asp:SqlDataSource>
                        <%-- <dx:ASPxGridLookup ID="LocationGridLookup1" runat="server"  AutoGenerateColumns="False"
@@ -274,7 +274,7 @@ SelectCommand="SELECT DISTINCT [Location] FROM [LocationMaster]">
             </ValidationSettings>
         </dx:ASPxComboBox>
         <asp:SqlDataSource ID="Blockid" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="SELECT DISTINCT [BLOCK] FROM [LocationMaster]  where Location=@Location">
          <SelectParameters>             
              <asp:ControlParameter ControlID="txt_Locationid" Name="Location" />
@@ -328,7 +328,7 @@ SelectCommand="SELECT DISTINCT [BLOCK] FROM [LocationMaster]  where Location=@Lo
                      </ValidationSettings>
                 </dx:ASPxGridLookup>
                                 <asp:SqlDataSource ID="Blockid" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="SELECT DISTINCT [BLOCK] FROM [LocationMaster]  where Location=@Location">
          <SelectParameters>             
              <asp:ControlParameter ControlID="LocationGridLookup1" Name="Location" />
@@ -359,7 +359,7 @@ SelectCommand="SELECT DISTINCT [BLOCK] FROM [LocationMaster]  where Location=@Lo
             </ValidationSettings>
         </dx:ASPxComboBox>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster] WHERE Location=@Location AND Block=@Block">
             <SelectParameters>                  
                 <asp:ControlParameter ControlID="txt_Locationid" Name="Location"/>
@@ -420,7 +420,7 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
                         <DataItemTemplate>
                             <dx:ASPxImage ID="img" runat="server" ImageUrl='<%# Eval("QRImage") %>' Height="80px" Width="150px"></dx:ASPxImage>
                         </DataItemTemplate>
-            </dx:GridViewDataTextColumn> inner join InstemAMS..LocationMaster on LocationMaster.LocationCode=EmployeeAssetRequest.Location--%> 
+            </dx:GridViewDataTextColumn> inner join RCBAMS..LocationMaster on LocationMaster.LocationCode=EmployeeAssetRequest.Location--%> 
                   
           
            <dx:GridViewDataTextColumn FieldName="Quantity" VisibleIndex="3" Caption="Requested Quantity">
@@ -499,7 +499,7 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
     </dx:ASPxGridView>
         
       
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" 
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="select AssetTypeID,AssetTypeName,AssetTypeCode from AssetTypeMaster where AssetClassName=@AssetClassName ">
                   <SelectParameters>
         <asp:ControlParameter  ControlID="cmb_AssetClass" Name="AssetClassName" />
@@ -507,22 +507,22 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
     </asp:SqlDataSource>
 
        <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand=" SELECT  EmployeeAssetRequest.AssetTypeID,AssetTypeName,LocationMaster.Block,LocationMaster.Location,LocationMaster.LocationCode,RequestBy as RequestedBy,EmployeeAssetRequest.LocationID,
            EmployeeAssetRequest.CustodianDepartment,CustDesignation,Concat(EmployeeAssetRequest.EmployeeID+'__',EmployeeAssetRequest.RequestSequene) as RequestSequene,AssetTypeMaster.AssetClassName,
            EmployeeAssetRequest.Quantity,EmployeeAssetRequest.Status,Date,LocationMaster.LocationCode 
-FROM InstemAMS..EmployeeAssetRequest 
-inner join InstemAMS..LocationMaster on LocationMaster.LocationID=EmployeeAssetRequest.LocationID
-inner join InstemSAP..AssetTypeMaster on AssetTypeMaster.AssetTypeID=EmployeeAssetRequest.AssetTypeID
+FROM RCBAMS..EmployeeAssetRequest 
+inner join RCBAMS..LocationMaster on LocationMaster.LocationID=EmployeeAssetRequest.LocationID
+inner join RCBSAP..AssetTypeMaster on AssetTypeMaster.AssetTypeID=EmployeeAssetRequest.AssetTypeID
 where EmployeeID=@EmployeeID order by [AssetRequestID] desc">
         <SelectParameters>
         <asp:SessionParameter Name="EmployeeID" SessionField="UserID" />
         </SelectParameters>
         </asp:SqlDataSource>
- <%--<asp:SqlDataSource ID="LocationSqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="select * from LocationMaster">
+ <%--<asp:SqlDataSource ID="LocationSqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="select * from LocationMaster">
 
  </asp:SqlDataSource>
-           <asp:SqlDataSource ID="LocationblockSqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="select DISTINCT [BLOCK]
+           <asp:SqlDataSource ID="LocationblockSqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="select DISTINCT [BLOCK]
  from LocationMaster where Location=@Location">
                 <SelectParameters>
         <asp:ControlParameter  ControlID="LocationGridLookup1" Name="Location" />

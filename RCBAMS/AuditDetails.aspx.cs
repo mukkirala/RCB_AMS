@@ -14,8 +14,8 @@ public partial class AuditDetails : System.Web.UI.Page
     DataTable dt;
     SqlCommand myCommand;
     SqlCommand myCommand1;
-    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
-    SqlConnection myConnection2 = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
+    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
+    SqlConnection myConnection2 = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["UserID"] == null)

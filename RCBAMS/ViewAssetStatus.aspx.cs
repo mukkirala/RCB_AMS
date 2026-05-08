@@ -7,8 +7,8 @@ using System.Web;
 using System.Web.Configuration;
 public partial class ViewAssetStatus : System.Web.UI.Page
 {
-    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
-    SqlConnection myConnection2 = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
+    SqlConnection myConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
+    SqlConnection myConnection2 = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
     SqlCommand myCommand;
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -45,7 +45,7 @@ public partial class ViewAssetStatus : System.Web.UI.Page
             }
             if (requestes.Equals("Buyback"))
             {
-                string query = "SELECT EmployeeAssetBuyback.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetDesc,AssetMaster.Status as AssetStatus,EmployeeID, RequestBy,EmployeeAssetBuyback.CustDepartmentCode,EmployeeAssetBuyback.CustodianDepartment,EmployeeAssetBuyback.CustDesignation,EmployeeAssetBuyback.Status,EmployeeAssetBuyback.Date FROM  EmployeeAssetBuyback inner join InstemSAP..AssetMaster on AssetMaster.AssetID = EmployeeAssetBuyback.AssetID where  EmployeeAssetBuyback.Status in('Request Sent To Admin','Rejected')";
+                string query = "SELECT EmployeeAssetBuyback.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetDesc,AssetMaster.Status as AssetStatus,EmployeeID, RequestBy,EmployeeAssetBuyback.CustDepartmentCode,EmployeeAssetBuyback.CustodianDepartment,EmployeeAssetBuyback.CustDesignation,EmployeeAssetBuyback.Status,EmployeeAssetBuyback.Date FROM  EmployeeAssetBuyback inner join RCBSAP..AssetMaster on AssetMaster.AssetID = EmployeeAssetBuyback.AssetID where  EmployeeAssetBuyback.Status in('Request Sent To Admin','Rejected')";
                 da = new SqlDataAdapter(query, myConnection);
                 da.Fill(dt);
                 if (dt.Rows.Count >= 1)
@@ -73,7 +73,7 @@ public partial class ViewAssetStatus : System.Web.UI.Page
             }
             if (requestes.Equals("Location Transfer"))
             {
-                string query = "SELECT EmployeeLocationChange.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetDesc,AssetMaster.Status as AssetStatus,EmployeeID, RequestBy,EmployeeLocationChange.CustDepartmentCode,EmployeeLocationChange.CustodianDepartment,EmployeeLocationChange.CustDesignation,EmployeeLocationChange.Status,EmployeeLocationChange.Date FROM  EmployeeLocationChange inner join InstemSAP..AssetMaster on AssetMaster.AssetID = EmployeeLocationChange.AssetID where  EmployeeLocationChange.Status in('Request Sent To Admin','Rejected')";
+                string query = "SELECT EmployeeLocationChange.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetDesc,AssetMaster.Status as AssetStatus,EmployeeID, RequestBy,EmployeeLocationChange.CustDepartmentCode,EmployeeLocationChange.CustodianDepartment,EmployeeLocationChange.CustDesignation,EmployeeLocationChange.Status,EmployeeLocationChange.Date FROM  EmployeeLocationChange inner join RCBSAP..AssetMaster on AssetMaster.AssetID = EmployeeLocationChange.AssetID where  EmployeeLocationChange.Status in('Request Sent To Admin','Rejected')";
                 da = new SqlDataAdapter(query, myConnection);
                 da.Fill(dt);
                 if (dt.Rows.Count >= 1)
@@ -101,7 +101,7 @@ public partial class ViewAssetStatus : System.Web.UI.Page
             }
             if (requestes.Equals("Custodian Transfer"))
             {
-                string query = "SELECT CustodianChangeRequest.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetDesc,AssetMaster.Status as AssetStatus,EmployeeID, RequestBy,CustodianChangeRequest.CustDepartmentCode,CustodianChangeRequest.CustodianDepartment,CustodianChangeRequest.CustDesignation,CustodianChangeRequest.Status,CustodianChangeRequest.Date FROM  CustodianChangeRequest inner join InstemSAP..AssetMaster on AssetMaster.AssetID = CustodianChangeRequest.AssetID where  CustodianChangeRequest.Status in('Request Sent To Admin','Rejected')";
+                string query = "SELECT CustodianChangeRequest.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetDesc,AssetMaster.Status as AssetStatus,EmployeeID, RequestBy,CustodianChangeRequest.CustDepartmentCode,CustodianChangeRequest.CustodianDepartment,CustodianChangeRequest.CustDesignation,CustodianChangeRequest.Status,CustodianChangeRequest.Date FROM  CustodianChangeRequest inner join RCBSAP..AssetMaster on AssetMaster.AssetID = CustodianChangeRequest.AssetID where  CustodianChangeRequest.Status in('Request Sent To Admin','Rejected')";
                 da = new SqlDataAdapter(query, myConnection);
                 da.Fill(dt);
                 if (dt.Rows.Count >= 1)
@@ -129,7 +129,7 @@ public partial class ViewAssetStatus : System.Web.UI.Page
             }
             if (requestes.Equals("Asset Return"))
             {
-                string query = "SELECT EmployeeAssetReturn.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetDesc,AssetMaster.Status as AssetStatus,EmployeeID, RequestBy,EmployeeAssetReturn.CustDepartmentCode,EmployeeAssetReturn.CustodianDepartment,EmployeeAssetReturn.CustDesignation,EmployeeAssetReturn.Status,EmployeeAssetReturn.Date FROM  EmployeeAssetReturn inner join InstemSAP..AssetMaster on AssetMaster.AssetID = EmployeeAssetReturn.AssetID where  EmployeeAssetReturn.Status in('Request Sent To Admin','Rejected')";
+                string query = "SELECT EmployeeAssetReturn.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetDesc,AssetMaster.Status as AssetStatus,EmployeeID, RequestBy,EmployeeAssetReturn.CustDepartmentCode,EmployeeAssetReturn.CustodianDepartment,EmployeeAssetReturn.CustDesignation,EmployeeAssetReturn.Status,EmployeeAssetReturn.Date FROM  EmployeeAssetReturn inner join RCBSAP..AssetMaster on AssetMaster.AssetID = EmployeeAssetReturn.AssetID where  EmployeeAssetReturn.Status in('Request Sent To Admin','Rejected')";
                 da = new SqlDataAdapter(query, myConnection);
                 da.Fill(dt);
                 if (dt.Rows.Count >= 1)

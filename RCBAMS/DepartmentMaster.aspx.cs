@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 public partial class DepartmentMaster : System.Web.UI.Page
 {
 
-    static string constr = ConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString;
+    static string constr = ConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString;
     SqlConnection con = new SqlConnection(constr);
 
     protected void Page_Load(object sender, EventArgs e)

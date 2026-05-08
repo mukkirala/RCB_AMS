@@ -186,19 +186,19 @@
     </dx:ASPxGridView>
 
        <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT  EmployeeAssetRequest.AssetRequestID,AssetTypeName,Concat(EmployeeAssetRequest.EmployeeID+'__',EmployeeAssetRequest.RequestSequene) as EmployeeID,ApproverComments,RequestBy,CustodianDepartment,CustDesignation,
 Quantity as RequestedQuantity,ApprovedQuantity,EmployeeAssetRequest.Status as RequestStatus,
-EmployeeAssetRequest.Date as RequestedDate  from InstemAMS..EmployeeAssetRequest 
-inner join InstemSAP..AssetTypeMaster on AssetTypeMaster.AssetTypeID=EmployeeAssetRequest.AssetTypeID
-inner join InstemAMS..AssetAllocation On AssetAllocation.AssetRequestID=EmployeeAssetRequest.AssetRequestID
+EmployeeAssetRequest.Date as RequestedDate  from RCBAMS..EmployeeAssetRequest 
+inner join RCBSAP..AssetTypeMaster on AssetTypeMaster.AssetTypeID=EmployeeAssetRequest.AssetTypeID
+inner join RCBAMS..AssetAllocation On AssetAllocation.AssetRequestID=EmployeeAssetRequest.AssetRequestID
 where AssetAllocation.Status='Approved' 
 order by EmployeeAssetRequest.AssetRequestID desc">
         </asp:SqlDataSource>
        
       <asp:SqlDataSource ID="DetailDS" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
-    SelectCommand="select AllocationID,AssetAllocation.AssetID,AssetMaster.MainAssetNumber,AssetMaster.SerialNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc, AssetAllocation.AssetRequestID from AssetAllocation inner join InstemSAP..AssetMaster on AssetMaster.AssetID=AssetAllocation.AssetID  where AssetRequestID=@AssetRequestID">
+                ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
+    SelectCommand="select AllocationID,AssetAllocation.AssetID,AssetMaster.MainAssetNumber,AssetMaster.SerialNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc, AssetAllocation.AssetRequestID from AssetAllocation inner join RCBSAP..AssetMaster on AssetMaster.AssetID=AssetAllocation.AssetID  where AssetRequestID=@AssetRequestID">
     <SelectParameters>
     <asp:SessionParameter Name="AssetRequestID" SessionField="AssetRequestID" />
     </SelectParameters> 
@@ -305,8 +305,8 @@ order by EmployeeAssetRequest.AssetRequestID desc">
     </dx:ASPxGridView>
 
        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
-        SelectCommand="SELECT  AssetRequestID,AssetTypeName,EmployeeAssetRequest.MainAssetNumber,Concat(EmployeeAssetRequest.EmployeeID+'__',EmployeeAssetRequest.RequestSequene) as   EmployeeID,RequestBy,CustodianDepartment,AdminComments,ApproverComments,CustDesignation,Quantity as RequestedQuantity,ApprovedQuantity,EmployeeAssetRequest.Status as RequestStatus,Date from InstemAMS..EmployeeAssetRequest inner join InstemSAP..AssetTypeMaster on AssetTypeMaster.AssetTypeID=EmployeeAssetRequest.AssetTypeID where [EmployeeAssetRequest].Status='Rejected' order by AssetRequestID desc">
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
+        SelectCommand="SELECT  AssetRequestID,AssetTypeName,EmployeeAssetRequest.MainAssetNumber,Concat(EmployeeAssetRequest.EmployeeID+'__',EmployeeAssetRequest.RequestSequene) as   EmployeeID,RequestBy,CustodianDepartment,AdminComments,ApproverComments,CustDesignation,Quantity as RequestedQuantity,ApprovedQuantity,EmployeeAssetRequest.Status as RequestStatus,Date from RCBAMS..EmployeeAssetRequest inner join RCBSAP..AssetTypeMaster on AssetTypeMaster.AssetTypeID=EmployeeAssetRequest.AssetTypeID where [EmployeeAssetRequest].Status='Rejected' order by AssetRequestID desc">
        
         </asp:SqlDataSource>
        

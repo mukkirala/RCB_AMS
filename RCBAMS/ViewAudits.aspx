@@ -197,8 +197,8 @@
     </dx:ASPxGridView>
         </div>
 
-    <asp:SqlDataSource ID="AuditListSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>"
-        SelectCommand="select * from InstemAMS..AuditMaster left join InstemAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID order by AuditBy desc">
+    <asp:SqlDataSource ID="AuditListSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
+        SelectCommand="select * from RCBAMS..AuditMaster left join RCBAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID order by AuditBy desc">
     </asp:SqlDataSource>
 
 

@@ -136,9 +136,9 @@
                     Landscape="True" MaxColumnWidth="150" GridViewID="ASPxGridView2" 
                     LeftMargin="0" RightMargin="0" TopMargin="0">
   </dx:ASPxGridViewExporter>
-  <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>"
-      SelectCommand="select * from InstemAMS..AuditMaster  left join 
-InstemAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID 
+  <asp:SqlDataSource ID="SqlDSGrid" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
+      SelectCommand="select * from RCBAMS..AuditMaster  left join 
+RCBAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID 
 where AuditStatus='InActive' order by AuditBy desc">
      
   </asp:SqlDataSource>                                     

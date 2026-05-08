@@ -12,7 +12,7 @@ using System.Data;
 
 public partial class RoleMaster : System.Web.UI.Page
 {
-    SqlConnection sqlcon = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection sqlcon = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     SqlDataAdapter da;
     SqlCommand myCommand;
     protected void Page_Load(object sender, EventArgs e)

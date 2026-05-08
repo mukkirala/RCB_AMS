@@ -320,7 +320,7 @@
      </div>
 
 </div>
-<asp:SqlDataSource ID="AssetTypesGridViewDS" runat="server"  ConnectionString="<%$ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="	select AssetParking.AssetParkingID, AssetParking.AssetID,AssetParking.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc as AssetStatus,AssetParking.CustodianID,AssetParking.CustodianDepartment,AssetParking.CustDesignation,AssetParking.Date as RequestDate,AssetParking.Status,AssetParking.AssetTypeID,AssetParking.LocationCode,AssetParking.Location,AssetParking.LocationID,AssetParking.Block from AssetParking inner join InstemSAP..AssetMaster on  AssetParking.AssetID=AssetMaster.AssetID  where AssetParking.CustodianID=@CustodianID and AssetParking.Status='Active'">
+<asp:SqlDataSource ID="AssetTypesGridViewDS" runat="server"  ConnectionString="<%$ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="	select AssetParking.AssetParkingID, AssetParking.AssetID,AssetParking.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc as AssetStatus,AssetParking.CustodianID,AssetParking.CustodianDepartment,AssetParking.CustDesignation,AssetParking.Date as RequestDate,AssetParking.Status,AssetParking.AssetTypeID,AssetParking.LocationCode,AssetParking.Location,AssetParking.LocationID,AssetParking.Block from AssetParking inner join RCBSAP..AssetMaster on  AssetParking.AssetID=AssetMaster.AssetID  where AssetParking.CustodianID=@CustodianID and AssetParking.Status='Active'">
          <SelectParameters>
              <asp:SessionParameter Name="CustodianID" SessionField="CustodianID" />
          </SelectParameters>

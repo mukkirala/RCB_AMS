@@ -452,10 +452,10 @@
     </asp:SqlDataSource>--%>
 
        <asp:SqlDataSource ID="sqldataAuthority" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT [CustodianID],CustodianName, [Designation] FROM CustodianMaster">
     </asp:SqlDataSource>
-      <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+      <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT *,DepartmentMaster.DepartmentName from CustodianMaster
 inner join DepartmentMaster on DepartmentMaster.DepartmentCode=CustodianMaster.CustodianDepartmentCode
  Where CustodianStatus='Active' ">

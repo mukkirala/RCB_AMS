@@ -11,7 +11,7 @@ using System.Web.Configuration;
 
 public partial class AuditMatchingAsset : System.Web.UI.Page
 {
-    SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     static int srno = 0;
     SqlCommand myCommand;
     static DataTable dt;

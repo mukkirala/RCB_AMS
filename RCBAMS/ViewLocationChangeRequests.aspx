@@ -242,12 +242,12 @@
     </dx:ASPxGridView>
 </div>
  <asp:SqlDataSource ID="AssetListSqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT LocationChangeID,EmployeeLocationChange.AssetID,AssetDesc as AssetTypeName,LocationMaster.LocationCode,LocationMaster.Block,AssetMaster.Location as CLocation,AssetMaster.Block as CBlock,
      EmployeeLocationChange.ToLocation,Concat(EmployeeLocationChange.EmployeeID+'__',EmployeeLocationChange.LocationSequence) as EmployeeID ,RequestBy as Requestedby,EmployeeLocationChange.CustodianDepartment,
      CustDesignation,EmployeeLocationChange.Status,Date,CustodianComments FROM EmployeeLocationChange 
-     inner join InstemSAP..AssetMaster on AssetMaster.AssetID=EmployeeLocationChange.AssetID 
-     inner join InstemAMS..LocationMaster on LocationMaster.LocationID=EmployeeLocationChange.LocationID 
+     inner join RCBSAP..AssetMaster on AssetMaster.AssetID=EmployeeLocationChange.AssetID 
+     inner join RCBAMS..LocationMaster on LocationMaster.LocationID=EmployeeLocationChange.LocationID 
      where EmployeeLocationChange.Status='Request Sent To Approver' and ApproverID=@ApproverID order by LocationChangeID desc">
        <SelectParameters>
            <asp:SessionParameter Name="ApproverID" SessionField="UserID" />
@@ -255,8 +255,8 @@
         </asp:SqlDataSource>
 
 <asp:SqlDataSource ID="DetailDS" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
-    SelectCommand="select AssetMaster.AssetID,AssetMaster.SerialNumber,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc from InstemAMS..EmployeeLocationChange inner join InstemSAP..AssetMaster on AssetMaster.AssetID=EmployeeLocationChange.AssetID where EmployeeLocationChange.LocationChangeID=@ID">
+                ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
+    SelectCommand="select AssetMaster.AssetID,AssetMaster.SerialNumber,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc from RCBAMS..EmployeeLocationChange inner join RCBSAP..AssetMaster on AssetMaster.AssetID=EmployeeLocationChange.AssetID where EmployeeLocationChange.LocationChangeID=@ID">
     <SelectParameters>
     <asp:SessionParameter Name="ID" SessionField="ID" />
     </SelectParameters>
@@ -443,8 +443,8 @@
 </div>
         </div>
     <asp:SqlDataSource ID="AssetListSqlDataSource4" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
-        SelectCommand="SELECT LocationChangeID,EmployeeLocationChange.AssetID,AssetDesc as AssetTypeName,LocationMaster.LocationCode,LocationMaster.Block,AssetMaster.Location as CLocation,AssetMaster.Block as CBlock,EmployeeLocationChange.ToLocation,Concat(EmployeeLocationChange.EmployeeID+'__',EmployeeLocationChange.LocationSequence) as EmployeeID,RequestBy as Requestedby,EmployeeLocationChange.CustodianDepartment,CustDesignation,EmployeeLocationChange.Status,Date,CustodianComments,ApproverID,ApproverName,ApproverDesignation,ApproverDepartment,ApproverComments FROM EmployeeLocationChange inner join InstemSAP..AssetMaster on AssetMaster.AssetID=EmployeeLocationChange.AssetID inner join InstemAMS..LocationMaster on LocationMaster.LocationID=EmployeeLocationChange.LocationID 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
+        SelectCommand="SELECT LocationChangeID,EmployeeLocationChange.AssetID,AssetDesc as AssetTypeName,LocationMaster.LocationCode,LocationMaster.Block,AssetMaster.Location as CLocation,AssetMaster.Block as CBlock,EmployeeLocationChange.ToLocation,Concat(EmployeeLocationChange.EmployeeID+'__',EmployeeLocationChange.LocationSequence) as EmployeeID,RequestBy as Requestedby,EmployeeLocationChange.CustodianDepartment,CustDesignation,EmployeeLocationChange.Status,Date,CustodianComments,ApproverID,ApproverName,ApproverDesignation,ApproverDepartment,ApproverComments FROM EmployeeLocationChange inner join RCBSAP..AssetMaster on AssetMaster.AssetID=EmployeeLocationChange.AssetID inner join RCBAMS..LocationMaster on LocationMaster.LocationID=EmployeeLocationChange.LocationID 
         where EmployeeLocationChange.Status='Request Sent To Admin' and ApproverID=@ApproverID order by LocationChangeID desc">
        <SelectParameters>
            <asp:SessionParameter Name="ApproverID" SessionField="UserID" />
@@ -452,8 +452,8 @@
         </asp:SqlDataSource>
 
      <asp:SqlDataSource ID="DetailDS2" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
-    SelectCommand="select AssetMaster.AssetID,AssetMaster.SerialNumber,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc from InstemAMS..EmployeeLocationChange inner join InstemSAP..AssetMaster on AssetMaster.AssetID=EmployeeLocationChange.AssetID where EmployeeLocationChange.LocationChangeID=@RequestID">
+                ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
+    SelectCommand="select AssetMaster.AssetID,AssetMaster.SerialNumber,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc from RCBAMS..EmployeeLocationChange inner join RCBSAP..AssetMaster on AssetMaster.AssetID=EmployeeLocationChange.AssetID where EmployeeLocationChange.LocationChangeID=@RequestID">
     <SelectParameters>
     <asp:SessionParameter Name="RequestID" SessionField="RequestID" />
     </SelectParameters>

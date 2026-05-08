@@ -279,7 +279,7 @@
             </ValidationSettings>
         </dx:ASPxComboBox>
         <asp:SqlDataSource ID="location" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="SELECT DISTINCT [Location] FROM [LocationMaster]">
             <%--<SelectParameters>             
     <asp:ControlParameter ControlID="txt_Locationid" Name="Location" />
@@ -359,7 +359,7 @@ SelectCommand="SELECT DISTINCT [Location] FROM [LocationMaster]">
             </ValidationSettings>
         </dx:ASPxComboBox>
         <asp:SqlDataSource ID="Blockid" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="SELECT DISTINCT [BLOCK] FROM [LocationMaster]  where Location=@Location">
          <SelectParameters>             
              <asp:ControlParameter ControlID="txt_Locationid" Name="Location" />
@@ -441,7 +441,7 @@ SelectCommand="SELECT DISTINCT [BLOCK] FROM [LocationMaster]  where Location=@Lo
             </ValidationSettings>
         </dx:ASPxComboBox>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
 SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster] WHERE Location=@Location AND Block=@Block">
             <SelectParameters>                  
                 <asp:ControlParameter ControlID="txt_Locationid" Name="Location"/>
@@ -596,28 +596,28 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
 </div>
 </ContentTemplate>
 </asp:UpdatePanel>
-<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="Select * From InstemSAP..vAssetMaster where CustodianID=@EmployeeID and vAssetMaster.Status !='NVAL'">
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="Select * From RCBSAP..vAssetMaster where CustodianID=@EmployeeID and vAssetMaster.Status !='NVAL'">
     <SelectParameters>
         <asp:SessionParameter name="EmployeeID" SessionField="UserID"/>
     </SelectParameters>
     </asp:SqlDataSource>
- <%--<asp:SqlDataSource ID="LocationSqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="select * from LocationMaster">
+ <%--<asp:SqlDataSource ID="LocationSqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="select * from LocationMaster">
 
  </asp:SqlDataSource>--%>
-         <%--<asp:SqlDataSource ID="LocationblockSqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="select DISTINCT LocationID, Location, LocationCode, Status, Block from LocationMaster where LocationCode=@LocationCode">
+         <%--<asp:SqlDataSource ID="LocationblockSqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="select DISTINCT LocationID, Location, LocationCode, Status, Block from LocationMaster where LocationCode=@LocationCode">
                 <SelectParameters>
         <asp:ControlParameter  ControlID="LocationGridLookup1" Name="LocationCode" />
         </SelectParameters>
         </asp:SqlDataSource>--%>
     
       <asp:SqlDataSource ID="AssetListSqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand=" SELECT LocationChangeID,EmployeeLocationChange.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,LocationMaster.LocationCode,LocationMaster.Block,AssetMaster.Location as CLocation,AssetMaster.Block as CBlock,AssetMaster.LocationDesc as CLocationDesc,
 AssetDesc as AssetTypeName,LocationMaster.Location,RequestBy as Requestedby,Concat(EmployeeLocationChange.EmployeeID+'__',EmployeeLocationChange.LocationSequence) as LocationSequence,EmployeeLocationChange.CustodianDepartment,CustDesignation,
 EmployeeLocationChange.Status,EmployeeLocationChange.Date,CustodianComments 
 FROM EmployeeLocationChange 
-inner join InstemSAP..AssetMaster on AssetMaster.AssetID=EmployeeLocationChange.AssetID 
-inner join InstemAMS..LocationMaster on LocationMaster.LocationID=EmployeeLocationChange.LocationID          
+inner join RCBSAP..AssetMaster on AssetMaster.AssetID=EmployeeLocationChange.AssetID 
+inner join RCBAMS..LocationMaster on LocationMaster.LocationID=EmployeeLocationChange.LocationID          
  where EmployeeLocationChange.EmployeeID=@EmployeeID order by LocationChangeID desc">
          <SelectParameters>
         <asp:SessionParameter Name="EmployeeID" SessionField="UserID" />

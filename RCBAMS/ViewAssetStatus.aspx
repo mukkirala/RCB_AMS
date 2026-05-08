@@ -212,8 +212,8 @@
     </dx:ASPxGridView>
 
        <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
-        SelectCommand="SELECT  AssetRequestID,AssetTypeName,EmployeeAssetRequest.MainAssetNumber,EmployeeID,RequestBy,CustodianDepartment,CustDepartmentCode,CustDesignation,Quantity as RequestedQuantity,ApproverID,ApproverName,ApproverDesignation,ApproverDeptCode,ApproverDepartment,ApprovedQuantity,ApproverComments,EmployeeAssetRequest.Status as RequestStatus,Date from InstemAMS..EmployeeAssetRequest inner join InstemSAP..AssetTypeMaster on AssetTypeMaster.AssetTypeID=EmployeeAssetRequest.AssetTypeID where [EmployeeAssetRequest].Status in('Request Sent To Admin','Rejected') order by AssetRequestID desc">
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
+        SelectCommand="SELECT  AssetRequestID,AssetTypeName,EmployeeAssetRequest.MainAssetNumber,EmployeeID,RequestBy,CustodianDepartment,CustDepartmentCode,CustDesignation,Quantity as RequestedQuantity,ApproverID,ApproverName,ApproverDesignation,ApproverDeptCode,ApproverDepartment,ApprovedQuantity,ApproverComments,EmployeeAssetRequest.Status as RequestStatus,Date from RCBAMS..EmployeeAssetRequest inner join RCBSAP..AssetTypeMaster on AssetTypeMaster.AssetTypeID=EmployeeAssetRequest.AssetTypeID where [EmployeeAssetRequest].Status in('Request Sent To Admin','Rejected') order by AssetRequestID desc">
        
         </asp:SqlDataSource>
   

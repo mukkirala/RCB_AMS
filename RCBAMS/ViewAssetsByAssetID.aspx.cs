@@ -16,8 +16,8 @@ using DevExpress.Web.ASPxGridView;
 
 public partial class ViewAssetsByAssetID : System.Web.UI.Page
 {
-    SqlConnection conSAP = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
-    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection conSAP = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
+    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     SqlCommand cmd;
     SqlCommand myCommand;
     SqlDataAdapter da;
@@ -40,7 +40,7 @@ public partial class ViewAssetsByAssetID : System.Web.UI.Page
         {
             if (txt_subnumber.Text == "")
             {
-                string query = "Select * from AssetMaster left JOIN InstemAMS..QRCodeMaster ON AssetMaster.AssetID=QRCodeMaster.AssetID  where AssetMaster.MainAssetNumber='" + txt_mainassetnumber.Text + "'";
+                string query = "Select * from AssetMaster left JOIN RCBAMS..QRCodeMaster ON AssetMaster.AssetID=QRCodeMaster.AssetID  where AssetMaster.MainAssetNumber='" + txt_mainassetnumber.Text + "'";
                 SqlDataAdapter da = new SqlDataAdapter(query, conSAP);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -96,11 +96,11 @@ public partial class ViewAssetsByAssetID : System.Web.UI.Page
             string query;
             if (txt_subnumber.Text == "")
             {
-                query = "Select QRCodeMaster.MainAssetNumber,QRCode,QRImage from QRCodeMaster inner join InstemSAP..AssetMaster on AssetMaster.AssetID=QRCodeMaster.AssetID where AssetMaster.MainAssetNumber='" + txt_mainassetnumber.Text + "'";
+                query = "Select QRCodeMaster.MainAssetNumber,QRCode,QRImage from QRCodeMaster inner join RCBSAP..AssetMaster on AssetMaster.AssetID=QRCodeMaster.AssetID where AssetMaster.MainAssetNumber='" + txt_mainassetnumber.Text + "'";
             }
             else
             {
-                query = "Select QRCodeMaster.MainAssetNumber,QRCode,QRImage from QRCodeMaster inner join InstemSAP..AssetMaster on AssetMaster.AssetID=QRCodeMaster.AssetID where AssetMaster.MainAssetNumber='" + txt_mainassetnumber.Text + "' and AssetMaster.AssetSubNumber='" + txt_subnumber.Text + "'";
+                query = "Select QRCodeMaster.MainAssetNumber,QRCode,QRImage from QRCodeMaster inner join RCBSAP..AssetMaster on AssetMaster.AssetID=QRCodeMaster.AssetID where AssetMaster.MainAssetNumber='" + txt_mainassetnumber.Text + "' and AssetMaster.AssetSubNumber='" + txt_subnumber.Text + "'";
             }
             da = new SqlDataAdapter(query, conAMS);
             DataTable dt = new DataTable();
@@ -182,11 +182,11 @@ public partial class ViewAssetsByAssetID : System.Web.UI.Page
             string query;
             if (txt_subnumber.Text == "")
             {
-                query = "Select QRCodeMaster.MainAssetNumber,QRCodeMaster.AssetSubNumber,QRImage from QRCodeMaster inner join InstemSAP..AssetMaster on AssetMaster.AssetID=QRCodeMaster.AssetID where AssetMaster.MainAssetNumber='" + txt_mainassetnumber.Text + "'";
+                query = "Select QRCodeMaster.MainAssetNumber,QRCodeMaster.AssetSubNumber,QRImage from QRCodeMaster inner join RCBSAP..AssetMaster on AssetMaster.AssetID=QRCodeMaster.AssetID where AssetMaster.MainAssetNumber='" + txt_mainassetnumber.Text + "'";
             }
             else
             {
-                query = "Select QRCodeMaster.MainAssetNumber,QRCodeMaster.AssetSubNumber,QRImage from QRCodeMaster inner join InstemSAP..AssetMaster on AssetMaster.AssetID=QRCodeMaster.AssetID where AssetMaster.MainAssetNumber='" + txt_mainassetnumber.Text + "' and AssetMaster.AssetSubNumber='" + txt_subnumber.Text + "'";
+                query = "Select QRCodeMaster.MainAssetNumber,QRCodeMaster.AssetSubNumber,QRImage from QRCodeMaster inner join RCBSAP..AssetMaster on AssetMaster.AssetID=QRCodeMaster.AssetID where AssetMaster.MainAssetNumber='" + txt_mainassetnumber.Text + "' and AssetMaster.AssetSubNumber='" + txt_subnumber.Text + "'";
             }
             da = new SqlDataAdapter(query, conAMS);
             DataTable dtt = new DataTable();

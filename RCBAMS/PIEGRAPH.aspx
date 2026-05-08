@@ -44,7 +44,7 @@
             </ChartAreas>
         </asp:Chart>
          <asp:Label ID="lblTotalNames" runat="server"></asp:Label>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>"
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
             SelectCommand="SELECT AssetDesc, COUNT(AssetDesc) AS NOOFASSETS FROM AssetMaster GROUP BY AssetDesc">
         </asp:SqlDataSource>
     </td>

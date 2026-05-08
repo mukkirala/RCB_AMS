@@ -198,8 +198,8 @@
  </div>
 
 <asp:SqlDataSource ID="DetailDS" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
-    SelectCommand="select AssetMaster.AssetID,AssetMaster.SerialNumber,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc from InstemAMS..EmployeeAssetReturn inner join InstemSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetReturn.AssetID where EmployeeAssetReturn.AssetReturnID=@ID">
+                ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
+    SelectCommand="select AssetMaster.AssetID,AssetMaster.SerialNumber,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc from RCBAMS..EmployeeAssetReturn inner join RCBSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetReturn.AssetID where EmployeeAssetReturn.AssetReturnID=@ID">
     <SelectParameters>
     <asp:SessionParameter Name="ID" SessionField="ID" />
     </SelectParameters>
@@ -398,26 +398,26 @@
 </div>
  
       <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT AssetReturnID,EmployeeAssetReturn.AssetID,AssetDesc as AssetTypeName,
              concat(EmployeeAssetReturn.EmployeeID+'__',EmployeeAssetReturn.ReturnSequene) as EmployeeID,RequestBy as Requestedby,EmployeeAssetReturn.CustodianDepartment,CustDesignation,
             ApproverID,ApproverName,ApproverDesignation,ApproverDeptCode,ApproverDepartment,EmployeeAssetReturn.Status,Date,CustodianComments,ApproverComments FROM EmployeeAssetReturn 
-          inner join InstemSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetReturn.AssetID 
+          inner join RCBSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetReturn.AssetID 
           where EmployeeAssetReturn.Status='Request Sent To Admin' order by AssetReturnID desc">      
         </asp:SqlDataSource>
 
       <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT AssetReturnID,EmployeeAssetReturn.AssetID,AssetDesc as AssetTypeName,
             concat(EmployeeAssetReturn.EmployeeID+'__',EmployeeAssetReturn.ReturnSequene) as EmployeeID,RequestBy as Requestedby,EmployeeAssetReturn.CustodianDepartment,CustDesignation,
             ApproverID,ApproverName,ApproverDesignation,ApproverDeptCode,ApproverDepartment,AdminID,AdminName,EmployeeAssetReturn.Status,Date,CustodianComments,AdminComments,
             ApproverComments FROM EmployeeAssetReturn 
-            inner join InstemSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetReturn.AssetID 
+            inner join RCBSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetReturn.AssetID 
             where EmployeeAssetReturn.Status='Approved' order by AssetReturnID desc">       
         </asp:SqlDataSource>
     <asp:SqlDataSource ID="DetailDS2" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
-    SelectCommand="select AssetMaster.AssetID,AssetMaster.SerialNumber,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc from InstemAMS..EmployeeAssetReturn inner join InstemSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetReturn.AssetID where EmployeeAssetReturn.AssetReturnID=@RequestID">
+                ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
+    SelectCommand="select AssetMaster.AssetID,AssetMaster.SerialNumber,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc,AssetMaster.StatusDesc from RCBAMS..EmployeeAssetReturn inner join RCBSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetReturn.AssetID where EmployeeAssetReturn.AssetReturnID=@RequestID">
     <SelectParameters>
     <asp:SessionParameter Name="RequestID" SessionField="RequestID" />
     </SelectParameters>

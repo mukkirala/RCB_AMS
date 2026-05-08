@@ -169,7 +169,7 @@ public class BarcodeImagesReportSingle : DevExpress.XtraReports.UI.XtraReport
             this.xrLabel1.SizeF = new System.Drawing.SizeF(82.70825F, 10.00004F);
             this.xrLabel1.StylePriority.UseFont = false;
             this.xrLabel1.StylePriority.UseTextAlignment = false;
-            this.xrLabel1.Text = "inStem";
+            this.xrLabel1.Text = "RCB";
             this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrPictureBox1

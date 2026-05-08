@@ -125,7 +125,7 @@
             </ProgressBar>
         </StylesEditors>
     </dx:ASPxGridView>
-    <asp:SqlDataSource ID="SqlDepartmentMaster" runat="server" ConnectionString="<%$ConnectionStrings:InstemAMSConnectionString%>" 
+    <asp:SqlDataSource ID="SqlDepartmentMaster" runat="server" ConnectionString="<%$ConnectionStrings:RCBAMSConnectionString%>" 
         SelectCommand="SELECT * from DepartmentMaster">
     </asp:SqlDataSource>                                     
     

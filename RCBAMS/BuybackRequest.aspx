@@ -370,17 +370,17 @@
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ConnectionStrings:ASSETManagementConnectionString%>" SelectCommand="select CustodianID,CustodianName from Common..vEmpDtlsAssetApp">
 
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="Select * From InstemSAP..AssetMaster where CustodianID=@EmployeeID and AssetMaster.Status !='NVAL'">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="Select * From RCBSAP..AssetMaster where CustodianID=@EmployeeID and AssetMaster.Status !='NVAL'">
     <SelectParameters>
         <asp:SessionParameter name="EmployeeID" SessionField="UserID"/>
     </SelectParameters>
     </asp:SqlDataSource>
       <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT BuybackRequestID,EmployeeAssetBuyback.AssetID,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,
  AssetDesc as AssetTypeName,EmployeeAssetBuyback.EmployeeID,RequestBy as RequestedBy,EmployeeAssetBuyback.CustodianDepartment,CustDesignation,
  EmployeeAssetBuyback.Status,Date,Comments FROM EmployeeAssetBuyback
-  inner join InstemSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetBuyback.AssetID
+  inner join RCBSAP..AssetMaster on AssetMaster.AssetID=EmployeeAssetBuyback.AssetID
    where EmployeeAssetBuyback.EmployeeID=@EmployeeID order by BuybackRequestID desc">
         <SelectParameters>
         <asp:SessionParameter Name="EmployeeID" SessionField="UserID" />

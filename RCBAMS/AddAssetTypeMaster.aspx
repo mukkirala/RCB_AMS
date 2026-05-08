@@ -77,7 +77,7 @@
 
                  </dx:ASPxComboBox>
                          <asp:SqlDataSource ID="Classid" runat="server" 
-ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
 SelectCommand="SELECT DISTINCT [AssetClassName] FROM [AssetClassMaster] ">
         <%-- <SelectParameters>
              <asp:ControlParameter ControlID="txtLocationid" Name="LocationCode" />
@@ -182,7 +182,7 @@ SelectCommand="SELECT DISTINCT [AssetClassName] FROM [AssetClassMaster] ">
                    </ProgressBar>
                </StylesEditors>
            </dx:ASPxGridView>
-           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>"
+           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
                 SelectCommand="SELECT [AssetTypeID], [AssetTypeName], [AssetTypeCode], [CreatedDate], [Status] FROM [AssetTypeMaster] WHERE Status = 'Active' OR Status IS NULL; "
                 UpdateCommand="UPDATE ManufacturerMaster SET ManufacturerName=@ManufacturerName,ManufacturerCode=@ManufacturerCode WHERE ManufacturerID=@ManufacturerID  "></asp:SqlDataSource>
            <br />

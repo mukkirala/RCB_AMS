@@ -168,11 +168,11 @@
 
 
    <%-- <asp:SqlDataSource ID="SqlDataSource" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="SELECT [AssetClassMaster].[AssetClassID], [AssetClassName], [DepartmentCode],
         DepartmentName FROM [AssetClassMaster]
-inner join InstemAMS..EmployeeAssetRequest on EmployeeAssetRequest.AssetClassID=AssetClassMaster.AssetClassID
-inner join InstemAMS..AssetAllocation on AssetAllocation.AssetRequestID=EmployeeAssetRequest.AssetRequestID
+inner join RCBAMS..EmployeeAssetRequest on EmployeeAssetRequest.AssetClassID=AssetClassMaster.AssetClassID
+inner join RCBAMS..AssetAllocation on AssetAllocation.AssetRequestID=EmployeeAssetRequest.AssetRequestID
 where AssetAllocation.Status='Approved' and EmployeeAssetRequest.EmployeeID=@CustodianID order by AssetAllocation.Date desc">
         <SelectParameters>
        <asp:ControlParameter ControlID="reqid" Name="CustodianID" />
@@ -182,7 +182,7 @@ where AssetAllocation.Status='Approved' and EmployeeAssetRequest.EmployeeID=@Cus
 
   <%-- <asp:SqlDataSource ID="SqlDataSource" runat="server" 
         <asp:SqlDataSource ID="SqlDataSource" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="
 SELECT distinct [AssetClassMaster].[AssetClassID], [AssetClassName], [AssetClassMaster].[DepartmentCode],
         DepartmentName FROM [AssetClassMaster]
@@ -359,7 +359,7 @@ where CustodianID=@CustodianID and vAssetMaster.Status !='NVAL'">
 					</ValidationSettings>
                 </dx:ASPxComboBox>
                         </div>   
-                            <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="select ServiceTypeID,ServiceTypeName from ServiceTypeMaster where Status='Active'"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="select ServiceTypeID,ServiceTypeName from ServiceTypeMaster where Status='Active'"></asp:SqlDataSource>
                            
             </div>
             </div>
@@ -566,7 +566,7 @@ where CustodianID=@CustodianID and vAssetMaster.Status !='NVAL'">
     </dx:ASPxGridView>
         
       
-   <%-- <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" 
+   <%-- <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="Select AssetTypeID,AssetTypeName,AssetTypeCode from AssetTypeMaster inner join AssetClassMaster on AssetClassMaster.AssetClassName=AssetTypeMaster.AssetClassName where AssetClassID=@AssetClassID">
          <SelectParameters>
             <asp:ControlParameter ControlID="cmb_assetclass" Name="AssetClassID" />
@@ -574,33 +574,33 @@ where CustodianID=@CustodianID and vAssetMaster.Status !='NVAL'">
     </asp:SqlDataSource>--%>
 
        <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT ComplaintRegistration.ComplaintID,EmployeeID,MainAssetNumber,AssetDesc,EmployeeName,Concat(ComplaintTransaction.USR_ID+'_','C0',ComplaintTransaction.Sequence) as complaintsequence,EmployeeDepartment,EmployeeDesignation,ServiceTypeMaster.ServiceTypeName, ComplaintRegistration.CreatedDate,ComplaintTransaction.Status,Complaint_Description FROM  [ComplaintRegistration]  
-inner join InstemSAP..AssetMaster on InstemSAP..AssetMaster.AssetID=[ComplaintRegistration].AssetID
-inner join InstemAMS..[ComplaintTransaction] on InstemAMS..[ComplaintTransaction].ComplaintID=InstemAMS..[ComplaintRegistration].ComplaintID
+inner join RCBSAP..AssetMaster on RCBSAP..AssetMaster.AssetID=[ComplaintRegistration].AssetID
+inner join RCBAMS..[ComplaintTransaction] on RCBAMS..[ComplaintTransaction].ComplaintID=RCBAMS..[ComplaintRegistration].ComplaintID
 inner join ServiceTypeMaster on ServiceTypeMaster.ServiceTypeID=ComplaintRegistration.ServiceTypeID  Where EmployeeID=@EmployeeID and (ComplaintTransaction.Status='Pending' or ComplaintTransaction.Status='Re_Open') and  ComplaintRegistration.ComplaintType IS not NULL">
-          <%-- SELECT EmployeeID,ApproverID,Status,CustodianMaster.CustodianName,EmployeeName, Comments,EmployeeDepartment,AssetTypeMaster.AssetTypeName,EmployeeDesignation,ServiceTypeName,Complaint_Description FROM InstemAMS..[ComplaintRegistration] 
+          <%-- SELECT EmployeeID,ApproverID,Status,CustodianMaster.CustodianName,EmployeeName, Comments,EmployeeDepartment,AssetTypeMaster.AssetTypeName,EmployeeDesignation,ServiceTypeName,Complaint_Description FROM RCBAMS..[ComplaintRegistration] 
 inner join ServiceTypeMaster on ServiceTypeMaster.ServiceTypeID=ComplaintRegistration.ServiceTypeID
-inner join InstemSAP..[AssetClassMaster] on AssetClassMaster.AssetClassName=ComplaintRegistration.AssetClassID
-inner join InstemSAP..[AssetTypeMaster] on AssetTypeMaster.AssetTypeID=ComplaintRegistration.AssetTypeID
+inner join RCBSAP..[AssetClassMaster] on AssetClassMaster.AssetClassName=ComplaintRegistration.AssetClassID
+inner join RCBSAP..[AssetTypeMaster] on AssetTypeMaster.AssetTypeID=ComplaintRegistration.AssetTypeID
 inner join CustodianMaster on CustodianMaster.CustodianID=ComplaintRegistration.ApproverID
 Where EmployeeID=@EmployeeID and Status='Pending' or Status='Re_Open'">--%>
-<%--inner join InstemSAP..AssetTypeMaster on AssetTypeMaster.AssetTypeID=EmployeeAssetRequest.AssetTypeID
+<%--inner join RCBSAP..AssetTypeMaster on AssetTypeMaster.AssetTypeID=EmployeeAssetRequest.AssetTypeID
  where EmployeeID=@EmployeeID order by [AssetRequestID] desc">--%>
         <SelectParameters>
         <asp:SessionParameter Name="EmployeeID" SessionField="UserID" />
         </SelectParameters>
         </asp:SqlDataSource>
 
- <%--<asp:SqlDataSource ID="LocationSqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="select * from LocationMaster">
+ <%--<asp:SqlDataSource ID="LocationSqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="select * from LocationMaster">
 
  </asp:SqlDataSource>--%>
    </div>
       </div>
     </div> 
  </div>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" 
-        SelectCommand="Select * From InstemSAP..vAssetMaster where vAssetMaster.AssetClass='Non-IT' and Status='AVAL'">
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" 
+        SelectCommand="Select * From RCBSAP..vAssetMaster where vAssetMaster.AssetClass='Non-IT' and Status='AVAL'">
     <SelectParameters>
         <%--<asp:SessionParameter name="EmployeeID" SessionField="UserID"/>--%>
         

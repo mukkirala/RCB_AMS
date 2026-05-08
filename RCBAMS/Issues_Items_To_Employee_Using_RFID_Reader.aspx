@@ -123,7 +123,7 @@
 
                  <dx:ASPxComboBox ID="ASPxComboBox1" runat="server" DataSourceID="SqlDataSource2"  ValueField="CustodianID"  IncrementalFilteringMode="StartsWith" TextField="CustodianName" ValueType="System.String" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue"  SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                 </dx:ASPxComboBox>
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" SelectCommand="SELECT [CustodianID], [CustodianName] FROM [CustodianMaster]"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="SELECT [CustodianID], [CustodianName] FROM [CustodianMaster]"></asp:SqlDataSource>
            
             </td>
             <td class="auto-style23">
@@ -208,7 +208,7 @@
                      <%--<SettingsSearchPanel Visible="true" />--%>
                     
                 <%--</dx:ASPxGridLookup>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="SELECT [Barcode],AssetDescription FROM [AssetMaster]"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="SELECT [Barcode],AssetDescription FROM [AssetMaster]"></asp:SqlDataSource>
             </td>--%>
 
                 <td>
@@ -259,7 +259,7 @@
             </ErrorFrameStyle>
         </ValidationSettings>
                 </dx:ASPxGridLookup>
-          <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="SELECT SLNO,AssetID,MainAssetNumber,AssetSubNumber,AssetDesc,RFIDCardNumber FROM [AssetMaster] where RFIDCardNumber IS NOT NULL and Status='AVAl'"></asp:SqlDataSource>
+          <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="SELECT SLNO,AssetID,MainAssetNumber,AssetSubNumber,AssetDesc,RFIDCardNumber FROM [AssetMaster] where RFIDCardNumber IS NOT NULL and Status='AVAl'"></asp:SqlDataSource>
 
     </td>
     <td>

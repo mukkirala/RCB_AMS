@@ -109,7 +109,7 @@
                 </dx:ASPxGridLookup>
                  
                  <asp:SqlDataSource ID="CustSqlDataSource" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>"
+        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
         SelectCommand="SELECT Distinct [AssetID],[MainAssetNumber], [AssetDesc] FROM [AssetMaster] where Status !='InActive'">
          </asp:SqlDataSource>     
               </div>
@@ -378,18 +378,18 @@
                     </StylesEditors>
                     </dx:ASPxGridView>
   <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand=" Select EmployeeLocationChange.AssetID, AssetMaster.AssetDesc,EmployeeLocationChange.[RequestBy],[EmployeeID],LocationMaster.[Block],EmployeeLocationChange.[ToLocation],EmployeeLocationChange.FromLocation,EmployeeLocationChange.FromBlock,EmployeeLocationChange.Date from [EmployeeLocationChange]
-  inner join InstemSAP..AssetMaster on AssetMaster.AssetID= EmployeeLocationChange.AssetID
+  inner join RCBSAP..AssetMaster on AssetMaster.AssetID= EmployeeLocationChange.AssetID
           inner join LocationMaster on LocationMaster.LocationID = EmployeeLocationChange.LocationID Where [EmployeeLocationChange].Status='Approved'and  AssetMaster.AssetID =@AssetID order by Date desc">
             <SelectParameters>
           <asp:ControlParameter  ControlID="Cust_gridlookup" Name="AssetID"/>
          </SelectParameters>
         </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand=" Select CustodianChangeRequest.AssetID, AssetMaster.AssetDesc, [EmployeeID],CustodianChangeRequest.RequestBy,[RequestedChangeCustodian],[CustodianMaster].[CustodianName],CustodianChangeRequest.Date from [CustodianChangeRequest]
-        inner join InstemSAP..AssetMaster on AssetMaster.AssetID = CustodianChangeRequest.AssetID
+        inner join RCBSAP..AssetMaster on AssetMaster.AssetID = CustodianChangeRequest.AssetID
           inner join CustodianMaster on CustodianMaster.[CustodianID] = CustodianChangeRequest.RequestedChangeCustodian Where [CustodianChangeRequest].Status='Approved'and CustodianChangeRequest.AssetID =@AssetID order by Date desc">
             <SelectParameters>
                 <asp:ControlParameter  ControlID="Cust_gridlookup" Name="AssetID"/>

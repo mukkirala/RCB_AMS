@@ -14,7 +14,7 @@ using SAP.Middleware.Connector;
 
 public partial class ImportAssetClass : System.Web.UI.Page
 {
-    SqlConnection conSAP = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
+    SqlConnection conSAP = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
     SqlDataAdapter da;
     SqlCommand cmd;
     ECCDestinationConfig cfg = null;

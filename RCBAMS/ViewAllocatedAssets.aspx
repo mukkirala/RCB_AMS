@@ -191,7 +191,7 @@
         </StylesEditors>
     </dx:ASPxGridView>
     
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" 
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="Select * From AssetMaster where CustodianID=@CustodianID and AssetMaster.Status !='NVAL'">
    <SelectParameters>
        <asp:ControlParameter ControlID="reqid" Name="CustodianID" />

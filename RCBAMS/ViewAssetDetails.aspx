@@ -321,7 +321,7 @@
 </div>
 </div>
 </div>
-         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:InstemSAPConnectionString %>" SelectCommand="SELECT [AssetID],[MainAssetNumber],[AssetSubNumber],[AssetDesc] FROM [AssetMaster]">
+         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" SelectCommand="SELECT [AssetID],[MainAssetNumber],[AssetSubNumber],[AssetDesc] FROM [AssetMaster]">
               </asp:SqlDataSource>
           
 </asp:Content>

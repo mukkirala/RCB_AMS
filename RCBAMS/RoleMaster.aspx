@@ -230,12 +230,12 @@
         </StylesEditors>
     </dx:ASPxGridView>
   <asp:SqlDataSource ID="Sql_Role" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT * FROM [RoleMaster] where ROLE_NAME in('Admin','Auditor') and ROLE_STATUS='Active' ">
          </asp:SqlDataSource>
 
         <asp:SqlDataSource ID="CustSqlDataSource" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemAMSConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="SELECT [CustodianID], [CustodianName] FROM [CustodianMaster]">
          </asp:SqlDataSource>
 

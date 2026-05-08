@@ -18,7 +18,7 @@ using System.Web.UI.WebControls;
 
 public partial class AdminAssignedGEPendingComplaints : System.Web.UI.Page
 {
-    private static string connection = ConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString;
+    private static string connection = ConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString;
     private SqlConnection con = new SqlConnection(connection);
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -33,7 +33,7 @@ public partial class AdminAssignedGEPendingComplaints : System.Web.UI.Page
         {
             Response.Redirect("~/ErrorPage.aspx");
         }
-        SqlDataAdapter da = new SqlDataAdapter("select ComplaintTransaction.Status,AssetMaster.AssetDesc,ComplaintRegistration.AssetID,ComplaintRegistration.EmployeeID,CustodianMaster.email,ComplaintTransaction.ComplaintID,ComplaintTransaction.AssignedDate, ComplaintRegistration.ComplaintCode,ServiceTypeName,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,ComplaintRegistration.EmployeeName,ComplaintTransaction.Remarks from ComplaintTransaction  inner join ComplaintRegistration on ComplaintRegistration.ComplaintID=ComplaintTransaction.ComplaintID  inner join ServiceTypeMaster on ServiceTypeMaster.ServiceTypeID=ComplaintRegistration.ServiceTypeID  inner join CustodianMaster on CustodianMaster.CustodianID=ComplaintRegistration.EmployeeID inner join InstemSAP..AssetMaster on AssetMaster.AssetID=ComplaintRegistration.AssetID where ComplaintTransaction.ComplaintID ='" + Session["ComplaintID"] + "'", con);
+        SqlDataAdapter da = new SqlDataAdapter("select ComplaintTransaction.Status,AssetMaster.AssetDesc,ComplaintRegistration.AssetID,ComplaintRegistration.EmployeeID,CustodianMaster.email,ComplaintTransaction.ComplaintID,ComplaintTransaction.AssignedDate, ComplaintRegistration.ComplaintCode,ServiceTypeName,AssetMaster.MainAssetNumber,AssetMaster.AssetSubNumber,ComplaintRegistration.EmployeeName,ComplaintTransaction.Remarks from ComplaintTransaction  inner join ComplaintRegistration on ComplaintRegistration.ComplaintID=ComplaintTransaction.ComplaintID  inner join ServiceTypeMaster on ServiceTypeMaster.ServiceTypeID=ComplaintRegistration.ServiceTypeID  inner join CustodianMaster on CustodianMaster.CustodianID=ComplaintRegistration.EmployeeID inner join RCBSAP..AssetMaster on AssetMaster.AssetID=ComplaintRegistration.AssetID where ComplaintTransaction.ComplaintID ='" + Session["ComplaintID"] + "'", con);
         DataTable dt = new DataTable();
         da.Fill(dt);
         if (dt.Rows.Count > 0)

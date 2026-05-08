@@ -18,8 +18,8 @@ using System.Web.UI.WebControls;
 
 public partial class BulkUploadAssets : System.Web.UI.Page
 {
-    SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
-    SqlConnection AMScon = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
+    SqlConnection AMScon = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
 
     protected void Page_Load(object sender, EventArgs e)
     {

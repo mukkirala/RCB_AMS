@@ -72,7 +72,7 @@
                     </dx:ASPxComboBox>                   
   
                  <asp:SqlDataSource ID="SqbDBaircraft" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="SELECT DISTINCT [AssetOwner] FROM [AssetMaster]">
          </asp:SqlDataSource>
 
@@ -266,7 +266,7 @@
             </ProgressBar>
         </StylesEditors>
     </dx:ASPxGridView>
-   <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+   <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
         SelectCommand="Select * from AssetMaster
       where AssetOwner=@AssetOwner ">
        
