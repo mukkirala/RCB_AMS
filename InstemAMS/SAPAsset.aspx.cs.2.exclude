@@ -1,0 +1,110 @@
+﻿using SAP.Middleware.Connector;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class SAPAsset : System.Web.UI.Page
+{
+    DataTable dt = new DataTable();
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        MyBackendConfig config__ = new MyBackendConfig();
+        try
+        {
+            RfcDestinationManager.RegisterDestinationConfiguration(config__);
+        }
+        catch (RfcInvalidStateException exec)
+        {
+            Label1.Text = exec.Message;
+        }
+
+        catch (RfcCommunicationException exec2)
+        {
+            Label1.Text = exec2.Message;
+        }
+
+
+    }
+
+    protected void ASPxButton1_Click(object sender, EventArgs e)
+    {
+        try
+        { 
+        RfcDestination prd = RfcDestinationManager.GetDestination("SAPJ2EE");
+
+        RfcRepository repo = prd.Repository;
+
+        // BAPI_ADDREMPAU_GETDETAIL is bapi please take bapi name from abaper.
+
+        IRfcFunction companyBapi1 = repo.CreateFunction("BAPI_ADDREMPAU_GETDETAIL");
+
+        // set the employeenumber based upon the employeenumber we need to display empdetails.
+
+        companyBapi1.SetValue("EMPLOYEENUMBER", int.Parse(txtEmploeeNumber.Text));
+
+        // Invoke the rfcfunction
+
+        companyBapi1.Invoke(prd);
+
+        for (int i = 0; i < companyBapi1.ElementCount; i++)
+        {
+            RfcDirection direction = companyBapi1[i].Metadata.Direction;
+            if (companyBapi1[i].Metadata.DataType.ToString().Trim() != "STRUCTURE" && direction.ToString().Trim() == "EXPORT")
+            {
+                dt.Columns.Add(companyBapi1.Metadata[i].Name);
+            }
+        }
+        DataRow dr = dt.NewRow();
+        dt.Rows.Add(dr);
+        int columnnumber = 0;
+            for (int m = 0; m < companyBapi1.Count; m++)
+            {
+                RfcDirection direction = companyBapi1[m].Metadata.Direction;
+                if (companyBapi1[m].Metadata.DataType.ToString().Trim() != "STRUCTURE" && direction.ToString().Trim() == "EXPORT" && columnnumber < dt.Columns.Count)
+                {
+                    dt.Rows[0][columnnumber] = companyBapi1[m].GetString();
+                }
+                columnnumber++;
+            }
+        }
+        catch (RfcInvalidParameterException exec)
+        {
+            Label1.Text = exec.Message;
+        }
+        catch (RfcTypeConversionException exec1)
+        {
+            Label1.Text = exec1.Message;
+        }
+
+        catch (RfcCommunicationException exec2)
+        {
+            Label1.Text = exec2.Message;
+        }
+
+        catch (RfcBaseException exec3)
+        {
+            Label1.Text = exec3.Message;
+        }
+        ASPxGridView1.DataSource = dt;
+        ASPxGridView1.DataBind();
+    }
+
+    protected void ASPxButton2_Click(object sender, EventArgs e)
+    {
+        RfcDestination prd = RfcDestinationManager.GetDestination("SAPJ2EE");
+        RfcRepository repo = prd.Repository;
+        // BAPI_ADDREMPAU_InsertDETAIL is bapi please take bapi name from abaper.       
+
+        IRfcFunction companyBapi1 = repo.CreateFunction("BAPI_ADDREMPAU_InsertDETAIL");
+
+        // set the employee first name,lasename and DOB for inserting data those details into database.
+        companyBapi1.SetValue("FirstName", txtFirstName.Text);
+        companyBapi1.SetValue("LastName", txtLastName.Text);
+        companyBapi1.SetValue("DOB", txtDOB.Text);
+        companyBapi1.Invoke(prd);
+    }
+}

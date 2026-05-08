@@ -1,0 +1,348 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Threading;
+using System.Web;
+using System.Web.Configuration;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+using SAP.Middleware.Connector;
+using DevExpress.Web.ASPxGridView;
+using DevExpress.Web.ASPxEditors;
+
+
+public partial class ImportedAssets : System.Web.UI.Page
+{
+    SqlConnection conSAP = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
+    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlDataAdapter da;
+    SqlCommand cmd;
+       
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (Session["UserID"] == null)
+        {
+            Response.Redirect("ErrorPage.aspx");
+            return;
+        }
+       
+        //DemoHelper.Instance.ControlAreaMinHeight = Unit.Pixel(230);
+        cmb_class.GridView.Width = cmb_class.Width;
+    }
+
+    protected void ASPxButton1_Click(object sender, EventArgs e)
+    {
+        DataTable dtm = new DataTable();
+        ECCDestinationConfig cfg = null;
+        RfcDestination dest = null;
+
+        DataTable qrdt = new DataTable();
+        qrdt.Columns.Add("AssetID");
+        qrdt.Columns.Add("MainAssetNumber");
+        qrdt.Columns.Add("AssetSubNumber");
+        qrdt.Columns.Add("CustodianDepartment");
+        qrdt.Columns.Add("AssetDesc");
+        qrdt.Columns.Add("AdditionalDesc");
+        qrdt.Columns.Add("Unit");
+        qrdt.Columns.Add("Quantity");
+        qrdt.Columns.Add("AssetCapitalizationDate");
+        qrdt.Columns.Add("FirstAcquisitionDate");
+        qrdt.Columns.Add("CustodianID");
+        qrdt.Columns.Add("Location");
+        qrdt.Columns.Add("LocationDesc");
+        qrdt.Columns.Add("Status");
+        qrdt.Columns.Add("StatusDesc");
+        qrdt.Columns.Add("AssetClass");
+        qrdt.Columns.Add("Component");
+        qrdt.Columns.Add("ComponentDesc");
+        qrdt.Columns.Add("Deacdate");
+        qrdt.Columns.Add("Invdate");
+        qrdt.Columns.Add("InventoryNote");
+        qrdt.Columns.Add("CreationDate");
+
+        DataTable dtclass = new DataTable();
+
+        string aclass = cmb_class.Text.ToString();
+        string trim = aclass.Replace(" ", "");
+        char[] delimiterChars = { ' ', ',', '.', ':', '\t' };
+        string[] words = trim.Split(delimiterChars);
+        foreach (var word in words)
+        {        
+            //SAP Code starts.............
+            try
+            {
+                cfg = new ECCDestinationConfig();
+                RfcDestinationManager.RegisterDestinationConfiguration(cfg);
+                dest = RfcDestinationManager.GetDestination("SAPJ2EE");
+                //if (dest == null)
+                //{
+                //    try
+                //    {
+                //        RfcDestinationManager.RegisterDestinationConfiguration(cfg);
+                //    }
+                //    catch (Exception ex)
+                //    {
+
+                //    }
+                //    dest = RfcDestinationManager.GetDestination("SAPJ2EE");
+                //}
+                RfcRepository repo = dest.Repository;
+                
+                IRfcFunction fnpush = repo.CreateFunction("ZAT_ASSET_DETAILS");
+                fnpush.SetValue("I_BUKRS", "");
+                fnpush.SetValue("I_ANLN1", "");
+                fnpush.SetValue("I_ANLN2", "");
+                fnpush.SetValue("I_EVALUATION_DATE", "");
+                fnpush.SetValue("I_ANLKL", word);
+
+                fnpush.Invoke(dest);
+                var exObject = fnpush.GetObject("ZAT_ASSET_DET");
+
+                //IRfcTable classdataTbl = fnpush.GetTable("ZAT_ASSET_CLASS");
+                //dtclass = IRfcTableExtension.ToDataTable(classdataTbl, "ClassData");
+
+                IRfcTable dataTbl = fnpush.GetTable("ZAT_ASSET_DET");
+                ////IRfcStructure exStructure = fnpush.GetStructure("ZAT_ASSET_DETAILS");
+                dtm = IRfcTableExtension.ToDataTable(dataTbl, "AssetData");
+                               
+
+                for (int i = 0; i < dtm.Rows.Count; i++)
+                {
+                    string MainAssetNumber = dtm.Rows[i]["ANLN1"].ToString().Remove(0, 4);
+                    string AssetSubNumber = dtm.Rows[i]["ANLN2"].ToString().Remove(0, 3);
+                    string CustodianDepartment = dtm.Rows[i]["ZZCUSTD"].ToString();
+                    string AssetDesc = dtm.Rows[i]["TXT50"].ToString();
+                    string AdditionalDesc = dtm.Rows[i]["TXA50"].ToString();
+                    string Unit = dtm.Rows[i]["MEINS"].ToString();
+                    string Quantity = dtm.Rows[i]["MENGE"].ToString();
+                    string AssetCapitalizationDate = dtm.Rows[i]["AKTIV"].ToString();
+                    string AKTIV;
+                    if (AssetCapitalizationDate == "0000-00-00")
+                    {
+                        AKTIV = "";
+                    }
+                    else
+                    {
+                        AKTIV = dtm.Rows[i]["AKTIV"].ToString();
+                    }
+                    string FirstAcquisitionDate = dtm.Rows[i]["ZUGDT"].ToString();
+                    string ZUGDT;
+                    if (FirstAcquisitionDate == "0000-00-00")
+                    {
+                        ZUGDT = "";
+                    }
+                    else
+                    {
+                        ZUGDT = dtm.Rows[i]["ZUGDT"].ToString();
+                    }
+                    string CustodianID = dtm.Rows[i]["PERNR"].ToString().Remove(0, 2);
+                    string Location = dtm.Rows[i]["ORD42"].ToString();
+                    string LocationDesc = dtm.Rows[i]["LOC_DESC"].ToString();
+                    string Status = dtm.Rows[i]["ORD44"].ToString();
+                    string StatusDesc = dtm.Rows[i]["STAT_DESC"].ToString();
+                    string AssetClass = dtm.Rows[i]["ANLKL"].ToString().Remove(0, 4);
+                    string Component = dtm.Rows[i]["ORD43"].ToString();
+                    string ComponentDesc = dtm.Rows[i]["COMP_DESC"].ToString();
+                    string Deacdate = dtm.Rows[i]["DEAKT"].ToString();
+                    string DEAKT;
+                    if (Deacdate == "0000-00-00")
+                    {
+                        DEAKT = "";
+                    }
+                    else
+                    {
+                        DEAKT = dtm.Rows[i]["DEAKT"].ToString();
+                    }
+
+                    string Invdate = dtm.Rows[i]["IVDAT"].ToString();
+                    string IVDAT;
+                    if (Invdate == "0000-00-00")
+                    {
+                        IVDAT = "";
+                    }
+                    else
+                    {
+                        IVDAT = dtm.Rows[i]["IVDAT"].ToString();
+                    }
+                    string InventoryNote = dtm.Rows[i]["INVZU"].ToString();
+
+                    //insert assettype 
+                    string assettype = AssetDesc;
+
+                    cmd = new SqlCommand("IF(NOT EXISTS(SELECT * FROM AssetTypeMaster WHERE AssetTypeName = @AssetTypeName))BEGIN INSERT INTO AssetTypeMaster(AssetTypeName)VALUES(@AssetTypeName)END", conSAP);
+                    cmd.Parameters.AddWithValue("@AssetTypeName", assettype);
+                    
+                    conSAP.Open();
+                    cmd.ExecuteNonQuery();
+                    conSAP.Close();
+                    //................................................................................................
+                    
+                    string GetAsset = "Select AssetID,MainAssetNumber,AssetSubNumber,CustodianDepartment,AssetDesc,AdditionalDesc,Unit,Quantity,AssetCapitalizationDate,FirstAcquisitionDate,CustodianID,Location, LocationDesc, Status, StatusDesc, AssetClass, Component, ComponentDesc, Deacdate, Invdate, InventoryNote,CreationDate from AssetMaster where MainAssetNumber='" + MainAssetNumber + "' and AssetSubNumber='" + AssetSubNumber + "' ";
+                    SqlDataAdapter da = new SqlDataAdapter(GetAsset, conSAP);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    if (dt.Rows.Count > 0)
+                    {
+                        for (int a = 0; i < dt.Rows.Count; i++)
+                        {
+                            string Ast = dt.Rows[a]["AssetID"].ToString();
+                            string Main = dt.Rows[a]["MainAssetNumber"].ToString();
+                            string Sub = dt.Rows[a]["AssetSubNumber"].ToString();
+                            string Cust = dt.Rows[a]["CustodianDepartment"].ToString();
+                            string Desc = dt.Rows[a]["AssetDesc"].ToString();
+                            string AddD = dt.Rows[a]["AdditionalDesc"].ToString();
+                            string Unt = dt.Rows[a]["Unit"].ToString();
+                            string Qty = dt.Rows[a]["Quantity"].ToString();
+                            string Cap = dt.Rows[a]["AssetCapitalizationDate"].ToString();
+                            string Acq = dt.Rows[a]["FirstAcquisitionDate"].ToString();
+                            string Custd = dt.Rows[a]["CustodianID"].ToString();
+                            string Loc = dt.Rows[a]["Location"].ToString();
+                            string LocDesc = dt.Rows[a]["Location"].ToString();
+                            string Stat = dt.Rows[a]["Location"].ToString();
+                            string StatDes = dt.Rows[a]["Location"].ToString();
+                            string Cls = dt.Rows[a]["AssetClass"].ToString();
+                            string Cmp = dt.Rows[a]["Component"].ToString();
+                            string CmpDes = dt.Rows[a]["ComponentDesc"].ToString();
+                            string Deac = dt.Rows[a]["Deacdate"].ToString();
+                            string Inv = dt.Rows[a]["Invdate"].ToString();
+                            string InvN = dt.Rows[a]["InventoryNote"].ToString();
+                            string Cre = dt.Rows[a]["CreationDate"].ToString();
+                            //qrdt.Rows.Add(Ast, Main, Sub, Cust, Desc, AddD, Unt, Qty, Cap, Acq, Custd, Loc, LocDesc, Stat, StatDes, Cls, Cmp, CmpDes, Deac, Inv, InvN, Cre);
+
+                        }
+                    }
+                    else
+                    {
+                        SqlCommand cmd = new SqlCommand("Insert into  AssetMaster(MainAssetNumber,AssetSubNumber,CustodianDepartment,AssetDesc,AdditionalDesc,Unit,Quantity,AssetCapitalizationDate,FirstAcquisitionDate,CustodianID,Location, LocationDesc, Status, StatusDesc, AssetClass, Component, ComponentDesc, Deacdate, Invdate, InventoryNote,CreationDate) values (@MainAssetNumber, @AssetSubNumber, @CustodianDepartment, @AssetDesc, @AdditionalDesc, @Unit, @Quantity, @AssetCapitalizationDate, @FirstAcquisitionDate, @CustodianID,@Location, @LocationDesc, @Status, @StatusDesc, @AssetClass, @Component, @ComponentDesc, @Deacdate, @Invdate, @InventoryNote,@CreationDate); SELECT SCOPE_IDENTITY();", conSAP);
+                        cmd.Parameters.AddWithValue("@MainAssetNumber", MainAssetNumber);
+                        cmd.Parameters.AddWithValue("@AssetSubNumber", AssetSubNumber);
+                        cmd.Parameters.AddWithValue("@CustodianDepartment", CustodianDepartment);
+                        cmd.Parameters.AddWithValue("@AssetDesc", AssetDesc);
+                        cmd.Parameters.AddWithValue("@AdditionalDesc", AdditionalDesc);
+                        cmd.Parameters.AddWithValue("@Unit", Unit);
+                        cmd.Parameters.AddWithValue("@Quantity", Quantity);
+                        cmd.Parameters.AddWithValue("@AssetCapitalizationDate", AssetCapitalizationDate);
+                        cmd.Parameters.AddWithValue("@FirstAcquisitionDate", FirstAcquisitionDate);
+                        cmd.Parameters.AddWithValue("@CustodianID", CustodianID);
+                        cmd.Parameters.AddWithValue("@Location", Location);
+                        cmd.Parameters.AddWithValue("@LocationDesc", LocationDesc);
+                        cmd.Parameters.AddWithValue("@Status", Status);
+                        cmd.Parameters.AddWithValue("@StatusDesc", StatusDesc);
+                        cmd.Parameters.AddWithValue("@AssetClass", AssetClass);
+                        cmd.Parameters.AddWithValue("@Component", Component);
+                        cmd.Parameters.AddWithValue("@ComponentDesc", ComponentDesc);
+                        cmd.Parameters.AddWithValue("@Deacdate", Deacdate);
+                        cmd.Parameters.AddWithValue("@Invdate", Invdate);
+                        cmd.Parameters.AddWithValue("@InventoryNote", InventoryNote);
+                        cmd.Parameters.AddWithValue("@CreationDate", DateTime.Now);
+                        conSAP.Open();
+
+                        int id = Convert.ToInt32(cmd.ExecuteScalar());
+                        string Asset = id.ToString();
+                        conSAP.Close();
+
+                        int avl = QRExist(MainAssetNumber, AssetSubNumber);
+                        if (avl == 0)
+                        {
+                            string equname = Asset;
+                            //string space = equname.Replace(" ", "");
+                            // string QRCode = space.Substring(0, 7); 
+                            string QRCode = MainAssetNumber;
+                            DateTime date = DateTime.Now;
+                            string SN = "0" + AssetSubNumber + "";
+                         //   string myList = "" + ID + "-NRL-" + Asset + "-" + SN + "";
+
+                            string myList = "" + Asset + "-NRL-" + MainAssetNumber + "-" + SN + "";
+                            //ArrayList myList = new ArrayList();
+                            //// Adding elements to ArrayList 
+                            //myList.Add("ID:" + Asset + "");
+                            //myList.Add("MainAssetNumber:" + MainAssetNumber + "");
+                            // myList.Add(Asset);
+                            // myList.Add(MainAssetNumber);
+                            // myList.Add(AssetSubNumber);
+                            // myList.Add(AssetClass);
+                            // myList.Add(Location);
+                            //myList.Add(Status);
+                            string location = "QRImages/" + Asset + ".jpg";
+                            QRUtilities.GenerateMyQCCode(equname, QRCode, myList);
+                            // QRUtilities.SaveQRCode(myList,Asset);                       
+                            cmd = new SqlCommand("Insert into  QRCodeMaster(QRCode,QRImage,CreatedBy,CreatedDate,MainAssetNumber,AssetSubNumber,AssetID)values(@QRCode,@QRImage,@CreatedBy,@CreatedDate,@MainAssetNumber,@AssetSubNumber,@AssetID)", conAMS);
+                            cmd.Parameters.AddWithValue("@QRCode", Asset);
+                            cmd.Parameters.AddWithValue("@QRImage", location);
+                            cmd.Parameters.AddWithValue("@CreatedBy", Session["UserID"].ToString());
+                            cmd.Parameters.AddWithValue("@CreatedDate", date);
+                            cmd.Parameters.AddWithValue("@MainAssetNumber", MainAssetNumber);
+                            cmd.Parameters.AddWithValue("@AssetSubNumber", AssetSubNumber);
+                            cmd.Parameters.AddWithValue("@AssetID", Asset);
+                            conAMS.Open();
+                            int qrid = Convert.ToInt32(cmd.ExecuteScalar());
+                            // qrdt.Rows.Add(Asset, MainAssetNumber, AssetSubNumber,Asset, location, date);
+                            qrdt.Rows.Add(Asset, MainAssetNumber, AssetSubNumber, CustodianDepartment, AssetDesc, AdditionalDesc, Unit, Quantity, AssetCapitalizationDate, FirstAcquisitionDate, CustodianID, Location, LocationDesc, Status, StatusDesc, AssetClass, Component, ComponentDesc, Deacdate, Invdate, InventoryNote, "");
+                            conAMS.Close();
+
+                        }
+                    }
+
+                }
+                //Grid.DataSource = dtm;
+                //Grid.DataBind();
+
+                ASPxGridView1.DataSource = qrdt;
+                ASPxGridView1.DataBind();
+
+                RfcSessionManager.EndContext(dest);
+                RfcDestinationManager.UnregisterDestinationConfiguration(cfg);
+            }
+
+            catch (Exception ex)
+            {
+                RfcSessionManager.EndContext(dest);
+                RfcDestinationManager.UnregisterDestinationConfiguration(cfg);
+                Thread.Sleep(1000);
+            }
+        }
+    }
+    public int QRExist(string Main,string Sub)
+    {
+        int result = 0;
+        string query = "Select * from QRCodeMaster where MainAssetNumber='" + Main + "' and AssetSubNumber='"+ Sub + "'; SELECT SCOPE_IDENTITY();";
+        da = new SqlDataAdapter(query, conAMS);
+        DataTable dt = new DataTable();
+        da.Fill(dt);
+        if (dt.Rows.Count > 0)
+        {
+            result = 1;
+        }
+        else
+        {
+
+        }
+        return result;
+    }
+
+ 
+
+
+    protected void btnexporttoxls_Click(object sender, EventArgs e)
+    {
+        ASPxGridViewExporter1.DataBind();
+        ASPxGridViewExporter1.FileName = "Imported Assets";
+        ASPxGridViewExporter1.WriteXlsToResponse();
+    }
+
+    protected void btn_pdf_Click(object sender, EventArgs e)
+    {
+        ASPxGridViewExporter1.FileName = "Imported Assets";
+        ASPxGridViewExporter1.MaxColumnWidth = 200;
+        ASPxGridViewExporter1.Landscape = true;
+        ASPxGridViewExporter1.LeftMargin = ASPxGridViewExporter1.RightMargin = 2;
+        ASPxGridViewExporter1.DataBind();
+        ASPxGridViewExporter1.WritePdfToResponse();
+
+        ASPxGridViewExporter1.WritePdfToResponse();
+    }
+}

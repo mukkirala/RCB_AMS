@@ -1,0 +1,700 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site1.master.cs" Inherits="Site1" %>
+
+<%@ Register Assembly="DevExpress.Web.ASPxEditors.v11.1, Version=11.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v11.1, Version=11.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxMenu" TagPrefix="dx" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>INS</title>
+	<link rel="shortcut icon" href="Images/eksila1.png" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+    <%--<link href="Scripts/CdnFiles/bootstrap3.4.0.min.css" rel="stylesheet"/>--%>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+	<%--<link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-3.4.0.min.js"></script>--%>
+	<%--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />--%>
+	<!--//fonts-->     
+	<link href="https://fonts.googleapis.com/css?family=Maven+Pro&display=swap" rel="stylesheet"/>
+	<asp:ContentPlaceHolder ID="HeadContent" runat="server">
+	</asp:ContentPlaceHolder>
+	<style type="text/css">
+		body {
+			font-family: 'Maven Pro', sans-serif;
+			//background:linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),url(Images/aiimsbg2.png) center no-repeat fixed;
+			background-size: cover;
+		}
+
+		.dxeBase {
+			font-size: 14px;
+			/*font-family: 'Exo 2', sans-serif !important;*/
+			font-family: Exo 2 serif !important;
+		}
+
+		/*.bg-login {
+            background: url(Images/exp.png) center no-repeat;
+            background-size: cover;
+        }*/
+
+		.header {
+			height: 105px;
+			box-shadow: 0 0 8px -1px;
+            background:linear-gradient(45deg, rgba(3, 170, 245, 0.9803921568627451), rgba(4, 61, 80, 0.9803921568627451));
+			/*//background: linear-gradient(45deg, #03aaf5fa, #043d50fa);
+			//background:linear-gradient(45deg, #4cb9e2, #4cb9e2);*/
+			/*background-color:deepskyblue;*/
+		}
+
+			.header img {
+				/*background: #fff;*/
+				//border-radius: 30px;
+				height: 130px;
+				position: absolute;
+				//width: 203px;
+				padding: 10px;
+			}
+
+			.header .main-title {
+				padding: 8px;
+				margin: 0px;
+				color: white;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+
+		form {
+			margin: 0px auto;
+		}
+
+		.dxeRadioButtonList td.dxe {
+			padding: 5px 5px 1px 11px !important;
+		}
+
+		.dxeRadioButtonList {
+			border: none !important;
+		}
+
+		/*RESPONSIVE*/
+		@media (max-width: 600px) {
+			.header {
+				height: 80px;
+			}
+
+				.header img {
+					height: 80px;
+					position: absolute;
+					padding: 0px;
+				}
+
+			.login-form {
+				max-width: 400px;
+				width: 100% !important;
+				margin: 0px auto;
+				padding: 10px;
+			}
+
+			.login {
+				max-width: 450px;
+				width: 100% !important;
+				margin: 4% auto;
+				background: linear-gradient(45deg, rgba(42, 69, 79, 0.8),rgba(42, 69, 79));
+				min-height: 400px;
+			}
+
+			.header h2 {
+				font-size: 18px !important;
+			}
+
+			.header h3 {
+				font-size: 13px !important;
+			}
+
+			.header .main-title {
+				margin-left: 2px;
+			}
+
+
+
+			.header .main-title {
+				font-size: 12px !important;
+				padding: 5px 60px;
+				font-weight: bold;
+			}
+
+			.header img {
+				padding: 2px;
+				//height: 60px;
+				//width: 60px;
+			}
+
+			input[type="text"], .dxeEditAreaSys, .form-control {
+				display: block;
+				max-width: 100% !important;
+				height: 34px !important;
+				padding: 3px 3px;
+				font-size: 14px;
+				line-height: 1.42857143;
+				color: #555;
+				background-color: #fff;
+				background-image: none;
+				border: 1px solid #959596f5 !important;
+				border-radius: 4px;
+				-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+				box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+				-webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+				-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+				-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+				transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+				transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+				transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+			}
+		}
+		/*.dxeButtonEdit,.dxeTextBox   {
+            width: 100% !important;
+           // max-width:250px !important;
+            
+            
+        }*/
+
+		.dxeButtonEdit, .dxeTextBox {
+			width: 100% !important;
+			border: none !important;
+			background: transparent !important;
+			/*//max-width:250px !important;*/
+		}
+
+		.dxeButtonEditButton,
+		.dxeButtonEditButton_PlasticBlue {
+			position: absolute;
+			margin: 10px -25px;
+		}
+
+			.dxeButtonEditButton_PlasticBlue .dx {
+				padding: 6px 2px !important;
+			}
+
+		input[type="file"], [type="text"], .dxeEditAreaSys, .form-control {
+			display: block;
+			// max-width:250px;
+			width: 100%;
+			min-height: 34px !important;
+			padding: 3px 3px;
+			font-size: 14px;
+			line-height: 1.42857143;
+			color: #555;
+			background-color: #fff;
+			background-image: none;
+			border: 1px solid #959596 !important;
+			border-radius: 4px;
+			-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+			box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+			-webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+			-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+			-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+			transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+			transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+			transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+		}
+
+		.dxeTextBox, .dxeMemo {
+		}
+
+
+		/*.dxeButtonEditButton, .dxeSpinIncButton, .dxeSpinDecButton, .dxeSpinLargeIncButton, .dxeSpinLargeDecButton
+        {
+             padding: -10px -52px 41px 64px !important;
+        }*/
+
+
+		.dxeButtonEdit_PlasticBlue {
+			border: none !important;
+		}
+
+		.element.style {
+			height: 0px !important;
+		}
+
+		.dxeButtonEditButton_PlasticBlue {
+			border: none !important;
+			// border-radius:50% !important;
+		}
+
+		.dxeTextBox, .dxeTextBoxSys, dxeTextBox_PlasticBlue {
+			border: none !important;
+		}
+
+		.cnt_div {
+			box-shadow: 0 0 30px -10px;
+			margin: 10px auto;
+			padding: 20px;
+		}
+
+		.auto-style6 tr td {
+			/*margin:10px;*/
+			padding: 3px;
+		}
+
+		.dxbButton {
+			background: transparent !important;
+			border: none !important;
+		}
+
+		.btn-prim {
+			max-width: 150px;
+			padding: 0px;
+			background: linear-gradient(to bottom right, #083d84,#083d84, #5697ef,#083d84,#083d84);
+			box-shadow: 0 10px 12px grey;
+			transition: .3s ease-in;
+		}
+
+			.btn-prim:hover {
+				background: #083d84;
+				box-shadow: 0 0 0;
+			}
+
+			.btn-prim span {
+				color: white !important;
+			}
+
+		.btn-app {
+			max-width: 200px !important;
+			min-width: 150px !important;
+			color: white !important;
+			border: none !important;
+			background: linear-gradient(to right,#5d6bad,#0d1abb);
+			transition: .3s ease-in-out;
+			padding: 4px;
+		}
+
+		.btn-app {
+			background: #0d1abb !important;
+		}
+
+
+		/*Bootstrap Reset*/
+		.navbar-inverse {
+			//background: rgb(223, 153, 22) !important;
+			// background: linear-gradient(to bottom right, #083d84,#083d84, #1f5bab,#083d84,#083d84);
+			/*background:#ff4747 !important;*/
+			background: white;
+			border: none !important;
+			box-shadow: 0 10px 13px -8px grey;
+		}
+
+		.navbar {
+			border-radius: 0px !important;
+		}
+
+		.navbar-nav li a {
+			color: grey !important;
+			line-height: 5px !important;
+		}
+
+		label {
+			/*display: inline-block;*/
+			max-width: 100%;
+			// Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141);
+			margin-top: 10px;
+			font-weight: 100;
+		}
+
+		.dropdown li a {
+			color: #4d5b5f !important;
+			padding: 10px;
+			//font-weight:bold;
+		}
+
+
+		.navbar-nav > li > a {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+
+		.mainmenu {
+			background-color: transparent;
+			border-color: transparent;
+			margin-bottom: 0;
+			border: 0px !important;
+		}
+
+		.navbar-nav > li:last-child > a {
+			padding-right: 0px;
+			margin-right: 0px;
+		}
+
+		.dropdown-menu {
+			padding: 0px 0;
+			margin: 0 0 0;
+			border: 0px solid transition !important;
+			border: 0px solid rgba(0,0,0,.15);
+			border-radius: 0px;
+			-webkit-box-shadow: none !important;
+			box-shadow: none !important;
+		}
+		/*=-====Main Menu=====*/
+		.navbar-nav .open .dropdown-menu > li > a {
+			padding: 16px 15px;
+			color: #4d5b5f !important;
+		}
+
+		.header_area .header_bottom .mainmenu a, .navbar-default .navbar-nav > li > a {
+			//color: #fff;
+			font-size: 16px;
+			text-transform: capitalize;
+			padding: 16px 15px;
+		}
+
+		.header_area .mainmenu .active a,
+		.header_area .mainmenu .active a:focus,
+		.header_area .mainmenu .active a:hover,
+		.header_area .mainmenu li a:hover,
+		.header_area .mainmenu li a:focus,
+		.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+			color: white !important;
+			//background: rgb(241, 123, 6) !important;
+			// background:rgb(78, 92, 97);
+			background: #4da5ce !important;
+		}
+		/*-----./ Main Menu-----*/
+
+		.navbar-default .navbar-toggle {
+			border-color: rgb(81, 95, 100);
+		}
+			/*Toggle Button*/
+			.navbar-default .navbar-toggle .icon-bar {
+				background-color: rgb(81, 95, 100);
+			}
+		/*Toggle Button*/
+
+		/*==========Sub Menu=v==========*/
+		.mainmenu .collapse ul > li:hover > a {
+			/*background: rgb(18, 107, 202);*/
+			background: rgb(77, 165, 206);
+			color: white !important;
+		}
+
+		.mainmenu .collapse ul ul > li:hover > a, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
+			/*background: rgb(8, 61, 132);*/
+			background: #4da5ce;
+			color: white;
+		}
+
+		.mainmenu .collapse ul ul ul > li:hover > a {
+			/*background: rgb(8, 61, 132);*/
+			background: rgb(220, 218, 216);
+		}
+
+		.mainmenu .collapse ul ul ul ul > li:hover > a {
+			/*background: rgb(8, 61, 132);*/
+			background: rgb(220, 218, 216);
+		}
+
+		.mainmenu .collapse ul ul ul ul ul > li:hover > a {
+			/*background: rgb(8, 61, 132);*/
+			background: rgb(220, 218, 216);
+		}
+
+
+
+		.mainmenu .collapse ul ul, .mainmenu .collapse ul ul.dropdown-menu {
+			/*background: rgb(41, 115, 212);*/
+			background: white;
+			box-shadow: 0 10px 40px -15px !important
+		}
+
+			.mainmenu .collapse ul ul ul, .mainmenu .collapse ul ul ul.dropdown-menu {
+				/*background: rgba(41, 115, 212,0.8);*/
+				background: white;
+				box-shadow: 0 10px 40px -15px !important
+			}
+
+				.mainmenu .collapse ul ul ul ul, .mainmenu .collapse ul ul ul ul.dropdown-menu {
+					/*background: rgb(41, 115, 212);*/
+					background: white;
+					box-shadow: 0 10px 40px -15px !important
+				}
+
+					.mainmenu .collapse ul ul ul ul ul, .mainmenu .collapse ul ul ul ul ul.dropdown-menu {
+						/*background: rgba(41, 115, 212,0.8);*/
+						background: white;
+						box-shadow: 0 10px 40px -15px !important
+					}
+
+
+		/******************************Drop-down menu work on hover**********************************/
+		.mainmenu {
+			background: none;
+			border: 0 solid;
+			margin: 0;
+			padding: 0;
+			min-height: 20px;
+		}
+
+		@media only screen and (min-width: 767px) {
+			.mainmenu .collapse ul li {
+				position: relative;
+			}
+
+				.mainmenu .collapse ul li:hover > ul {
+					display: block;
+				}
+
+			.mainmenu .collapse ul ul {
+				position: absolute;
+				top: 100%;
+				left: 0;
+				min-width: 200px;
+				max-width: 300px;
+				display: none;
+			}
+				/*******/
+				.mainmenu .collapse ul ul li {
+					position: relative;
+				}
+
+					.mainmenu .collapse ul ul li:hover > ul {
+						display: block;
+					}
+
+				.mainmenu .collapse ul ul ul {
+					position: absolute;
+					top: 0;
+					left: 100%;
+					min-width: 200px;
+					max-width: 300px;
+					display: none;
+				}
+					/*******/
+					.mainmenu .collapse ul ul ul li {
+						position: relative;
+					}
+
+						.mainmenu .collapse ul ul ul li:hover ul {
+							display: block;
+						}
+
+					.mainmenu .collapse ul ul ul ul {
+						position: absolute;
+						top: 0;
+						min-width: 200px;
+						max-width: 300px;
+						display: none;
+					}
+
+						.mainmenu .collapse ul ul ul ul li {
+							position: relative;
+						}
+
+							.mainmenu .collapse ul ul ul ul li:hover ul {
+								display: block !important;
+							}
+
+						.mainmenu .collapse ul ul ul ul ul {
+							position: absolute;
+							top: 0;
+							min-width: 200px;
+							max-width: 300px;
+							display: none !important;
+						}
+		}
+
+		.dropdown-submenu span.caret {
+			float: right;
+			transform: rotate(-90deg);
+		}
+
+		.auto-style7 {
+			left: 0px;
+			top: 2px;
+		}
+
+		.dxgvHeader_Glass td {
+			color: white !important;
+			font-family: 'Maven Pro', sans-serif;
+		}
+
+		.dxgvHeader_Glass {
+			background: rgb(43, 175, 232) !important;
+		}
+
+		.dxbButton_SoftOrange {
+			border: none !important;
+			padding: 5px !important;
+			font-family: 'Maven Pro', sans-serif !important;
+		}
+
+		.dxgv {
+			font-family: 'Maven Pro', sans-serif !important;
+		}
+	</style>
+	<script>
+		(function ($) {
+			$(document).ready(function () {
+				$('ul.dropdown-menu [data-toggle=dropdown]').on('click', function (event) {
+					event.preventDefault();
+					event.stopPropagation();
+					$(this).parent().siblings().removeClass('open');
+					$(this).parent().toggleClass('open');
+				});
+			});
+		})(jQuery);
+	</script>
+</head>
+<body>
+	<form id="form1" runat="server" class="auto-style2">
+		<div class="container-fluid">
+			<div class="row  header">
+				<img src="../../Images/INA_logo.png" style="top: -11px; padding: 15px;" />
+				<img src="../../Images/eksila1.png" style="float: right; top: -11px; right: 0px" />
+				<h2 class="text-center main-title">Standards Lab-INS Eksila</h2>
+                 <span style="top: 0px; position: absolute;padding:5px; right: 114px; background:rgb(24, 85, 113);z-index:999;">
+                   <a href="#"><asp:Label runat="server" ForeColor="#fffd03">Welcome:</asp:Label><asp:Label ID="User" ForeColor="#fffd03" runat="server"></asp:Label></a><br/>
+
+                   <a>  <asp:Label ID="lbl_duration" ForeColor="#fffd03"  runat="server" Text=""></asp:Label></a>
+											
+										
+                 </span>
+				<h3 class="text-center main-title" style="color: yellow">METROLOGY AND CALIBRATION MANAGEMENT SYSTEM</h3>
+			</div>
+			<div id="header-area" class="header_area">
+				<div class=" row navbar-inverse header_bottom">
+					<div class="container-fluid">
+						<div class="row">
+							<nav role="navigation" class="navbar navbar-default mainmenu">
+								<!-- Brand and toggle get grouped for better mobile display -->
+								<div class="navbar-header">
+									<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+										<span class="sr-only">Toggle navigation</span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+								</div>
+								<!-- Collection of nav links and other content for toggling -->
+								<div id="navbarCollapse" class="collapse navbar-collapse">
+									<ul id="fresponsive" class="nav navbar-nav dropdown">
+										<%--<li id="Home" runat="server" class=""><a href="/ViewAllAssets.aspx">Home</a></li>--%>
+									
+										<li id="Dashboard" runat="server" class=""><a href="/Dashboard.aspx">Dashboard<span class=""></span></a>
+											
+										</li>
+										<li id="Instrument" runat="server" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Instrument Management<span class="caret"></span></a>
+											<ul class="dropdown-menu">
+												<li><a href="/AddInstrument.aspx">Add/Edit/Delete Instrument</a></li>
+												<li><a href="/AllocateDeallocateInstrument.aspx">Allocate/DeallocateInstrument</a></li>
+
+												<li><a href="/UploadInstruments.aspx">Instruments Bulk Upload</a></li>
+												<li><a href="/ViewInstrumentInformation.aspx">View Instrument Information</a></li>
+												<li><a href="/ViewAllAssets.aspx">View Instruments Inventory</a></li>
+                                                <li><a href="/ViewServiceableNotSerivceable.aspx">Serviceable</a></li>
+												<li><a href="/ViewOfNonServiceableInstruments.aspx">Un-serviceable</a></li>
+                                                <li><a href="/UnserviceableInstrumentSurvey.aspx">Unserviceable Instrument SurveyStatus</a></li>
+                                                <li><a href="/ViewDateWiseScannedInstruments.aspx">View Date Wise Scanned Instruments</a></li>
+												<li><a href="/ViewMonthWiseScannedInstruments.aspx">View Month Wise Scanned Instruments</a></li>
+												<li><a href="/QRReader.aspx">Mapping Of QR Codes</a></li>
+                                                <li><a href="/QRCodeGeneration.aspx">QR Code Generation Software</a></li>
+	
+											</ul>
+										</li>
+
+										<li id="Calibration" runat="server" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Calibration Management<span class="caret"></span></a>
+											<ul class="dropdown-menu">
+												<li><a href="/PerformCalibration.aspx">Add Calibration</a></li>
+												<li><a href="/UploadPastCalibrationCertificate.aspx">Upload Past Calibration Certificate</a></li>
+												<li><a href="/ViewUpcomingCalibrations.aspx">Generate Calibration Schedule</a></li>
+												<li><a href="/CalibrationStatusofInstrmentwithColor.aspx">Color Coded Calibration Status</a></li>
+												<li><a href="/ViewCalibrationHistory.aspx">Calibration History</a></li>
+                                                <li><a href="/ViewCalibrationPastDue.aspx">Instruments Overdue For Calibration</a></li>
+                                                <li><a href="/ViewDailyReportCalibration.aspx">View Daily Calibration Report</a></li>
+                                                <li><a href="/MonthWiseCalibrationSchedule.aspx">View Monthly Calibration Report</a></li>
+											</ul>
+										</li>
+										<li id="Reports" runat="server" visible="false" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Reports<span class="caret"></span></a>
+											<ul class="dropdown-menu">
+												
+												<li><a href="/ViewCalibrationPastDue.aspx">Instruments Overdue For Calibration</a></li>
+												<li><a href="/ViewServiceableNotSerivceable.aspx">Serviceable</a></li>
+												<li><a href="/ViewOfNonServiceableInstruments.aspx">Un-serviceable</a></li>
+												<li><a href="/ViewCalibrationHistory.aspx">Calibration History</a></li>
+												<li><a href="/ViewDailyReportCalibration.aspx">View Daily Calibration Report</a></li>
+                                                <li><a href="/MonthWiseCalibrationSchedule.aspx">View Monthly Calibration Report</a></li>
+												<li><a href="/ViewDateWiseScannedInstruments.aspx">View Date Wise Scanned Instruments</a></li>
+												<li><a href="/ViewMonthWiseScannedInstruments.aspx">View Month Wise Scanned Instruments</a></li>
+												<li><a href="/ViewEmployeeLogs.aspx">View Employee Log</a></li>
+												
+												
+											</ul>
+										</li>
+										<li id="DailyReport" runat="server" visible="false" class=""><a href="/DailyReportEmployee.aspx">Daily Report <span class=""></span></a></li>
+										<li id="Masters" runat="server" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Masters<span class="caret"></span></a>
+											<ul class="dropdown-menu">
+												 <li><a href="/DepartmentMaster.aspx">Add/Edit/Deactivate Departments</a></li>
+												
+												<li><a href="/SectionMaster.aspx">Add Section</a></li>
+												<li><a href="/AddInstrumentType.aspx">Add/Edit Instruments Type</a></li>
+												<li><a href="/AddMasterEquipment.aspx">Add Master Instruments</a></li>
+                                                <li><a href="/UploadEquipmentBulk.aspx">Upload bulk Master Instruments</a></li>
+												<li><a href="/ViewMasterInstruments.aspx">View Master Instruments</a></li>
+												<li><a href="/AddCalibratedEngineer.aspx">Add Calibration Engineers</a></li>
+												<li><a href="/AddApprovingAuthority.aspx">Add Approving Authority</a></li>
+												<%--<li><a href="/UnserviceableInstrumentSurvey.aspx">Unserviceable Instrument Survey</a></li>--%>
+											</ul>
+										</li>
+										
+
+										<li id="Administration" runat="server" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Administration<span class="caret"></span></a>
+											<ul class="dropdown-menu">
+                                                <li><a href="/ViewEmployeeLogs.aspx">View Employee Log</a></li>
+												<li class="dropdown-submenu">
+													<a class="test" tabindex="-1" href="#">Add/Edit/Delete User Roles<span class="caret"></span></a>
+													<ul class="dropdown-menu">
+														<li><a href="/Admin/Role/createrole.aspx">Add Role</a></li>
+														<li><a href="/Admin/Role/editrole.aspx">Edit Role</a></li>
+
+													</ul>
+												</li>
+
+												<li class="dropdown-submenu">
+													<a class="test" tabindex="-1" href="#"> Add/Edit/Deactivate user<span class="caret"></span></a>
+													<ul class="dropdown-menu">
+														<li><a href="/Admin/User/createuser.aspx">Add User</a></li>
+														<li><a href="/Admin/User/edituser.aspx">Edit User</a></li>
+													</ul>
+												</li>
+												
+											</ul>
+										</li>
+										  <li id="a14"><a href="/ChangePassword.aspx">Change Password </a></li>
+									</ul>
+									<ul id="" class="nav navbar-nav dropdown pull-right">
+
+										
+										<li class="pull-right" id="SignOut" runat="server"><a href="../../SignOutPage.aspx">Sign Out</a></li>
+										
+                                       
+									</ul>
+								</div>
+							</nav>
+						</div>
+					</div>
+
+				</div>
+				<!-- /.header_bottom -->
+
+				<div class="container">
+					<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+					<div class="auto-style5">
+
+						<asp:ContentPlaceHolder ID="MainContent" runat="server" />
+					</div>
+				</div>
+				<div class="footer">
+				</div>
+	</form>
+</body>
+</html>

@@ -1,0 +1,113 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Threading;
+using System.Web;
+using System.Web.Configuration;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using SAP.Middleware.Connector;
+
+
+public partial class ImportLocations : System.Web.UI.Page
+{
+    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlDataAdapter da;
+    SqlCommand cmd;
+    ECCDestinationConfig cfg = null;
+    RfcDestination dest = null;
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (Session["UserID"] == null)
+        {
+            Response.Redirect("ErrorPage.aspx");
+            return;
+        }
+        ImportData();
+    }
+
+    public void ImportData()
+    {
+        DataTable dtx = new DataTable();
+        DataTable qrdt = new DataTable();
+        qrdt.Columns.Add("ClientInformation");
+        qrdt.Columns.Add("LanguageKeyInformation");
+        qrdt.Columns.Add("TypeID");
+        qrdt.Columns.Add("LocationCode");
+        qrdt.Columns.Add("Location");
+     
+        
+        try
+        {
+            cfg = new ECCDestinationConfig();
+            //RfcDestinationManager.RegisterDestinationConfiguration(cfg);
+            //dest = RfcDestinationManager.GetDestination("SAPJ2EE");
+            if (dest == null)
+            {
+                try
+                {
+                    RfcDestinationManager.RegisterDestinationConfiguration(cfg);
+                }
+                catch (Exception ex)
+                {
+
+                }
+                dest = RfcDestinationManager.GetDestination("SAPJ2EE");
+            }
+            // RfcDestinationManager.RegisterDestinationConfiguration(cfg);
+            //  dest = RfcDestinationManager.GetDestination("SAPJ2EE");
+            RfcRepository repo = dest.Repository;
+            //SAP Code starts.............                     
+            IRfcFunction fnpush = repo.CreateFunction("ZAT_ASSET_LOC_DET");
+                fnpush.Invoke(dest);
+                IRfcTable dataTbl = fnpush.GetTable("ET_LOC_DET");
+              
+                dtx = IRfcTableExtension.ToDataTable(dataTbl, "LocationData");
+
+                for (int i = 0; i < dtx.Rows.Count; i++)
+                {       
+                    string ClientInformation = dtx.Rows[i]["MANDT"].ToString();
+                    string LanguageKeyInformation = dtx.Rows[i]["SPRAS"].ToString();
+                    string TypeID = dtx.Rows[i]["ORDNR"].ToString();
+                    string LocationCode = dtx.Rows[i]["ORD4X"].ToString();
+                    string Location = dtx.Rows[i]["ORDTX"].ToString();
+                    if(TypeID == "2") {
+                            cmd = new SqlCommand("IF(NOT EXISTS(SELECT * FROM LocationMaster WHERE LocationCode = @LocationCode))BEGIN INSERT INTO LocationMaster(LocationCode,Location)VALUES(@LocationCode,@Location)END", conAMS);
+                            cmd.Parameters.AddWithValue("@LocationCode", LocationCode);
+                            cmd.Parameters.AddWithValue("@Location", Location);
+                            conAMS.Open();
+                            cmd.ExecuteNonQuery();
+                            conAMS.Close();
+                            qrdt.Rows.Add(ClientInformation, LanguageKeyInformation, TypeID, LocationCode, Location);
+                    }
+
+                     else if (TypeID == "4")
+                     {
+                             cmd = new SqlCommand("IF(NOT EXISTS(SELECT * FROM StatusMaster WHERE StatusCode = @StatusCode))BEGIN INSERT INTO StatusMaster(StatusCode,StatusName)VALUES(@StatusCode,@StatusName)END", conAMS);
+                             cmd.Parameters.AddWithValue("@StatusCode", LocationCode);
+                             cmd.Parameters.AddWithValue("@StatusName", Location);
+                             conAMS.Open();
+                             cmd.ExecuteNonQuery();
+                             conAMS.Close();
+                            
+                     }
+
+            }
+             ASPxGridView1.DataSource = qrdt;
+             ASPxGridView1.DataBind();
+                //RfcSessionManager.EndContext(dest);
+             RfcDestinationManager.UnregisterDestinationConfiguration(cfg);
+        }
+        catch (Exception ex)
+        {
+           // RfcSessionManager.EndContext(dest);
+            RfcDestinationManager.UnregisterDestinationConfiguration(cfg);
+            Thread.Sleep(1000);
+        }
+       
+    }
+}

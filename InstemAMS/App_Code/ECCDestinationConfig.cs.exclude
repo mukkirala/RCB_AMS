@@ -1,0 +1,52 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Configuration;
+using SAP.Middleware.Connector;
+
+/// <summary>
+/// Summary description for ECCDestinationConfig
+/// </summary>
+public class ECCDestinationConfig : IDestinationConfiguration
+{
+    public bool ChangeEventsSupported()
+    {
+        return true;
+    }
+
+    public event RfcDestinationManager.ConfigurationChangeHandler ConfigurationChanged;
+
+
+    public RfcConfigParameters GetParameters(string destionationName)
+    {
+        RfcConfigParameters parms = new RfcConfigParameters();
+        string destName = WebConfigurationManager.AppSettings.Get("destionationName");
+        string AppServer = WebConfigurationManager.AppSettings.Get("AppServerHost");
+        string SysNum = WebConfigurationManager.AppSettings.Get("SystemNumber");
+        string User = WebConfigurationManager.AppSettings.Get("User");
+        string PED = WebConfigurationManager.AppSettings.Get("Password");
+        string Client = WebConfigurationManager.AppSettings.Get("Client");
+        string Language = WebConfigurationManager.AppSettings.Get("Language");
+        string PoolSize = WebConfigurationManager.AppSettings.Get("PoolSize");
+        string MaxPoolSize = WebConfigurationManager.AppSettings.Get("MaxPoolSize");
+        string IdleTimeout = WebConfigurationManager.AppSettings.Get("IdleTimeout");
+        if (destionationName.Equals(destName))
+        {
+            parms.Add(RfcConfigParameters.AppServerHost, AppServer);
+            parms.Add(RfcConfigParameters.SystemNumber,SysNum );
+            //parms.Add(RfcConfigParameters.SystemID, "ID");
+            parms.Add(RfcConfigParameters.User,User);
+            parms.Add(RfcConfigParameters.Password,PED);
+            //parms.Add(RfcConfigParameters.RepositoryPassword, "Password");
+            parms.Add(RfcConfigParameters.Client,Client);
+            parms.Add(RfcConfigParameters.Language,Language);
+            parms.Add(RfcConfigParameters.PoolSize, PoolSize);
+            parms.Add(RfcConfigParameters.MaxPoolSize, MaxPoolSize);
+            parms.Add(RfcConfigParameters.IdleTimeout, IdleTimeout);
+
+        }
+
+        return parms;
+    }
+}

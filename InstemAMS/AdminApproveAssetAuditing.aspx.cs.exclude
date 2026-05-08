@@ -1,0 +1,241 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Web.Configuration;
+using System.Globalization;
+
+public partial class AdminApproveAssetAuditing : System.Web.UI.Page
+{
+    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemAMSConnectionString"].ConnectionString);
+    SqlConnection conSAP = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
+    SqlCommand myCommand;
+    SqlCommand myCommand1;
+    SqlCommand myCommand2;
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (Session["UserID"] == null)
+        {
+            Response.Redirect("ErrorPage.aspx");
+            return;
+
+        }
+    }
+
+    protected void Audit_Gridlookup_TextChanged(object sender, EventArgs e)
+    {
+        Session["AuditID"] = Audit_Gridlookup.Value.ToString();
+      
+       // AuditedAssetGridView.DataBind();
+    }
+
+    protected void AddAssets_Click(object sender, EventArgs e)
+    {
+
+        for (int i = 0; i < AuditedAssetGridView.VisibleRowCount; i++)
+
+        {
+
+            if (AuditedAssetGridView.Selection.IsRowSelected(i))
+            {
+                
+                string AuditDetailsID = AuditedAssetGridView.GetRowValues(i, "AuditDetailsID").ToString();
+                string AssetID = AuditedAssetGridView.GetRowValues(i, "AssetID").ToString();
+                string MainAssetNumber = AuditedAssetGridView.GetRowValues(i, "MainAssetNumber").ToString();
+                string AssetClass = AuditedAssetGridView.GetRowValues(i, "AssetClass").ToString();
+                string AssetDesc = AuditedAssetGridView.GetRowValues(i, "AssetDesc").ToString();
+                string AuditName = AuditedAssetGridView.GetRowValues(i, "AuditName").ToString();
+                string AuditBy = AuditedAssetGridView.GetRowValues(i, "AuditBy").ToString();
+                string Comments = AuditedAssetGridView.GetRowValues(i, "Comments").ToString();
+
+                DateTime Auditdate = Convert.ToDateTime(AuditedAssetGridView.GetRowValues(i, "AuditedDate").ToString());
+                 string AuditedDate = Auditdate.ToString("dd-MM-yyyy");
+
+
+                string AuditStatus = AuditedAssetGridView.GetRowValues(i, "AuditStatus").ToString();
+                string StatusName = AuditedAssetGridView.GetRowValues(i, "StatusName").ToString();
+                string Location = AuditedAssetGridView.GetRowValues(i, "Location").ToString();
+                string LocationDesc = AuditedAssetGridView.GetRowValues(i, "LocationDesc").ToString();
+                string CustodianID = AuditedAssetGridView.GetRowValues(i, "CustodianID").ToString();
+                string AssetCustodian = AuditedAssetGridView.GetRowValues(i, "AssetCustodian").ToString();
+                string AuditID = AuditedAssetGridView.GetRowValues(i, "AuditID").ToString();
+
+                AddData(AuditDetailsID,AssetID,MainAssetNumber,AssetClass,AssetDesc,AuditName,AuditBy,Comments,AuditedDate,AuditStatus,StatusName,Location,LocationDesc,CustodianID,AssetCustodian,AuditID);
+
+
+            }
+        }
+
+    }
+
+    private void AddData(string AuditDetailsID, string AssetID, string MainAssetNumber, string AssetClass, string AssetDesc, string AuditName, string AuditBy, string Comments, string AuditedDate, string AuditStatus, string StatusName,string Location,string LocationDesc, string CustodianID, string AssetCustodian,string AuditID)
+    {
+        err_msg.Visible = false;
+        int temp = 0;
+        DataTable AddTask = new DataTable();
+        AddTask = ViewState["AddTask"] as DataTable;
+        
+        
+        if (AddTask != null)
+        {
+            for (int i = 0; i < AddTask.Rows.Count; i++)
+            {
+                if (AddTask.Rows[i].ItemArray[0].Equals(AuditDetailsID))
+                {
+                    temp++;
+                    break;
+                }
+            }
+            if (temp > 0)
+            {
+
+            }
+            else
+            {
+                AddTask.Rows.Add(AuditDetailsID, AssetID, MainAssetNumber, AssetClass, AssetDesc, AuditName, AuditBy, Comments, AuditedDate, AuditStatus, StatusName, Location, LocationDesc, CustodianID, AssetCustodian,AuditID);
+                ViewState["AddTask"] = AddTask;
+                ASPxGridView1.DataSource = AddTask;
+                ASPxGridView1.DataBind();
+                ViewState["AddTask"] = AddTask as DataTable;
+            }
+        }
+        if (AddTask == null)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("AuditDetailsID");
+            dt.Columns.Add("AssetID");
+            dt.Columns.Add("MainAssetNumber");
+            dt.Columns.Add("AssetClass");
+            dt.Columns.Add("AssetDesc");
+            dt.Columns.Add("AuditName");
+            dt.Columns.Add("AuditBy");
+            dt.Columns.Add("Comments");
+            dt.Columns.Add("AuditedDate");
+            dt.Columns.Add("AuditStatus");
+            dt.Columns.Add("StatusName");
+            dt.Columns.Add("Location");
+            dt.Columns.Add("LocationDesc");
+            dt.Columns.Add("CustodianID");
+            dt.Columns.Add("AssetCustodian");
+            dt.Columns.Add("AuditID");
+            dt.Rows.Add(AuditDetailsID, AssetID, MainAssetNumber, AssetClass, AssetDesc, AuditName, AuditBy, Comments, AuditedDate, AuditStatus, StatusName, Location, LocationDesc, CustodianID, AssetCustodian, AuditID);
+            ASPxGridView1.DataSource = dt;
+            ASPxGridView1.DataBind();
+            ViewState["AddTask"] = dt as DataTable;
+        }
+    }
+
+    protected void ASPxGridView1_RowCommand(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewRowCommandEventArgs e)
+    {
+        string btn = e.CommandArgs.CommandName.ToString();
+        if (btn == "Delete")
+        {
+            int s = e.VisibleIndex;
+            DataTable dt2 = (DataTable)ViewState["AddTask"];
+            dt2.Rows[s].Delete();
+            ASPxGridView1.DataSource = dt2;
+            ASPxGridView1.DataBind();
+            
+        }
+    }
+
+    protected void Approve_Click(object sender, EventArgs e)
+    {
+        for (int i = 0; i < ASPxGridView1.VisibleRowCount; i++)
+        {
+            int AuditDetailsID = Convert.ToInt32(ASPxGridView1.GetRowValues(i, "AuditDetailsID"));
+            int AssetID = Convert.ToInt32(ASPxGridView1.GetRowValues(i, "AssetID"));
+            string MainAssetNumber = ASPxGridView1.GetRowValues(i, "MainAssetNumber").ToString();
+            string AuditName = ASPxGridView1.GetRowValues(i, "AuditName").ToString();
+            string AuditBy = ASPxGridView1.GetRowValues(i, "AuditBy").ToString();
+            string AuditorRemarks = ASPxGridView1.GetRowValues(i, "Comments").ToString();
+            string AuditedDate = ASPxGridView1.GetRowValues(i, "AuditedDate").ToString();
+            DateTime date = DateTime.ParseExact(AuditedDate, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+            string StatusChangedTo = ASPxGridView1.GetRowValues(i, "AuditStatus").ToString();
+            string AssetStatus = ASPxGridView1.GetRowValues(i, "StatusName").ToString();
+            string LocationChangedTo = ASPxGridView1.GetRowValues(i, "Location").ToString();
+            string AssetLocation = ASPxGridView1.GetRowValues(i, "LocationDesc").ToString();
+            string CustodianChangedTo = ASPxGridView1.GetRowValues(i, "CustodianID").ToString();
+            string AssetCustodian = ASPxGridView1.GetRowValues(i, "AssetCustodian").ToString();
+            int AuditID = Convert.ToInt32(ASPxGridView1.GetRowValues(i, "AuditID"));
+            string ApprovedBy = Session["UserID"].ToString();
+            string AdminRemarks = txt_cmt.Text;
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter("select StatusCode from StatusMaster where StatusName='"+ StatusChangedTo + "'",conAMS);
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                string StatusCode = dt.Rows[0].ItemArray[0].ToString();
+                myCommand2 = new SqlCommand("insert into AssetAuditHistory(AuditID,AssetID,MainAssetNumber,AssetLocation,AssetCustodian,AssetStatus,LocationChangedTo,CustodianChangedTo,StatusChangedTo,AuditBy,AuditorRemarks,AuditedDate,ApprovedBy,ApproverRemarks,ApprovedDate,AuditDetailsID)values(@AuditID,@AssetID,@MainAssetNumber,@AssetLocation,@AssetCustodian,@AssetStatus,@LocationChangedTo,@CustodianChangedTo,@StatusChangedTo,@AuditBy,@AuditorRemarks,@AuditedDate,@ApprovedBy,@ApproverRemarks,@ApprovedDate,@AuditDetailsID)", conAMS);
+                myCommand2.Parameters.AddWithValue("@AuditID", AuditID);
+                myCommand2.Parameters.AddWithValue("@AssetID", AssetID);
+                myCommand2.Parameters.AddWithValue("@MainAssetNumber", MainAssetNumber);
+                myCommand2.Parameters.AddWithValue("@AssetLocation", AssetLocation);
+                myCommand2.Parameters.AddWithValue("@AssetCustodian", AssetCustodian);
+                myCommand2.Parameters.AddWithValue("@AssetStatus", AssetStatus);
+                myCommand2.Parameters.AddWithValue("@LocationChangedTo", LocationChangedTo);
+                myCommand2.Parameters.AddWithValue("@CustodianChangedTo", CustodianChangedTo);
+                myCommand2.Parameters.AddWithValue("@StatusChangedTo", StatusChangedTo);
+                myCommand2.Parameters.AddWithValue("@AuditBy", AuditBy);
+                myCommand2.Parameters.AddWithValue("@AuditorRemarks", AuditorRemarks);
+                myCommand2.Parameters.AddWithValue("@AuditedDate", date);
+                myCommand2.Parameters.AddWithValue("@ApprovedBy", ApprovedBy);
+                myCommand2.Parameters.AddWithValue("@ApproverRemarks", AdminRemarks);
+                myCommand2.Parameters.AddWithValue("@ApprovedDate", System.DateTime.Now);
+                myCommand2.Parameters.AddWithValue("@AuditDetailsID", AuditDetailsID);
+                myCommand = new SqlCommand("update AssetMaster set Status='" + StatusCode + "',StatusDesc='"+ StatusChangedTo + "' where AssetID='" + AssetID + "'", conSAP);
+                myCommand1 = new SqlCommand("update AuditDetails set Status='Approved',AdminRemarks='" + txt_cmt.Text + "' where AuditDetailsID='" + AuditDetailsID + "'", conAMS);
+                try
+                {
+                    conSAP.Open();
+                    conAMS.Open();
+                    myCommand2.ExecuteNonQuery();
+                    myCommand.ExecuteNonQuery();
+                    myCommand1.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    txt_cmt.Text = ex.Message.ToString();
+                }
+                finally
+                {
+                    conSAP.Close();
+                    conAMS.Close();
+                    
+                }
+
+            }
+        }
+        Response.Redirect("/AdminViewAssetAuditing.aspx");
+
+    }
+    protected void Reject_Click(object sender, EventArgs e)
+    {
+        for (int i = 0; i < ASPxGridView1.VisibleRowCount; i++)
+        {
+            int AuditDetailsID = Convert.ToInt32(ASPxGridView1.GetRowValues(i, "AuditDetailsID"));
+            myCommand1 = new SqlCommand("update AuditDetails set Status='Rejected',AdminRemarks='" + txt_cmt.Text + "' where AuditDetailsID='" + AuditDetailsID + "'", conAMS);
+            try
+            {
+               conAMS.Open();
+                myCommand1.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conAMS.Close();
+                txt_cmt.Text = "";
+            }
+
+        }
+        Response.Redirect("/AdminViewAssetAuditing.aspx");
+    }
+}

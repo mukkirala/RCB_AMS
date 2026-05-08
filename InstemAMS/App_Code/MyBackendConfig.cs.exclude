@@ -1,0 +1,39 @@
+﻿using SAP.Middleware.Connector;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+/// <summary>
+/// Summary description for MyBackendConfig
+/// </summary>
+public class MyBackendConfig : IDestinationConfiguration
+{
+    // RfcDestinationManager.RegisterDestinationConfiguration(new MyBackendConfig());
+    public RfcConfigParameters GetParameters(String destinationName)
+    {
+        if ("SAPJ2EE".Equals(destinationName))
+        {
+            RfcConfigParameters parms = new RfcConfigParameters();
+            parms.Add(RfcConfigParameters.Name, "SAPJ2EE");
+            parms.Add(RfcConfigParameters.AppServerHost, "10.10.1.209");
+            parms.Add(RfcConfigParameters.SystemNumber, "00");
+            parms.Add(RfcConfigParameters.User, "NRLSYS");
+            parms.Add(RfcConfigParameters.Password, "ongcb2b");
+            parms.Add(RfcConfigParameters.Client, "300");
+            parms.Add(RfcConfigParameters.Language, "EN");
+            parms.Add(RfcConfigParameters.PoolSize, "5");
+            parms.Add(RfcConfigParameters.MaxPoolSize, "10");
+            parms.Add(RfcConfigParameters.IdleTimeout, "600");
+            return parms;
+        }
+        else return null;
+    }
+    public bool ChangeEventsSupported()
+    {
+        return false;
+    }
+    public event RfcDestinationManager.ConfigurationChangeHandler ConfigurationChanged;
+    // public event RfcDestinationManager.ConfigurationChangeHandler ConfigurationChanged;
+}
+ 

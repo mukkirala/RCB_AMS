@@ -1,0 +1,332 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="ImportedAssets.aspx.cs" Inherits="ImportedAssets" %>
+
+<%@ Register Assembly="DevExpress.Web.ASPxEditors.v11.1, Version=11.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
+
+<%@ Register assembly="DevExpress.Web.ASPxGridView.v11.1, Version=11.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
+
+<%@ Register assembly="DevExpress.Web.ASPxGridView.v11.1.Export, Version=11.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
+
+
+<%@ Register assembly="DevExpress.Web.ASPxGridView.v11.1, Version=11.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridLookup" tagprefix="dx" %>
+
+
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Web.ASPxLoadingPanel" Assembly="DevExpress.Web.v11.1, Version=11.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" Runat="Server">
+  <script type="text/javascript">
+        function CloseGridLookup() {
+            gridLookup.ConfirmCurrentSelection();
+            gridLookup.HideDropDown();
+            gridLookup.Focus();
+        }
+    </script>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
+    <div class="col-sm-12">
+ <div>
+    <strong>Newly Imported Assets</strong>
+</div>
+ <br />
+  <div class="row form_div">
+         <div class="col-sm-2">
+            Asset Class Code :<span class="style5"><strong>*</strong></span>
+         </div>
+         <div class="col-sm-4">
+               <%-- <dx:ASPxTextBox ID="txt_assgrpcode" runat="server" Width="170px" 
+                    MaxLength="8">
+                </dx:ASPxTextBox> --%>
+                <%-- <dx:ASPxComboBox ID="cmb_class" runat="server" Height="25px" Width="230px" IncrementalFilteringMode="StartsWith" TextFormatString="{0}"  TextField="AssetClassName" ValueField="AssetClassCode" DataSourceID="SqlDSAssetGroup" ValueType="System.String" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
+                    <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
+                    </LoadingPanelImage>
+                  
+                </dx:ASPxComboBox>--%>
+            
+
+       <dx:ASPxGridLookup ID="cmb_class" runat="server" SelectionMode="Multiple" Width="230px" Height="25px"  DataSourceID="SqlDSAssetGroup" ClientInstanceName="gridLookup"
+        KeyFieldName="AssetClassCode"  TextFormatString="{0}" MultiTextSeparator=", " Caption="Select Class" AllowUserInput="False">
+           <%--<GridViewProperties>
+<SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="False"></SettingsBehavior>
+</GridViewProperties>--%>
+        <Columns>
+            <dx:GridViewCommandColumn ShowSelectCheckbox="True" />
+            <dx:GridViewDataColumn FieldName="AssetClassCode" Settings-AllowAutoFilter="False" Visible="false" />
+            <dx:GridViewDataColumn FieldName="AssetClassName" Settings-AllowAutoFilter="True" />
+        </Columns>
+        <GridViewProperties>
+            <Templates>
+                <StatusBar>
+                    <table class="OptionsTable" style="float: right">
+                        <tr>
+                            <td>
+                                <dx:ASPxButton ID="Close" runat="server" AutoPostBack="false" Text="Close" ClientSideEvents-Click="CloseGridLookup" />
+                            </td>
+                        </tr>
+                    </table>
+                </StatusBar>
+            </Templates>
+            <Settings ShowFilterRow="True" ShowStatusBar="Visible" />
+            <SettingsPager PageSize="7" />
+        </GridViewProperties>
+    </dx:ASPxGridLookup>
+                 <asp:SqlDataSource ID="SqlDSAssetGroup" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:InstemSAPConnectionString %>" 
+                        SelectCommand="SELECT distinct AssetClassMaster.[AssetClassID],[AssetClassName],[AssetClassCode] FROM [AssetClassMaster] 
+                     inner join InstemAMS..RoleMaster on RoleMaster.AssetClassID=AssetClassMaster.AssetClassID where RoleMaster.CustodianID=@AdminID and ROLE_NAME in('IT-Admin','HR-Admin')  and ROLE_STATUS='Active'">
+                      <SelectParameters>
+           <asp:SessionParameter Name="AdminID" SessionField="UserID" />
+       </SelectParameters> 
+                </asp:SqlDataSource>
+         </div>
+         <div class="clearfix"></div>
+  </div>
+ <br />
+  <div class="row form_div">
+         <div class="col-sm-2">        
+         </div>
+         <div class="col-sm-4">
+            <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Import Assets From SAP Database" OnClick="ASPxButton1_Click" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange" SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css">
+            <ClientSideEvents Click="function(s, e) {  lpanel.Show(); e.processOnServer = true;}"></ClientSideEvents> 
+            </dx:ASPxButton><br /><br />               
+              <dx:ASPxLoadingPanel runat="server" Modal="True" Text="Please wait" ClientInstanceName="lpanel" ID="ASPxLoadingPanel1">
+                 </dx:ASPxLoadingPanel>                
+         </div>
+         <div class="clearfix"></div>
+  </div> 
+  <br />
+   <div>
+    <strong>Assets from SAP</strong>
+   </div>
+  <br />
+ <%--<table style="margin-right:15px">
+        <tr>
+            <td class="style10">
+            
+            </td>
+            <td align="right" class="style9">
+                <asp:ImageButton ID="btnexporttoxls"  ImageUrl="~/Images/XLS.png" Height="35px" runat="server" OnClick="btnexporttoxls_Click" Width="40px" />
+
+            </td>
+            &nbsp;&nbsp;&nbsp;&nbsp
+            <td>
+                <asp:ImageButton ID="btn_pdf"  ImageUrl="~/Images/PDF.png" runat="server" Height="35px" Width="40px" OnClick="btn_pdf_Click" style="margin-left:5px"/>
+               
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    </table>--%>
+  <div class="table-responsive">
+ 
+    <%--  <dx:ASPxGridView ID="Grid" runat="server" AutoGenerateColumns="False" KeyFieldName="ANLN1" Theme="BlackGlass" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue">
+        <Columns>
+            <dx:GridViewDataColumn Caption="#" VisibleIndex="0">
+            </dx:GridViewDataColumn>
+             <dx:GridViewDataTextColumn FieldName="ANLN1" VisibleIndex="0">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="ANLN2" VisibleIndex="1">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="ZZCUSTD" VisibleIndex="2">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="TXT50" VisibleIndex="2">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="TXA50" VisibleIndex="3">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="MEINS" VisibleIndex="4">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="MENGE" VisibleIndex="5">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataDateColumn FieldName="AKTIV" VisibleIndex="6">
+                 <PropertiesDateEdit DisplayFormatString="dd-MM-yyyy">
+                </PropertiesDateEdit>
+            </dx:GridViewDataDateColumn>
+            <dx:GridViewDataDateColumn FieldName="ZUGDT" VisibleIndex="7">
+                 <PropertiesDateEdit DisplayFormatString="dd-MM-yyyy">
+                </PropertiesDateEdit>
+            </dx:GridViewDataDateColumn>
+            <dx:GridViewDataTextColumn FieldName="PERNR" VisibleIndex="7">
+            </dx:GridViewDataTextColumn>
+            
+            <dx:GridViewDataTextColumn FieldName="ORD42" VisibleIndex="7">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="ORD44" VisibleIndex="7">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="LOC_DESC" VisibleIndex="7">
+            </dx:GridViewDataTextColumn>
+             <dx:GridViewDataTextColumn FieldName="STAT_DESC" VisibleIndex="7">
+            </dx:GridViewDataTextColumn>
+             <dx:GridViewDataTextColumn FieldName="ANLKL" VisibleIndex="7">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="ORD43" VisibleIndex="7">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="COMP_DESC" VisibleIndex="7">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataDateColumn FieldName="DEAKT" VisibleIndex="7">
+                 <PropertiesDateEdit DisplayFormatString="dd-MM-yyyy">
+                </PropertiesDateEdit>
+            </dx:GridViewDataDateColumn>
+            <dx:GridViewDataDateColumn FieldName="IVDAT" VisibleIndex="7">
+                 <PropertiesDateEdit DisplayFormatString="dd-MM-yyyy">
+                </PropertiesDateEdit>
+            </dx:GridViewDataDateColumn>
+            <dx:GridViewDataTextColumn FieldName="INVZU" VisibleIndex="7">
+            </dx:GridViewDataTextColumn>
+        </Columns>
+        <SettingsPager PageSize="25" ShowDefaultImages="False">
+            <AllButton Text="All">
+            </AllButton>
+            <NextPageButton Text="Next &gt;">
+            </NextPageButton>
+            <PrevPageButton Text="&lt; Prev">
+            </PrevPageButton>
+        </SettingsPager>
+        <Settings ShowFilterRow="True" ShowGroupPanel="True" />
+        <Images SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
+            <LoadingPanelOnStatusBar Url="~/App_Themes/PlasticBlue/GridView/gvLoadingOnStatusBar.gif">
+            </LoadingPanelOnStatusBar>
+            <LoadingPanel Url="~/App_Themes/PlasticBlue/GridView/Loading.gif">
+            </LoadingPanel>
+        </Images>
+        <ImagesFilterControl>
+            <LoadingPanel Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
+            </LoadingPanel>
+        </ImagesFilterControl>
+        <Styles CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue">
+            <Header ImageSpacing="10px" SortingImageSpacing="10px">
+            </Header>
+        </Styles>
+        <StylesEditors>
+            <CalendarHeader Spacing="11px">
+            </CalendarHeader>
+            <ProgressBar Height="25px">
+            </ProgressBar>
+        </StylesEditors>
+    </dx:ASPxGridView>--%>
+     <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server" 
+                    Landscape="True" MaxColumnWidth="150" GridViewID="ASPxGridView1" 
+                    LeftMargin="0" RightMargin="0" TopMargin="0">
+                </dx:ASPxGridViewExporter>
+  </div>
+  <br />
+   <div class="table-responsive">
+        <dx:ASPxGridView ID="ASPxGridView1"  runat="server" AutoGenerateColumns="False" 
+                   KeyFieldName="MainAssetNumber"                   
+                    CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
+                    Width="950px" >
+       <Columns>
+            <dx:GridViewDataTextColumn FieldName="MainAssetNumber" VisibleIndex="2" Caption="Main Asset Number">
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="AssetSubNumber" VisibleIndex="3" Width="200px" Caption="Sub Number">
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="CustodianDepartment" VisibleIndex="4" >
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn>       
+            <dx:GridViewDataTextColumn FieldName="AssetDesc" VisibleIndex="5" Caption="Asset Description" >
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="AdditionalDesc" VisibleIndex="5" Caption="Additional Description" >
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="Quantity" VisibleIndex="6" Caption="Quantity">
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn>
+             <dx:GridViewDataTextColumn FieldName="Unit" VisibleIndex="6" Caption="Unit">
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataDateColumn FieldName="AssetCapitalizationDate" VisibleIndex="6" Width="80px">
+                <PropertiesDateEdit DisplayFormatString="dd-MM-yyyy">
+                </PropertiesDateEdit>
+                <Settings AutoFilterCondition="Contains"/>
+            </dx:GridViewDataDateColumn>
+              <dx:GridViewDataDateColumn FieldName="FirstAcquisitionDate" VisibleIndex="6" Width="80px">
+                <PropertiesDateEdit DisplayFormatString="dd-MM-yyyy">
+                </PropertiesDateEdit>
+                <Settings AutoFilterCondition="Contains"/>
+            </dx:GridViewDataDateColumn>            
+             <dx:GridViewDataTextColumn FieldName="CustodianID" VisibleIndex="7">
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn>
+             <dx:GridViewDataTextColumn FieldName="Location" VisibleIndex="7">
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn> 
+            <dx:GridViewDataTextColumn FieldName="LocationDesc" VisibleIndex="7">
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn FieldName="Status" VisibleIndex="7">
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="StatusDesc" VisibleIndex="7">
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="AssetClass" VisibleIndex="7">
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn> 
+             <dx:GridViewDataTextColumn FieldName="Component" VisibleIndex="8">
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn> 
+             <dx:GridViewDataTextColumn FieldName="ComponentDesc" VisibleIndex="8">
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn> 
+             <dx:GridViewDataDateColumn FieldName="Deacdate" VisibleIndex="9" Caption="Deactivation Date" Width="80px">
+                <PropertiesDateEdit DisplayFormatString="dd-MM-yyyy">
+                </PropertiesDateEdit>
+                <Settings AutoFilterCondition="Contains"/>
+            </dx:GridViewDataDateColumn>
+            <dx:GridViewDataDateColumn FieldName="Invdate" VisibleIndex="9" Caption="Inventory Date" Width="80px">
+                <PropertiesDateEdit DisplayFormatString="dd-MM-yyyy">
+                </PropertiesDateEdit>
+                <Settings AutoFilterCondition="Contains"/>
+            </dx:GridViewDataDateColumn>
+            <dx:GridViewDataTextColumn FieldName="InventoryNote" VisibleIndex="9" Caption="Inventory Note">
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn> 
+           <dx:GridViewDataTextColumn FieldName="InventoryNote" VisibleIndex="9" Caption="Inventory Note">
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn>
+           <dx:GridViewDataTextColumn FieldName="CreationDate" VisibleIndex="9" Caption="Creation Date">
+                <Settings AutoFilterCondition="Contains" />
+            </dx:GridViewDataTextColumn> 
+        </Columns>
+            <SettingsPager ShowDefaultImages="False">
+                <AllButton Text="All">
+                </AllButton>
+                <NextPageButton Text="Next &gt;">
+                </NextPageButton>
+                <PrevPageButton Text="&lt; Prev">
+                </PrevPageButton>
+            </SettingsPager>
+        <Settings ShowFilterRow="True" ShowGroupPanel="True" />
+        <Images SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
+            <LoadingPanelOnStatusBar Url="~/App_Themes/PlasticBlue/GridView/gvLoadingOnStatusBar.gif">
+            </LoadingPanelOnStatusBar>
+            <LoadingPanel Url="~/App_Themes/PlasticBlue/GridView/Loading.gif">
+            </LoadingPanel>
+        </Images>
+        <ImagesFilterControl>
+            <LoadingPanel Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
+            </LoadingPanel>
+        </ImagesFilterControl>
+        <Styles CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue">
+            <Header ImageSpacing="10px" SortingImageSpacing="10px">
+            </Header>
+        </Styles>
+        <StylesEditors>
+            <CalendarHeader Spacing="11px">
+            </CalendarHeader>
+            <ProgressBar Height="25px">
+            </ProgressBar>
+        </StylesEditors>
+    </dx:ASPxGridView>
+</div>
+ </div>
+  <br />
+  <br />
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+</asp:Content>
+

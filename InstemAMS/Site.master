@@ -1,0 +1,859 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>INSTEM-Asset Management System</title>
+	<link rel="shortcut icon" href="Images/Instem_logo.png" />
+	<link href="Content/bootstrap.min.css" rel="stylesheet" />
+	 <link href="Content/fontawesome.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+     <script src="Scripts/bootstrap.min.js"></script>
+
+
+<%--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />--%>
+
+	<%--<%--<%--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" 
+	<!--//fonts-->     --%>
+	<%--<link href="https://fonts.googleapis.com/css?family=Maven+Pro&display=swap" rel="stylesheet"/>--%>
+
+	<%--<link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-3.4.0.min.js"></script>--%>
+	<%--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />--%>
+	<!--//fonts-->     
+	<%--<link href="https://fonts.googleapis.com/css?family=Maven+Pro&display=swap" rel="stylesheet">--%>
+	
+  <%-- <link rel="icon" href="Images/BEL_Logo.png" type="image/x-icon"/>
+    <title>BEL-Asset Management System</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />--%>
+    <style>
+        body{
+            padding:0px !important;
+            font-family: 'Libre Franklin', sans-serif;
+            /*NRLbackground*/
+        }
+        label,table tr td{
+              font-family: 'Libre Franklin', sans-serif !important;
+        }
+        label{
+            font-weight:100 !important;
+        }
+        hr {
+            margin-top: 5px !important;
+            margin-bottom: 10px !important; 
+        }
+        .header{
+          /* linear-gradient(rgba(179, 187, 180, 0.43), rgba(204, 212, 204, 0.71)),*/
+           //background-image:url(../Images/BEL_Background.png) ;
+            background-position:50% 50%;
+          // background: linear-gradient(45deg, #03aaf5fa, #043d50fa);
+            background-size:cover;
+            
+        }
+        .head{
+            height:90px;
+        }
+        .logo img{
+            padding:5px;
+            height:90px;
+        }
+        .header .logo{
+            position:absolute;
+        }
+        .title{
+            text-align:center;
+        }
+        .header h5{
+            color:#000099;
+            text-align:center;
+            font-weight:bold;
+        }
+        .navbar-inverse{
+            //background-image:linear-gradient(to bottom,red,blue);
+            background:#004b80b8;
+            border-radius:0px;
+            border:none;
+        }
+        .navbar-nav > li > a{
+            color:white !important;
+            line-height:15px !important;
+            padding:12px !important;
+            font-size:15px !important;
+            /*padding-top:10px !important;*/
+        }
+        .navbar{
+            min-height:30px !important;
+            //max-height:40px !important;
+            margin:0px !important;
+        }
+        .auto-style1 {
+            width: 107px;
+            height: 111px;
+           /*position:absolute;*/
+            
+        }
+        .content{
+           margin-top: 15px;
+            box-shadow: 0 0 17px -10px;
+            background: white;
+            padding:15px;
+           /*background: rgba(243, 243, 243, 0.7);*/
+        }
+        
+        .dropdown-submenu span.caret {
+            margin-top:10px;
+			float: right;
+			transform: rotate(-90deg);
+		}
+        
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu:hover .dropdown-menu {
+              top: 0;
+              left: 100%;
+              display:block;
+              margin-top: -1px;
+         }
+        .navbar-nav > li > .dropdown-menu {
+            width:247px;
+        } 
+       .container {
+            width: 90% !important;
+        }
+       .logo {
+    float: left;
+    padding: 5px;
+    height: 90px;
+}
+
+.logo-right {
+    //float: right;
+   height: 150px; /* Adjust this value to increase/decrease the image height */
+    padding: 5px;
+}
+    </style>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+       <div class="container-fluid" runat="server">
+        <div class="row header " runat="server">
+            <div class="logo">
+        <img src="../Images/Instem_logo.png" alt="Logo Image">
+    </div>
+    
+            <%--<img src="Images/BEL_Logo.png"   style="top: -11px; left:0px;  padding: 10px"; />--%>
+            <div class="container head" runat="server">
+                <div class="title"><h2 style="color:black;">Institute for Stem Cell Science and Regenerative Medicine</h2>
+                <h4 style="color:black;"> Asset Management System</h4></div>
+                </div>
+          
+
+   <nav class=" navbar navbar-inverse">
+  <div class="container-fluid" >
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse"    data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+     
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+
+        <%--====================================================REQUESTER =============================================================- --%>
+       
+              <ul class="nav navbar-nav" id="requester" runat="server" >
+                   <li id="a16" class=""><a href="/CustodianDashboard.aspx"><span class="glyphicon glyphicon-home"></span></a></li>
+				   <li class=""><a href="/ViewAllocatedAssets.aspx">ViewAllocatedAssets</a></li>
+				   <li class=""><a href="/RequestAsset.aspx">Request Asset</a></li>
+				 <%--  <li class=""><a href="/BuybackRequest.aspx">Buyback</a></li>--%>
+				   <li class=""><a href="/RequestLocationChange.aspx">Location Transfer</a></li>
+				   <li class=""><a href="/RequestCustodianChange.aspx">Custodian Transfer</a></li>
+				   <li class=""><a href="/AssetReturnRequest.aspx">Asset Return</a></li>
+                    <%-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Asset Management<span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+							   <li><a href="/ViewAllocatedAssets">Allocated Assets </a></li>
+                                <li><a href="/RequestAsset">Request Asset</a></li>
+                               <li><a href="/BuybackRequest">Request Buyback</a></li>
+							   <li><a href="/RequestLocationChange">Request Location Transfer</a></li>
+							   <li><a href="/RequestCustodianChange">Request Custodian Transfer</a></li>
+                           </ul>
+                     </li>--%>
+
+                  
+        <%--<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" >Complaints<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+       <li> <a href="../ComplaintRegistration.aspx">Raise Complaint</a></li>
+       <li> <a href="../GeneralComplaintRegestation.aspx">Raise General Complaint</a></li>
+        <li> <a href="../ViewOccupantComplaintStatus.aspx">View Complaint Status</a></li>
+         <li> <a href="../ViewComplaintsResolved.aspx">View Resolved Complaints</a></li>
+                                          
+                                    
+         
+         
+
+        </ul>
+       </li>--%>
+
+               </ul>
+            
+       <%--===================================================   ADMIN ================================================================ --%>
+
+    <ul class="nav navbar-nav" id="admin" runat="server" >
+        
+        <li id="a15" class=""><a href="/AdminDashboard.aspx"><span class="glyphicon glyphicon-home"></span></a></li>
+          
+
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Asset Register <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+
+             <li><a href="/BulkUploadAssets.aspx">Bulk Upload Assets</a></li>
+            <li><a href="/AddmanualAssetMaster.aspx">Add Asset Manually</a></li>
+         
+        <%--  <li><a href="/ExportAssetData.aspx">Export Assets</a></li>--%>
+         <%-- <li><a href="/ImportAssetClass.aspx">Import Asset Classes</a></li>
+          <li><a href="/ImportLocations.aspx">Import Locations</a></li>--%>
+         
+          <li><a href="/AddAsset">Export Asset List </a></li> 
+          <li><a href="/AssetStatusUpdate.aspx">Change Asset Status </a></li> 
+          <li><a href="/AddDocumnet">Add Asset Documents</a></li> 
+          
+        <%--  <li><a href="/ExportHistory">View Asset Export History </a></li>--%>
+          <%--<li><a href="/GeolocationAssets">View Asset Location on Map</a></li>      --%>   
+         <%--   <li><a href="/AssetMapView">View Asset Location on Map</a></li> --%>
+
+      <%--   <li><a href="/ImportedAssets.aspx">Import Assets</a></li>
+         
+         <li><a href="/ExportAssetData.aspx">Export Assets</a></li>
+            <li><a href="/ImportAssetClass.aspx">Import Asset Classes</a></li>
+          
+          <li><a href="/ImportLocations.aspx">Import Locations</a></li>
+         
+          <li><a href="/AddAsset">View Asset List </a></li> 
+          <li><a href="/AssetStatusUpdate.aspx">Asset Status Change</a></li> 
+          <li><a href="/AddDocumnet">Add Asset Documents</a></li> 
+          
+          <li><a href="/ExportHistory">View Asset Export History </a></li>
+          <li><a href="/GeolocationAssets">View Asset Location on Map</a></li>         
+            <li><a href="/AssetMapView">View Asset Location on Map</a></li> --%>
+        
+         
+        </ul>
+        </li>
+        
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Asset Requests<span class="caret"></span></a>
+        <ul class="dropdown-menu">              
+              <li class="dropdown-submenu">
+                <a class="test" >Asset Allocation <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a href="/AdminViewAssetRequest">Approve Allocate of Assets</a></li>
+                     <li><a href="/ViewAssetRequest">View Allocation Assets</a></li>
+                    
+                     <%-- <li><a href="/AdminViewAllocatedAssets">View Allocated Assets</a></li>--%>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="test" >Asset Parking <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a href="/AssetParking">Asset Park screen</a></li>
+                     <li><a href="/ViewAssetParking">Allocate Asset Parked </a></li>
+                    <li><a href="/AdminViewAllocatedAssets">View Allocated Asset Parked </a></li>
+
+                    
+                   
+                </ul>
+              </li>
+
+           
+               <li class="dropdown-submenu">
+                <a class="test">Custodian Transfers<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a href="/AdminViewCustodianChangeRequests">Approve Custodian Transfers</a></li>                       
+                     <li><a href="ViewApprovedCustodianTransfer">View Custodian Transfer</a></li>
+                    
+                </ul>
+              </li>
+               <li class="dropdown-submenu">
+                <a class="test">Location Transfers<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a href="/AdminViewLocationChange">Approve Location Transfers</a></li>
+                     <li><a href="ViewApprovedLocationTransfer">View Location Transfer</a></li>
+                </ul>
+              </li>  
+              <li class="dropdown-submenu">
+                <a class="test">Asset Return<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/AdminViewAssetReturn">Approve Return Requests</a></li> 
+                    <li><a href="ViewApprovedAssetReturn">View  Returned Assets</a></li>
+                </ul>
+              </li>                        
+               <li class="dropdown-submenu" id="Li2" runat="server" visible="false">
+                <a class="test">Asset BuyBack<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a href="/AdminViewBuyBackAssets">Approve Buy Back Requests</a></li>
+                     <li><a href="/ViewApprovedBuyBackAssets">View Buy Back Items</a></li>
+                </ul>
+              </li>   
+             <%--<li><a href=" /ViewAssetStatus">View All Pending Requests</a></li>--%>
+             <li><a href="/ViewAllRequests">View All Requests</a></li>
+             <%-- <li><a href="/ViewImportedAssets">Print QRCode</a></li>--%>
+
+        </ul>
+        </li>
+     <%--<li id="" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Complaint Management<span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+        <li> <a href="../AdminViewRegisteredCom.aspx">View All Complaints</a></li>
+     <li> <a href="../AdminViewGeneralComplaints.aspx">View General Complaints</a></li>
+                       <li> <a href="../AdminViewPendingComplaints.aspx">View Pending Complaints To Assign</a></li>
+         <li> <a href="../AdminResolvedComplaints.aspx">Resolved Complaints</a></li>
+         <li> <a href="../AdminViewEscalatedComplaints.aspx">Re_Opened Complaints</a></li>
+
+          <li> <a href="../AdminPendingComplaints.aspx">Work In Progress Complaints</a></li>
+          <li> <a href="../ViewResolvedComplaintsDateWise.aspx">View Complaints Datewise</a></li>
+                    
+
+
+       
+
+             </ul>
+      </li>--%>
+
+
+           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Print QRCodes<span class="caret"></span></a>
+    <ul class="dropdown-menu">
+         <li><a href="/SingleQRPrint.aspx">QRCodes for Single Sticker</a></li>
+          <%--<li><a href="/ViewImportedAssets.aspx">QRCodes for Selected Assets</a></li>
+          <li><a href="/ViewAssetsByAssetID.aspx">QRCodes for Single Asset</a></li>
+          <li><a href="/ViewAssetsByAssetType">QRCodes by Asset Type</a></li>                       
+          <li><a href="/ViewAssetsByCreationDate">QRCodes by Asset Create Date</a></li>--%>
+    </ul>
+    </li>
+
+
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" >Asset Auditing<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/CreateAudit">Create Audit</a></li>
+          <%--<li><a href="/AdminApproveAssetAuditing">Approve Audit Assets</a></li>--%>
+          <li><a href="/AuditCompletion">Close Audits</a></li>
+
+          
+        
+         <%-- <li class=""><a href="/EditAuditedAssets.aspx">Edit Audited Assets</a></li>
+         --%>
+         
+
+        </ul>
+       </li>
+       
+   <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Audit Reports<span class="caret"></span></a>
+        <ul class="dropdown-menu">                                  
+             <%--<li><a href="/ViewAudits">View All Audits</a></li>--%>
+             <li><a href="/ViewCurrentAudits.aspx">View Current Audits</a></li>
+             <li><a href="/ViewPendingAudits">View Pending Audit</a></li>
+            <%--<li><a href="/ViewPerformedAudits"> View Pending Audit</a></li>--%>
+             <li><a href="/ViewCompletedAudits.aspx">View Completed Audits</a></li>
+            <%-- <li><a href="/ViewAssetsByAudit">View Asset Status in Audit </a></li>--%>
+             <%--<li><a href="/ViewAuditWiseStatus">View Audit Report by Status</a></li>--%>
+           <%--  <li><a href="/ViewAssetsByAudit">View Audit Report</a></li>--%>
+          <%--<li><a href="/ViewAssetAuditHistory.aspx">View Audit Findings</a></li>  
+          <li><a href="/AdminViewAssetAuditing.aspx">View Approved Audits</a></li>  --%>
+
+          <li><a href="/ViewLocationWiseAudits.aspx">LocationWise Audited Assets</a></li>
+          <li><a href="/ViewAssetsByAudit">List of Assets and Status in Audit</a></li>            
+             <li><a href="/PhysicalStockVerification">Physical Stock Verification</a></li>
+          <%--<li><a href="/ViewAuditWiseStatus">View Assets by Status in Audit</a></li>--%>
+        </ul>
+       </li>
+              
+             
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Gatepass<span class="caret"></span></a>
+<ul class="dropdown-menu">              
+      <li class="dropdown-submenu">
+        <a class="test" >RFID <span class="caret"></span></a>
+        <ul class="dropdown-menu">  
+        <li><a href="/Mapping_Asset_With_RFID.aspx">Mapping RFID</a></li>
+         <li><a href="/Issues_Items_To_Employee_Using_RFID_Reader.aspx">Issue Item</a></li>
+             <li><a href="/Return_Asset_From_Employee_Using_RFID.aspx">Return Item</a></li>
+             <li><a href="/View_IssuesItem_EmployeeWise.aspx">View Issue Item </a></li>
+            <li><a href="/ViewIssueAndReturnItems.aspx">View Issue And Return Items </a></li>
+              </ul>
+            </li>
+          </ul>
+           </li>
+
+
+
+      <li class= "dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Views<span class="caret"></span></a>
+        <ul class="dropdown-menu">                                  
+              <li><a href="/ViewSearch.aspx">Search</a></li>
+             <%-- <li><a href="/ViewAvailableAssets">Assets Available</a></li>
+                          <li><a href="/ViewNotAvailableAssets">Assets Not Available</a></li>
+              <li><a href="/DamagedRepairableAssets">Assets Damaged but Repairable </a></li>
+              <li><a href="/ViewDeactivatedAssets">Assets Deactivated</a></li>
+            <li><a href="/ViewAssetIdle.aspx">Assets By AssetIdle</a></li>
+              <li><a href="/AssetAvailableDamaged">Assets Available but Damaged </a></li>
+                          <li><a href="/ViewDiscardedAssets">Assets Discarded</a></li>--%>
+             <li><a href="/ViewDateWiseLocationChange.aspx">View DateWise LocationChange</a></li>
+             <li><a href="/ViewDateWiseEmployeeRequest.aspx">View DateWise EmployeeRequest</a></li>
+<%--              <li><a href="/ViewAssetsTransferred">Assets Location Transferred </a></li>--%>
+              <li><a href="/ViewAssetTypes">Assets by AssetType</a></li>
+              <li><a href="/ViewAssetsLocationWise">Assets by Location</a></li>
+              <li><a href="/ViewAssetsByCustodian">Assets by AssetUser</a></li>
+             <li><a href="/ViewAssetByOwner.aspx">Assets by AssetOwner</a></li>
+          
+            <li><a href="/ViewAssetbyDepartment.aspx">Assets by Department</a></li>
+              <%--<li><a href="/ViewAssetDocuments">Asset Documents</a></li>--%>
+              <li><a href="/ViewLocationList.aspx">Location Details </a></li>
+              <li><a href="/ViewAssetDetails">Asset Documents </a></li>
+             <li><a href="ViewDepartmentsList">Department Details</a></li>  
+                <li><a href="ViewEmployeeList">Employee Details</a></li>  
+             <li><a href="/ViewCustodianByDepartment.aspx">Departmentwise Employees</a></li>
+            <li><a href="/ViewBargraphofAssest.aspx">Year Wise BarGraph Presentation</a></li>
+             <li><a href="/ViewDateWiseAssets.aspx">DateWise Assets List</a></li>
+              <li><a href="/AssetManagemetHistory.aspx">Asset History</a></li>
+               <li><a href="/DeletedAssetList.aspx">DeActived Assets List</a></li>
+           
+
+        </ul>
+       </li>
+
+        <li class= "dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Reports<span class="caret"></span></a>
+  <ul class="dropdown-menu">
+                    <li><a href="/ViewAvailableAssets">Assets Available</a></li>
+                                <li><a href="/ViewNotAvailableAssets">Assets Not Available</a></li>
+                    <li><a href="/DamagedRepairableAssets">Assets Damaged but Repairable </a></li>
+                    <li><a href="/ViewDeactivatedAssets">Assets Deactivated</a></li>
+                  <li><a href="/ViewAssetIdle.aspx">Assets By AssetIdle</a></li>
+                    <li><a href="/AssetAvailableDamaged">Assets Available but Damaged </a></li>
+                                <li><a href="/ViewDiscardedAssets">Assets Discarded</a></li>
+                    <li><a href="/ViewAssetsTransferred">Assets Location Transferred </a></li>
+
+
+       </ul>
+</li>
+
+
+           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Masters<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="/InstituteMaster.aspx">Institute Master</a></li>   
+             <li><a href="/BulkUploadEmployee.aspx">Bulk Upload Employee</a></li> 
+               <li><a href="/AddCustodian.aspx">Add Employee</a></li> 
+           
+             <%-- <li><a href="/AddEmployee.aspx">Add Non BEL User</a></li>--%>
+            <li><a href="/RoleMaster.aspx">Assign User</a></li> 
+          
+           
+            <%-- <li><a href="/AddAssetClass.aspx">Assign AssetClass to Dept. </a></li> --%>
+       <%--    
+            <li><a href="/AssetClassMapping.aspx">Assign Dept wise Admin,Auditor</a></li> s
+                     --%>
+             <li><a href="/AddLocation.aspx">Location Master</a></li>   
+            <%--  <li><a href="/AddServiceType.aspx">Complaint Type Master</a></li>   --%>
+         <%--   <li><a href="/DefectMaster.aspx">Add Task Master</a></li>   --%>
+               <li><a href="/AddAssetClass.aspx">Asset Class Master</a></li> 
+                <li><a href="/AddAssetTypeMaster.aspx">Asset category Master</a></li> 
+             <li><a href="/AddSupplier.aspx"> Supplier Master</a></li> 
+               <li><a href="/DepartmentMaster.aspx">Department Master</a></li>   
+<%--            <li><a href="ViewDepartmentsList">Department Details</a></li>  --%>
+            <li><a href="/AddmanualAssetMaster.aspx">Add Asset Manually</a></li>
+                         
+        </ul>
+        </li>
+
+      
+       
+
+      
+
+     
+         
+    
+        
+        <%--<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Asset Requests<span class="caret"></span></a>
+        <ul class="dropdown-menu">   --%>           
+             <%-- <li class="dropdown-submenu">
+                <a class="test" >Asset Allocation <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a href="/AdminViewAssetRequest">Approve Allocate of Assets</a></li>
+                     <li><a href="/ViewAssetRequest">View Allocation Assets</a></li>
+                    
+                 
+                </ul>
+              </li>--%>
+         <%--  <li class="dropdown-submenu">
+                <a class="test" >Asset Parking <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a href="/AssetParking">Asset Park screen</a></li>
+                     <li><a href="/ViewAssetParking">Allocate Asset Parked </a></li>
+                    
+                   
+                </ul>
+              </li>--%>
+              <%-- <li class="dropdown-submenu">
+                <a class="test">Custodian Transfers<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a href="/AdminViewCustodianChangeRequests">Approve Custodian Transfers</a></li>                       
+                     <li><a href="ViewApprovedCustodianTransfer">View Custodian Transfer</a></li>
+                    
+                </ul>
+              </li>--%>
+               <%--<li class="dropdown-submenu">
+                <a class="test">Location Transfers<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a href="/AdminViewLocationChange">Approve Location Transfers</a></li>
+                     <li><a href="ViewApprovedLocationTransfer">View Location Transfer</a></li>
+                </ul>
+              </li>--%>  
+             <%-- <li class="dropdown-submenu">
+                <a class="test">Asset Return<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/AdminViewAssetReturn">Approve Return Requests</a></li> 
+                    <li><a href="ViewApprovedAssetReturn">View  Returned Assets</a></li>
+                </ul>
+              </li>--%>                        
+               <%--<li class="dropdown-submenu">
+                <a class="test">Asset BuyBack<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a href="/AdminViewBuyBackAssets">Approve Buy Back Requests</a></li>
+                     <li><a href="/ViewApprovedBuyBackAssets">View Buy Back Items</a></li>
+                </ul>
+              </li>   --%>
+            
+            <%-- <li><a href=" /ViewAllRequests">View All Requests</a></li>--%>
+
+        <%--</ul>
+        </li>--%>
+
+       <%-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Asset Return Requests<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+                                   
+             
+        </ul>
+        </li>--%>
+
+        <%-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Asset BuyBack<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+                                   
+                   		
+        </ul>
+        </li>--%>
+
+
+
+     <%--   <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" >Asset Auditing<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/CreateAudit">Create Audit</a></li>--%>
+         <%-- <li><a href="/AdminApproveAssetAuditing">Approve Audit Assets</a></li>--%>
+         <%-- <li><a href="/AuditCompletion">Complete Audits</a></li>--%>
+
+          
+        
+        <%--  <li class=""><a href="/EditAuditedAssets.aspx">Edit Audited Assets</a></li>--%>
+         
+         
+
+     
+
+     
+       
+
+     
+          </ul>
+
+
+        <%--======================================================  AUDITOR =================================================================--%>
+
+        <ul class="nav navbar-nav"  id="auditor" runat="server" >
+           <li id="homeicon" class=""><a href="AuditorDashboard.aspx"><span class="glyphicon glyphicon-home"></span></a></li>
+		     <li><a href="/ViewAudits">View Audits</a></li>
+            <li><a href="/PhysicalStockVerification">Physical Stock Verification</a></li>
+             <%--<li class=""><a href="/AuditDetails.aspx">Asset Audit</a></li>
+			 <li class=""><a href="/EditAuditedAssets.aspx">Edit Audited Assets</a></li>
+			 <li class=""><a href="/ViewAuditWiseStatus.aspx">Audit Wise Status</a></li>
+			 <li class=""><a href="/ViewAssetsByAudit.aspx">Assets by Audit</a></li>--%>
+       
+        </ul>
+
+        <%--====================================================== APPROVER ===================================================================--%>
+          
+        
+      
+         <ul class="nav navbar-nav"  id="Approver" runat="server" >
+          
+            <%--<li id="homeicon1" class=""><a href="ApproverDashboard.aspx"><span class="glyphicon glyphicon-home"></span></a></li>
+			 <li class=""><a href="/ApproveAsset.aspx">Asset Requests</a></li>--%>
+			<%-- <li class=""><a href="/ViewAssetBuyBack.aspx">BuyBack Requests</a></li>--%>
+			<%-- <li class=""><a href="/ViewLocationChangeRequests.aspx">Location Transfer Requests</a></li>
+			 <li class=""><a href="/ViewCustodianChangeRequests.aspx">Custodian Transfer Requests</a></li>--%>
+			 <%--<li class=""><a href="/ViewAssetReturnRequest.aspx">Asset Return Requests</a></li>--%>
+
+              <%--<li id="" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Complaint Management<span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+        <li> <a href="../ViewRegisteredCom.aspx">View All Complaints</a></li>
+         <li> <a href="../ViewGEPendingComplaints.aspx">Assign  Complaints</a></li>
+         <li> <a href="../ViewApproverComplaints.aspx">Assign  General Complaints</a></li>
+         <li> <a href="../ResolvedComplaints.aspx">Resolved Complaints</a></li>
+         <li> <a href="../ViewEscalatedComplaints.aspx">Re_Opened Complaints</a></li>
+
+          <li> <a href="../PendingComplaints.aspx">Work In Progress Complaints</a></li>--%>
+       
+
+             </ul>
+   <%--   </li>--%>
+              <%--<li class="dropdown"> <a class="test" data-toggle="dropdown">Asset Allocation<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a href="/ViewAllReuestApprover.aspx">View All Request</a></li>                       
+                                         
+                </ul>
+              </li>--%>
+              
+
+           
+         </ul> 
+         <%--====================================================== ENGINEER ===================================================================--%>
+
+        
+         <ul class="nav navbar-nav"  id="Engineer" runat="server" >
+          
+          
+			 <%--<li id="" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Complaint Management<span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+        <li> <a href="../EnginnerViewRegisteredComplaints.aspx">View All Complaints</a></li>
+         <li> <a href="../ViewAssignedComplaints.aspx">Solve Assigned Complaints</a></li>
+         <li> <a href="../EngineerResolvedComplaints.aspx">Resolved Complaints</a></li>
+         <li> <a href="../EngineerViewEscalatedComplaints.aspx">Escalated Complaints</a></li>
+
+          <li> <a href="../EngineerPendingComplaints.aspx">Work In Progress Complaints</a></li>--%>
+       
+
+             </ul>
+      </li>
+         </ul> 
+        
+          <%--====================================================== IT/HR- Admin ===================================================================--%>
+
+        
+    <ul class="nav navbar-nav" id="ITHRAdmin" runat="server" visible="false" >
+
+        <li id="depadmindashboard" class=""><a href="/AdminDashboard"><span class="glyphicon glyphicon-home"></span></a></li>
+ 
+    <%-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Asset Register<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+         <li><a href="/BulkUploadAssets.aspx">Bulk Upload Assets</a></li>
+            <li><a href="/AddmanualAssetMaster.aspx">Add Asset Manually</a></li>
+         
+        <%--  <li><a href="/ExportAssetData.aspx">Export Assets</a></li>--%>
+         <%-- <li><a href="/ImportAssetClass.aspx">Import Asset Classes</a></li>
+          <li><a href="/ImportLocations.aspx">Import Locations</a></li>--%>
+ <%--        
+          <li><a href="/AddAsset">Export Asset List </a></li> 
+          <li><a href="/AssetStatusUpdate.aspx">Change Asset Status </a></li> 
+          <li><a href="/AddDocumnet">Add Asset Documents</a></li> 
+          --%>
+        <%--  <li><a href="/ExportHistory">View Asset Export History </a></li>--%>
+          <%--<li><a href="/GeolocationAssets">View Asset Location on Map</a></li>      --%>   
+         <%--   <li><a href="/AssetMapView">View Asset Location on Map</a></li> --%>
+        
+     <%--    
+        </ul>
+        </li>--%>
+     
+        
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Asset Requests<span class="caret"></span></a>
+        <ul class="dropdown-menu">              
+              <li class="dropdown-submenu">
+                <a class="test" >Asset Allocation <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a href="/AdminViewAssetRequest">Approve Allocate of Assets</a></li>
+                     <li><a href="/ViewAssetRequest">View Allocation Assets</a></li>
+                    
+                     <%-- <li><a href="/AdminViewAllocatedAssets">View Allocated Assets</a></li>--%>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="test" >Asset Parking <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a href="/AssetParking">Asset Park screen</a></li>
+                     <li><a href="/ViewAssetParking">Allocate Asset Parked </a></li>
+                    
+                   
+                </ul>
+              </li>
+
+           
+               <li class="dropdown-submenu">
+                <a class="test">Custodian Transfers<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a href="/AdminViewCustodianChangeRequests">Approve Custodian Transfers</a></li>                       
+                     <li><a href="ViewApprovedCustodianTransfer">View Custodian Transfer</a></li>
+                    
+                </ul>
+              </li>
+               <li class="dropdown-submenu">
+                <a class="test">Location Transfers<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a href="/AdminViewLocationChange">Approve Location Transfers</a></li>
+                     <li><a href="ViewApprovedLocationTransfer">View Location Transfer</a></li>
+                </ul>
+              </li>  
+              <li class="dropdown-submenu">
+                <a class="test">Asset Return<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/AdminViewAssetReturn">Approve Return Requests</a></li> 
+                    <li><a href="ViewApprovedAssetReturn">View  Returned Assets</a></li>
+                </ul>
+              </li>                        
+               <li class="dropdown-submenu" id="buyback" runat="server" visible="false">
+                <a class="test">Asset BuyBack<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                     <li><a href="/AdminViewBuyBackAssets">Approve Buy Back Requests</a></li>
+                     <li><a href="/ViewApprovedBuyBackAssets">View Buy Back Items</a></li>
+                </ul>
+              </li>   
+             <%--<li><a href=" /ViewAssetStatus">View All Pending Requests</a></li>--%>
+             <li><a href="/ViewAllRequests">View All Requests</a></li>
+             <%-- <li><a href="/ViewImportedAssets">Print QRCode</a></li>--%>
+
+        </ul>
+        </li>
+
+       <%-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Asset Return Requests<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+                                   
+             
+        </ul>
+        </li>--%>
+
+        <%-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Asset BuyBack<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+                                   
+                   		
+        </ul>
+        </li>--%>
+        <%--<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Print QRCodes<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+              <li><a href="/AddAsset.aspx">QRCodes for Bulk Assets</a></li>
+              <li><a href="/ViewImportedAssets.aspx">QRCodes for Double Sticker</a></li>
+              <li><a href="/SingleQRPrint.aspx">QRCodes for Single Sticker</a></li>
+              <li><a href="/ViewAssetsByAssetID.aspx">QRCodes for Single Asset</a></li>
+              <li><a href="/ViewAssetsByAssetType">QRCodes by Asset Type</a></li>                       
+              <li><a href="/ViewAssetsByCreationDate">QRCodes by Asset Create Date</a></li>
+        </ul>
+        </li>--%>
+
+
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" >Asset Auditing<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/CreateAudit">Create Audit</a></li>
+          <li><a href="/AdminApproveAssetAuditing">Approve Audit Assets</a></li>
+          <li><a href="/AuditCompletion">Complete Audits</a></li>
+
+          
+        
+          <li class=""><a href="/EditAuditedAssets.aspx">Edit Audited Assets</a></li>
+         
+         
+
+        </ul>
+       </li>
+       
+   <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Audit Reports<span class="caret"></span></a>
+        <ul class="dropdown-menu">                                  
+             <li><a href="/ViewAudits">View All Audits</a></li>
+             <li><a href="/ViewCurrentAudits.aspx">View Current Audits</a></li>
+             <li><a href="/ViewPendingAudits">View Pending Audit</a></li>
+            <%--<li><a href="/ViewPerformedAudits"> View Pending Audit</a></li>--%>
+             <li><a href="/ViewCompletedAudits.aspx">View Completed Audits</a></li>
+            <%-- <li><a href="/ViewAssetsByAudit">View Asset Status in Audit </a></li>--%>
+             <%--<li><a href="/ViewAuditWiseStatus">View Audit Report by Status</a></li>--%>
+           <%--  <li><a href="/ViewAssetsByAudit">View Audit Report</a></li>--%>
+          <li><a href="/ViewAssetAuditHistory.aspx">View Audit Findings</a></li>  
+          <li><a href="/AdminViewAssetAuditing.aspx">View Approved Audits</a></li>  
+
+          <li><a href="/ViewLocationWiseAudits.aspx">LocationWise Audited Assets</a></li>
+          <li><a href="/ViewAssetsByAudit">Listof Assets and Status in Audit</a></li>             
+          <li><a href="/ViewAuditWiseStatus">View Assets by Status in Audit</a></li>
+        </ul>
+       </li>
+                
+       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">View Reports<span class="caret"></span></a>
+        <ul class="dropdown-menu">                                  
+              <li><a href="/AdminDashboard">Dashboard</a></li>
+              <li><a href="/ViewAvailableAssets">Assets Available</a></li>
+              <li><a href="/DamagedRepairableAssets">Assets Damaged but Repairable </a></li>
+              <li><a href="/ViewDeactivatedAssets">Assets Deactivated</a></li>
+              <li><a href="/AssetAvailableDamaged">Assets Available but Damaged </a></li>
+              <li><a href="/ViewAssetsTransferred">Assets Location Transferred </a></li>
+              <li><a href="/ViewAssetTypes">Assets by AssetType</a></li>
+              <li><a href="/ViewAssetsLocationWise">Assets by Location</a></li>
+              <li><a href="/ViewAssetsByCustodian">Assets by AssetUser</a></li>
+              <li><a href="/ViewAssetbyDepartment.aspx">Assets by AssetOwner</a></li>       
+<%--              <li><a href="/ViewAssetDocuments">Asset Documents</a></li>--%>
+              <li><a href="/ViewAssetDetails">Asset Documents </a></li>
+
+        </ul>
+       </li>
+
+      
+       
+
+      
+
+     
+          </ul>
+
+
+
+
+
+
+          <%--====================================================== END ===================================================================--%>
+
+            <ul class="nav navbar-nav pull-right" >
+             <%-- <li><a href="">Change Password</a></li> --%>
+                <li id="Li1"><a>Welcome: <asp:Label ID="lblusername" runat="server"></asp:Label></a></li>
+                <li><a href="/SignOutPage.aspx"><span class="glyphicon glyphicon-log-in"></span></a></li>
+             </ul>
+
+                 </div></div></nav>
+  </div>
+    
+     
+
+      
+        <div class="auto-style3">
+            <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <div class="container">
+                <div class="content row">
+              <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+                    </div>
+            </div>
+        </div>
+    </div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

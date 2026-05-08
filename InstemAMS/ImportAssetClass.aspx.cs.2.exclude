@@ -1,0 +1,97 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Threading;
+using System.Web;
+using System.Web.Configuration;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using SAP.Middleware.Connector;
+
+
+public partial class ImportAssetClass : System.Web.UI.Page
+{
+    SqlConnection conSAP = new SqlConnection(WebConfigurationManager.ConnectionStrings["InstemSAPConnectionString"].ConnectionString);
+    SqlDataAdapter da;
+    SqlCommand cmd;
+    ECCDestinationConfig cfg = null;
+    RfcDestination dest = null;
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (Session["UserID"] == null)
+        {
+            Response.Redirect("ErrorPage.aspx");
+            return;
+        }
+        ImportData();
+    }
+    public void ImportData()
+    {
+        DataTable dtx = new DataTable();
+        DataTable qrdt = new DataTable();
+        qrdt.Columns.Add("AssetClassCode");
+               
+        //SAP Code starts.............
+        try
+        {
+
+            cfg = new ECCDestinationConfig();
+            //RfcDestinationManager.RegisterDestinationConfiguration(cfg);
+            //dest = RfcDestinationManager.GetDestination("SAPJ2EE");
+            if (dest == null)
+            {
+                try
+                {
+                    RfcDestinationManager.RegisterDestinationConfiguration(cfg);
+                }
+                catch (Exception ex)
+                {
+
+                }
+                dest = RfcDestinationManager.GetDestination("SAPJ2EE");
+            }
+            RfcRepository repo = dest.Repository;
+            IRfcFunction fnpush = repo.CreateFunction("ZAT_ASSET_DETAILS");
+            fnpush.SetValue("I_BUKRS", "");
+            fnpush.SetValue("I_ANLN1", "");
+            fnpush.SetValue("I_ANLN2", "");
+            fnpush.SetValue("I_EVALUATION_DATE", "");
+            fnpush.SetValue("I_ANLKL", "");
+            fnpush.Invoke(dest);
+
+            IRfcTable dataTbl = fnpush.GetTable("ZAT_ASSET_DET");
+            dtx = IRfcTableExtension.ToDataTable(dataTbl, "AssetData");
+
+            for (int i = 0; i < dtx.Rows.Count; i++)
+            {             
+                string AssetClassName = dtx.Rows[i]["ANLKL"].ToString().Remove(0, 4);
+                string AssetClassCode = dtx.Rows[i]["ANLKL"].ToString();
+                cmd = new SqlCommand("IF(NOT EXISTS(SELECT * FROM AssetClassMaster WHERE AssetClassCode = @AssetClassCode))BEGIN INSERT INTO AssetClassMaster(AssetClassCode,AssetClassName)VALUES(@AssetClassCode,@AssetClassName)END", conSAP);
+                cmd.Parameters.AddWithValue("@AssetClassCode", AssetClassCode);
+                cmd.Parameters.AddWithValue("@AssetClassName", AssetClassName);
+                conSAP.Open();
+                cmd.ExecuteNonQuery();
+                conSAP.Close();
+           
+            }
+            // RfcSessionManager.EndContext(dest);
+            RfcDestinationManager.UnregisterDestinationConfiguration(cfg);
+        }
+        catch (Exception ex)
+        {
+            //RfcSessionManager.EndContext(dest);
+            RfcDestinationManager.UnregisterDestinationConfiguration(cfg);
+            Thread.Sleep(1000);
+        }
+        finally
+        {
+
+        }
+       
+       
+    }
+}

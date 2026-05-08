@@ -1,0 +1,284 @@
+﻿using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using DevExpress.XtraReports.UI;
+using System.Web.Configuration;
+using System.Data.SqlClient;
+using System.Data;
+
+/// <summary>
+/// Summary description for VendorLoanXtraReport
+/// </summary>
+public class VendorLoanXtraReport : DevExpress.XtraReports.UI.XtraReport
+{
+	private DevExpress.XtraReports.UI.DetailBand Detail;
+	private DevExpress.XtraReports.UI.TopMarginBand TopMargin;
+    private DevExpress.XtraReports.UI.BottomMarginBand BottomMargin;
+    private XRRichText xrRichText1;
+    private XRLabel xrLabel1;
+    private XRLabel xrLabel2;
+    private XRLabel xrLabel3;
+    private XRLabel xrLabel4;
+    private XRLabel xrLabel5;
+    private XRLabel xrLabel6;
+    private XRTable xrTable1;
+    private XRTableRow xrTableRow1;
+    private XRTableCell xrTableCell1;
+    private XRTableCell xrTableCell2;
+    private XRTableCell xrTableCell3;
+	/// <summary>
+	/// Required designer variable.
+	/// </summary>
+	private System.ComponentModel.IContainer components = null;
+
+    public VendorLoanXtraReport(DataTable dt1, string[] values)
+    {
+        InitializeComponent();
+        //
+        // TODO: Add constructor logic here
+        //
+        this.xrLabel2.Text = values[0];
+        this.xrLabel4.Text = values[1];
+        this.xrLabel6.Text = values[2];
+
+
+
+        this.xrTable1.Borders = DevExpress.XtraPrinting.BorderSide.All;
+        this.xrTable1.BeginInit();
+        XRTableRow row;
+        XRTableCell Cell1;
+        XRTableCell Cell2;
+        XRTableCell Cell3;
+     
+        for (int i = 0; i < dt1.Rows.Count; i++)
+        {
+            row = new XRTableRow();
+            {
+                Cell1 = new XRTableCell();
+                row.Cells.SetChildIndex(Cell1, 0);
+                Cell1.Text = dt1.Rows[i][0].ToString();
+                row.Cells.Add(Cell1);
+                xrTableCell1.WidthF = 63f;
+
+                Cell2 = new XRTableCell();
+                row.Cells.SetChildIndex(Cell2, 1);
+                Cell2.Text = dt1.Rows[i][1].ToString();
+                row.Cells.Add(Cell2);
+                xrTableCell2.WidthF = 63f;
+
+                Cell3 = new XRTableCell();
+                row.Cells.SetChildIndex(Cell3, 2);
+                Cell3.Text = dt1.Rows[i][2].ToString();
+                row.Cells.Add(Cell3);
+                xrTableCell3.WidthF = 63f;
+
+                
+            }
+            this.xrTable1.Rows.Add(row);
+        }
+        this.xrTable1.EndInit();
+    }
+	
+	/// <summary> 
+	/// Clean up any resources being used.
+	/// </summary>
+	/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+	protected override void Dispose(bool disposing) {
+		if (disposing && (components != null)) {
+			components.Dispose();
+		}
+		base.Dispose(disposing);
+	}
+
+	#region Designer generated code
+
+	/// <summary>
+	/// Required method for Designer support - do not modify
+	/// the contents of this method with the code editor.
+	/// </summary>
+	private void InitializeComponent() {
+        string resourceFileName = "VendorLoanXtraReport.resx";
+        System.Resources.ResourceManager resources = global::Resources.VendorLoanXtraReport.ResourceManager;
+        this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+        this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
+        this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
+        this.xrTableCell1 = new DevExpress.XtraReports.UI.XRTableCell();
+        this.xrTableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
+        this.xrTableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
+        this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
+        this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
+        this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
+        this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
+        this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
+        this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
+        this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
+        this.xrRichText1 = new DevExpress.XtraReports.UI.XRRichText();
+        this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
+        ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)(this.xrRichText1)).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+        // 
+        // Detail
+        // 
+        this.Detail.BackColor = System.Drawing.Color.White;
+        this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrTable1,
+            this.xrLabel6,
+            this.xrLabel5,
+            this.xrLabel4,
+            this.xrLabel3,
+            this.xrLabel2,
+            this.xrLabel1});
+        this.Detail.HeightF = 162.5F;
+        this.Detail.Name = "Detail";
+        this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+        this.Detail.StylePriority.UseBackColor = false;
+        this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+        // 
+        // xrTable1
+        // 
+        this.xrTable1.BackColor = System.Drawing.Color.White;
+        this.xrTable1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
+        this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(92.70834F, 69.16666F);
+        this.xrTable1.Name = "xrTable1";
+        this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+            this.xrTableRow1});
+        this.xrTable1.SizeF = new System.Drawing.SizeF(420.8333F, 25F);
+        this.xrTable1.StylePriority.UseBackColor = false;
+        this.xrTable1.StylePriority.UseForeColor = false;
+        // 
+        // xrTableRow1
+        // 
+        this.xrTableRow1.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.xrTableCell1,
+            this.xrTableCell2,
+            this.xrTableCell3});
+        this.xrTableRow1.Name = "xrTableRow1";
+        this.xrTableRow1.Weight = 1D;
+        // 
+        // xrTableCell1
+        // 
+        this.xrTableCell1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+        this.xrTableCell1.Name = "xrTableCell1";
+        this.xrTableCell1.StylePriority.UseFont = false;
+        this.xrTableCell1.Text = "ProductID";
+        this.xrTableCell1.Weight = 0.87499836838351075D;
+        // 
+        // xrTableCell2
+        // 
+        this.xrTableCell2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+        this.xrTableCell2.Name = "xrTableCell2";
+        this.xrTableCell2.StylePriority.UseFont = false;
+        this.xrTableCell2.Text = "ProductName";
+        this.xrTableCell2.Weight = 2.416669214311121D;
+        // 
+        // xrTableCell3
+        // 
+        this.xrTableCell3.BackColor = System.Drawing.Color.White;
+        this.xrTableCell3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+        this.xrTableCell3.Name = "xrTableCell3";
+        this.xrTableCell3.StylePriority.UseBackColor = false;
+        this.xrTableCell3.StylePriority.UseFont = false;
+        this.xrTableCell3.Text = "Quantity";
+        this.xrTableCell3.Weight = 0.91666568132741366D;
+        // 
+        // xrLabel6
+        // 
+        this.xrLabel6.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+        this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(439.5834F, 22.99999F);
+        this.xrLabel6.Name = "xrLabel6";
+        this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+        this.xrLabel6.SizeF = new System.Drawing.SizeF(163.5417F, 23F);
+        this.xrLabel6.StylePriority.UseFont = false;
+        this.xrLabel6.Text = "xrLabel6";
+        // 
+        // xrLabel5
+        // 
+        this.xrLabel5.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+        this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(363.5416F, 22.99999F);
+        this.xrLabel5.Name = "xrLabel5";
+        this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+        this.xrLabel5.SizeF = new System.Drawing.SizeF(76.04184F, 23F);
+        this.xrLabel5.StylePriority.UseFont = false;
+        this.xrLabel5.Text = "To Vendor :";
+        // 
+        // xrLabel4
+        // 
+        this.xrLabel4.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+        this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(145.8332F, 22.99999F);
+        this.xrLabel4.Name = "xrLabel4";
+        this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+        this.xrLabel4.SizeF = new System.Drawing.SizeF(169.7917F, 23F);
+        this.xrLabel4.StylePriority.UseFont = false;
+        this.xrLabel4.Text = "xrLabel4";
+        // 
+        // xrLabel3
+        // 
+        this.xrLabel3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+        this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(45.83318F, 22.99999F);
+        this.xrLabel3.Name = "xrLabel3";
+        this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+        this.xrLabel3.SizeF = new System.Drawing.SizeF(99.99999F, 23F);
+        this.xrLabel3.StylePriority.UseFont = false;
+        this.xrLabel3.Text = "From Vendor :";
+        // 
+        // xrLabel2
+        // 
+        this.xrLabel2.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+        this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(145.8332F, 0F);
+        this.xrLabel2.Name = "xrLabel2";
+        this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+        this.xrLabel2.SizeF = new System.Drawing.SizeF(100F, 23F);
+        this.xrLabel2.StylePriority.UseFont = false;
+        this.xrLabel2.Text = "xrLabel2";
+        // 
+        // xrLabel1
+        // 
+        this.xrLabel1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+        this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(45.83318F, 0F);
+        this.xrLabel1.Name = "xrLabel1";
+        this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+        this.xrLabel1.SizeF = new System.Drawing.SizeF(100F, 23F);
+        this.xrLabel1.StylePriority.UseFont = false;
+        this.xrLabel1.Text = "Date :";
+        // 
+        // TopMargin
+        // 
+        this.TopMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrRichText1});
+        this.TopMargin.Name = "TopMargin";
+        this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+        this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+        // 
+        // xrRichText1
+        // 
+        this.xrRichText1.BackColor = System.Drawing.Color.White;
+        this.xrRichText1.LocationFloat = new DevExpress.Utils.PointFloat(210.4166F, 27.41666F);
+        this.xrRichText1.Name = "xrRichText1";
+        this.xrRichText1.SerializableRtfString = resources.GetString("xrRichText1.SerializableRtfString");
+        this.xrRichText1.SizeF = new System.Drawing.SizeF(256.2501F, 46.95834F);
+        this.xrRichText1.StylePriority.UseBackColor = false;
+        // 
+        // BottomMargin
+        // 
+        this.BottomMargin.Name = "BottomMargin";
+        this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+        this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+        // 
+        // VendorLoanXtraReport
+        // 
+        this.BackColor = System.Drawing.Color.Empty;
+        this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
+            this.Detail,
+            this.TopMargin,
+            this.BottomMargin});
+        this.Version = "11.1";
+        ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
+        ((System.ComponentModel.ISupportInitialize)(this.xrRichText1)).EndInit();
+        ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+
+	}
+
+	#endregion
+}

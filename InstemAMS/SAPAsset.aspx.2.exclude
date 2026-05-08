@@ -1,0 +1,84 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="SAPAsset.aspx.cs" Inherits="SAPAsset" %>
+<%@ Register Assembly="DevExpress.Web.ASPxEditors.v11.1, Version=11.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
+
+<%@ Register assembly="DevExpress.Web.ASPxGridView.v11.1, Version=11.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
+
+<%@ Register assembly="DevExpress.Web.ASPxGridView.v11.1.Export, Version=11.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
+	<div class="col-sm-12">
+    <div>
+        <strong>SAP Connector</strong>
+    </div><br />
+    <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+    <div> 
+		<dx:ASPxLabel runat="server" ID="lblempno" Text="Employee Number"></dx:ASPxLabel>
+        <dx:ASPxTextBox runat="server" ID="txtEmploeeNumber"></dx:ASPxTextBox>
+		<br />
+        <dx:ASPxButton ID="ASPxButton1" runat="server" Text="GetData" OnClick="ASPxButton1_Click" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange" SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css">
+        </dx:ASPxButton>       
+        <br />
+       
+		<dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" KeyFieldName="EmployeeNumber" Theme="BlackGlass" CssFilePath="~/App_Themes/Glass/{0}/styles.css" CssPostfix="Glass">
+        <Columns>
+            <dx:GridViewDataColumn Caption="#" VisibleIndex="0">
+            </dx:GridViewDataColumn>
+             <dx:GridViewDataTextColumn FieldName="EmployeeNumber" VisibleIndex="0"  >
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="EmployeeName" VisibleIndex="1">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="Department" VisibleIndex="2" Visible="false">
+            </dx:GridViewDataTextColumn>
+            
+        </Columns>
+        <SettingsPager PageSize="25">
+            <AllButton Text="All">
+            </AllButton>
+            <NextPageButton Text="Next &gt;">
+            </NextPageButton>
+            <PrevPageButton Text="&lt; Prev">
+            </PrevPageButton>
+        </SettingsPager>
+        <Settings ShowFilterRow="True" ShowGroupPanel="True" />
+        <Images SpriteCssFilePath="~/App_Themes/Glass/{0}/sprite.css">
+            <LoadingPanelOnStatusBar Url="~/App_Themes/Glass/GridView/gvLoadingOnStatusBar.gif">
+            </LoadingPanelOnStatusBar>
+            <LoadingPanel Url="~/App_Themes/Glass/GridView/Loading.gif">
+            </LoadingPanel>
+        </Images>
+        <ImagesFilterControl>
+            <LoadingPanel Url="~/App_Themes/Glass/Editors/Loading.gif">
+            </LoadingPanel>
+        </ImagesFilterControl>
+        <Styles CssFilePath="~/App_Themes/Glass/{0}/styles.css" CssPostfix="Glass">
+            <Header ImageSpacing="5px" SortingImageSpacing="5px">
+            </Header>
+        </Styles>
+        <StylesEditors>
+            <CalendarHeader Spacing="1px">
+            </CalendarHeader>
+            <ProgressBar Height="25px">
+            </ProgressBar>
+        </StylesEditors>
+    </dx:ASPxGridView>
+    </div>
+    <div>
+		<dx:ASPxLabel runat="server" ID="ASPxLabel1" Text="FirstName"></dx:ASPxLabel>
+        <dx:ASPxTextBox runat="server" ID="txtFirstName"></dx:ASPxTextBox>
+		<dx:ASPxLabel runat="server" ID="ASPxLabel2" Text="LastName"></dx:ASPxLabel>
+        <dx:ASPxTextBox runat="server" ID="txtLastName"></dx:ASPxTextBox>
+		<dx:ASPxLabel runat="server" ID="ASPxLabel3" Text="DOB"></dx:ASPxLabel>
+        <dx:ASPxTextBox runat="server" ID="txtDOB"></dx:ASPxTextBox>
+		<br />
+        <dx:ASPxButton ID="ASPxButton2" runat="server" Text="UpdateData" OnClick="ASPxButton2_Click" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange" SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css">
+        </dx:ASPxButton>
+    </div>
+</div>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+</asp:Content>
+
