@@ -149,6 +149,21 @@
    height: 150px; /* Adjust this value to increase/decrease the image height */
     padding: 5px;
 }
+
+        @font-face {
+    font-family: 'Conthrax';
+    src: url('Conthrax-SemiBold.otf') format('opentype'),
+         url('fonts/Conthrax-SemiBold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+.labmate-brand {
+    font-family: 'Conthrax', sans-serif !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+}
     </style>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -165,14 +180,14 @@
 					<div class="brand-left">
 						<img src="../Images/rcblg.png" alt="logo" />
 						<span>
-							<span class="brand-name">Regional Centre for Biotechnology Faridabad </span>
+							<span class="brand-name">Regional Centre for Biotechnology Faridabad test </span>
 							<br />
 							<small class="brand-subtitle">An Institution of National Importance ,Govt. of India</small>
 						</span>
 					</div>
 
 					<div class="brand-center">
-						<span class="system-title">Material Management  and Inventory Control</span>
+						<span  style="font-family: 'Conthrax', 'Orbitron', sans-serif; font-size: 26px; color: #ffffff; font-weight: 700;">Material Management  and Inventory Control</span>
 						<br />
 						<%--<small class="system-subtitle">Asset, Tools and Equipment Management</small>--%>
 					</div>
