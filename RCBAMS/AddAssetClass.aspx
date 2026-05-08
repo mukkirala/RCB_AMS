@@ -53,7 +53,7 @@
             Asset Class Code :<span class="style5"><strong>*</strong></span>
              </div>
               <div class="col-sm-4">
-                     <dx:ASPxTextBox ID="txt_assgrpcode" runat="server" Width="170px" 
+                     <dx:ASPxTextBox ID="txt_assgrpcode" runat="server" Width="300px" 
                     MaxLength="8">
                 </dx:ASPxTextBox>
                 
@@ -65,7 +65,7 @@
                       Asset Class Name :<span class="style5"><strong>*</strong></span>
                </div>
                 <div class="col-sm-4">
-                       <dx:ASPxTextBox ID="txt_assgrpdes" runat="server" Width="170px" >
+                       <dx:ASPxTextBox ID="txt_assgrpdes" runat="server" Width="300px" >
                 </dx:ASPxTextBox>
                 
              </div>

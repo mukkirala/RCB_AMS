@@ -56,7 +56,7 @@
         <tr>
             <td class="auto-style2">Asset Name <span class="auto-style9"><strong>*</strong></span></td>
             <td>
-                <dx:ASPxTextBox ID="txt_assetname" runat="server" Height="25px" Width="200px">
+                <dx:ASPxTextBox ID="txt_assetname" runat="server" Height="25px" Width="300px">
                 </dx:ASPxTextBox>
             </td>
             <td>&nbsp;</td>
@@ -73,7 +73,7 @@
              <td>
      <%--<dx:ASPxTextBox ID="txtassetclass" runat="server" Height="25PX" Width="170px"> </dx:ASPxTextBox>--%>
 <%--     <dx:ASPxComboBox ID="cmb_AssetClass" runat="server"  Height="25px" Width="200px" ValueType="System.String" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"  CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">                     --%>
-                <dx:ASPxComboBox ID="cmb_AssetClass" runat="server"  Height="25px" Width="200px"  DataSourceID="Classid" TextField="AssetClassName" ValueField="AssetClassName"  IncrementalFilteringMode="StartsWith" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"  CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">                      
+                <dx:ASPxComboBox ID="cmb_AssetClass" runat="server"  Height="25px" Width="300px"  DataSourceID="Classid" TextField="AssetClassName" ValueField="AssetClassName"  IncrementalFilteringMode="StartsWith" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"  CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">                      
 
                  </dx:ASPxComboBox>
                          <asp:SqlDataSource ID="Classid" runat="server" 
@@ -119,7 +119,7 @@ SelectCommand="SELECT DISTINCT [AssetClassName] FROM [AssetClassMaster] ">
            <br />
 
            <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" 
-               DataSourceID="SqlDataSource1" KeyFieldName="AssetTypeID" Width="513px"  OnRowCommand="ASPxGridView1_RowCommand"
+               DataSourceID="SqlDataSource1" KeyFieldName="AssetTypeID" width="100%"  OnRowCommand="ASPxGridView1_RowCommand"
                CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" CssClass="auto-style10">
                <Columns>
              <%--   <dx:GridViewDataTextColumn FieldName="Edit/Delete" VisibleIndex="0">

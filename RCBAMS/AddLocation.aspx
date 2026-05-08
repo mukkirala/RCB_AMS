@@ -47,7 +47,7 @@
               <dx:ASPxLabel ID="ASPxLabel4" runat="server" Text="Wing :" Font-Bold="true" Font-Size="Large"></dx:ASPxLabel><span class="auto-style10">*</span>
              </div>
               <div class="col-sm-4">
-                    <dx:ASPxTextBox ID="txt_location" runat="server" Height="25PX" Width="170px">
+                    <dx:ASPxTextBox ID="txt_location" runat="server" Height="25PX" Width="300px">
                 </dx:ASPxTextBox>
                 
              </div>
@@ -59,7 +59,7 @@
               <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Floor :" Font-Bold="true" Font-Size="Large"></dx:ASPxLabel><span class="auto-style10">*</span>
              </div>
               <div class="col-sm-4">
-                    <dx:ASPxTextBox ID="txtblock" runat="server" Height="25PX" Width="170px">
+                    <dx:ASPxTextBox ID="txtblock" runat="server" Height="25PX" Width="300px">
                 </dx:ASPxTextBox>
                 
              </div>
@@ -71,7 +71,7 @@
               <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="LAB :" Font-Bold="true" Font-Size="Large"></dx:ASPxLabel><span class="auto-style10">*</span>
              </div>
               <div class="col-sm-4">
-                    <dx:ASPxTextBox ID="txt_locationcode" runat="server" Height="25PX" Width="170px">
+                    <dx:ASPxTextBox ID="txt_locationcode" runat="server" Height="25PX" Width="300px">
                 </dx:ASPxTextBox>
                 
              </div>

@@ -179,15 +179,17 @@
 				<div class="header-bar container-fluid">
 					<div class="brand-left">
 						<img src="../Images/rcblg.png" alt="logo" />
-						<span>
+						<%--<span>
 							<span class="brand-name">Regional Centre for Biotechnology Faridabad test </span>
 							<br />
 							<small class="brand-subtitle">An Institution of National Importance ,Govt. of India</small>
-						</span>
+						</span>--%>
 					</div>
 
 					<div class="brand-center">
-						<span  style="font-family: 'Conthrax', 'Orbitron', sans-serif; font-size: 26px; color: #ffffff; font-weight: 700;">Material Management  and Inventory Control</span>
+                                    <span  style="font-family: 'Conthrax', 'Orbitron', sans-serif; font-size: 20px; color: #ffffff; font-weight: 700; ">Regional Centre for Biotechnology Faridabad</span><br />
+                 <small style="color: #ffffff;">Material Management  and Inventory Control</small>
+<%--						<span  style="font-family: 'Conthrax', 'Orbitron', sans-serif; font-size: 25px; color: #ffffff; font-weight: 700;">Material Management  and Inventory Control</span>--%>
 						<br />
 						<%--<small class="system-subtitle">Asset, Tools and Equipment Management</small>--%>
 					</div>
