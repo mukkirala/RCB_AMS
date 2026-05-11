@@ -117,7 +117,7 @@
             </td>
             
             <td>
-              <dx:ASPxTextBox ID="txtCompany" runat="server" Height="25PX" Width="170px"  onkeypress="onlyNumb(event,6);"> </dx:ASPxTextBox>
+              <dx:ASPxTextBox ID="txtCompany" runat="server" Height="25PX" Width="300px"  onkeypress="onlyNumb(event,6);"> </dx:ASPxTextBox>
     <ValidationSettings ValidationGroup="btn" ErrorTextPosition="Bottom">
         <RequiredField IsRequired="true" ErrorText="Company Is Required" />
         <ErrorFrameStyle ImageSpacing="4px">
@@ -133,7 +133,7 @@
             </td>
            
             <td>
-                <dx:ASPxTextBox ID="txtplant" runat="server" Height="25PX" Width="170px"    onkeypress="onlyNumb(event,6);"> </dx:ASPxTextBox>
+                <dx:ASPxTextBox ID="txtplant" runat="server" Height="25PX" Width="300px"    onkeypress="onlyNumb(event,6);"> </dx:ASPxTextBox>
                 <ValidationSettings ErrorTextPosition="Bottom" ValidationGroup="btn">
                         <RequiredField IsRequired="true" ErrorText="Enter Plant" />
                         <ErrorFrameStyle ImageSpacing="4px">
@@ -153,7 +153,7 @@
             <td>
                 <dx:aspxcombobox ID="cmb_supplier" runat="server" DataSourceID="SupplierDS" 
                     ValueType="System.Int32" TextFormatString="{2}"  IncrementalFilteringMode="Contains"
-                 TextField="SupplierName"    ValueField="SupplierID"  Width="170px" 
+                 TextField="SupplierName"    ValueField="SupplierID"  Width="300px" 
                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                     SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                     
@@ -200,7 +200,7 @@ SelectCommand="SELECT DISTINCT [SupplierID],VendorCode,[CompanyName] FROM [Suppl
                 </ValidationSettings>--%>
                             <dx:aspxcombobox ID="cmb_institute" runat="server" DataSourceID="InstituteDS" 
                     ValueType="System.Int32" TextFormatString="{1}"  IncrementalFilteringMode="Contains"
-                 TextField="InstituteName"    ValueField="InstitutePKID"  Width="170px" 
+                 TextField="InstituteName"    ValueField="InstitutePKID"  Width="300px" 
                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                     SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                     
@@ -238,7 +238,7 @@ SelectCommand="SELECT DISTINCT [InstitutePKID], [InstituteID],[InstituteName] FR
             </td>
            
             <td>
-                <dx:ASPxTextBox ID="txtAssetID" runat="server" Height="25PX" Width="170px"  onkeypress="onlyNumbers(event, 15);" >  </dx:ASPxTextBox>
+                <dx:ASPxTextBox ID="txtAssetID" runat="server" Height="25PX" Width="300px"  onkeypress="onlyNumbers(event, 15);" >  </dx:ASPxTextBox>
                 <ValidationSettings ErrorTextPosition="Bottom" >
                         <RequiredField IsRequired="true" ErrorText="Enter Asset ID" />
                         <ErrorFrameStyle ImageSpacing="4px">
@@ -253,7 +253,7 @@ SelectCommand="SELECT DISTINCT [InstitutePKID], [InstituteID],[InstituteName] FR
             </td>
             
             <td>
-                <dx:ASPxTextBox ID="txtMainAssetID" runat="server" Height="25PX" Width="170px" onkeypress="onlyNum(event, 15);"> </dx:ASPxTextBox>
+                <dx:ASPxTextBox ID="txtMainAssetID" runat="server" Height="25PX" Width="300px" onkeypress="onlyNum(event, 15);"> </dx:ASPxTextBox>
                 <ValidationSettings ErrorTextPosition="Bottom" >
                         <RequiredField IsRequired="true" ErrorText="Enter Equipment No" />
                         <ErrorFrameStyle ImageSpacing="4px">
@@ -274,7 +274,7 @@ SelectCommand="SELECT DISTINCT [InstitutePKID], [InstituteID],[InstituteName] FR
     <%--<dx:ASPxTextBox ID="txtassetclass" runat="server" Height="25PX" Width="170px"> </dx:ASPxTextBox>--%>
     <dx:ASPxComboBox ID="cmb_AssetClass" runat="server" ValueType="System.String" ValueField="AssetClassName" OnSelectedIndexChanged="cmb_AssetClass_SelectedIndexChanged" 
         TextField="AssetClassName" DataSourceID="AssetClassDS"  IncrementalFilteringMode="StartsWith" AutoPostBack="true"
-        CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" Height="25px" CssPostfix="PlasticBlue" 
+        CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" Height="25px" CssPostfix="PlasticBlue" Width="300px"
         SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">                     
           </dx:ASPxComboBox>
     <asp:SqlDataSource ID="AssetClassDS" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
@@ -289,7 +289,7 @@ SelectCommand="SELECT DISTINCT [InstitutePKID], [InstituteID],[InstituteName] FR
                 <td>
        Asset Name: <span class="style10"color="red"><strong>*</strong></span>
     </td>
-     <td> <dx:ASPxComboBox ID="txtAssetDesc" runat="server" Width="100%" Height="25px" DataSourceID="SqlDataSource2" AutoPostBack="true"
+     <td> <dx:ASPxComboBox ID="txtAssetDesc" runat="server" Width="300px" Height="25px" DataSourceID="SqlDataSource2" AutoPostBack="true"
               CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" TextField="AssetTypeName" ValueField="AssetTypeName" IncrementalFilteringMode="StartsWith"
             CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String"  PageSize="10"
             >
@@ -320,7 +320,7 @@ SelectCommand="SELECT DISTINCT [AssetTypeName] FROM [AssetTypeMaster] WHERE [Ass
             </td>
             
             <td>
-                <dx:ASPxTextBox ID="txtsubassetno" runat="server" Height="25PX" Width="170px"   onkeypress="onlyNumbers(event, 15);"> </dx:ASPxTextBox>
+                <dx:ASPxTextBox ID="txtsubassetno" runat="server" Height="25PX" Width="300px"   onkeypress="onlyNumbers(event, 15);"> </dx:ASPxTextBox>
                 <ValidationSettings ErrorTextPosition="Bottom" >
                         <RequiredField IsRequired="true" ErrorText="Enter Sub Asset No" />
                         <ErrorFrameStyle ImageSpacing="4px">
@@ -335,7 +335,7 @@ SelectCommand="SELECT DISTINCT [AssetTypeName] FROM [AssetTypeMaster] WHERE [Ass
             </td>
             
             <td>
-                <dx:ASPxTextBox ID="txtAssetOwner" runat="server" Height="25PX" Width="170px"  > </dx:ASPxTextBox>
+                <dx:ASPxTextBox ID="txtAssetOwner" runat="server" Height="25PX" Width="300px"  > </dx:ASPxTextBox>
                 <ValidationSettings ErrorTextPosition="Bottom" >
                         <RequiredField IsRequired="true" ErrorText="Enter Owner" />
                         <ErrorFrameStyle ImageSpacing="4px">
@@ -352,7 +352,7 @@ SelectCommand="SELECT DISTINCT [AssetTypeName] FROM [AssetTypeMaster] WHERE [Ass
                Asset User: <%--<span class="style10"color="red"><strong>*</strong></span>--%>
             </td>
             <td>
-                <dx:ASPxGridLookup ID="custodianlookup" runat="server" AutoGenerateColumns="False" DataSourceID="custodiands" KeyFieldName="CustodianID"
+                <dx:ASPxGridLookup ID="custodianlookup" runat="server" AutoGenerateColumns="False" DataSourceID="custodiands" KeyFieldName="CustodianID" Width="300px"
                     IncrementalFilteringMode="Contains" TextFormatString="{1}" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
 <GridViewProperties>
 <SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>
@@ -605,7 +605,8 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
  </td>
  
  <td>
-     <dx:ASPxDateEdit ID="cmb_Capitalizationdate" runat="server" Height="25px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" DisplayFormatString="dd-MM-yyyy" >
+     <dx:ASPxDateEdit ID="cmb_Capitalizationdate" runat="server" Height="25px" Width="300px"
+         CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" DisplayFormatString="dd-MM-yyyy" >
         <%-- <ValidationSettings>
              <ErrorFrameStyle ImageSpacing="4px">
                  <ErrorTextPaddings PaddingLeft="4px" />
@@ -705,7 +706,8 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
   Warranty Date: <span class="style10"color="red"><strong></strong></span>
 </td>
 <td>
-    <dx:ASPxDateEdit ID="cmb_warrantydate" runat="server" Height="25px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" DisplayFormatString="dd-MM-yyyy" >
+    <dx:ASPxDateEdit ID="cmb_warrantydate" runat="server" Height="25px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" Width="300px"
+        CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" DisplayFormatString="dd-MM-yyyy" >
      <%--   <ValidationSettings>
             <ErrorFrameStyle ImageSpacing="4px">
                 <ErrorTextPaddings PaddingLeft="4px" />
@@ -720,7 +722,8 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
             </td>
             
             <td>
-                 <dx:ASPxDateEdit ID="cmb_Acceptdatebyuser" runat="server" Height="25px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" DisplayFormatString="dd-MM-yyyy" >
+                 <dx:ASPxDateEdit ID="cmb_Acceptdatebyuser" runat="server" Height="25px" Width="300px"
+                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" DisplayFormatString="dd-MM-yyyy" >
                    <%-- <ValidationSettings>
                         <ErrorFrameStyle ImageSpacing="4px">
                             <ErrorTextPaddings PaddingLeft="4px" />
@@ -757,7 +760,8 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
         P.O Date: <span class="style10"color="red"><strong></strong></span>
       </td>
       <td>
-          <dx:ASPxDateEdit ID="cmb_podate" runat="server" Height="25px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" DisplayFormatString="dd-MM-yyyy" >
+          <dx:ASPxDateEdit ID="cmb_podate" runat="server" Height="25px"  Width="300px"
+              CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" DisplayFormatString="dd-MM-yyyy" >
            <%--   <ValidationSettings>
                   <ErrorFrameStyle ImageSpacing="4px">
                       <ErrorTextPaddings PaddingLeft="4px" />
@@ -783,7 +787,8 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
               Installation Date for Reference: <span class="style10"color="red"><strong></strong></span>
             </td>
             <td>
-                <dx:ASPxDateEdit ID="cmb_IDFR" runat="server" Height="25px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" DisplayFormatString="dd-MM-yyyy" >
+                <dx:ASPxDateEdit ID="cmb_IDFR" runat="server" Height="25px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" Width="300px"
+                    CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" DisplayFormatString="dd-MM-yyyy" >
                  <%--   <ValidationSettings>
                         <ErrorFrameStyle ImageSpacing="4px">
                             <ErrorTextPaddings PaddingLeft="4px" />
@@ -880,10 +885,12 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
     <table>
         <tr>
             <td>
-               <div style="overflow-x:scroll;width:1500px">
+               <div style="overflow-x:scroll;width:1000px">
 
                
-                 <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False"  DataSourceID="SqlDataSource1" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" KeyFieldName="SLNO"  MaxColumnWidth="150" OnRowCommand="ASPxGridView1_RowCommand">
+                 <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" 
+                     DataSourceID="SqlDataSource1" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" KeyFieldName="SLNO" 
+                     MaxColumnWidth="150" OnRowCommand="ASPxGridView1_RowCommand">
                      <Columns>
                           <dx:GridViewDataTextColumn FieldName="Edit" VisibleIndex="0" CellStyle-Font-Bold="true">
                 <DataItemTemplate>

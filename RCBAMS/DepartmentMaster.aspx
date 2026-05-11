@@ -35,7 +35,7 @@
 
             <td>
             <td class="auto-style31">
-                <dx:ASPxTextBox ID="txt_Deptcode" runat="server" Width="170px" Height="25px" CssClass="auto-style32">
+                <dx:ASPxTextBox ID="txt_Deptcode" runat="server" Width="300px" Height="25px" CssClass="auto-style32">
                     <ValidationSettings ValidationGroup="btn" ErrorTextPosition="Bottom" >
                         <RequiredField IsRequired="true" ErrorText="Department Code Is Required" />
                     </ValidationSettings>
@@ -53,7 +53,7 @@
             </td>
             <td>
             <td class="auto-style31">
-               <dx:ASPxTextBox ID="txtDeptName" runat="server" Width="170px" Height="25px" CssClass="auto-style32">
+               <dx:ASPxTextBox ID="txtDeptName" runat="server" Width="300px" Height="25px" CssClass="auto-style32">
                     <ValidationSettings ValidationGroup="btn" ErrorTextPosition="Bottom" >
                         <RequiredField IsRequired="true" ErrorText="Department Name Is Required" />
                     </ValidationSettings>

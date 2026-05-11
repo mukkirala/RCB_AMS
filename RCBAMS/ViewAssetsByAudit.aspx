@@ -51,7 +51,7 @@
                 Select Audit</td>
             <td class="style3">                
                   <dx:ASPxGridLookup ID="Audit_Gridlookup" runat="server"  
-                    AutoGenerateColumns="False" DataSourceID="SqlDataSource3" TextFormatString="{2}" Width="170px" Height="25px"
+                    AutoGenerateColumns="False" DataSourceID="SqlDataSource3" TextFormatString="{2}" Width="300px" Height="25px"
                     KeyFieldName="AuditID" IncrementalFilteringMode="Contains"  GridViewProperties-Settings-UseFixedTableLayout="true" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                     <GridViewProperties>
                         <SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>

@@ -150,10 +150,10 @@
                <label>Select Asset</label>
                &nbsp;<span class="style10"><strong>*</strong></span>
                </div>
-           <div class="col-sm-2">
+           <div class="col-sm-4">
                    <dx:ASPxGridLookup ID="gridlkup_Asset" runat="server"  AutoGenerateColumns="False" 
                      DataSourceID="AssetDS" IncrementalFilteringMode="Contains"   TextFormatString="{1}" 
-                     KeyFieldName="AssetID"   Height="25px"
+                     KeyFieldName="AssetID"   Height="25px" Width="300px"
                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                     SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
 <GridViewProperties>
@@ -415,7 +415,8 @@
 &nbsp;<span class="style10"><strong>*</strong></span>
            </div>
             <div class="col-sm-4">
-                <dx:ASPxComboBox ID="cmb_selectdoctype" IncrementalFilteringMode="Contains" runat="server" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" ValueField="DocumentID" TextField="DocumentName" DataSourceID="SqlDataSource1" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String">
+                <dx:ASPxComboBox ID="cmb_selectdoctype" IncrementalFilteringMode="Contains" runat="server" Width="300px" 
+                    CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" ValueField="DocumentID" TextField="DocumentName" DataSourceID="SqlDataSource1" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String">
                     <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
                     </LoadingPanelImage>
                     <ValidationSettings>

@@ -65,7 +65,7 @@
                 From Date</td>
 
             <td>
-                <dx:ASPxDateEdit ID="ASPxDateEdit1" runat="server" Height="25px" 
+                <dx:ASPxDateEdit ID="ASPxDateEdit1" runat="server" Height="25px"  Width="300px"
                     DisplayFormatString ="dd-MM-yyyy" 
                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                     SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
@@ -85,7 +85,7 @@
             <td class="auto-style11">
                 To Date</td>
             <td>
-                <dx:ASPxDateEdit ID="ASPxDateEdit2" runat="server" Height="25px" 
+                <dx:ASPxDateEdit ID="ASPxDateEdit2" runat="server" Height="25px" Width="300px"
                     DisplayFormatString ="dd-MM-yyyy" 
                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                     SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">

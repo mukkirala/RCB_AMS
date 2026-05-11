@@ -55,7 +55,7 @@
          }
          function UpdateButtonText() {
              var text = grid.IsCustomizationWindowVisible() ? "Hide" : "Show";
-             text += " Customization Window";
+             text += "Column Chooser";
              button1.SetText(text);
          }
       </script>
@@ -72,7 +72,7 @@
                     Select  Wing <span style="color:red">*</span>
                 </div>
                 <div class="col-sm-2" style="padding-left:0px">
-                    <dx:ASPxComboBox ID="cmb_Location" runat="server" Width="90%" DataSourceID="SqbDBaircraft"  Height="5px" AutoPostBack="true"
+                    <dx:ASPxComboBox ID="cmb_Location" runat="server" Width="100px" DataSourceID="SqbDBaircraft"  Height="5px" AutoPostBack="true"
                         TextField="Location" ValueField="Location"  ValueType="System.String" IncrementalFilteringMode="Contains"
                           CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" 
                         >
@@ -94,7 +94,7 @@
                    </div>
                  <div class="col-sm-12">
 		<div class="col-sm-3">
-            <dx:ASPxButton ID="ASPxButton1" runat="server" ClientInstanceName="button1" Text="Show Customization Window"
+            <dx:ASPxButton ID="ASPxButton1" runat="server" ClientInstanceName="button1" Text="Column Chooser"
                 UseSubmitBehavior="False" AutoPostBack="False" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange" 
         SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css">
                 <ClientSideEvents  Click= "button1_Click"/>

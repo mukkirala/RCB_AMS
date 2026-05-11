@@ -54,7 +54,7 @@
                    <dx:ASPxLabel ID="lbl_tolocation" runat="server" Text="Select Wing" Font-Size="Medium"></dx:ASPxLabel>
                 </div>
                     <div class="col-sm-4">
-                        <dx:ASPxComboBox ID="txt_Locationid" runat="server" Width="100%" Height="25px" DataSourceID="location" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
+                        <dx:ASPxComboBox ID="txt_Locationid" runat="server" Width="300px" Height="25px" DataSourceID="location" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
               CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" TextField="Location" ValueField="Location" OnSelectedIndexChanged="txt_Locationid_SelectedIndexChanged"
             CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String"  PageSize="10"
             >                
@@ -81,7 +81,7 @@ SelectCommand="SELECT DISTINCT [Location] FROM [LocationMaster]">
                    <dx:ASPxLabel ID="ASPxLabel7" runat="server" Text="Select Floor" Font-Size="Medium"></dx:ASPxLabel>
                 </div>
                     <div class="col-sm-4">
-                        <dx:ASPxComboBox ID="txtblock" runat="server" Width="100%" Height="25px" DataSourceID="Blockid" TextField="Block" AutoPostBack="true" ValueField="Block"
+                        <dx:ASPxComboBox ID="txtblock" runat="server" Width="300px" Height="25px" DataSourceID="Blockid" TextField="Block" AutoPostBack="true" ValueField="Block"
               OnSelectedIndexChanged="txtblock_SelectedIndexChanged" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"  PageSize="10"
             CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String">
             <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
@@ -111,7 +111,7 @@ SelectCommand="SELECT DISTINCT [Block] FROM [LocationMaster]  where Location=@Lo
    <dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Select LAB" Font-Size="Medium"></dx:ASPxLabel>
 </div>
     <div class="col-sm-4">
-        <dx:ASPxComboBox ID="txt_Lab" runat="server" Width="100%" Height="25px" DataSourceID="SqlDataSource4" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
+        <dx:ASPxComboBox ID="txt_Lab" runat="server" Width="300px" Height="25px" DataSourceID="SqlDataSource4" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
               CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" TextField="LocationCode" ValueField="LocationID" OnSelectedIndexChanged="txt_Lab_SelectedIndexChanged"
             CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String"  PageSize="10">                
             <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
@@ -142,7 +142,7 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
             </div>
             <div class="col-sm-4">
                   <dx:ASPxComboBox ID="gridlkup_Asset" runat="server"  AutoPostBack="true" AutoGenerateColumns="False"
-                 DataSourceID="SqlDataSource2" IncrementalFilteringMode="Contains" TextFormatString="{1}"
+                 DataSourceID="SqlDataSource2" IncrementalFilteringMode="Contains" TextFormatString="{1}" 
                  TextField="AuditName" ValueField="AuditID"  Height="25px"
                 CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                 SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" width="300px" OnSelectedIndexChanged="gridlkup_Asset_SelectedIndexChanged" >
@@ -201,7 +201,7 @@ SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css">
             </div>
          <div class="row" runat="server">
 <dx:ASPxGridView ID="ASPxGridView1"  runat="server" AutoGenerateColumns="False" 
-                DataSourceID="SqlDSGrid1" KeyFieldName="AssetID"                   
+                DataSourceID="SqlDSGrid1" KeyFieldName="AssetID" Width="100%"                   
                 CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" >
    <Columns>
         <dx:GridViewDataTextColumn FieldName="AuditDetailsID" Visible="false" ReadOnly="True" VisibleIndex="0">

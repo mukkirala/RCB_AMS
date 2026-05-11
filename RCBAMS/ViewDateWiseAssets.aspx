@@ -31,7 +31,7 @@
 
             <td>
                 <dx:ASPxDateEdit ID="FromDate" runat="server" Height="25px" 
-                    DisplayFormatString ="dd-MM-yyyy" 
+                    DisplayFormatString ="dd-MM-yyyy"  Width="300px"
                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                     SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                     <ValidationSettings>
@@ -51,7 +51,7 @@
                 To Date</td>
             <td>
                 <dx:ASPxDateEdit ID="todate" runat="server" Height="25px" 
-                    DisplayFormatString ="dd-MM-yyyy" 
+                    DisplayFormatString ="dd-MM-yyyy" Width="300px"
                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                     SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                     <ValidationSettings>
@@ -117,10 +117,10 @@
 <br />
 <br />
           <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" GridViewID="ViewResolvedComplaint" 
-        runat="server" MaxColumnWidth="90">
+        runat="server" >
     </dx:ASPxGridViewExporter>
     <dx:ASPxGridView ID="ViewResolvedComplaint" runat="server"
-    AutoGenerateColumns="False" DataSourceID="ComplaintResolved" Width="95%" 
+    AutoGenerateColumns="False" DataSourceID="ComplaintResolved" Width="1000px" 
     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
     CssClass="auto-style9" KeyFieldName="AssetID" >
         <Columns>

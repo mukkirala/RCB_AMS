@@ -64,7 +64,7 @@
         <td  class="style7">
            Select Role<span class="style5">*</span></td>
         <td class="style6">
-            <dx:ASPxComboBox ID="ASPxComboBox1" runat="server" Width="170px" Height="25px"
+            <dx:ASPxComboBox ID="ASPxComboBox1" runat="server" Width="300px" Height="25px"
                 CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                
                 SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" 
@@ -79,11 +79,12 @@
                 </ValidationSettings>--%>
             </dx:ASPxComboBox>
         </td>
+
         <td class="style7">
 &nbsp;Select Employee<span class="style5">*</span></td>
         <td>
             <dx:ASPxGridLookup ID="Cust_gridlookup" runat="server"
-                    AutoGenerateColumns="False" DataSourceID="CustSqlDataSource" TextFormatString="{0}" Width="170px" Height="25px"
+                    AutoGenerateColumns="False" DataSourceID="CustSqlDataSource" TextFormatString="{0}" Width="300px" Height="25px"
                     KeyFieldName="CustodianID" IncrementalFilteringMode="Contains"  CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                     <GridViewProperties>
                         <%--<SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>--%>

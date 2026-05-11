@@ -105,7 +105,7 @@
                 </dx:ASPxLabel>
              </div>
               <div class="col-sm-4">
-                      <dx:ASPxTextBox ID="txtAuditName" runat="server" Height="25px" Width="170px" CssFilePath="~/App_Themes/Glass/{0}/styles.css" CssPostfix="Glass" SpriteCssFilePath="~/App_Themes/Glass/{0}/sprite.css">
+                      <dx:ASPxTextBox ID="txtAuditName" runat="server" Height="25px" Width="300px" CssFilePath="~/App_Themes/Glass/{0}/styles.css" CssPostfix="Glass" SpriteCssFilePath="~/App_Themes/Glass/{0}/sprite.css">
                     <ValidationSettings>
                         <ErrorFrameStyle ImageSpacing="4px">
                             <ErrorTextPaddings PaddingLeft="4px" />
@@ -119,7 +119,7 @@
                 </dx:ASPxLabel>
              </div>
              <div class="col-sm-4">                  
-                   <dx:ASPxGridLookup ID="cmb_location" runat="server"  AutoGenerateColumns="False"
+                   <dx:ASPxGridLookup ID="cmb_location" runat="server"  AutoGenerateColumns="False" Width="300px"
                      DataSourceID="LocationDS" IncrementalFilteringMode="Contains"  TextFormatString="{2}"
                      KeyFieldName="LocationID"   Height="25px"
                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
@@ -178,7 +178,8 @@
                 </dx:ASPxLabel>
               </div>
               <div class="col-sm-4">
-                   <dx:ASPxComboBox ID="cmb_status" runat="server" Height="25px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
+                   <dx:ASPxComboBox ID="cmb_status" runat="server" Height="25px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" Width="300px"
+                       CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                         <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
                     </LoadingPanelImage>
                     <ValidationSettings>
@@ -192,7 +193,7 @@
                 <dx:ASPxLabel ID="lbl_AuditDiscription" runat="server" Text="Audit Description"  Font-Size="Large"  Font-Bold="true"></dx:ASPxLabel>
              </div>
              <div class="col-sm-4">
-                <asp:TextBox ID="txt_AuditDiscription" runat="server" TextMode="MultiLine" Rows="3" Columns="18"></asp:TextBox>             
+                <asp:TextBox ID="txt_AuditDiscription" runat="server" TextMode="MultiLine" Rows="3" Columns="38"></asp:TextBox>             
              </div>
              </div>
             <div class="row form_div">

@@ -48,7 +48,7 @@
            </div>
             <div class="col-sm-2">
              <dx:ASPxGridLookup ID="Cust_gridlookup" runat="server"
-                    AutoGenerateColumns="False" DataSourceID="CustSqlDataSource" TextFormatString="{0}" Width="170px" Height="25px"
+                    AutoGenerateColumns="False" DataSourceID="CustSqlDataSource" TextFormatString="{0}" Width="300px" Height="25px"
                     KeyFieldName="CustodianID" IncrementalFilteringMode="Contains"  CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                     <GridViewProperties>
                         <%--<SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>--%>
@@ -185,7 +185,7 @@
    <label">Select Wing: </label>
    </div>
                     <div class="col-sm-2">
-                        <dx:ASPxComboBox ID="txt_Locationid" runat="server" Width="100%" Height="25px" DataSourceID="location" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
+                        <dx:ASPxComboBox ID="txt_Locationid" runat="server" Width="300px" Height="25px" DataSourceID="location" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
               CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" TextField="Location" ValueField="Location" OnSelectedIndexChanged="txt_Locationid_SelectedIndexChanged"
             CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String"  PageSize="10"
             >                
@@ -209,7 +209,7 @@ SelectCommand="SELECT DISTINCT [Location] FROM [LocationMaster]">
 <label">Select Floor: </label>
 </div>
                          <div class="col-sm-2">
-                        <dx:ASPxComboBox ID="txtblock" runat="server" Width="100%" Height="25px" DataSourceID="Blockid" TextField="Block" AutoPostBack="true" ValueField="Block"
+                        <dx:ASPxComboBox ID="txtblock" runat="server" Width="300px" Height="25px" DataSourceID="Blockid" TextField="Block" AutoPostBack="true" ValueField="Block"
               OnSelectedIndexChanged="txtblock_SelectedIndexChanged" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"  PageSize="10"
             CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String">
             <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
@@ -235,7 +235,7 @@ SelectCommand="SELECT DISTINCT [BLOCK] FROM [LocationMaster]  where Location=@Lo
 <label">Select LAB: </label>
 </div>
                   <div class="col-sm-2">
-        <dx:ASPxComboBox ID="txt_Lab" runat="server" Width="100%" Height="25px" DataSourceID="SqlDataSource4" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
+        <dx:ASPxComboBox ID="txt_Lab" runat="server" Width="300px" Height="25px" DataSourceID="SqlDataSource4" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
               CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" TextField="LocationCode" ValueField="LocationID" 
             CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String"  PageSize="10"
             >                
@@ -269,7 +269,7 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
                      DataSourceID="SqlDataSource1" IncrementalFilteringMode="Contains"  TextFormatString="{1}"
                      KeyFieldName="AssetTypeID"   Height="25px"
                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
-                    SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" Width="170px">
+                    SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" Width="300px">
         <GridViewProperties>
        <SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>
       <Settings ShowFilterRow="True" />
@@ -327,14 +327,14 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
          <label">Allocate Quantity:</label>
          </div>
          <div class="col-sm-4">
-            <dx:ASPxTextBox ID="req_qnty" runat="server" Width="170px" Text="" ForeColor="Blue" ReadOnly="false" Height="25px"></dx:ASPxTextBox>            
+            <dx:ASPxTextBox ID="req_qnty" runat="server" Width="300px" Text="" ForeColor="Blue" ReadOnly="false" Height="25px"></dx:ASPxTextBox>            
          </div>
      
          <div class="col-sm-2" style="font-size:large">
           <span class="auto-style7">Remarks:</span>       
          </div>
          <div class="col-sm-4">
-             <asp:TextBox ID="txt_cmt" runat="server" TextMode="MultiLine" Rows="2" ForeColor="Blue" Columns="22"></asp:TextBox>                     
+             <asp:TextBox ID="txt_cmt" runat="server" TextMode="MultiLine" Rows="2" ForeColor="Blue" Columns="32"></asp:TextBox>                     
          </div>
     </div>
    

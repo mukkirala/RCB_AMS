@@ -69,7 +69,8 @@
                               <h4> <span><strong>Issued Assets</strong></span></h4>
                 </div>
             </div>
-            <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" DataSourceID="SqlDataSource2" KeyFieldName="AssetOutBoundDetailID">
+            <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" Width="100%"
+                CssPostfix="PlasticBlue" DataSourceID="SqlDataSource2" KeyFieldName="AssetOutBoundDetailID">
         <Columns>
             <dx:GridViewDataTextColumn FieldName="AssetOutBoundDetailID" ReadOnly="True" VisibleIndex="0">
                 <EditFormSettings Visible="true" />
@@ -129,7 +130,8 @@
                               <h4> <span><strong>Returned Assets</strong></span></h4>
                 </div>
             </div>
-        <dx:ASPxGridView ID="aspxgridview2" runat="server" AutoGenerateColumns="false" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" DataSourceID="db_returnData" KeyFieldName="AssetOutBoundDetailID">
+        <dx:ASPxGridView ID="aspxgridview2" runat="server" AutoGenerateColumns="false" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" Width="100%"
+            CssPostfix="PlasticBlue" DataSourceID="db_returnData" KeyFieldName="AssetOutBoundDetailID">
     <Columns>
         <%--<dx:GridViewCommandColumn VisibleIndex="0">
             <ClearFilterButton Visible="false">

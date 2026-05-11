@@ -24,7 +24,7 @@
         }
         function UpdateButtonText() {
             var text = grid.IsCustomizationWindowVisible() ? "Hide" : "Show";
-            text += " Customization Window";
+            text += "Column Chooser";
             button1.SetText(text);
         }
     </script>
@@ -41,7 +41,7 @@
                     Select  Department <span style="color:red">*</span>
                 </div>
                 <div class="col-sm-2" style="padding-left:0px">
-                    <dx:ASPxComboBox ID="cmb_Dep" runat="server" Width="90%" DataSourceID="SqbDBaircraft"  Height="5px" AutoPostBack="true"
+                    <dx:ASPxComboBox ID="cmb_Dep" runat="server" Width="100%" DataSourceID="SqbDBaircraft"  Height="5px" AutoPostBack="true"
                         TextField="Department" ValueField="Department"  ValueType="System.String" IncrementalFilteringMode="Contains"
                           CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" 
                         >
@@ -63,7 +63,7 @@
                    </div>
                  <div class="col-sm-12">
 		<div class="col-sm-3">
-            <dx:ASPxButton ID="ASPxButton1" runat="server" ClientInstanceName="button1" Text="Show Customization Window"
+            <dx:ASPxButton ID="ASPxButton1" runat="server" ClientInstanceName="button1" Text="Column Chooser"
                 UseSubmitBehavior="False" AutoPostBack="False" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange" 
         SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css">
                 <ClientSideEvents  Click= "button1_Click"/>
@@ -77,7 +77,7 @@
                 <asp:ImageButton ID="btnexporttoxls"  ImageUrl="~/Images/XLS.png" Height="35px" runat="server"  OnClick="btnexporttoxls_Click" Width="40px" />
              </div>
             <div class="col-sm-1">
-                <asp:ImageButton ID="btn_pdf"  ImageUrl="~/Images/PDF.png" runat="server" Height="35px" Width="40px" OnClick="btn_pdf_Click" style="margin-left:5px"/>
+                <asp:ImageButton ID="btn_pdf"  ImageUrl="~/Images/PDF.png" runat="server" Height="35px" Width="40px" OnClick="btn_pdf_Click" />
                </div>
            </div>
          

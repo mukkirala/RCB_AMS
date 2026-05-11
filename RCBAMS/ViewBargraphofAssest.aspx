@@ -35,8 +35,8 @@
              
                  <label>SELECT YEAR</label>
            </div>
-                <div class="col-sm-2" style="padding-left:0px">
-                    <dx:ASPxComboBox ID="cmb_Dep" runat="server" Width="90%" DataSourceID="SqbDBaircraft"  Height="5px" 
+                <div class="col-sm-2" >
+                    <dx:ASPxComboBox ID="cmb_Dep" runat="server" Width="100%" DataSourceID="SqbDBaircraft"  Height="5px" 
                         TextField="YearofPurchase" ValueField="YearofPurchase"  ValueType="System.String" IncrementalFilteringMode="Contains"
                           CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" 
                         >

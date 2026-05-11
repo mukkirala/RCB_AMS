@@ -67,7 +67,7 @@
 
             <td>
                 <dx:ASPxDateEdit ID="ASPxDateEdit1" runat="server" Height="25px" 
-                    DisplayFormatString ="dd-MM-yyyy" 
+                    DisplayFormatString ="dd-MM-yyyy" Width="300px"
                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                     SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                     <ValidationSettings>
@@ -87,7 +87,7 @@
                 To Date</td>
             <td>
                 <dx:ASPxDateEdit ID="ASPxDateEdit2" runat="server" Height="25px" 
-                    DisplayFormatString ="dd-MM-yyyy" 
+                    DisplayFormatString ="dd-MM-yyyy" Width="300px"
                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                     SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                     <ValidationSettings>
@@ -153,7 +153,7 @@
 <br />
 <br />
     <dx:ASPxGridView ID="ViewLocationChange" runat="server" 
-    AutoGenerateColumns="False" DataSourceID="LocationChange" Width="907px" 
+    AutoGenerateColumns="False" DataSourceID="LocationChange" Width="100%" 
     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
     CssClass="auto-style9" KeyFieldName="LocationChangeID" >
         <Columns>

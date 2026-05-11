@@ -93,13 +93,14 @@
         </tr>
         <tr>
             
-            <td style="font-size:large">Select Asset :
+            <td style="font-size:large">Select Asset
                 <%--<dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Select Asset :">
                 </dx:ASPxLabel>--%>
             </td>
             <td>
                 <dx:ASPxGridLookup ID="gridlookup_Asset" runat="server" TextFormatString="{0},{2},{3}" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Height="25px" KeyFieldName="SLNO"
-                    Width="200px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue"  IncrementalFilteringMode="StartsWith" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
+                    Width="300px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
+                    IncrementalFilteringMode="StartsWith" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                                         <GridViewProperties>
                    <SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>
                   <Settings ShowFilterRow="True" />
@@ -131,10 +132,13 @@
                      </Header>
                  </GridViewStyles>
                 </dx:ASPxGridLookup>
+                  <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="gridlookup_Asset" ForeColor="Red" 
+      Width="150px" ValidationGroup="btn" runat="server" errortextposition="bottom"
+      ErrorMessage=" Select Asset"></asp:RequiredFieldValidator>
             </td>
             <td>
                 &nbsp;
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="gridlookup_Asset" ForeColor="Red" Width="150px" ValidationGroup="btn" runat="server" ErrorMessage=" Select Asset"></asp:RequiredFieldValidator>
+              
             </td>
         </tr>
                 <tr>
@@ -143,17 +147,19 @@
        
         <tr>
             
-            <td style="font-size:large">Scan RFID Card :
+            <td style="font-size:large">Scan RFID Card
                 <%--<dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Scan RFID Card :">
                 </dx:ASPxLabel>--%>
             </td>
             <td>
-                <dx:ASPxTextBox ID="txt_REIDCard" runat="server" Width="200px" Height="25px" AutoPostBack="true" OnTextChanged="txt_REIDCard_TextChanged">
+                <dx:ASPxTextBox ID="txt_REIDCard" runat="server" Width="300px" Height="25px" AutoPostBack="true" OnTextChanged="txt_REIDCard_TextChanged">
                 </dx:ASPxTextBox>
+                   <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txt_REIDCard" errortextposition="bottom"
+       ForeColor="Red" Width="200px" ValidationGroup="btn" runat="server" ErrorMessage="   Enter RFID Number"></asp:RequiredFieldValidator>
             </td>
              <td>
                 
-               <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txt_REIDCard" ForeColor="Red" Width="200px" ValidationGroup="btn" runat="server" ErrorMessage="   Enter RFID Number"></asp:RequiredFieldValidator>
+            
           </td>
            
         </tr>

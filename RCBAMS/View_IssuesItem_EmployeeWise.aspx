@@ -46,7 +46,7 @@ Select Employee :</td>
                  <%-- <dx:ASPxComboBox ID="cmb_employee" runat="server" AutoPostBack="true" DataSourceID="SqlDataSource1" Width="200px"  ValueField="CustodianID" TextField="CustodianName" ValueType="System.String" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue"  SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
  </dx:ASPxComboBox>--%>
 
-             <dx:ASPxComboBox ID="cmb_employee" runat="server" AutoPostBack="true" DataSourceID="SqlDataSource1" Width="200px"  
+             <dx:ASPxComboBox ID="cmb_employee" runat="server" AutoPostBack="true" DataSourceID="SqlDataSource1" Width="300px"  
     ValueField="CustodianID" TextField="CustodianName" ValueType="System.String" 
     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue"  
     SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" EnableFiltering="true" 

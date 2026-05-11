@@ -621,10 +621,10 @@
            <li id="homeicon" class=""><a href="AuditorDashboard.aspx"><span class="glyphicon glyphicon-home"></span></a></li>
 		     <li><a href="/ViewAudits">View Audits</a></li>
             <li><a href="/PhysicalStockVerification">Physical Stock Verification</a></li>
-             <%--<li class=""><a href="/AuditDetails.aspx">Asset Audit</a></li>
+             <li class=""><a href="/AuditDetails.aspx">Asset Audit</a></li>
 			 <li class=""><a href="/EditAuditedAssets.aspx">Edit Audited Assets</a></li>
 			 <li class=""><a href="/ViewAuditWiseStatus.aspx">Audit Wise Status</a></li>
-			 <li class=""><a href="/ViewAssetsByAudit.aspx">Assets by Audit</a></li>--%>
+			 <li class=""><a href="/ViewAssetsByAudit.aspx">Assets by Audit</a></li>
        
         </ul>
 

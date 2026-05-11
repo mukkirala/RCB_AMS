@@ -39,10 +39,10 @@
            
                 Select Audit
             </div>
-           <div class="col-sm-2">
+           <div class="col-sm-4">
                         
                   <dx:ASPxGridLookup ID="Audit_Gridlookup" runat="server" 
-                    AutoGenerateColumns="False" DataSourceID="SqlDataSource3" TextFormatString="{2}"  Height="25px"
+                    AutoGenerateColumns="False" DataSourceID="SqlDataSource3" TextFormatString="{2}"  Height="25px" Width ="300px"
                     KeyFieldName="AuditID" IncrementalFilteringMode="Contains"  GridViewProperties-Settings-UseFixedTableLayout="true" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                     <GridViewProperties>
                         <SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>
@@ -86,7 +86,7 @@
                 </dx:ASPxGridLookup>
           
            </div>
-       <div class="col-sm-2">
+      <div class="col-sm-1" style="padding-left:20px;">
               <dx:ASPxButton ID="btn_search" runat="server" BackColor="White" 
                      Width="20px" Height="25px"  OnClick="btn_search_Click">
                     <Image Url="~/Images/search1.png" Width="20px" Height="20px">
@@ -184,7 +184,9 @@
                 Select Date
             </div>
            <div class="col-sm-3">             
-                <dx:ASPxDateEdit ID="cmb_completiondate" runat="server" Height="25px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" DisplayFormatString="dd-MM-yyyy" >
+                <dx:ASPxDateEdit ID="cmb_completiondate" runat="server" Height="25px"
+                    CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" width="300px"
+                    SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" DisplayFormatString="dd-MM-yyyy" >
                     <ValidationSettings>
                         <ErrorFrameStyle ImageSpacing="4px">
                             <ErrorTextPaddings PaddingLeft="4px" />
@@ -198,7 +200,7 @@
              Remarks
         </div>
         <div class="col-sm-3">
-            <asp:TextBox ID="txt_cmt" runat="server" TextMode="MultiLine" Rows="2"  Columns="19"></asp:TextBox>
+            <asp:TextBox ID="txt_cmt" runat="server" TextMode="MultiLine" Rows="2"  Columns="38"></asp:TextBox>
         </div>
     </div>
       <div class="clearfix"></div>

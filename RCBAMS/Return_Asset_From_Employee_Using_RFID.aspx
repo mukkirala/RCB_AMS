@@ -66,7 +66,7 @@
                 </td>
                 <td>
 
-                    <dx:ASPxGridLookup ID="ASPxGridLookup1" Width="200px" runat="server" TextFormatString="{0}" AutoPostBack="true" AutoGenerateColumns="False" KeyFieldName="AssetOutBoundID" DataSourceID="SqlDataSource2" OnTextChanged="ASPxGridLookup1_TextChanged" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue"  SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
+                    <dx:ASPxGridLookup ID="ASPxGridLookup1" Width="300px" runat="server" TextFormatString="{0}" AutoPostBack="true" AutoGenerateColumns="False" KeyFieldName="AssetOutBoundID" DataSourceID="SqlDataSource2" OnTextChanged="ASPxGridLookup1_TextChanged" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue"  SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                            <GridViewProperties>
    <SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>
   <Settings ShowFilterRow="True" />
@@ -198,7 +198,8 @@
             </tr>
         </table><br />
 
-    <dx:ASPxGridView ID="aspxgridview1" runat="server" AutoGenerateColumns="false" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" DataSourceID="db_returnData" KeyFieldName="AssetOutBoundDetailID">
+    <dx:ASPxGridView ID="aspxgridview1" runat="server" AutoGenerateColumns="false" Width="1000px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
+        DataSourceID="db_returnData" KeyFieldName="AssetOutBoundDetailID">
         <Columns>
             <dx:GridViewCommandColumn VisibleIndex="0">
                 <ClearFilterButton Visible="True">

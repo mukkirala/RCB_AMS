@@ -109,7 +109,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>
-    <span class="style5">&nbsp;&nbsp; <span class="auto-style8">ADD SUPPLIER :-</span></span></strong><br />
+    <span class="style5">&nbsp;&nbsp; <span class="auto-style8">ADD SUPPLIER</span></span></strong><br />
     <table class="auto-style12">
                <tr>
             <td class="auto-style11">
@@ -127,7 +127,7 @@
             <td class="auto-style11">
              Supplier Code :<span class="auto-style1"><strong>*</strong></span></td>
          <td class="style3">
-             <dx:ASPxTextBox ID="txt_spcode" runat="server" Width="170px" Height="25px" ClientInstanceName="client_txt_spcode">
+             <dx:ASPxTextBox ID="txt_spcode" runat="server" Width="300px" Height="25px" ClientInstanceName="client_txt_spcode">
             <ValidationSettings SetFocusOnError="True">
             <RequiredField ErrorText="enter supplier code" IsRequired="True" />
             </ValidationSettings>
@@ -138,7 +138,7 @@
                 <td class="auto-style2">
      Supplier Name :<span class="auto-style1"><strong>*</strong></span></td>
  <td class="style3">
-     <dx:ASPxTextBox ID="txt_cmpname" runat="server" Width="170px" Height="25px" ClientInstanceName="client_txt_cmpname">
+     <dx:ASPxTextBox ID="txt_cmpname" runat="server" Width="300px" Height="25px" ClientInstanceName="client_txt_cmpname">
          <ValidationSettings SetFocusOnError="True">
 <RequiredField ErrorText="enter supplier name" IsRequired="True" />
 </ValidationSettings>
@@ -161,7 +161,7 @@
         <td class="auto-style11">
             Contact person Name : <span class="auto-style1"><strong>*</strong></span></td>
         <td>
-            <dx:ASPxTextBox ID="txt_cntprsname" runat="server" Width="170px" Height="25px">
+            <dx:ASPxTextBox ID="txt_cntprsname" runat="server" Width="300px" Height="25px">
                 <ValidationSettings SetFocusOnError="True">
 <RequiredField ErrorText="enter contact person name" IsRequired="True" />
 </ValidationSettings>
@@ -172,7 +172,7 @@
             <td class="auto-style2">
                 Contact Number : <span class="auto-style1"><strong>*</strong></span></td>
             <td>
-                <dx:ASPxTextBox ID="txt_cntprsno" runat="server" Width="170px" Height="25px" ClientInstanceName="client_txt_mobile" MaxLength="10">
+                <dx:ASPxTextBox ID="txt_cntprsno" runat="server" Width="300px" Height="25px" ClientInstanceName="client_txt_mobile" MaxLength="10">
                 <ValidationSettings SetFocusOnError="True">
 <RequiredField ErrorText="enter contact number" IsRequired="True" />
 </ValidationSettings>
@@ -186,7 +186,7 @@
             <td class="auto-style11">
                 Address :</td>
             <td class="style3">
-                <dx:ASPxTextBox ID="txt_adress" runat="server" Width="170px" Height="25px">
+                <dx:ASPxTextBox ID="txt_adress" runat="server" Width="300px" Height="25px">
                 </dx:ASPxTextBox>
             </td>
             <td class="auto-style9">
@@ -194,7 +194,7 @@
             <td class="auto-style2">
                 Area :</td>
             <td>
-                <dx:ASPxTextBox ID="txt_area" runat="server" Width="170px" Height="25px">
+                <dx:ASPxTextBox ID="txt_area" runat="server" Width="300px" Height="25px">
                 </dx:ASPxTextBox>
             </td>
         </tr>
@@ -205,7 +205,7 @@
             <td class="auto-style11">
                 State :<span class="auto-style1"><strong>*</strong></span></td>
             <td class="style3">
-                <dx:ASPxComboBox ID="cmb_state" runat="server" DataSourceID="SqlDataSource1"  AutoPostBack="true" Width="170px" Height="25px"
+                <dx:ASPxComboBox ID="cmb_state" runat="server" DataSourceID="SqlDataSource1"  AutoPostBack="true" Width="300px" Height="25px"
                     onselectedindexchanged="cmb_state_SelectedIndexChanged"   TextField="State" IncrementalFilteringMode="StartsWith"
                     ValueType="System.String" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" >
                     <ValidationSettings SetFocusOnError="True">
@@ -219,7 +219,7 @@
                 City :<span class="auto-style1"><strong>*</strong></span></td>
             <td>
                 <dx:ASPxComboBox ID="cmb_city" runat="server" DataSourceID="SqlDataSource2"  TextField="city_name" IncrementalFilteringMode="StartsWith"
-                    ValueType="System.String" Width="170px" Height="25px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" >
+                    ValueType="System.String" Width="300px" Height="25px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" >
                     <ValidationSettings>
                         <RequiredField ErrorText="Select City" IsRequired="True" />
                     </ValidationSettings>
@@ -233,7 +233,7 @@
             <td class="auto-style11">
                 Pincode :</td>
             <td class="style3">
-                <dx:ASPxTextBox ID="txt_pincode" runat="server" Width="170px" Height="25px" ClientInstanceName="client_txtPinCode">
+                <dx:ASPxTextBox ID="txt_pincode" runat="server" Width="300px" Height="25px" ClientInstanceName="client_txtPinCode">
                 </dx:ASPxTextBox>
             </td>
             <td class="auto-style9">
@@ -241,7 +241,7 @@
             <td class="auto-style2">
                 Phone No : <span class="auto-style1"><strong>*</strong></span></td>
             <td>
-                <dx:ASPxTextBox ID="txt_mobile" runat="server" Width="170px"  Height="25px" ClientInstanceName="client_txt_mobile" MaxLength="10">
+                <dx:ASPxTextBox ID="txt_mobile" runat="server" Width="300px"  Height="25px" ClientInstanceName="client_txt_mobile" MaxLength="10">
                 <ValidationSettings SetFocusOnError="True">
 <RequiredField ErrorText="enter phone no" IsRequired="True" />
 </ValidationSettings>
@@ -255,7 +255,7 @@
             <td class="auto-style11">
                 Fax Number :</td>
             <td class="style3">
-                <dx:ASPxTextBox ID="txt_faxno" runat="server" Width="170px" Height="25" ClientInstanceName="client_txtFaxNo">
+                <dx:ASPxTextBox ID="txt_faxno" runat="server" Width="300px" Height="25" ClientInstanceName="client_txtFaxNo">
                 </dx:ASPxTextBox>
             </td>
             <td class="auto-style9">
@@ -263,7 +263,7 @@
             <td class="auto-style2">
                 E Mail :</td>
             <td>
-                <dx:ASPxTextBox ID="txt_mail" runat="server" Width="170px" Height="25" ClientInstanceName="client_txtEmailId">
+                <dx:ASPxTextBox ID="txt_mail" runat="server" Width="300px" Height="25" ClientInstanceName="client_txtEmailId">
                 </dx:ASPxTextBox>
             </td>
         </tr>
@@ -350,7 +350,7 @@
     <div>
         <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>
-        <span class="style5">&nbsp;</span><span class="auto-style10">VIEW SUPPLIER DETAILS :-</span></strong>
+        <span class="style5">&nbsp;</span><span class="auto-style10">VIEW SUPPLIER DETAILS </span></strong>
         <br />
         <br />
         <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" OnRowCommand="ASPxGridView1_RowCommand"

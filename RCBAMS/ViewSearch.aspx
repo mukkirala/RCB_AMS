@@ -25,7 +25,7 @@
          }
          function UpdateButtonText() {
              var text = grid.IsCustomizationWindowVisible() ? "Hide" : "Show";
-             text += " Customization Window";
+             text += "Column Chooser";
              button1.SetText(text);
          }
     </script>
@@ -47,7 +47,7 @@
                 <div class="col-sm-2">
               Enter Text <span style="color:red">*</span></div>
             <div class="col-sm-3">
-                <dx:ASPxTextBox ID="txt_search" runat="server" Height="25px" Width="200px">
+                <dx:ASPxTextBox ID="txt_search" runat="server" Height="25px" Width="300px">
     
                     </dx:ASPxTextBox>
                                   <%--<dx:ASPxGridLookup ID="gridlkup_Equimentno" runat="server"  AutoGenerateColumns="False" 
@@ -96,13 +96,15 @@
             </dx:ASPxGridLookup>--%>
                
             </div>  
+               
                   <div class="col-sm-1">
                 <asp:ImageButton OnClick="search_Click" ID="search"  ImageUrl="~/Images/search1.png" runat="server" />
             </div>
         </div>
-           <div class="col-sm-12">
-		<div class="col-sm-3">
-            <dx:ASPxButton ID="ASPxButton1" runat="server" ClientInstanceName="button1" Text="Show Customization Window"
+         <br />
+        <div class="col-sm-12" style="margin-top:20px;">
+    <div class="col-sm-3">
+            <dx:ASPxButton ID="ASPxButton1" runat="server" ClientInstanceName="button1" Text="Column Chooser"
                 UseSubmitBehavior="False" AutoPostBack="False" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange" 
         SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css">
                 <ClientSideEvents  Click= "button1_Click"/>
@@ -145,7 +147,7 @@
         
             
          <dx:ASPxGridView ID="Grid" runat="server" AutoGenerateColumns="False"    OnCustomUnboundColumnData="grid_CustomUnboundColumnData" ClientInstanceName="grid" 
-              CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" KeyFieldName="AssetID" Width="95%" Settings-ShowHorizontalScrollBar="true" >
+              CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" KeyFieldName="AssetID" Width="100%" Settings-ShowHorizontalScrollBar="true" >
           
           
                <Columns>

@@ -19,6 +19,9 @@
         {
             color: #FF0000;
         }
+          .auto-style23 {
+      width: 50px;
+  }
 
        /* .auto-style4 {
             width: 154px;
@@ -95,7 +98,7 @@
             <td class="auto-style25">
                 Vehicle Number <span style="color:red">*</span></td>
             <td class="auto-style20">               
-                <dx:ASPxTextBox ID="txt_vechileno" runat="server" Width="170px" >
+                <dx:ASPxTextBox ID="txt_vechileno" runat="server" Width="300px" >
                 </dx:ASPxTextBox>
             </td>
             <td class="auto-style23">
@@ -103,7 +106,7 @@
             <td class="auto-style26">
                 Driver Name <span style="color:red">*</span></td>
             <td>
-                <dx:ASPxTextBox ID="txtdrivername" Width="170px" runat="server" >
+                <dx:ASPxTextBox ID="txtdrivername" Width="300px " runat="server" >
                 </dx:ASPxTextBox>
             </td>
         </tr>
@@ -121,7 +124,9 @@
                 <%--<dx:ASPxTextBox ID="txt_name" runat="server" Width="170px" >
                 </dx:ASPxTextBox>--%>
 
-                 <dx:ASPxComboBox ID="ASPxComboBox1" runat="server" DataSourceID="SqlDataSource2"  ValueField="CustodianID"  IncrementalFilteringMode="StartsWith" TextField="CustodianName" ValueType="System.String" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue"  SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
+                 <dx:ASPxComboBox ID="ASPxComboBox1" runat="server" DataSourceID="SqlDataSource2"  Width="300px"
+                     ValueField="CustodianID"  IncrementalFilteringMode="StartsWith" TextField="CustodianName" ValueType="System.String" 
+                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue"  SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                 </dx:ASPxComboBox>
                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="SELECT [CustodianID], [CustodianName] FROM [CustodianMaster]"></asp:SqlDataSource>
            
@@ -140,7 +145,7 @@
             <td class="auto-style25">
                 SendBy <span style="color:red">*</span></td>
             <td class="auto-style20">
-                <dx:ASPxTextBox ID="txt_sendby" Width="170px" runat="server" >
+                <dx:ASPxTextBox ID="txt_sendby" Width="300px" runat="server" >
                 </dx:ASPxTextBox>
             </td>
             <td class="auto-style23">
@@ -148,7 +153,7 @@
             <td class="auto-style26">
                 Remarks</td>
             <td rowspan="2">
-                <dx:ASPxMemo ID="memo_remarks" runat="server" Height="42px" Width="171px">
+                <dx:ASPxMemo ID="memo_remarks" runat="server" Height="42px" Width="300px">
                 </dx:ASPxMemo>
             </td>
         </tr>
@@ -177,7 +182,7 @@
             <td class="auto-style21">
                 <strong>Scan RFID</strong><span style="color:red">*</span></td>
             <td class="auto-style21">
-                <dx:ASPxTextBox ID="txt_scanbarcode" runat="server" Width="200px"   
+                <dx:ASPxTextBox ID="txt_scanbarcode" runat="server" Width="300px"   
                     ontextchanged="txt_scanbarcode_TextChanged" AutoPostBack="True">
                 </dx:ASPxTextBox>
             </td>
@@ -213,7 +218,7 @@
 
                 <td>
         <dx:ASPxGridLookup ID="GridLookup_assetbarcode" runat="server" TextFormatString="{1}" AutoGenerateColumns="False"  AutoPostBack="true" DataSourceID="SqlDataSource1" Height="25px" KeyFieldName="SLNO"
-            Width="200px"  OnTextChanged="GridLookup_assetbarcode_TextChanged" IncrementalFilteringMode="StartsWith" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue"  SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
+            Width="300px"  OnTextChanged="GridLookup_assetbarcode_TextChanged" IncrementalFilteringMode="StartsWith" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue"  SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                <GridViewProperties>
    <SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>
   <Settings ShowFilterRow="True" />
@@ -272,7 +277,7 @@
     <strong style="margin-left:15px"><span class="auto-style17">Scanned Asset List for Dispatch</span></strong><br />
            <br /> 
     <dx:ASPxGridView ID="ASPxGridView1" runat="server" style="margin-left:15px"
-    AutoGenerateColumns="False" Width="750px" 
+    AutoGenerateColumns="False" Width="1000px" 
         KeyFieldName="AssetID" OnRowCommand="ASPxGridView1_RowCommand" 
    CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue">
         <TotalSummary>
