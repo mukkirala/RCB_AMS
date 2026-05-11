@@ -283,7 +283,7 @@
                 <dx:ASPxButton ID="btn_printItems" runat="server" Text="Print PDf" 
                     onclick="btn_printItems_Click" Width="191px" 
         CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange" 
-        SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css">
+        SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css" Visible="false">
                 </dx:ASPxButton>
             
             </td>
