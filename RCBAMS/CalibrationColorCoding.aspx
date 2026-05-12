@@ -35,7 +35,7 @@
 	<tr>
 		 <div class="col-sm-12">
      <div class="col-sm-10">
-            <h4>Equipment Calibration Color Coding </h4>
+            <h4>View Equipment AMC/CMC </h4>
 		    </div>
 </div>
 	</tr>
@@ -51,17 +51,17 @@
         <rect x="30" y="10" rx="10" ry="10" width="15" height="15" style="fill:Red;opacity:10.5" />
         </svg></td>
         <td class="auto-style10">
-            <dx:ASPxLabel ID="lbl_occupancy" runat="server" Text="Calibration Past Overdue"></dx:ASPxLabel>
+            <dx:ASPxLabel ID="lbl_occupancy" runat="server" Text="Overdue"></dx:ASPxLabel>
         </td>
 
         <td class="auto-style11"><svg width="90" height="50">
         <rect x="30" y="10" rx="10" ry="10" width="15" height="15" style="fill:#4fe84f;opacity:10.5" />
         </svg></td>  
-        <td colspan="2"><dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Calibrated"></dx:ASPxLabel></td> 
+        <td colspan="2"><dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="No Due"></dx:ASPxLabel></td> 
          <td class="auto-style11"><svg width="90" height="50">
         <rect x="30" y="10" rx="10" ry="10" width="15" height="15" style="fill:orange;opacity:10.5" />
         </svg></td>  
-        <td colspan="2"><dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="Calibration Falling this Month "></dx:ASPxLabel></td> 
+        <td colspan="2"><dx:ASPxLabel ID="ASPxLabel3" runat="server" Text="Falling this Month "></dx:ASPxLabel></td> 
     </tr>
     </table>
        
@@ -79,7 +79,12 @@
 </GroupSummary>
                    <Columns>
 
-
+                                              <dx:GridViewDataCheckColumn Caption="CheckList"  >
+<DataItemTemplate>
+<dx:ASPxCheckBox ID="mailsent" runat="server"   OnCheckedChanged="mailsent_CheckedChanged" >
+</dx:ASPxCheckBox>
+</DataItemTemplate>
+</dx:GridViewDataCheckColumn>
                        
        <dx:GridViewDataTextColumn FieldName="CalibrationID" VisibleIndex="1" Visible="false">
 	  <Settings AutoFilterCondition="Contains" />
@@ -88,18 +93,18 @@
 			 <Settings AutoFilterCondition="Contains" />
            </dx:GridViewDataTextColumn>
 
-           <dx:GridViewDataTextColumn FieldName="MainAssetNumber" VisibleIndex="1" Caption="Main Asset Number">
+           <dx:GridViewDataTextColumn FieldName="MainAssetNumber" VisibleIndex="1" Caption="Equipment Number">
 			 <Settings AutoFilterCondition="Contains" />
            </dx:GridViewDataTextColumn>
-           <dx:GridViewDataTextColumn FieldName="DueUnit" VisibleIndex="2" Visible="false">
+           <dx:GridViewDataTextColumn FieldName="MaintenanceContract" VisibleIndex="2" >
 			 <Settings AutoFilterCondition="Contains" />
            </dx:GridViewDataTextColumn>
                        
           
-           <dx:GridViewDataDateColumn FieldName="CalibrationOn" VisibleIndex="6" PropertiesDateEdit-DisplayFormatString="dd-MM-yyyy">
+           <dx:GridViewDataDateColumn FieldName="CalibrationOn" VisibleIndex="6" PropertiesDateEdit-DisplayFormatString="dd-MM-yyyy" Caption="Start Date">
 			 <Settings AutoFilterCondition="Contains" />
            </dx:GridViewDataDateColumn>
-           <dx:GridViewDataDateColumn FieldName="CalibrationDue" VisibleIndex="7" ReadOnly="True" PropertiesDateEdit-DisplayFormatString="dd-MM-yyyy">
+           <dx:GridViewDataDateColumn FieldName="CalibrationDue" VisibleIndex="7" ReadOnly="True" PropertiesDateEdit-DisplayFormatString="dd-MM-yyyy" Caption="End Date">
 			 <Settings AutoFilterCondition="Contains" />
            </dx:GridViewDataDateColumn>
                         <dx:GridViewDataTextColumn FieldName="Span" VisibleIndex="8" Visible="false" >
@@ -138,10 +143,10 @@
    </dx:ASPxGridView>
 	
 	
-
+<dx:ASPxButton ID="btn_save" ValidationGroup="btn" runat="server" Text="Send Email" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange" SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css" OnClick="ASPxButton1_Click" Width="204px" ></dx:ASPxButton>
 
 <asp:SqlDataSource ID="DS_Satis" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
-SelectCommand="select assetid,MainAssetNumber,DueUnit,Span,CalibrationOn,CalibrationDue from EquipmentCalibration">
+SelectCommand="select assetid,MainAssetNumber,MaintenanceContract,DueUnit,Span,CalibrationOn,CalibrationDue from AssetCalibration">
    </asp:SqlDataSource>
 		
    </div>
