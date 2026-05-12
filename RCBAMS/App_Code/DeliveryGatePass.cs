@@ -13,7 +13,7 @@ using System.Web.Configuration;
 public class DeliveryGatePass : DevExpress.XtraReports.UI.XtraReport
 {
 	private DevExpress.XtraReports.UI.DetailBand Detail;
-	private DevExpress.XtraReports.UI.TopMarginBand TopMargin;
+	private DevExpress.XtraReports.UI.TopMarginBand Regional;
 	private DevExpress.XtraReports.UI.BottomMarginBand BottomMargin;
     private ReportHeaderBand ReportHeader;
     private ReportFooterBand ReportFooter;
@@ -43,10 +43,13 @@ public class DeliveryGatePass : DevExpress.XtraReports.UI.XtraReport
     private XRLabel xrLabel5;
     private XRTableCell xrTableCell4;
     private XRPictureBox xrPictureBox2;
-	/// <summary>
-	/// Required designer variable.
-	/// </summary>
-	private System.ComponentModel.IContainer components = null;
+    private XRLabel xrLabel7;
+    private XRLabel xrLabel13;
+
+    /// <summary>
+    /// Required designer variable.
+    /// </summary>
+    private System.ComponentModel.IContainer components = null;
 
     public DeliveryGatePass(DataTable ds1, string name, string contactno, string vehiclenumber, string drivername, string createdby, string receiptno,string Type,string to,string from)
 	{
@@ -118,9 +121,8 @@ public class DeliveryGatePass : DevExpress.XtraReports.UI.XtraReport
 	/// </summary>
 	private void InitializeComponent() {
             string resourceFileName = "DeliveryGatePass.resx";
-            System.Resources.ResourceManager resources = global::Resources.DeliveryGatePass.ResourceManager;
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
-            this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
+            this.Regional = new DevExpress.XtraReports.UI.TopMarginBand();
             this.xrPictureBox2 = new DevExpress.XtraReports.UI.XRPictureBox();
             this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLine1 = new DevExpress.XtraReports.UI.XRLine();
@@ -150,6 +152,8 @@ public class DeliveryGatePass : DevExpress.XtraReports.UI.XtraReport
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
+            this.xrLabel7 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel13 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrDisplayTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -160,28 +164,31 @@ public class DeliveryGatePass : DevExpress.XtraReports.UI.XtraReport
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
-            // TopMargin
+            // Regional
             // 
-            this.TopMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.Regional.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel13,
+            this.xrLabel7,
             this.xrPictureBox2,
             this.xrLabel2,
             this.xrLine1});
-            this.TopMargin.HeightF = 164.7917F;
-            this.TopMargin.Name = "TopMargin";
-            this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.Regional.HeightF = 164.7917F;
+            this.Regional.Name = "Regional";
+            this.Regional.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.Regional.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // xrPictureBox2
             // 
-            this.xrPictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("xrPictureBox2.Image")));
-            this.xrPictureBox2.LocationFloat = new DevExpress.Utils.PointFloat(45.27908F, 17.70832F);
+            this.xrPictureBox2.ImageUrl = "~\\Images\\rcblg.png";
+            this.xrPictureBox2.LocationFloat = new DevExpress.Utils.PointFloat(42.58385F, 47.91667F);
             this.xrPictureBox2.Name = "xrPictureBox2";
-            this.xrPictureBox2.SizeF = new System.Drawing.SizeF(568.1251F, 103.1667F);
+            this.xrPictureBox2.SizeF = new System.Drawing.SizeF(122.3047F, 70.87502F);
+            this.xrPictureBox2.Sizing = DevExpress.XtraPrinting.ImageSizeMode.Squeeze;
             // 
             // xrLabel2
             // 
             this.xrLabel2.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrLabel2.Font = new System.Drawing.Font("Bookman Old Style", 14F, System.Drawing.FontStyle.Bold);
+            this.xrLabel2.Font = new System.Drawing.Font("Bookman Old Style", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(216.9837F, 120.875F);
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -529,10 +536,38 @@ public class DeliveryGatePass : DevExpress.XtraReports.UI.XtraReport
             this.ReportFooter.HeightF = 87.5F;
             this.ReportFooter.Name = "ReportFooter";
             // 
+            // xrLabel7
+            // 
+            this.xrLabel7.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrLabel7.Font = new System.Drawing.Font("Bookman Old Style", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(164.8885F, 63.41672F);
+            this.xrLabel7.Name = "xrLabel7";
+            this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel7.SizeF = new System.Drawing.SizeF(475.2242F, 27.16666F);
+            this.xrLabel7.StylePriority.UseBorders = false;
+            this.xrLabel7.StylePriority.UseFont = false;
+            this.xrLabel7.StylePriority.UseTextAlignment = false;
+            this.xrLabel7.Text = "Regional Centre for Biotechnology Faridabad";
+            this.xrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            // 
+            // xrLabel13
+            // 
+            this.xrLabel13.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrLabel13.Font = new System.Drawing.Font("Bookman Old Style", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrLabel13.LocationFloat = new DevExpress.Utils.PointFloat(180.5253F, 90.58337F);
+            this.xrLabel13.Name = "xrLabel13";
+            this.xrLabel13.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel13.SizeF = new System.Drawing.SizeF(400.9042F, 28.20832F);
+            this.xrLabel13.StylePriority.UseBorders = false;
+            this.xrLabel13.StylePriority.UseFont = false;
+            this.xrLabel13.StylePriority.UseTextAlignment = false;
+            this.xrLabel13.Text = "Material Management and Inventory Control";
+            this.xrLabel13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            // 
             // DeliveryGatePass
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
-            this.TopMargin,
+            this.Regional,
             this.Detail,
             this.BottomMargin,
             this.ReportHeader,

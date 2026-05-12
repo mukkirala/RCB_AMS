@@ -103,7 +103,7 @@
              </tr>
         <tr>
             <td>
-          <dx:ASPxLabel ID="lbl_msg" runat="server" style="font-weight: 700; color: RED" ClientInstanceName="client_lblmsg" Font-Size="Large" Text="" Visible="false">
+         <dx:ASPxLabel ID="lbl_msg" runat="server" style="font-weight: 700; color: RED" ClientInstanceName="client_lblmsg" Font-Size="Large" Text="" Visible="false">
               </dx:ASPxLabel>
               
             </td>
@@ -117,7 +117,7 @@
             </td>
             
             <td>
-              <dx:ASPxTextBox ID="txtCompany" runat="server" Height="25PX" Width="300px"  onkeypress="onlyNumb(event,6);"> </dx:ASPxTextBox>
+              <dx:ASPxTextBox ID="txtCompany" runat="server" Height="25PX" Width="300px"> </dx:ASPxTextBox>
     <ValidationSettings ValidationGroup="btn" ErrorTextPosition="Bottom">
         <RequiredField IsRequired="true" ErrorText="Company Is Required" />
         <ErrorFrameStyle ImageSpacing="4px">
@@ -133,7 +133,7 @@
             </td>
            
             <td>
-                <dx:ASPxTextBox ID="txtplant" runat="server" Height="25PX" Width="300px"    onkeypress="onlyNumb(event,6);"> </dx:ASPxTextBox>
+                <dx:ASPxTextBox ID="txtplant" runat="server" Height="25PX" Width="300px"> </dx:ASPxTextBox>
                 <ValidationSettings ErrorTextPosition="Bottom" ValidationGroup="btn">
                         <RequiredField IsRequired="true" ErrorText="Enter Plant" />
                         <ErrorFrameStyle ImageSpacing="4px">
@@ -171,7 +171,7 @@
 </dx:aspxcombobox>
                         <asp:SqlDataSource ID="SupplierDS" runat="server" 
 ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
-SelectCommand="SELECT DISTINCT [SupplierID],VendorCode,[CompanyName] FROM [SupplierMaster] ">
+SelectCommand="SELECT DISTINCT [SupplierID],VendorCode,[CompanyName] FROM [SupplierMaster] Where Status='Active' ">
  </asp:SqlDataSource>
   </td>      
        <%-- <td>
@@ -218,7 +218,7 @@ SelectCommand="SELECT DISTINCT [SupplierID],VendorCode,[CompanyName] FROM [Suppl
 </dx:aspxcombobox>
                         <asp:SqlDataSource ID="InstituteDS" runat="server" 
 ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
-SelectCommand="SELECT DISTINCT [InstitutePKID], [InstituteID],[InstituteName] FROM [InstituteMaster] ">
+SelectCommand="SELECT DISTINCT [InstitutePKID], [InstituteID],[InstituteName] FROM [InstituteMaster] Where Status='Active' ">
  </asp:SqlDataSource>
 
 
@@ -304,7 +304,7 @@ SelectCommand="SELECT DISTINCT [InstitutePKID], [InstituteID],[InstituteName] FR
         </dx:ASPxComboBox>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
 ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
-SelectCommand="SELECT DISTINCT [AssetTypeName] FROM [AssetTypeMaster] WHERE [AssetClassName]=@AssetClassName">
+SelectCommand="SELECT DISTINCT [AssetTypeName] FROM [AssetTypeMaster] WHERE [AssetClassName]=@AssetClassName and Status='Active'">
     <SelectParameters>
         <asp:ControlParameter ControlID="cmb_AssetClass" Name="AssetClassName" PropertyName="Value" Type="String" />
     </SelectParameters>
@@ -479,7 +479,7 @@ SelectCommand="SELECT DISTINCT [LocationID] FROM [LocationMaster] ">
             <td>
        Wing: <span class="style10"color="red"><strong>*</strong></span>
     </td>
-    <td> <dx:ASPxComboBox ID="txtLocationid" runat="server" Width="100%" Height="25px" DataSourceID="location" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
+    <td> <dx:ASPxComboBox ID="txtLocationid" runat="server" Width="100%" Height="25px" DataSourceID="location1" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
               CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" TextField="Location" ValueField="Location" OnSelectedIndexChanged="txtLocationid_SelectedIndexChanged"
             CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String"  PageSize="10"
             >                
@@ -492,9 +492,9 @@ SelectCommand="SELECT DISTINCT [LocationID] FROM [LocationMaster] ">
                 </ErrorFrameStyle>
             </ValidationSettings>
         </dx:ASPxComboBox>
-        <asp:SqlDataSource ID="location" runat="server" 
+        <asp:SqlDataSource ID="location1" runat="server" 
 ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
-SelectCommand="SELECT DISTINCT [Location] FROM [LocationMaster]">
+SelectCommand="SELECT DISTINCT [Location] FROM [LocationMaster] where Status='Active'">
  </asp:SqlDataSource>
     </td>   
      </tr>

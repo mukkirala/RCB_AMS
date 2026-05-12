@@ -128,7 +128,7 @@ public partial class BulkUploadEmployee : System.Web.UI.Page
                     AMScon.Open();
                     cmd4.ExecuteNonQuery();
                     AMScon.Close();
-                    label.Text = "Bulk Upload Successfull";
+                    label.Text = "Bulk Uploaded Sucessfully";
                 }
 
 

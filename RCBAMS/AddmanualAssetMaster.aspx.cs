@@ -65,6 +65,18 @@ public partial class AddmanualAssetMaster : System.Web.UI.Page
         //    lbl_msg.Visible = true;
         //    return;
         //}
+        if (cmb_supplier.Text == "")
+        {
+            lbl_msg.Text = "Select Supplier";
+            lbl_msg.Visible = true;
+            return;
+        }
+        if (cmb_institute.Text == "")
+        {
+            lbl_msg.Text = "Select Institute";
+            lbl_msg.Visible = true;
+            return;
+        }
         if (txtAssetID.Text == "")
         {
             lbl_msg.Text = "Enter AssetID";
@@ -83,6 +95,12 @@ public partial class AddmanualAssetMaster : System.Web.UI.Page
         //    lbl_msg.Visible = true;
         //    return;
         //}
+        if (cmb_AssetClass.Text == "")
+        {
+            lbl_msg.Text = "Please Select Asset Class";
+            lbl_msg.Visible = true;
+            return;
+        }
         if (txtAssetDesc.Text == "")
         {
             lbl_msg.Text = "Enter Asset Name ";
@@ -96,18 +114,8 @@ public partial class AddmanualAssetMaster : System.Web.UI.Page
             return;
         }
 
-        if (cmb_supplier.Text == "")
-        {
-            lbl_msg.Text = "Select Supplier";
-            lbl_msg.Visible = true;
-            return;
-        }
-        if (cmb_institute.Text == "")
-        {
-            lbl_msg.Text = "Select Institute";
-            lbl_msg.Visible = true;
-            return;
-        }
+       
+       
         //if (txtStaffNumber.Text == "")
         //{
         //    lbl_msg.Text = "Enter main Staff Number";
@@ -153,19 +161,19 @@ public partial class AddmanualAssetMaster : System.Web.UI.Page
         //}
         if (txtLocationid.Text == "")
         {
-            lbl_msg.Text = "Enter Wing";
+            lbl_msg.Text = "Select Wing";
             lbl_msg.Visible = true;
             return;
         }
         if (txtbolck.Text == "")
         {
-            lbl_msg.Text = "Enter Block";
+            lbl_msg.Text = "Select Floor";
             lbl_msg.Visible = true;
             return;
         }
         if (txt_lab.Text == "")
         {
-            lbl_msg.Text = "Enter LAB";
+            lbl_msg.Text = "Select LAB";
             lbl_msg.Visible = true;
             return;
         }
@@ -175,9 +183,9 @@ public partial class AddmanualAssetMaster : System.Web.UI.Page
         //    lbl_msg.Visible = true;
         //    return;
         //}
-        if (cmb_AssetClass.Text == "")
+        if (txt_indentno.Text == "")
         {
-            lbl_msg.Text = "Please Select Asset Class";
+            lbl_msg.Text = "Enter Indent Number";
             lbl_msg.Visible = true;
             return;
         }
@@ -199,12 +207,7 @@ public partial class AddmanualAssetMaster : System.Web.UI.Page
         //    lbl_msg.Visible = true;
         //    return;
         //}
-        if (txt_indentno.Text == "")
-        {
-            lbl_msg.Text = "Enter Indent Number";
-            lbl_msg.Visible = true;
-            return;
-        }
+       
         //if (cmb_Acceptdatebyuser.Text == "")
         //{
         //    lbl_msg.Text = "Enter Accept Date By User";
@@ -225,7 +228,7 @@ public partial class AddmanualAssetMaster : System.Web.UI.Page
         //}
         if (Dep_ComboBox1.Text == "")
         {
-            lbl_msg.Text = "Enter Department ";
+            lbl_msg.Text = "Select Department ";
             lbl_msg.Visible = true;
             return;
         }
@@ -249,7 +252,7 @@ public partial class AddmanualAssetMaster : System.Web.UI.Page
         DataTable dtt1 = new DataTable();
         daa1.Fill(dtt1);
         // int k = 0;
-        if (dtt1.Rows.Count > 4000)
+        if (dtt1.Rows.Count > 5500)
         {
             lbl_msg.Visible = true;
             lbl_msg.Text = "Assest Limit As Exceeded ";
