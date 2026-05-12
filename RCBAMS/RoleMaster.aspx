@@ -237,7 +237,7 @@
 
         <asp:SqlDataSource ID="CustSqlDataSource" runat="server" 
         ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
-        SelectCommand="SELECT [CustodianID], [CustodianName] FROM [CustodianMaster]">
+        SelectCommand="SELECT [CustodianID], [CustodianName] FROM [CustodianMaster] where [CustodianStatus]='Active'">
          </asp:SqlDataSource>
 
 

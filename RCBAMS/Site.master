@@ -198,6 +198,9 @@
 						<div>
 							<asp:Label runat="server" Text="Welcome: "></asp:Label>
 							<asp:Label ID="lblusername" runat="server"></asp:Label>
+                            						<br />
+
+<asp:Label ID="lblrolename" runat="server"></asp:Label>
 						</div>
 					</div>
 				</div>
@@ -387,7 +390,7 @@
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" >Asset Auditing<span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="/CreateAudit">Create Audit</a></li>
-          <%--<li><a href="/AdminApproveAssetAuditing">Approve Audit Assets</a></li>--%>
+          <li><a href="/AdminApproveAssetAuditing">Approve Audit Assets</a></li>
           <li><a href="/AuditCompletion">Close Audits</a></li>
 
           

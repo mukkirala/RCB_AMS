@@ -96,14 +96,15 @@
           
               <div>
                   <h4><strong>Create Audit</strong></h4>
-              <hr/>
+    
            </div>
           
             <div class="row form_div">
-            <div class="col-sm-2">
-              <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Audit Name" Font-Size="Large" Font-Bold="true">
-                </dx:ASPxLabel>
-             </div>
+             <div class="col-sm-2">
+    <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Audit Name" Font-Size="Large" Font-Bold="true">
+      </dx:ASPxLabel><span style="color:red;font-size:20px;">*</span>
+
+   </div>
               <div class="col-sm-4">
                       <dx:ASPxTextBox ID="txtAuditName" runat="server" Height="25px" Width="300px" CssFilePath="~/App_Themes/Glass/{0}/styles.css" CssPostfix="Glass" SpriteCssFilePath="~/App_Themes/Glass/{0}/sprite.css">
                     <ValidationSettings>
@@ -114,10 +115,11 @@
                 </dx:ASPxTextBox>
                 
              </div>
-            <div class="col-sm-2">
-              <dx:ASPxLabel ID="lbl_Location" runat="server" Text="Wing "   Font-Size="Large"  Font-Bold="true">
-                </dx:ASPxLabel>
-             </div>
+           <div class="col-sm-2">
+   <dx:ASPxLabel ID="lbl_Location" runat="server" Text="Wing "   Font-Size="Large"  Font-Bold="true">
+     </dx:ASPxLabel><span style="color:red;font-size:20px;">*</span>
+
+  </div>
              <div class="col-sm-4">                  
                    <dx:ASPxGridLookup ID="cmb_location" runat="server"  AutoGenerateColumns="False" Width="300px"
                      DataSourceID="LocationDS" IncrementalFilteringMode="Contains"  TextFormatString="{2}"
@@ -173,10 +175,11 @@
              </div   > 
              </div>        
             <div class="row form_div">
-              <div class="col-sm-2">
-                  <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Audit Status"  Font-Size="Large"  Font-Bold="true">
-                </dx:ASPxLabel>
-              </div>
+               <div class="col-sm-2">
+      <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Audit Status"  Font-Size="Large"  Font-Bold="true">
+    </dx:ASPxLabel><span style="color:red;font-size:20px;">*</span>
+
+  </div>
               <div class="col-sm-4">
                    <dx:ASPxComboBox ID="cmb_status" runat="server" Height="25px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" Width="300px"
                        CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
@@ -189,9 +192,10 @@
                     </ValidationSettings>
                    </dx:ASPxComboBox>
               </div>
-             <div class="col-sm-2">
-                <dx:ASPxLabel ID="lbl_AuditDiscription" runat="server" Text="Audit Description"  Font-Size="Large"  Font-Bold="true"></dx:ASPxLabel>
-             </div>
+              <div class="col-sm-2">
+    <dx:ASPxLabel ID="lbl_AuditDiscription" runat="server" Text="Audit Description"  Font-Size="Large"  Font-Bold="true"></dx:ASPxLabel><span style="color:red;font-size:20px;">*</span>
+
+ </div>
              <div class="col-sm-4">
                 <asp:TextBox ID="txt_AuditDiscription" runat="server" TextMode="MultiLine" Rows="3" Columns="38"></asp:TextBox>             
              </div>
@@ -212,7 +216,7 @@
        
            
               <div><h4><strong>Audits</strong></div></h4>
-              <hr/>
+           
           
             <br/>
            <div class="table-responsive">

@@ -109,11 +109,11 @@
             </td>
         </tr>
     </table>
-        <div class="table-responsive">
+        <div>
       <dx:ASPxGridView ID="AuditList" runat="server" AutoGenerateColumnsASPxGridView1="False" 
         DataSourceID="AuditListSqlDataSource" KeyFieldName="AuditID" 
         CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" 
-        CssPostfix="PlasticBlue" AutoGenerateColumns="False" Width="95%">
+        CssPostfix="PlasticBlue" AutoGenerateColumns="False" Width="1000px">
         <Columns>
             
               <dx:GridViewDataTextColumn FieldName="AuditID" ReadOnly="True" VisibleIndex="0" Visible="false">

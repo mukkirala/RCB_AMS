@@ -113,7 +113,7 @@ SelectCommand="SELECT DISTINCT [Block] FROM [LocationMaster]  where Location=@Lo
     <div class="col-sm-4">
         <dx:ASPxComboBox ID="txt_Lab" runat="server" Width="300px" Height="25px" DataSourceID="SqlDataSource4" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
               CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" TextField="LocationCode" ValueField="LocationID" OnSelectedIndexChanged="txt_Lab_SelectedIndexChanged"
-            CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String"  PageSize="10">                
+            CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.Int32"  PageSize="10">                
             <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
             </LoadingPanelImage>
             <ValidationSettings ErrorTextPosition="Bottom" >
@@ -143,7 +143,7 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
             <div class="col-sm-4">
                   <dx:ASPxComboBox ID="gridlkup_Asset" runat="server"  AutoPostBack="true" AutoGenerateColumns="False"
                  DataSourceID="SqlDataSource2" IncrementalFilteringMode="Contains" TextFormatString="{1}" 
-                 TextField="AuditName" ValueField="AuditID"  Height="25px"
+                 TextField="AuditName" ValueField="AuditID"  Height="25px" 
                 CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                 SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" width="300px" OnSelectedIndexChanged="gridlkup_Asset_SelectedIndexChanged" >
     <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">

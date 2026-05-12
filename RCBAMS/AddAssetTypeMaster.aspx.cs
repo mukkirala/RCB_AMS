@@ -43,6 +43,12 @@ public partial class AddAssetTypeMaster : System.Web.UI.Page
             lbl_dsplay.Visible = true;
             return;
         }
+        if (cmb_AssetClass.Text == "")
+        {
+            lbl_dsplay.Text = "Enter Asset Class";
+            lbl_dsplay.Visible = true;
+            return;
+        }
         string query = "select AssetTypeName from AssetTypeMaster";
         DataTable dt = new DataTable();
         SqlDataAdapter da = new SqlDataAdapter(query, myConnection);

@@ -131,9 +131,8 @@
         <ContentTemplate>
     <div class="">
     <div class="col-sm-12">
-    <dx2:ASPxLabel ID="lbl_msg" runat="server" Text="" 
-                    style="color: #3333FF; font-weight: 700;">
-                </dx2:ASPxLabel>
+    <dx:ASPxLabel ID="lbl_msg" runat="server" style="font-weight: 700; color: RED" ClientInstanceName="client_lblmsg" Font-Size="Large" Text="" Visible="false">
+  </dx:ASPxLabel>
         </div>
     <br />
     <div class="col-sm-12">

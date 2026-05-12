@@ -22,7 +22,7 @@
         }
         .style4
         {
-            width: 54px;
+            width: 400px;
         }
     .style5
     {
@@ -54,11 +54,12 @@
      <dx:ASPxLabel ID="lbl_msg" runat="server" Text="" Visible="false" ForeColor="Red"></dx:ASPxLabel><br />
     <table width="800px">
         <tr>
-            <td class="style2" >
-                Audit Name :</td>
+            <td style="width:130px; white-space:nowrap;">
+    Audit Name :
+</td>
             <td class="style3">                
                 <dx:ASPxGridLookup ID="ASPxComboBox1" runat="server"
-                    AutoGenerateColumns="False" DataSourceID="SqlDataSource3" TextFormatString="{2}" Width="170px" Height="25px"
+                    AutoGenerateColumns="False" DataSourceID="SqlDataSource3" TextFormatString="{2}" Width="300px" Height="25px"
                     KeyFieldName="AuditID" IncrementalFilteringMode="Contains"  GridViewProperties-Settings-UseFixedTableLayout="true" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                     <GridViewProperties>
                         <SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>
@@ -104,7 +105,7 @@
             <td class="style4" >
                 &nbsp;Status :</td>
             <td class="style5">
-                <dx:ASPxComboBox ID="cmb_Status" runat="server" Width="170px" Height="25px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String" IncrementalFilteringMode="StartsWith"  DataSourceID="AuditStatus" TextField="StatusName">
+                <dx:ASPxComboBox ID="cmb_Status" runat="server" Width="300px" Height="25px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String" IncrementalFilteringMode="StartsWith"  DataSourceID="AuditStatus" TextField="StatusName">
                     <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
                     </LoadingPanelImage>
                     <ValidationSettings>

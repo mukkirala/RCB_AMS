@@ -89,8 +89,8 @@
                </div>
            <div class="col-sm-4">
                       <dx:ASPxComboBox ID="cmb_location" runat="server" AutoPostBack="true" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
-                          SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String" DataSourceID="LocationDS"
-                    ValueField="LocationID" TextField="LocationCode" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" Height="25px" TextFormatString="{0}">
+                          SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.Int32" DataSourceID="LocationDS" Width="300px"
+                    ValueField="LocationID" TextField="LocationCode" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" Height="25px" TextFormatString="{2}">
 
                            <Columns>
                                <dx:ListBoxColumn FieldName="Location" Width="170px" Caption="Wing" />
@@ -123,7 +123,7 @@
             <div class="col-sm-4">
                   <dx:ASPxGridLookup ID="gd_Audit" runat="server"  AutoGenerateColumns="False"
                       IncrementalFilteringMode="Contains" TextFormatString="{1}"
-                     KeyFieldName="AuditID"   Height="25px"
+                     KeyFieldName="AuditID"   Height="25px" Width="300px"
                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                     SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" DataSourceID="AuditDS">
 <GridViewProperties>
@@ -211,7 +211,7 @@
            <div class="col-sm-2">
                      <dx:ASPxGridLookup ID="gridlkup_Asset" runat="server"  AutoGenerateColumns="False"
                      DataSourceID="AssetDS" IncrementalFilteringMode="Contains" TextFormatString="{1}"
-                     KeyFieldName="AssetID"   Height="25px"
+                     KeyFieldName="AssetID"   Height="25px" Width="300px"
                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                     SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
 <GridViewProperties>
@@ -258,7 +258,7 @@
                 </dx:ASPxGridLookup>
                
             </div>
-              <div class="col-sm-2">
+              <div class="col-sm-1">
                    <dx:ASPxButton ID="btn_search" runat="server" BackColor="White" 
                     CssClass="auto-style8" 
                     OnClick="btn_search_Click" Width="16px" Height="16px">
@@ -439,7 +439,8 @@
           <label>Asset Wing</label>
            </div>
             <div class="col-sm-4">
-                <dx:ASPxComboBox ID="cmb_assetlocation" runat="server" AutoPostBack="true" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String" DataSourceID="LocationDS"
+                <dx:ASPxComboBox ID="cmb_assetlocation" runat="server" AutoPostBack="true" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" width="300px"
+                    CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.Int32" DataSourceID="LocationDS"
                     ValueField="LocationID" TextField="LocationCode" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" Height="25px">
                            <Columns>
            <dx:ListBoxColumn FieldName="Location" Width="170px" Caption="Wing" />
@@ -466,7 +467,7 @@
            </div>
             <div class="col-sm-4">
              <dx:ASPxGridLookup ID="Cust_gridlookup" runat="server"
-                    AutoGenerateColumns="False" DataSourceID="CustSqlDataSource" TextFormatString="{0}" Width="170px" Height="25px"
+                    AutoGenerateColumns="False" DataSourceID="CustSqlDataSource" TextFormatString="{0}" Width="300px" Height="25px"
                     KeyFieldName="CustodianID" IncrementalFilteringMode="Contains"  CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                     <GridViewProperties>
                         <%--<SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>--%>
@@ -514,13 +515,14 @@
              </div>
          </div>
      <div class="row form_div">
-      <div class="col-sm-2">
+     <div class="col-sm-2"  style="font-size:large">
                <%--<dx:ASPxLabel ID="ASPxLabel6" runat="server" Text="Asset Status">
                 </dx:ASPxLabel>--%>
           <label>Asset Status</label>
            </div>
             <div class="col-sm-4">
-                 <dx:ASPxComboBox ID="cmb_status" runat="server"  CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" Height="25px" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String" DataSourceID="StatusDS"
+                 <dx:ASPxComboBox ID="cmb_status" runat="server"  CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" Height="25px" width="300px"
+                     SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String" DataSourceID="StatusDS"
                     ValueField="StatusCode" TextField="StatusName" DropDownStyle="DropDown" IncrementalFilteringMode="Contains">
                     <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
                     </LoadingPanelImage>
@@ -533,13 +535,13 @@
              </div>
          </div>
           <div class="row form_div">
-           <div class="col-sm-2">
+           <div class="col-sm-2"  style="font-size:large">
                <%--<dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Comments">
                 </dx:ASPxLabel>--%>
                <label>Comments</label>
                </div>
            <div class="col-sm-4">
-                <asp:TextBox ID="txt_Cmts" runat="server" TextMode="MultiLine" Rows="3" Columns="18"></asp:TextBox>
+                <asp:TextBox ID="txt_Cmts" runat="server" TextMode="MultiLine" Rows="3" Columns="38"></asp:TextBox>
                  
             </div>
             <div class="col-sm-2">
@@ -595,10 +597,10 @@
             </dx:GridViewDataTextColumn>
              <dx:GridViewDataTextColumn FieldName="Location" VisibleIndex="4" Caption="Wing">
             </dx:GridViewDataTextColumn>
-             <dx:GridViewDataTextColumn FieldName="Block" VisibleIndex="4" Caption="Floor">
+ <%--            <dx:GridViewDataTextColumn FieldName="Block" VisibleIndex="4" Caption="Floor">
 </dx:GridViewDataTextColumn>
              <dx:GridViewDataTextColumn FieldName="LocationCode" VisibleIndex="4" Caption="LAB">
-</dx:GridViewDataTextColumn>
+</dx:GridViewDataTextColumn>--%>
           <%--  <dx:GridViewDataTextColumn FieldName="LocationCode" VisibleIndex="5" Caption="Location" Visible="false">
             </dx:GridViewDataTextColumn>
              <dx:GridViewDataTextColumn FieldName="Block" VisibleIndex="5" Visible="false">
