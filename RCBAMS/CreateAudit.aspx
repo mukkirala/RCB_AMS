@@ -96,7 +96,7 @@
           
               <div>
                   <h4><strong>Create Audit</strong></h4>
-              <hr/>
+    
            </div>
           
             <div class="row form_div">
@@ -212,7 +212,7 @@
        
            
               <div><h4><strong>Audits</strong></div></h4>
-              <hr/>
+           
           
             <br/>
            <div class="table-responsive">

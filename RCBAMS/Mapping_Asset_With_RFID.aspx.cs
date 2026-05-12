@@ -1,4 +1,5 @@
 ﻿using DevExpress.CodeParser;
+using DevExpress.XtraCharts.Native;
 using DevExpress.XtraPrinting.Export.Pdf;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,6 @@ public partial class Mapping_Asset_With_RFID : System.Web.UI.Page
     string AssetSLNO = "";
     //string AssetID = "";
 
-
     protected void Page_Load(object sender, EventArgs e)
     {
         table1.Visible=false;
@@ -27,7 +27,7 @@ public partial class Mapping_Asset_With_RFID : System.Web.UI.Page
 
     protected void txt_REIDCard_TextChanged(object sender, EventArgs e)
     {
-        string RFIDCard = txt_REIDCard.Text;
+        string rfidTag = txt_REIDCard.Text;
     }
 
     protected void btn_mapp_Click(object sender, EventArgs e)
@@ -42,14 +42,76 @@ public partial class Mapping_Asset_With_RFID : System.Web.UI.Page
             {
                 lbl_message.Text = "Please Select Asset";
             }
-          
+            string rfidTag = txt_REIDCard.Text.Trim();
+            string slno = gridlookup_Asset.Value.ToString();
+            string AssetID = gridlookup_Asset.Value.ToString();
 
-                string AssetSLNO = gridlookup_Asset.Value.ToString();
+            myConnection.Open();
+
+
+            string clearOldAssetRFID = @"
+                    UPDATE AssetMaster 
+                    SET RFIDCardNumber = NULL, RFIDMAPDATE = NULL
+                    WHERE RFIDCardNumber = @RFIDCardNumber 
+                    AND NOT (AssetID = @AssetID AND SLNO = @SLNO)"
+            ;
+
+            using (SqlCommand clearCmd = new SqlCommand(clearOldAssetRFID, myConnection))
+            {
+                clearCmd.Parameters.AddWithValue("@RFIDCardNumber", rfidTag);
+                clearCmd.Parameters.AddWithValue("@AssetID", AssetID);
+                clearCmd.Parameters.AddWithValue("@SLNO", slno);
+                clearCmd.ExecuteNonQuery();
+            }
+
+            // 2️⃣ Check in history table if RFID already exists as Active → make Inactive
+            string checkRFID = @"
+                    SELECT COUNT(*) FROM RFIDMappingHistory 
+                    WHERE (RFIDCardNumber = @RFID OR SRNO = @SRNO) AND RFIDStatus = 'Active'";
+            
+
+            using (SqlCommand checkCmd = new SqlCommand(checkRFID, myConnection))
+            {
+                checkCmd.Parameters.AddWithValue("@RFID", rfidTag);
+                checkCmd.Parameters.AddWithValue("@SRNO", slno);
+                int exists = (int)checkCmd.ExecuteScalar();
+
+                if (exists > 0)
+                {
+                    string inactiveQuery = @"
+                            UPDATE RFIDMappingHistory
+                            SET RFIDStatus = 'Inactive'
+                            WHERE (RFIDCardNumber = @RFID OR SRNO = @SRNO) AND RFIDStatus = 'Active'"
+                    ;
+
+                    using (SqlCommand inactiveCmd = new SqlCommand(inactiveQuery, myConnection))
+                    {
+                        inactiveCmd.Parameters.AddWithValue("@RFID", rfidTag);
+                        inactiveCmd.Parameters.AddWithValue("@SRNO", slno);
+                        inactiveCmd.ExecuteNonQuery();
+                    }
+                }
+            }
+
+            // 3️⃣ Insert NEW history record as Active
+            string insertHistory = @"
+                    INSERT INTO RFIDMappingHistory (RFIDCardNumber, SRNO, RFIDHistoryDate, RFIDStatus)
+                    VALUES (@RFIDCardNumber, @SRNO, @RFIDHistoryDate, 'Active')"
+            ;
+
+            using (SqlCommand insertCmd = new SqlCommand(insertHistory, myConnection))
+            {
+                insertCmd.Parameters.AddWithValue("@RFIDCardNumber", rfidTag);
+                insertCmd.Parameters.AddWithValue("@SRNO", slno);
+                insertCmd.Parameters.AddWithValue("@RFIDHistoryDate", DateTime.Now.ToString("yyyy-MM-dd"));
+                insertCmd.ExecuteNonQuery();
+            }
+            string AssetSLNO = gridlookup_Asset.Value.ToString();
                 string Query2 = "UPDATE AssetMaster SET RFIDCardNumber=@RFIDCardNumber,RFIDMAPDATE=@RFIDMAPDATE Where SLNO='" + AssetSLNO + "'";
                 myCommand = new SqlCommand(Query2, myConnection);
                 myCommand.Parameters.AddWithValue("@RFIDCardNumber", txt_REIDCard.Text);
                 myCommand.Parameters.AddWithValue("@RFIDMAPDATE", System.DateTime.Now);
-                myConnection.Open();
+               
                 myCommand.ExecuteNonQuery();
                 myConnection.Close();
                 lbl_message.Text = "Successfully Mapped.";

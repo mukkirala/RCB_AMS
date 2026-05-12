@@ -25,8 +25,8 @@ public partial class Site : System.Web.UI.MasterPage
             // User.Text = username;
             UserID = Session["UserID"].ToString();
             //Type = Session["Type"].ToString();
-
             Rolename = Session["ROLE_NAME"].ToString();
+            lblrolename.Text = "Role : " + Rolename;
 
             if (Rolename == "Admin") // Admin 3
             {

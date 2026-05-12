@@ -89,8 +89,8 @@
                </div>
            <div class="col-sm-4">
                       <dx:ASPxComboBox ID="cmb_location" runat="server" AutoPostBack="true" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
-                          SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String" DataSourceID="LocationDS"
-                    ValueField="LocationID" TextField="LocationCode" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" Height="25px" TextFormatString="{0}">
+                          SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.Int32" DataSourceID="LocationDS" Width="300px"
+                    ValueField="LocationID" TextField="LocationCode" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" Height="25px" TextFormatString="{2}">
 
                            <Columns>
                                <dx:ListBoxColumn FieldName="Location" Width="170px" Caption="Wing" />
@@ -123,7 +123,7 @@
             <div class="col-sm-4">
                   <dx:ASPxGridLookup ID="gd_Audit" runat="server"  AutoGenerateColumns="False"
                       IncrementalFilteringMode="Contains" TextFormatString="{1}"
-                     KeyFieldName="AuditID"   Height="25px"
+                     KeyFieldName="AuditID"   Height="25px" Width="300px"
                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                     SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" DataSourceID="AuditDS">
 <GridViewProperties>
@@ -439,7 +439,8 @@
           <label>Asset Wing</label>
            </div>
             <div class="col-sm-4">
-                <dx:ASPxComboBox ID="cmb_assetlocation" runat="server" AutoPostBack="true" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String" DataSourceID="LocationDS"
+                <dx:ASPxComboBox ID="cmb_assetlocation" runat="server" AutoPostBack="true" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" 
+                    CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.Int32" DataSourceID="LocationDS"
                     ValueField="LocationID" TextField="LocationCode" DropDownStyle="DropDown" IncrementalFilteringMode="Contains" Height="25px">
                            <Columns>
            <dx:ListBoxColumn FieldName="Location" Width="170px" Caption="Wing" />
@@ -595,10 +596,10 @@
             </dx:GridViewDataTextColumn>
              <dx:GridViewDataTextColumn FieldName="Location" VisibleIndex="4" Caption="Wing">
             </dx:GridViewDataTextColumn>
-             <dx:GridViewDataTextColumn FieldName="Block" VisibleIndex="4" Caption="Floor">
+ <%--            <dx:GridViewDataTextColumn FieldName="Block" VisibleIndex="4" Caption="Floor">
 </dx:GridViewDataTextColumn>
              <dx:GridViewDataTextColumn FieldName="LocationCode" VisibleIndex="4" Caption="LAB">
-</dx:GridViewDataTextColumn>
+</dx:GridViewDataTextColumn>--%>
           <%--  <dx:GridViewDataTextColumn FieldName="LocationCode" VisibleIndex="5" Caption="Location" Visible="false">
             </dx:GridViewDataTextColumn>
              <dx:GridViewDataTextColumn FieldName="Block" VisibleIndex="5" Visible="false">

@@ -130,8 +130,8 @@ public partial class AuditDetails : System.Web.UI.Page
             dt.Columns.Add("CustodianID");
             dt.Columns.Add("AuditStatus");
             //dt.Columns.Add("LocationCode");
-            //dt.Columns.Add("Block");
-            dt.Rows.Add(srno, gd_Audit.Value, gd_Audit.Text, gridlkup_Asset.Value, gridlkup_Asset.Text,txt_Cmts.Text, location, custodianID,cmb_status.Text);
+           // dt.Columns.Add("Block");
+            dt.Rows.Add(srno, gd_Audit.Value, gd_Audit.Text, gridlkup_Asset.Value, gridlkup_Asset.Text,txt_Cmts.Text, location,   custodianID,cmb_status.Text);
             ASPxGridView1.DataSource = dt;
             ASPxGridView1.DataBind();
             ViewState["AddTask"] = dt as DataTable;
