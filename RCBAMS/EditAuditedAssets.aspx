@@ -41,7 +41,7 @@
                </div>
            <div class="col-sm-4">
                                        <dx:ASPxGridLookup ID="gd_Audit" runat="server"  AutoGenerateColumns="False"
-                      IncrementalFilteringMode="Contains" TextFormatString="{1}" OnInit="gd_Audit_Init"
+                      IncrementalFilteringMode="Contains" TextFormatString="{1}" OnInit="gd_Audit_Init" Width="300px"
                      KeyFieldName="AuditID"   Height="25px" OnTextChanged="gd_Audit_TextChanged"
                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                     SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" DataSourceID="AuditDS" AutoPostBack="true">
@@ -97,7 +97,7 @@
            <div class="col-sm-4">
                        <dx:ASPxGridLookup ID="gridlkup_Asset" runat="server"  AutoGenerateColumns="False"
                      DataSourceID="AssetDS" IncrementalFilteringMode="Contains" TextFormatString="{2}"
-                     KeyFieldName="AuditDetailsID"   Height="25px"
+                     KeyFieldName="AuditDetailsID"   Height="25px" Width=" 300px"
                     CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                     SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" AutoPostBack="true"
                       OnTextChanged="gridlkup_Asset_TextChanged">
@@ -300,7 +300,8 @@
           <label>Asset Wing</label>
            </div>
             <div class="col-sm-4">
-                <dx:ASPxComboBox ID="cmb_assetlocation" runat="server"  CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String" DataSourceID="LocationDS"
+                <dx:ASPxComboBox ID="cmb_assetlocation" runat="server"  CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" Width="300px"
+                    CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String" DataSourceID="LocationDS"
                     ValueField="LocationID" TextField="LocationCode" DropDownStyle="DropDown" IncrementalFilteringMode="Contains"  Height="25px"  TextFormatString="{0}">
                     
                            <Columns>
@@ -328,7 +329,7 @@
            </div>
             <div class="col-sm-4">
                 <dx:ASPxGridLookup ID="Cust_gridlookup" runat="server"
-                    AutoGenerateColumns="False" DataSourceID="CustSqlDataSource" TextFormatString="{0}" Width="170px" Height="25px"
+                    AutoGenerateColumns="False" DataSourceID="CustSqlDataSource" TextFormatString="{0}" Width="300px" Height="25px"
                     KeyFieldName="CustodianID"   CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                     <GridViewProperties>
                         <%--<SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>--%>
@@ -381,7 +382,8 @@
                 Asset Status
                </div>
            <div class="col-sm-4">
-                    <dx:ASPxComboBox ID="cmb_Status" runat="server" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"  Height="25px" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String" DataSourceID="StatusDS"
+                    <dx:ASPxComboBox ID="cmb_Status" runat="server" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" Width="300px"
+                        Height="25px" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String" DataSourceID="StatusDS"
                     ValueField="StatusCode" TextField="StatusName"  DropDownStyle="DropDown" IncrementalFilteringMode="Contains">
                     <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
                     </LoadingPanelImage>
@@ -401,7 +403,7 @@
              Remark
            </div>
             <div class="col-sm-4">
-                 <dx:ASPxTextBox ID="txt_Comments" runat="server" Width="170px" Height="25px">
+                 <dx:ASPxTextBox ID="txt_Comments" runat="server" Width="300px" Height="25px">
                 </dx:ASPxTextBox>
              </div> 
               </div>
