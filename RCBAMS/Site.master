@@ -401,10 +401,10 @@
 
         </ul>
        </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Calibration Mgmt<span class="caret"></span></a>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">AMC/CMC Mgmt<span class="caret"></span></a>
 <ul class="dropdown-menu">              
-                    <li><a href="/EquipmentAMC.aspx">Equipment Calibration</a></li>
-                    <li><a href="/CalibrationColorCoding.aspx">Calibration Color Coding </a></li>
+                    <li><a href="/AssetAMC.aspx">AMC/CMC Services</a></li>
+                    <li><a href="/CalibrationColorCoding.aspx">View AMC/CMC </a></li>
 
           </ul>
            </li> 
