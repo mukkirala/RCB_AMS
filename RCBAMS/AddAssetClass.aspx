@@ -41,13 +41,14 @@
            margin-top:10px;
        }
     </style>
-
+     <dx:ASPxLabel ID="lbl_msg" runat="server" style="color: red" Visible="false" Text="">
+       </dx:ASPxLabel>
     <div class="">
+
 <strong style=""><span class="style2"> Add Asset Class
    
     </span></strong>
-          <dx:ASPxLabel ID="lbl_msg" runat="server" style="color: red" Visible="false" Text="">
-                </dx:ASPxLabel>
+         
             <div class="row form_div">
          <div class="col-sm-2">
             Asset Class Code :<span class="style5"><strong>*</strong></span>

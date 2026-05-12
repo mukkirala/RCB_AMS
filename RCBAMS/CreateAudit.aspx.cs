@@ -49,6 +49,12 @@ public partial class CreateAudit : System.Web.UI.Page
             lbl_Error.Visible = true;
             return;
         }
+        if (cmb_location.Text == "")
+        {
+            lbl_Error.Text = "Select Wing";
+            lbl_Error.Visible = true;
+            return;
+        }
         if (cmb_status.Text == "")
         {
             lbl_Error.Text = "Select Status";
@@ -56,12 +62,7 @@ public partial class CreateAudit : System.Web.UI.Page
             return;
         }
 
-        if (cmb_location.Text == "")
-        {
-            lbl_Error.Text = "Select Wing";
-            lbl_Error.Visible = true;
-            return;
-        }
+        
         if (txt_AuditDiscription.Text == "")
         {
             lbl_Error.Text = "Enter Audit Description";
