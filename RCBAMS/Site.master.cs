@@ -16,9 +16,9 @@ public partial class Site : System.Web.UI.MasterPage
         //Response.Expires = -1500;
         //Response.CacheControl = "no-cache";
         //Page.Response.Cache.SetCacheability(HttpCacheability.NoCache);
-        
+
         string username, UserID, Rolename;
-        if (Session["UserID"] != null) 
+        if (Session["UserID"] != null)
         {
             lblusername.Text = Session["USR_NAME"].ToString();
             username = Session["USR_NAME"].ToString();
@@ -35,6 +35,7 @@ public partial class Site : System.Web.UI.MasterPage
                 requester.Visible = false;
                 Approver.Visible = false;
                 Engineer.Visible = false;
+                DepartmentHead.Visible = false;
 
             }
             else if (Rolename == "IT-Admin") // IT Admin 4 
@@ -46,18 +47,20 @@ public partial class Site : System.Web.UI.MasterPage
                 requester.Visible = false;
                 Approver.Visible = false;
                 Engineer.Visible = false;
+                DepartmentHead.Visible = false;
 
             }
             else if (Rolename == "Engineer") // Engineer
             {
-               
+
                 admin.Visible = false;
                 auditor.Visible = false;
                 requester.Visible = false;
                 Approver.Visible = false;
+                DepartmentHead.Visible = false;
 
             }
-            else if ( Rolename == "HR-Admin") //  HR admin 5
+            else if (Rolename == "HR-Admin") //  HR admin 5
             {
                 ITHRAdmin.Visible = true;
                 buyback.Visible = false;
@@ -66,6 +69,7 @@ public partial class Site : System.Web.UI.MasterPage
                 requester.Visible = false;
                 Approver.Visible = false;
                 Engineer.Visible = false;
+                DepartmentHead.Visible = false;
 
             }
             else if (Rolename == "Auditor") // Auditor 1
@@ -75,13 +79,49 @@ public partial class Site : System.Web.UI.MasterPage
                 admin.Visible = false;
                 Approver.Visible = false;
                 Engineer.Visible = false;
+                DepartmentHead.Visible = false;
             }
-            else if(Rolename == "Approver") //Approver 2
+            else if (Rolename == "Approver") //Approver 2
             {
                 Approver.Visible = true;
                 auditor.Visible = false;
                 requester.Visible = false;
                 admin.Visible = false;
+                Engineer.Visible = false;
+                DepartmentHead.Visible = false;
+
+            }
+            else if (Rolename == "DepartmentHead") // Department Head
+            {
+                DepartmentHead.Visible = true;
+
+                auditor.Visible = false;
+                requester.Visible = false;
+                admin.Visible = false;
+                Approver.Visible = false;
+                Engineer.Visible = false;
+            }
+            else if (Rolename == "StoreIncharge") // Store Incharge
+            {
+                StoreIncharge.Visible = true;
+
+                admin.Visible = false;
+                auditor.Visible = false;
+                requester.Visible = false;
+                Approver.Visible = false;
+                Engineer.Visible = false;
+                PO.Visible = false;
+                DepartmentHead.Visible = false;
+
+            }
+            else if (Rolename == "POAdmin") // Store Incharge
+            {
+                PO.Visible = true;
+
+                admin.Visible = false;
+                auditor.Visible = false;
+                requester.Visible = false;
+                Approver.Visible = false;
                 Engineer.Visible = false;
 
             }
@@ -92,8 +132,12 @@ public partial class Site : System.Web.UI.MasterPage
                 auditor.Visible = false;
                 Approver.Visible = false;
                 Engineer.Visible = false;
+                StoreIncharge.Visible = false;
+                DepartmentHead.Visible = false;
+
             }
         }
+
         else
         {
             Response.Redirect("ErrorPage.aspx");

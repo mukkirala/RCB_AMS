@@ -199,7 +199,45 @@ public static string GetProperty(SearchResult searchResult, string propertyName)
                         return;
                     }
                 }
-
+                else if (logintype.SelectedValue == "3")//Admin
+                {
+                    int avl = RoleExist(USR_ID, "DepartmentHead");
+                    if (avl == 1)
+                    {
+                        Response.Redirect("RequestOrder.aspx");
+                    }
+                    else
+                    {
+                        lblNotification.Text = "UnAuthorized Access";
+                        return;
+                    }
+                }
+                else if (logintype.SelectedValue == "4")//Admin
+                {
+                    int avl = RoleExist(USR_ID, "StoreIncharge");
+                    if (avl == 1)
+                    {
+                        Response.Redirect("ReceiveItems.aspx");
+                    }
+                    else
+                    {
+                        lblNotification.Text = "UnAuthorized Access";
+                        return;
+                    }
+                }
+                else if (logintype.SelectedValue == "5")//Admin
+                {
+                    int avl = RoleExist(USR_ID, "POAdmin");
+                    if (avl == 1)
+                    {
+                        Response.Redirect("ApproverDashboard.aspx");
+                    }
+                    else
+                    {
+                        lblNotification.Text = "UnAuthorized Access";
+                        return;
+                    }
+                }
                 //else if (logintype.SelectedValue == "3")//Approver
                 //{
                 //    int avl = RoleExist(USR_ID, "Approver");
@@ -214,50 +252,50 @@ public static string GetProperty(SearchResult searchResult, string propertyName)
                 //    }
 
                 //}
-                    //else if (logintype.SelectedValue == "4")//Engineer
-                    //{
-                    //    int avl = RoleExist(USR_ID, "Engineer");
-                    //    if (avl == 1)
-                    //    {
-                    //        Response.Redirect("EnginnerViewRegisteredComplaints.aspx");
-                    //    }
-                    //    else
-                    //    {
-                    //        lblNotification.Text = "UnAuthorized Access";
-                    //        return;
-                    //    }
+                //else if (logintype.SelectedValue == "4")//Engineer
+                //{
+                //    int avl = RoleExist(USR_ID, "Engineer");
+                //    if (avl == 1)
+                //    {
+                //        Response.Redirect("EnginnerViewRegisteredComplaints.aspx");
+                //    }
+                //    else
+                //    {
+                //        lblNotification.Text = "UnAuthorized Access";
+                //        return;
+                //    }
 
-                    //}
-                    //else if (logintype.SelectedValue == "4")// IT-Admin
-                    //{
-                    //    int avl = RoleExist(USR_ID, "IT-Admin");
-                    //    if (avl == 1)
-                    //    {
-                    //        Response.Redirect("AdminDashboard.aspx");
-                    //    }
-                    //    else
-                    //    {
-                    //        lblNotification.Text = "UnAuthorized Access";
-                    //        return;
-                    //    }
+                //}
+                //else if (logintype.SelectedValue == "4")// IT-Admin
+                //{
+                //    int avl = RoleExist(USR_ID, "IT-Admin");
+                //    if (avl == 1)
+                //    {
+                //        Response.Redirect("AdminDashboard.aspx");
+                //    }
+                //    else
+                //    {
+                //        lblNotification.Text = "UnAuthorized Access";
+                //        return;
+                //    }
 
-                    // }
-                    //else if (logintype.SelectedValue == "5")// 
-                    //{
-                    //    int avl = RoleExist(USR_ID, "NONIT-Admin");
-                    //    if (avl == 1)
-                    //    {
-                    //        Response.Redirect("AdminDashboard.aspx");
-                    //    }
-                    //    else
-                    //    {
-                    //        lblNotification.Text = "UnAuthorized Access";
-                    //        return;
-                    //    }
+                // }
+                //else if (logintype.SelectedValue == "5")// 
+                //{
+                //    int avl = RoleExist(USR_ID, "NONIT-Admin");
+                //    if (avl == 1)
+                //    {
+                //        Response.Redirect("AdminDashboard.aspx");
+                //    }
+                //    else
+                //    {
+                //        lblNotification.Text = "UnAuthorized Access";
+                //        return;
+                //    }
 
-                    //}
+                //}
 
-                }
+            }
             else
             {
                 //lblNotification.Text = "Invalid Credentials!";

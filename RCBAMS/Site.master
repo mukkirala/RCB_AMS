@@ -170,6 +170,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+       
     <div>
        <div class="container-fluid" runat="server">
 
@@ -217,6 +219,7 @@
 					</div>
 					<div class="collapse navbar-collapse" id="myNavbar">
 
+
         <%--====================================================REQUESTER =============================================================- --%>
        
               <ul class="nav navbar-nav" id="requester" runat="server" >
@@ -253,6 +256,7 @@
        </li>--%>
 
                </ul>
+
             
        <%--===================================================   ADMIN ================================================================ --%>
 
@@ -692,6 +696,7 @@
              </ul>
       </li>
          </ul> 
+         
         
           <%--====================================================== IT/HR- Admin ===================================================================--%>
 
@@ -867,6 +872,42 @@
 
 
 
+                        <%--====================================================== DEPARTMENT HEAD ===================================================================--%>
+
+<ul class="nav navbar-nav" id="DepartmentHead" runat="server" visible="false">
+
+    
+    <li id="a25">
+        <a href="/RequestOrder.aspx">Request Order</a>
+    </li>
+
+</ul>
+                                                <%--====================================================== Store Incharge ===================================================================--%>
+
+<ul class="nav navbar-nav" id="StoreIncharge" runat="server" visible="false">
+
+    
+    <li id="a26">
+        <a href="/ReceiveItems.aspx">Receive Order</a>
+    </li>
+
+</ul>
+                                                <%--====================================================== Store Incharge ===================================================================--%>
+
+
+<ul class="nav navbar-nav" id="PO" runat="server" visible="false">
+
+    <li id="a27">
+        <a href="/ApproverDashboard.aspx">Approver Dashboard</a>
+    </li>
+
+    <li id="a28">
+        <a href="/ApproverAuthorizationRequisition.aspx">
+            Authorization Requisition
+        </a>
+    </li>
+
+</ul>
 
 
 
