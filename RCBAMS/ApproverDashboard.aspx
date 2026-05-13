@@ -1,285 +1,538 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="ApproverDashboard.aspx.cs" Inherits="ApproverDashboard" %>
 
-<%@ Register Assembly="DevExpress.Web.ASPxGridView.v11.1, Version=11.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
-<%@ Register Assembly="DevExpress.Web.ASPxEditors.v11.1, Version=11.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
-<%@ Register Assembly="DevExpress.Web.v11.1, Version=11.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxLoadingPanel" TagPrefix="dx" %>
-<%@ Register Assembly="DevExpress.Web.ASPxGridView.v11.1, Version=11.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
 
-<%@ Register Assembly="DevExpress.Web.v11.1, Version=11.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dx" %>
+<asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" Runat="Server">
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
-
-    <script type="text/javascript">
+        <script type="text/javascript">
         function ShowLoginWindow1() {
-         
             pcLogin.Show();
- return false;
+            return false;
+        }
+        </script>
+    
+    <!-- Chart.js Library -->
+    <%--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>--%>
+    <script src="../offlinecss/chart.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Year Filter Styles */
+        .year-filter {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+            .year-filter .form-select {
+                border: 1px solid #dee2e6;
+                border-radius: 6px;
+                font-size: 0.875rem;
+                padding: 0.25rem 0.5rem;
             }
-            </script>
-    <style>
-    .auto-style35 {
-          box-shadow: 0 0 14px -10px;
-          margin-bottom: 15px;
-          padding:15px;
+
+            .year-filter .form-label {
+                font-size: 0.875rem;
+                font-weight: 600;
+                color: var(--dark-gray);
+                margin-bottom: 0;
+            }
+
+        /* Loading state for chart */
+        .chart-container.loading .chart-wrapper {
+            opacity: 0.6;
+            pointer-events: none;
         }
-    .style19
-        {
-            width: 268px
+
+        .chart-container.loading::after {
+            content: 'Loading...';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 600;
+            color: var(--primary-blue);
         }
 
-    .panel-pink {
-  
-     border-color:rgb(241, 79, 124) !important;
-        border-bottom: 3px solid rgb(241, 79, 124) !important;
-}
-    .panel-blue {
-    border-color: rgb(3, 169, 244) !important;
-      border-bottom: 3px solid rgb(3, 169, 244) !important;
 
-}
-     .panel-green {
-    border-color: rgb(0, 128, 0) !important;
-      border-bottom: 3px solid rgb(0, 128, 0) !important;
+        :root {
+            --primary-pink: #F14F7C;
+            --primary-blue: #03A9F4;
+            --primary-green: #008000;
+            --primary-orange: #FF9800;
+            --primary-purple: #9C27B0;
+            --primary-teal: #009688;
+            --dark-gray: #2c3e50;
+            --light-gray: #ecf0f1;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
 
-}
-      .panel-orange {
-    border-color: orange !important;
-      border-bottom: 3px solid orange !important;
+        .dashboard-container {
+            background: #f8f9fa;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
 
-}
-      .pink-bg{
-     background:rgb(241, 79, 124) !important;
+        .dashboard-header {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--primary-blue);
+        }
 
-      }
-       .blue-bg{
-     background:rgb(3, 169, 244) !important;
+        .dashboard-title {
+            color: var(--dark-gray);
+            font-weight: 700;
+            margin: 0;
+            font-size: 2.2rem;
+        }
 
-      }
-        .green-bg{
-     background:rgb(0, 128, 0) !important;
+        .dashboard-subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin: 0.5rem 0 0 0;
+        }
 
-      }
-         .orange-bg{
-     background:orange !important;
+        /* Enhanced Stat Cards */
+        .stat-card {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            border-left: 5px solid transparent;
+            padding: 1.5rem;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
 
-      }
-    .panel {
-        width: 250px;
-        height: 130px;
-        color: white;
-        margin:0px auto;
-   
-    background-color: #fff;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    box-shadow: 0 1px 1px rgba(0,0,0,.05);
-}
-    .view{
-        padding: 6px;
-        font-size: 16px;
-        text-align:center;
-    }
-         .style20
-        {
-           
-            height: 22px;
-            width: 199px;
-            text-align: center;
+            .stat-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.8) 100%);
+            }
+
+            .stat-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            }
+
+        .stat-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex: 1;
+        }
+
+        .stat-info {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .stat-title {
+            margin: 0;
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            margin: 0.5rem 0 0 0;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark-gray);
+            line-height: 1;
+        }
+
+        .stat-description {
+            margin: 0.25rem 0 0 0;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .stat-icon {
+            background: rgba(0,0,0,0.04);
+            padding: 1rem;
+            border-radius: 50%;
+            font-size: 2rem;
+            width: 70px;
             height: 70px;
-            color: #ffffff;
-   
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
         }
-         .auto-style6{
-             font-size:25px;
-         }
-        </style>
-    <style>
-        .container {
-            width: 90% !important;
+
+        .stat-card:hover .stat-icon {
+            transform: scale(1.1);
+        }
+
+        .stat-link {
+            text-align: center;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.5rem;
+            border-radius: 6px;
+            transition: var(--transition);
+            margin-top: 0.5rem;
+        }
+
+            .stat-link:hover {
+                background: rgba(0,0,0,0.05);
+            }
+
+        /* Color variants */
+        .stat-pink {
+            border-left-color: var(--primary-pink);
+        }
+
+        .stat-blue {
+            border-left-color: var(--primary-blue);
+        }
+
+        .stat-green {
+            border-left-color: var(--primary-green);
+        }
+
+        .stat-orange {
+            border-left-color: var(--primary-orange);
+        }
+
+        .stat-purple {
+            border-left-color: var(--primary-purple);
+        }
+
+        .stat-teal {
+            border-left-color: var(--primary-teal);
+        }
+
+        .stat-pink .stat-icon {
+            background: rgba(241, 79, 124, 0.1);
+            color: var(--primary-pink);
+        }
+
+        .stat-blue .stat-icon {
+            background: rgba(3, 169, 244, 0.1);
+            color: var(--primary-blue);
+        }
+
+        .stat-green .stat-icon {
+            background: rgba(0, 128, 0, 0.1);
+            color: var(--primary-green);
+        }
+
+        .stat-orange .stat-icon {
+            background: rgba(255, 152, 0, 0.1);
+            color: var(--primary-orange);
+        }
+
+        .stat-purple .stat-icon {
+            background: rgba(156, 39, 176, 0.1);
+            color: var(--primary-purple);
+        }
+
+        .stat-teal .stat-icon {
+            background: rgba(0, 150, 136, 0.1);
+            color: var(--primary-teal);
+        }
+
+        /* Chart Styles */
+        .chart-container {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            height: 400px;
+            border: 1px solid #e9ecef;
+            margin-bottom: 1.5rem; /* Space between charts in same row */
+        }
+
+        /* Responsive adjustments for chart grid */
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 350px;
+                margin-bottom: 1rem;
+            }
+
+            .chart-wrapper {
+                position: relative;
+                height: 320px;
+                width: 100%;
+            }
+        }
+
+        /* Remove bottom margin from last chart in row */
+        .row .mb-4:last-child .chart-container {
+            margin-bottom: 0;
+        }
+
+        .chart-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+            text-align: center;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 320px;
+            width: 100%;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .actions-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, var(--primary-blue), #0288d1);
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+            .action-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(3, 169, 244, 0.3);
+                color: white;
+                text-decoration: none;
+            }
+
+            .action-btn.pink {
+                background: linear-gradient(135deg, var(--primary-pink), #e91e63);
+            }
+
+            .action-btn.green {
+                background: linear-gradient(135deg, var(--primary-green), #006400);
+            }
+
+            .action-btn.orange {
+                background: linear-gradient(135deg, var(--primary-orange), #f57c00);
+            }
+
+        /* Requests Panel */
+        .requests-panel {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .requests-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .request-badge {
+            background: var(--primary-pink);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .request-item {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            transition: var(--transition);
+        }
+
+            .request-item:hover {
+                background: #f8f9fa;
+            }
+
+            .request-item:last-child {
+                border-bottom: none;
+            }
+
+        .request-link {
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+        }
+
+            .request-link:hover {
+                color: var(--primary-blue);
+                text-decoration: none;
+            }
+
+        .request-date {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Loading Animation */
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .loading {
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 350px;
+                margin-bottom: 1rem;
+            }
+            /* Make sure rows have visible spacing */
+            .row.mb-5 {
+                margin-bottom: 2rem !important;
+                border: 1px solid transparent; /* Debug - remove this line after testing */
+            }
+
+            /* Make sure the requests panel has top spacing */
+            .col-12.mt-4 {
+                margin-top: 2rem !important;
+                border: 1px solid transparent; /* Debug - remove this line after testing */
+            }
+
+            .row.mb-5 {
+                margin-bottom: 2rem !important;
+            }
+
+            .col-12.mt-4 {
+                margin-top: 1.5rem !important;
+            }
+
+
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .chart-container {
+                height: 300px;
+            }
+
+            .chart-wrapper {
+                position: relative;
+                height: 320px;
+                width: 100%;
+            }
+
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dashboard-row {
+            margin-bottom: 2rem;
+        }
+
+        .auto-style35 {
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--border-radius);
         }
     </style>
-
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
- <div class="container cnt_div" cssclass="container">
-        <h3 class="text-center"><strong>Dashboard</strong></h3>
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
 
-         <!------------------------------------->
+        <div class="dashboard-container">
+        <div class="container">
+                      <!-- Dashboard Title -->
+<div class="row mb-4">
+    <div class="col-12 text-center">
+        <h1 class="dashboard-label" style="color: var(--dark-gray); font-weight: 700; font-size: 2.5rem; margin: 0; padding: 0.5rem 0;">DASHBOARD
+        </h1>
+    </div>
+</div> 
 
-        <div id="wrapper" class="auto-style35">
-            <!-- Navigation -->
-
-
-            <!-- Page Heading -->
-        
-            <div class="row sui-editor-iframe">
-                <div class="col-sm-3">
-                 
-                        <div class="panel panel-pink" style="">
-                            <div class="panel-heading pink-bg" style="background-color:rgb(241, 79, 124)">
-                                <div class="style20" style="">
-                                 
-                                    <span style="">Pending Requests For Asset</span><br/>
-                                    <asp:Label runat="server" ID="lbl_assetrequest" CssClass="auto-style6"></asp:Label>
-                                </div>
-                            </div>
-                             <a href="ApproveAsset.aspx"><div class="view" style="color:rgb(241, 79, 124)">View</div></a>
+                <!-- Pending Approvals Below Charts with proper spacing -->
+                <div class="col-12 mt-4">
+                    <!-- Added top margin to separate from charts -->
+                    <div class="requests-panel">
+                        <h3 class="requests-title">
+                            <i class="fas fa-tasks me-2"></i>Pending Approvals
+                <span class="request-badge" id="requestCount" runat="server">0</span>
+                        </h3>
+                        <div class="table-responsive">
+                            <asp:Table ID="myTable" runat="server" Width="100%" CssClass="table">
+                                <asp:TableRow>
+                                </asp:TableRow>
+                            </asp:Table>
+                        </div>
+                        <div id="noRequests" runat="server" class="text-center text-muted p-4" style="display: none;">
+                            <i class="fas fa-check-circle fa-3x mb-3"></i>
+                            <p>No pending requests</p>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="panel panel-blue">
-                             <div class="panel-heading blue-bg" style="background-color:rgb(3, 169, 244)">
-                                <div class="style20" style="">
-                                
-                                    <%-- <img src="Images/Group.jpg" class="auto-style32" />--%>
-                                 
-                                    <span>Pending Requests For Location Transfer</span><br />
-                                    <asp:Label runat="server" ID="lbl_locationtransfer"  CssClass="auto-style6"></asp:Label>
-                                </div>
-                            </div>
-                           <a href="ViewLocationChangeRequests.aspx"> <div class="view" style="color:rgb(3, 169, 244)">View</div></a>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="panel panel-green" style="">
-                            <div class="panel-heading green-bg" style="background-color:rgb(0, 128, 0)">
-                                <div class="style20" style="">
-                                   
-                                    <%-- <img src="Images/Group.jpg" class="auto-style32" />--%>
-                                  
-                                    <span>Pending Requests For Custodian Tranfer</span><br />
-                                    <asp:Label runat="server" ID="lbl_custodiantransfer"  CssClass="auto-style6"></asp:Label>
-                                </div>
-                            </div>
-                           <a href="ViewCustodianChangeRequests.aspx"> <div class="view" style="color:rgb(0, 128, 0)">View</div></a>
-                        </div>
-                    </div>
-                       <div class="col-sm-3">
-                        <div class="panel panel-orange" style="">
-                            <div class="panel-heading orange-bg" style="background-color:orange">
-                                <div class="style20" style="">
-                                   
-                                    <%-- <img src="Images/Group.jpg" class="auto-style32" />--%>
-                                  
-                                    <span>Reportees</span><br />
-                                    <asp:Label runat="server" ID="lbl_assetreturn" CssClass="auto-style6"></asp:Label>
-                                </div>
-                            </div>
-                            <a href="ViewReporteesList.aspx"><div class="view" style="color:orange">View</div></a>
-                        </div>
-                    </div>
-
-
                 </div>
-
-          
-        </div>
-
-    <div class="">
-            <div class=" col-sm-3 auto-style35">
-                <h5>Updates</h5>
-                <div class=" table-responsive">
-                    <table class="table table-dark">
-                      <thead>
- 
-                      </thead>
-                      <tbody>
-            
-                          <tr>
-     
-                          <td> <asp:LinkButton runat="server" OnClick="lbtn_allocatedassets_Click" ID="lbtn_allocatedassets" Text="Allocated Assets" ForeColor="Black"/> <span class="badge pink-bg"><asp:LinkButton runat="server" ID="lbl_cntAllocatedassets"   ForeColor="White"/></span> <asp:ImageButton ID="reqicon" runat="server" Height="27px" ImageUrl="~/Images/neww.gif" Width="44px"  Visible="false"/></td>
-     
-                        </tr>
-
-                        
-                      </tbody>
-                    </table>
-                    </div>
             </div>
 
-  <div class="col-sm-9 ">
-                <div class=" ">
-                    <div class="auto-style35">
-        <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ds_AllocatedAssets" KeyFieldName="AllocationID" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" Width="100%">
-            <Columns>
-                
-              <dx:GridViewCommandColumn VisibleIndex="0">
-				  <ClearFilterButton Visible="True">
-				  </ClearFilterButton>
-			  </dx:GridViewCommandColumn>
-              <dx:GridViewDataTextColumn FieldName="AllocationID" ReadOnly="True" VisibleIndex="1" Visible="false">
-                <Settings AutoFilterCondition="Contains" />
-              </dx:GridViewDataTextColumn>   
-            <dx:GridViewDataTextColumn FieldName="AssetID"  ReadOnly="True" VisibleIndex="2"  Visible="false">
-                <Settings AutoFilterCondition="Contains" />
-              </dx:GridViewDataTextColumn> 
-            <dx:GridViewDataTextColumn FieldName="MainAssetNumber"  ReadOnly="True" VisibleIndex="3">
-                <Settings AutoFilterCondition="Contains" />
-              </dx:GridViewDataTextColumn>         
-            <dx:GridViewDataTextColumn FieldName="AssetSubNumber" Caption="SubNumber"  ReadOnly="True" VisibleIndex="4">
-                <Settings AutoFilterCondition="Contains" />
-              </dx:GridViewDataTextColumn>         
-             <dx:GridViewDataTextColumn FieldName="AssetDesc"  ReadOnly="True" VisibleIndex="5" Caption="Asset Name">
-                <Settings AutoFilterCondition="Contains" />
-              </dx:GridViewDataTextColumn> 
-            <dx:GridViewDataTextColumn FieldName="AssetClass" Caption="Class"  ReadOnly="True" VisibleIndex="6">
-                <Settings AutoFilterCondition="Contains" />
-             </dx:GridViewDataTextColumn>        
-        
-            </Columns>
-            <SettingsPager ShowDefaultImages="False" PageSize="5">
-                <AllButton Text="All">
-                </AllButton>
-                <NextPageButton Text="Next &gt;">
-                </NextPageButton>
-                <PrevPageButton Text="&lt; Prev">
-                </PrevPageButton>
-            </SettingsPager>
-            <SettingsPager PageSize="25" />
-            <Images SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
-                <LoadingPanelOnStatusBar Url="~/App_Themes/PlasticBlue/GridView/gvLoadingOnStatusBar.gif">
-                </LoadingPanelOnStatusBar>
-                <LoadingPanel Url="~/App_Themes/PlasticBlue/GridView/Loading.gif">
-                </LoadingPanel>
-            </Images>
-            <ImagesFilterControl>
-                <LoadingPanel Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
-                </LoadingPanel>
-            </ImagesFilterControl>
-            <Styles CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue">
-                <Header ImageSpacing="10px" SortingImageSpacing="10px">
-                </Header>
-            </Styles>
-            <StylesEditors>
-                <CalendarHeader Spacing="11px">
-                </CalendarHeader>
-                <ProgressBar Height="25px">
-                </ProgressBar>
-            </StylesEditors>
-            
-            <Settings ShowFilterRow="True" ShowGroupPanel="True" />
-           
-        </dx:ASPxGridView>
-        <asp:SqlDataSource ID="ds_AllocatedAssets" runat="server" ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" SelectCommand="Select AssetAllocation.AllocationID,AssetAllocation.AssetID,AssetAllocation.MainAssetNumber,
-AssetMaster.AssetSubNumber,AssetMaster.AssetDesc,AssetMaster.AssetClass,AssetMaster.Status as AssetStatus
-From RCBAMS..AssetAllocation
-inner join RCBAMS..EmployeeAssetRequest on EmployeeAssetRequest.AssetRequestID=AssetAllocation.AssetRequestID
-inner join RCBSAP..AssetMaster on AssetMaster.AssetID=AssetAllocation.AssetID
-where AssetAllocation.Status='Approved' and EmployeeAssetRequest.EmployeeID=@CustodianID">
-   <SelectParameters>
-       <asp:SessionParameter SessionField="UserID" Name="CustodianID" />
-   </SelectParameters>
-           
-        </asp:SqlDataSource>
-       
-            </div>
-                <div>
-                    </div>
+
+
+
 
         </div>
 
-</div>
-</div>
-</div>
 </asp:Content>
+
+

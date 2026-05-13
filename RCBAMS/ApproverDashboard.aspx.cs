@@ -1,106 +1,132 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
+using System.Linq;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Configuration;
-using System.Data.Sql;
-using System.Data.SqlClient;
-using System.Data;
+using DevExpress.XtraCharts.Native;
+using System.Web.UI.HtmlControls;
 
 public partial class ApproverDashboard : System.Web.UI.Page
 {
-    SqlConnection conSAP = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString);
-    SqlConnection conCommon = new SqlConnection(WebConfigurationManager.ConnectionStrings["ASSETManagementConnectionString"].ConnectionString);
-    SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
+    static string myconnectionString = WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString;
+    SqlConnection con = new SqlConnection(myconnectionString);
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["UserID"] != null)
+        if (!IsPostBack)
         {
-           
-            updates_fa();
-        }
-        else
-        {
-            Response.Redirect("/Login.aspx");
+            
+            LoadPendingRequests();
         }
     }
 
-    void updates_fa()
+    private void LoadPendingRequests()
     {
-        string approverid = Session["UserID"].ToString();
-        SqlDataAdapter da_fa = new SqlDataAdapter("select Count(CustodianID) from vAssetMaster where vAssetMaster.CustodianID='" + approverid + "' and vAssetMaster.Status !='NVAL'", conSAP);
-        DataTable dt_fa = new DataTable();
-        da_fa.Fill(dt_fa);
-        if (dt_fa.Rows.Count > 0)
+        try
         {
-            lbl_cntAllocatedassets.Text = dt_fa.Rows[0].ItemArray[0].ToString();
-            if (int.Parse(lbl_cntAllocatedassets.Text) > 0)
+            string selectcmd = @"SELECT ReqID, 
+                    Date as Date, 
+                    Description, 
+                    sendby , 
+                    Status, 
+                    CONCAT('Request:', Description) as text 
+                    FROM POSRequisitionParent
+                    WHERE Status IN ('Requisition Sent')
+                    ORDER BY Date DESC";
+
+            using (SqlCommand cmd = new SqlCommand(selectcmd, con))
             {
-                reqicon.Visible = true;
+               // cmd.Parameters.AddWithValue("@GodownId", Session["GodownID"]);
+                // Note: @DivisionID is not used in the SQL query, so don't add it as a parameter
+
+                using (SqlDataAdapter daa = new SqlDataAdapter(cmd)) // Use cmd here, not selectcmd
+                {
+                    DataTable dtt = new DataTable();
+                    daa.Fill(dtt);
+
+                    if (dtt.Rows.Count > 0)
+                    {
+                        requestCount.InnerText = dtt.Rows.Count.ToString();
+                        noRequests.Visible = false;
+
+                        // Clear existing rows except header
+                        myTable.Rows.Clear();
+
+                        // Add header row
+                        TableRow headerRow = new TableRow();
+                        headerRow.CssClass = "table-header";
+
+                        TableCell descHeader = new TableCell();
+                        descHeader.Text = "Request Description";
+                        descHeader.CssClass = "fw-bold";
+                        headerRow.Cells.Add(descHeader);
+
+                        TableCell dateHeader = new TableCell();
+                        dateHeader.Text = "Date";
+                        dateHeader.CssClass = "fw-bold";
+                        headerRow.Cells.Add(dateHeader);
+
+                        TableCell statusHeader = new TableCell();
+                        statusHeader.Text = "Status";
+                        statusHeader.CssClass = "fw-bold";
+                        headerRow.Cells.Add(statusHeader);
+
+                        myTable.Rows.Add(headerRow);
+
+                        foreach (DataRow row in dtt.Rows)
+                        {
+                            TableRow tableRow = new TableRow();
+                            tableRow.CssClass = "request-item";
+
+                            // Description with link
+                            TableCell descCell = new TableCell();
+                            HyperLink link = new HyperLink();
+                            link.Text = row["text"].ToString();
+                            link.ID = row["ReqID"].ToString();
+                            link.NavigateUrl = "~/ApprovePage.aspx?id=" + link.ID;
+                            link.CssClass = "request-link";
+                            descCell.Controls.Add(link);
+                            tableRow.Cells.Add(descCell);
+
+                            // Date
+                            TableCell dateCell = new TableCell();
+                            if (row["Date"] != DBNull.Value)
+                            {
+                                DateTime requestDate = Convert.ToDateTime(row["Date"]);
+                                dateCell.Text = requestDate.ToString("MMM dd, yyyy HH:mm");
+                            }
+                            dateCell.CssClass = "request-date";
+                            tableRow.Cells.Add(dateCell);
+
+                            // Status badge
+                            TableCell statusCell = new TableCell();
+                            Label statusLabel = new Label();
+                            statusLabel.Text = row["Status"].ToString();
+                            statusLabel.CssClass = "badge badge-warning";
+                            statusCell.Controls.Add(statusLabel);
+                            tableRow.Cells.Add(statusCell);
+
+                            myTable.Rows.Add(tableRow);
+                        }
+                    }
+                    else
+                    {
+                        requestCount.InnerText = "0";
+                        noRequests.Visible = true;
+                        noRequests.Style["display"] = "block";
+                    }
+                }
             }
         }
-        else
+        catch (Exception ex)
         {
-            lbl_cntAllocatedassets.Text = "0";
-            reqicon.Visible = false;
-        }
-        string select1 = "select Count(AssetRequestID) from EmployeeAssetRequest where EmployeeAssetRequest.Status = 'Request Sent To Approver' and ApproverID="+approverid+"";
-        SqlDataAdapter da1 = new SqlDataAdapter(select1, conAMS);
-        DataTable dt1 = new DataTable();
-        da1.Fill(dt1);
-        if (dt1.Rows.Count > 0)
-        {
-            lbl_assetrequest.Text = dt1.Rows[0].ItemArray[0].ToString();
-        }
-        else
-        {
-            lbl_assetrequest.Text = "0";
-        }
-
-        string select2 = "select Count(LocationChangeID) from EmployeeLocationChange where Status='Request Sent To Approver' and ApproverID=" + approverid + "";
-        SqlDataAdapter da2 = new SqlDataAdapter(select2, conAMS);
-        DataTable dt2 = new DataTable();
-        da2.Fill(dt2);
-        if (dt2.Rows.Count > 0)
-        {
-            lbl_locationtransfer.Text = dt2.Rows[0].ItemArray[0].ToString();
-        }
-        else
-        {
-            lbl_locationtransfer.Text = "0";
-        }
-
-
-        string select3 = "select Count(CustodianChangeID) from CustodianChangeRequest where Status='Request Sent To Approver' and ApproverID=" + approverid + "";
-        SqlDataAdapter da3 = new SqlDataAdapter(select3, conAMS);
-        DataTable dt3 = new DataTable();
-        da3.Fill(dt3);
-        if (dt3.Rows.Count > 0)
-        {
-            lbl_custodiantransfer.Text = dt3.Rows[0].ItemArray[0].ToString();
-        }
-        else
-        {
-            lbl_custodiantransfer.Text = "0";
-        }
-
-        string select4 = "select Count(CustodianID) from vEmpDtlsAssetApp where vEmpDtlsAssetApp.reporting_staff_no="+approverid+"";
-        SqlDataAdapter da4 = new SqlDataAdapter(select4, conCommon);
-        DataTable dt4 = new DataTable();
-        da4.Fill(dt4);
-        if (dt4.Rows.Count > 0)
-        {
-            lbl_assetreturn.Text = dt4.Rows[0].ItemArray[0].ToString();
-        }
-        else
-        {
-            lbl_assetreturn.Text = "0";
+            System.Diagnostics.Debug.WriteLine(@"Error loading pending requests: {ex.Message}");
+            noRequests.Visible = true;
+            noRequests.Style["display"] = "block";
+            noRequests.InnerHtml = "<div class='text-center text-danger p-4'><i class='fas fa-exclamation-triangle fa-2x mb-3'></i><p>Error loading requests</p></div>";
         }
     }
-
-    protected void lbtn_allocatedassets_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("~/ViewAllocatedAssets.aspx");
-    }
-
-
 }
