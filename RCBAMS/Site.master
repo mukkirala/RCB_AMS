@@ -390,7 +390,7 @@
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" >Asset Auditing<span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="/CreateAudit">Create Audit</a></li>
-          <li><a href="/AdminApproveAssetAuditing">Approve Audit Assets</a></li>
+          <%--<li><a href="/AdminApproveAssetAuditing">Approve Audit Assets</a></li>--%>
           <li><a href="/AuditCompletion">Close Audits</a></li>
 
           
@@ -401,10 +401,10 @@
 
         </ul>
        </li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Calibration Mgmt<span class="caret"></span></a>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">AMC/CMC Mgmt<span class="caret"></span></a>
 <ul class="dropdown-menu">              
-                    <li><a href="/EquipmentAMC.aspx">Equipment Calibration</a></li>
-                    <li><a href="/CalibrationColorCoding.aspx">Calibration Color Coding </a></li>
+                    <li><a href="/AssetAMC.aspx">AMC/CMC Services</a></li>
+                    <li><a href="/CalibrationColorCoding.aspx">View AMC/CMC </a></li>
 
           </ul>
            </li> 
@@ -421,8 +421,8 @@
           <%--<li><a href="/ViewAssetAuditHistory.aspx">View Audit Findings</a></li>  
           <li><a href="/AdminViewAssetAuditing.aspx">View Approved Audits</a></li>  --%>
 
-          <li><a href="/ViewLocationWiseAudits.aspx">LocationWise Audited Assets</a></li>
-          <li><a href="/ViewAssetsByAudit">List of Assets and Status in Audit</a></li>            
+          <%--<li><a href="/ViewLocationWiseAudits.aspx">LocationWise Audited Assets</a></li>
+          <li><a href="/ViewAssetsByAudit">List of Assets and Status in Audit</a></li>--%>            
              <li><a href="/PhysicalStockVerification">Physical Stock Verification</a></li>
           <%--<li><a href="/ViewAuditWiseStatus">View Assets by Status in Audit</a></li>--%>
         </ul>
@@ -630,10 +630,10 @@
            <li id="homeicon" class=""><a href="AuditorDashboard.aspx"><span class="glyphicon glyphicon-home"></span></a></li>
 		     <li><a href="/ViewAudits">View Audits</a></li>
             <li><a href="/PhysicalStockVerification">Physical Stock Verification</a></li>
-             <li class=""><a href="/AuditDetails.aspx">Asset Audit</a></li>
+<%--             <li class=""><a href="/AuditDetails.aspx">Asset Audit</a></li>
 			 <li class=""><a href="/EditAuditedAssets.aspx">Edit Audited Assets</a></li>
 			 <li class=""><a href="/ViewAuditWiseStatus.aspx">Audit Wise Status</a></li>
-			 <li class=""><a href="/ViewAssetsByAudit.aspx">Assets by Audit</a></li>
+			 <li class=""><a href="/ViewAssetsByAudit.aspx">Assets by Audit</a></li>--%>
        
         </ul>
 
