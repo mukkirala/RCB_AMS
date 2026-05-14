@@ -376,7 +376,7 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
                     <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Quantity" Font-Size="Medium"></dx:ASPxLabel>
                 </div>
                 <div class="col-sm-4">
-                    <dx:ASPxTextBox ID="txt_quantity" runat="server" Width="300px" Height="25"></dx:ASPxTextBox><br />
+                    <dx:ASPxTextBox ID="txt_quantity" runat="server" Width="600px" Height="25"></dx:ASPxTextBox><br />
                    <%-- <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Send Request" OnClick="ASPxButton1_Click"></dx:ASPxButton><br />--%>
                 </div>
                      </div>
@@ -392,11 +392,11 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
                      <div class="col-sm-4">
                     <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Send Request" OnClick="ASPxButton1_Click"  CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange" 
         SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css"> 
-                        <ClientSideEvents Click="function(s, e) {  lpanel.Show(); e.processOnServer = true;}"></ClientSideEvents> 
+                        <%--<ClientSideEvents Click="function(s, e) {  lpanel.Show(); e.processOnServer = true;}"></ClientSideEvents> --%>
                         </dx:ASPxButton><br />
                          
-                 <dx:ASPxLoadingPanel runat="server" Modal="True" Text="Please wait" ClientInstanceName="lpanel" ID="ASPxLoadingPanel1">
-                 </dx:ASPxLoadingPanel>
+                <%-- <dx:ASPxLoadingPanel runat="server" Modal="True" Text="Please wait" ClientInstanceName="lpanel" ID="ASPxLoadingPanel1">
+                 </dx:ASPxLoadingPanel>--%>
                    </div>
                    </div>
                  </div>

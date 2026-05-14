@@ -381,7 +381,7 @@
     
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:RCBAMSConnectionString %>" 
         SelectCommand="select AllocationID,AssetAllocation.AssetID,AssetAllocation.MainAssetNumber,AssetMaster.AssetClass,AssetMaster.AssetDesc, AssetAllocation.AssetRequestID,AssetAllocation.Date as AllocatedDate,AssetAllocation.Status,AssetMaster.StatusDesc as AssetStatus, 
-  Requestby as RequestedBy,concat(EmployeeAssetRequest.EmployeeID+'__'EmployeeAssetRequest.RequestSequene) as EmployeeID ,EmployeeAssetRequest.Date as RequestedDate
+  Requestby as RequestedBy,CONCAT(EmployeeAssetRequest.EmployeeID, '__', EmployeeAssetRequest.RequestSequene) as EmployeeID ,EmployeeAssetRequest.Date as RequestedDate
   from RCBAMS..AssetAllocation 
   inner join RCBAMS..EmployeeAssetRequest on EmployeeAssetRequest.AssetRequestID=AssetAllocation.AssetRequestID
   inner join RCBSAP..AssetMaster on AssetMaster.AssetID=AssetAllocation.AssetID

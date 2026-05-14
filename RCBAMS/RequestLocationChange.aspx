@@ -265,7 +265,7 @@
                    <dx:ASPxLabel ID="lbl_tolocation" runat="server" Text="Select Wing" Font-Size="Medium"></dx:ASPxLabel>
                 </div>
                     <div class="col-sm-4">
-                        <dx:ASPxComboBox ID="txt_Locationid" runat="server" Width="100%" Height="25px" DataSourceID="location" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
+                        <dx:ASPxComboBox ID="txt_Locationid" runat="server" Width="300px" Height="25px" DataSourceID="location" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
               CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" TextField="Location" ValueField="Location" OnSelectedIndexChanged="txt_Locationid_SelectedIndexChanged"
             CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String"  PageSize="10"
             >                
@@ -346,7 +346,7 @@ SelectCommand="SELECT DISTINCT [Location] FROM [LocationMaster]">
                    <dx:ASPxLabel ID="ASPxLabel7" runat="server" Text="Select Floor" Font-Size="Medium"></dx:ASPxLabel>
                 </div>
                     <div class="col-sm-4">
-                        <dx:ASPxComboBox ID="txtblock" runat="server" Width="100%" Height="25px" DataSourceID="Blockid" TextField="Block" AutoPostBack="true" ValueField="Block"
+                        <dx:ASPxComboBox ID="txtblock" runat="server" Width="300px" Height="25px" DataSourceID="Blockid" TextField="Block" AutoPostBack="true" ValueField="Block"
               OnSelectedIndexChanged="txtblock_SelectedIndexChanged" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"  PageSize="10"
             CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String">
             <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
@@ -427,7 +427,7 @@ SelectCommand="SELECT DISTINCT [BLOCK] FROM [LocationMaster]  where Location=@Lo
    <dx:ASPxLabel ID="ASPxLabel11" runat="server" Text="Select LAB" Font-Size="Medium"></dx:ASPxLabel>
 </div>
     <div class="col-sm-4">
-        <dx:ASPxComboBox ID="txt_Lab" runat="server" Width="100%" Height="25px" DataSourceID="SqlDataSource4" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
+        <dx:ASPxComboBox ID="txt_Lab" runat="server" Width="300px" Height="25px" DataSourceID="SqlDataSource4" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
               CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" TextField="LocationCode" ValueField="LocationID" 
             CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String"  PageSize="10"
             >                
@@ -458,7 +458,7 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
                     <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Comments" Font-Size="Medium"></dx:ASPxLabel>
                 </div>
                 <div class="col-sm-4">
-                    <asp:TextBox ID="txt_comments" runat="server"  TextMode="Multiline" rows="3" columns="35"></asp:TextBox><br />
+                    <asp:TextBox ID="txt_comments" runat="server"  TextMode="Multiline" rows="3" columns="38"></asp:TextBox><br />
                    <%-- <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Send Request" OnClick="ASPxButton1_Click"></dx:ASPxButton><br />--%>
                 </div>
                      </div>

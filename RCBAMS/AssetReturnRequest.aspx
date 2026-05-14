@@ -272,7 +272,7 @@
                     <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Comments" Font-Size="Medium"></dx:ASPxLabel>
                 </div>
                 <div class="col-sm-4">
-                    <asp:TextBox ID="txt_comments" runat="server"  TextMode="Multiline" rows="3" columns="35"></asp:TextBox><br />
+                    <asp:TextBox ID="txt_comments" runat="server"  TextMode="Multiline" rows="3" columns="38"></asp:TextBox><br />
                    <%-- <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Send Request" OnClick="ASPxButton1_Click"></dx:ASPxButton><br />--%>
                 </div>
                      </div>
