@@ -230,9 +230,7 @@
             padding: 15px;
           }
 
-          #logintype tr td {
-            padding: 5px;
-          }
+      
 
           .logindiv {
             flex: 1;
@@ -452,6 +450,43 @@
     letter-spacing: 1px !important;
 }
 
+/* Login Type Alignment */
+#logintype {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#logintype tbody {
+    width: 100%;
+}
+
+#logintype tr {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+#logintype td {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    padding-right: 10px;
+}
+
+#logintype input[type="radio"] {
+    margin-right: 6px;
+    transform: scale(1.1);
+}
+
+#logintype label {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+}
+
+
         </style>
 
 
@@ -520,13 +555,13 @@
                       <div style="margin-left:2px">
                         <div class="form-group">
                           <label style="color:rgba(255,255,255,0.85)">Select Login Type</label>
-                          <asp:RadioButtonList id="logintype" runat="server" RepeatDirection="Horizontal">
+                          <asp:RadioButtonList id="logintype" runat="server"  RepeatColumns="3" RepeatDirection="Horizontal">
                             <asp:ListItem Selected="True" Value="0" Text="Requestor">Requestor</asp:ListItem>
                             <asp:ListItem Value="1" Text="Auditor">Auditor</asp:ListItem>
                             <asp:ListItem Value="2" Text="Admin">Admin</asp:ListItem>
-                              <asp:ListItem Value="3" Text="DepartmentHead">DepartmentHead</asp:ListItem>
-                              <asp:ListItem Value="4" Text="StoreIncharge">StoreIncharge</asp:ListItem>
-                              <asp:ListItem Value="5" Text="POAdmin">POAdmin</asp:ListItem>
+                              <asp:ListItem Value="3" Text="DepartmentHead">DeptHead</asp:ListItem>
+                              <asp:ListItem Value="5" Text="POAdmin">PO Inc</asp:ListItem>
+                               <asp:ListItem Value="4" Text="StoreIncharge">Store Inc</asp:ListItem>
                           </asp:RadioButtonList>
                         </div>
 
