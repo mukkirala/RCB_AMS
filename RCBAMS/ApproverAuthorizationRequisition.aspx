@@ -125,21 +125,21 @@
                 <dx:GridViewDataTextColumn FieldName="Description" VisibleIndex="3">
                     <Settings AutoFilterCondition="Contains" />
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="sendby" VisibleIndex="4">
+               <%-- <dx:GridViewDataTextColumn FieldName="sendby" VisibleIndex="4">
                     <Settings AutoFilterCondition="Contains" />
-                </dx:GridViewDataTextColumn>
+                </dx:GridViewDataTextColumn>--%>
                 <dx:GridViewDataTextColumn FieldName="Status" VisibleIndex="5" Visible="false">
                     <Settings AutoFilterCondition="Contains" />
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="GodownName" VisibleIndex="6">
+                <%--<dx:GridViewDataTextColumn FieldName="GodownName" VisibleIndex="6">
                     <Settings AutoFilterCondition="Contains" />
-                </dx:GridViewDataTextColumn>
+                </dx:GridViewDataTextColumn>--%>
                 <dx:GridViewDataTextColumn FieldName="ContactPerson" Visible="false" VisibleIndex="7">
                     <Settings AutoFilterCondition="Contains" />
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="ContactNo" VisibleIndex="8">
+               <%-- <dx:GridViewDataTextColumn FieldName="ContactNo" VisibleIndex="8">
                     <Settings AutoFilterCondition="Contains" />
-                </dx:GridViewDataTextColumn>
+                </dx:GridViewDataTextColumn>--%>
                 <dx:GridViewDataTextColumn FieldName="Location" VisibleIndex="9" Visible="false">
                     <Settings AutoFilterCondition="Contains" />
                 </dx:GridViewDataTextColumn>
@@ -246,24 +246,47 @@
                             </ProgressBar>
                         </StylesEditors>
                     </dx:ASPxGridView>
-                    <asp:SqlDataSource ID="SqlDS_ItemList" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
-                        SelectCommand="SELECT [ReqDetailsID], [ReqID], POSRequisitionDetails.[ItemID], ItemName,ItemCode,Brand,Colour,[Quantity], POSRequisitionDetails.[Status] FROM [POSRequisitionDetails] INNER JOIN ItemMaster ON POSRequisitionDetails.ItemID=ItemMaster.ItemID where ReqID=@ReqID">
-                        <SelectParameters>
-                        <asp:SessionParameter Name="ReqID" SessionField="ReqID" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
+                   <asp:SqlDataSource ID="SqlDS_ItemList"
+    runat="server"
+    ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
+
+    SelectCommand="
+    SELECT
+        ReqDetailsID,
+        ReqID,
+        ItemID,
+        Quantity,
+        Status
+    FROM POSRequisitionDetails
+    WHERE ReqID=@ReqID">
+
+    <SelectParameters>
+        <asp:SessionParameter
+            Name="ReqID"
+            SessionField="ReqID" />
+    </SelectParameters>
+
+</asp:SqlDataSource>
                 </DetailRow>
             </Templates>
         </dx:ASPxGridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
-            SelectCommand="SELECT ReqID,Date,Description,sendby,Status,GodownName,ContactPerson,ContactNo,Location,* FROM [POSRequisitionParent] INNER JOIN GodownMaster ON POSRequisitionParent.ReqReceivedBy=GodownMaster.GodownId where ReqSendBy=@GID  AND POSRequisitionParent.Status='Requisition Sent' or POSRequisitionParent.Status='PartiallyReceived'order by POSRequisitionParent.Date DESC">
-            <SelectParameters>
-                <asp:SessionParameter SessionField="GodownID"  Name="GID"/> 
-           <%-- <asp:ControlParameter ControlID="ASPxGridLookup1" Name="GID" />--%>
-            </SelectParameters>
-            </asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1"
+    runat="server"
+    ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
+
+    SelectCommand="
+    SELECT
+        ReqID,
+        Date,
+        Description,
+       
+        Status,
+        ReqSendBy,
+        Location
+    FROM POSRequisitionParent
+    WHERE Status='Requisition Sent to POadmin'
+    ORDER BY Date DESC">
+</asp:SqlDataSource>
    <br />
     <span class="style1"><strong  style="margin-left:75px" >Requisitions List</strong></span>
     <br />
@@ -272,43 +295,87 @@
           DataSourceID="SqlDataSource3" KeyFieldName="ReqID" 
           CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
           Width="100%" onrowcommand="ASPxGridView1_RowCommand">
-          <Columns>
-            <%--  <dx:GridViewCommandColumn VisibleIndex="0">
-                  <ClearFilterButton Visible="True">
-                  </ClearFilterButton>
-              </dx:GridViewCommandColumn>--%>
-              <dx:GridViewDataTextColumn FieldName="ReqID" ReadOnly="True" VisibleIndex="1">
-                  <Settings AutoFilterCondition="Contains" />
-                  <EditFormSettings Visible="False" />
-              </dx:GridViewDataTextColumn>
-              <dx:GridViewDataDateColumn FieldName="Date" VisibleIndex="2" Width="100px">
-                  <Settings AutoFilterCondition="Contains" />
-              </dx:GridViewDataDateColumn>
-              <dx:GridViewDataTextColumn FieldName="Description" VisibleIndex="3">
-                  <Settings AutoFilterCondition="Contains" />
-              </dx:GridViewDataTextColumn>
-              <dx:GridViewDataTextColumn FieldName="sendby" VisibleIndex="4">
-                  <Settings AutoFilterCondition="Contains" />
-              </dx:GridViewDataTextColumn>
-              <dx:GridViewDataTextColumn FieldName="Status" VisibleIndex="5" Visible="false">
-                  <Settings AutoFilterCondition="Contains" />
-              </dx:GridViewDataTextColumn>
-              <dx:GridViewDataTextColumn FieldName="GodownName" VisibleIndex="6">
-                  <Settings AutoFilterCondition="Contains" />
-              </dx:GridViewDataTextColumn>
-              <dx:GridViewDataTextColumn FieldName="ContactPerson" Visible="false" VisibleIndex="7">
-                  <Settings AutoFilterCondition="Contains" />
-              </dx:GridViewDataTextColumn>
-              <dx:GridViewDataTextColumn FieldName="ContactNo" VisibleIndex="8">
-                  <Settings AutoFilterCondition="Contains" />
-              </dx:GridViewDataTextColumn>
-              <dx:GridViewDataTextColumn FieldName="Location" VisibleIndex="9" Visible="false">
-                  <Settings AutoFilterCondition="Contains" />
-              </dx:GridViewDataTextColumn>
-          <dx:GridViewDataTextColumn FieldName="Status" VisibleIndex="9" Visible="true">
-     <Settings AutoFilterCondition="Contains" />
- </dx:GridViewDataTextColumn>
-          </Columns>
+         <Columns>
+
+    <dx:GridViewDataTextColumn
+        FieldName="ReqID"
+        Caption="Req ID"
+        VisibleIndex="1">
+    </dx:GridViewDataTextColumn>
+
+    <dx:GridViewDataDateColumn
+        FieldName="Date"
+        VisibleIndex="2">
+    </dx:GridViewDataDateColumn>
+
+    <dx:GridViewDataTextColumn
+        FieldName="Description"
+        VisibleIndex="3">
+    </dx:GridViewDataTextColumn>
+
+    <%--<dx:GridViewDataTextColumn
+        FieldName="sendby"
+        Caption="Send By"
+        VisibleIndex="4">
+    </dx:GridViewDataTextColumn>--%>
+
+    <dx:GridViewDataTextColumn
+        FieldName="ReqSendBy"
+        Caption="Requested By"
+        VisibleIndex="5">
+    </dx:GridViewDataTextColumn>
+
+    <dx:GridViewDataTextColumn
+        FieldName="Status"
+        VisibleIndex="6">
+    </dx:GridViewDataTextColumn>
+
+    <dx:GridViewDataTextColumn
+        Caption="Approve"
+        VisibleIndex="7" Visible="false">
+
+        <DataItemTemplate>
+            <asp:LinkButton
+                ID="btn_approve"
+                runat="server"
+                CommandName="Approve" Visible="false">
+                Approve
+            </asp:LinkButton>
+        </DataItemTemplate>
+
+    </dx:GridViewDataTextColumn>
+
+    <dx:GridViewDataTextColumn
+        Caption="Reject"
+        VisibleIndex="8" Visible="false">
+
+        <DataItemTemplate>
+            <asp:LinkButton
+                ID="btn_reject"
+                runat="server"
+                CommandName="Reject" Visible="false">
+                Reject
+            </asp:LinkButton>
+        </DataItemTemplate>
+
+    </dx:GridViewDataTextColumn>
+
+    <dx:GridViewDataTextColumn
+        Caption="View"
+        VisibleIndex="9" Visible="false">
+
+        <DataItemTemplate>
+            <asp:LinkButton
+                ID="btn_view"
+                runat="server"
+                CommandName="View" Visible="false">
+                View
+            </asp:LinkButton>
+        </DataItemTemplate>
+
+    </dx:GridViewDataTextColumn>
+
+</Columns>
           <settingspager showdefaultimages="False">
               <allbutton text="All">
               </allbutton>
@@ -341,22 +408,31 @@
           </StylesEditors>
          
       </dx:ASPxGridView>
-      <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
-          ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
-          SelectCommand="SELECT ReqID,Date,Description,sendby,Status,GodownName,ContactPerson,ContactNo,Location,* FROM [POSRequisitionParent] INNER JOIN GodownMaster ON POSRequisitionParent.ReqReceivedBy=GodownMaster.GodownId where ReqSendBy=@GID  AND POSRequisitionParent.Status!='Requisition Sent' order by ReqSendBy ASC">
-          <SelectParameters>
-              <asp:SessionParameter SessionField="GodownID"  Name="GID"/> 
-         <%-- <asp:ControlParameter ControlID="ASPxGridLookup1" Name="GID" />--%>
-          </SelectParameters>
-          </asp:SqlDataSource>
+     <asp:SqlDataSource ID="SqlDataSource3"
+    runat="server"
+    ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
+
+    SelectCommand="
+    SELECT
+        ReqID,
+        Date,
+        Description,
+     
+        Status,
+        ReqSendBy,
+        Location
+    FROM POSRequisitionParent
+    WHERE Status='Approved by POInc'
+    ORDER BY Date DESC">
+</asp:SqlDataSource>
 
 
    <dxlp:ASPxLoadingPanel ID="ASPxLoadingPanel1" runat="server" ClientInstanceName="lpanel" Modal="True" >
                         </dxlp:ASPxLoadingPanel>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+       <%-- <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
             ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
             SelectCommand="SELECT [GodownId], [GodownName], [ContactPerson], [ContactNo], [Area] FROM [GodownMaster] order by GodownName ASC">
-        </asp:SqlDataSource>
+        </asp:SqlDataSource>--%>
         <br />
         <br />
 </asp:Content>

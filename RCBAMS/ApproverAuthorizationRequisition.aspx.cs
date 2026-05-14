@@ -1,48 +1,111 @@
 ﻿using DevExpress.Web.ASPxGridView;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 public partial class ApproverAuthorizationRequisition : System.Web.UI.Page
 {
-    SqlConnection myconnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
+    SqlConnection myconnection =
+        new SqlConnection(
+        WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        //string id = Session["GodownID"].ToString();
+
     }
 
-    protected void ASPxGridView1_RowCommand(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewRowCommandEventArgs e)
+    protected void ASPxGridView1_RowCommand(
+        object sender,
+        ASPxGridViewRowCommandEventArgs e)
     {
         string click = e.CommandArgs.CommandName.ToString();
-        string ReqID = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "ReqID").ToString();
+
+        object objReqID =
+            ASPxGridView1.GetRowValuesByKeyValue(
+            e.KeyValue,
+            "ReqID");
+
+        if (objReqID == null)
+        {
+            return;
+        }
+
+        string ReqID = objReqID.ToString();
+
         Session["ReqID"] = ReqID;
-        //myconnection.Open();
-        if (click == "Approve")
+
+        try
         {
-            myconnection.Open();
-            SqlCommand mycommand = new SqlCommand("Update POSRequisitionParent Set Status='Approved' Where ReqID='" + ReqID + "'", myconnection);
-            mycommand.ExecuteNonQuery();
+            if (myconnection.State ==
+                System.Data.ConnectionState.Closed)
+            {
+                myconnection.Open();
+            }
+
+            if (click == "Approve")
+            {
+                SqlCommand mycommand =
+                    new SqlCommand(
+                    "UPDATE POSRequisitionParent " +
+                    "SET Status=@Status " +
+                    "WHERE ReqID=@ReqID",
+                    myconnection);
+
+                mycommand.Parameters.AddWithValue(
+                    "@Status",
+                    "Approved");
+
+                mycommand.Parameters.AddWithValue(
+                    "@ReqID",
+                    ReqID);
+
+                mycommand.ExecuteNonQuery();
+            }
+
+            else if (click == "Reject")
+            {
+                SqlCommand mycommand =
+                    new SqlCommand(
+                    "UPDATE POSRequisitionParent " +
+                    "SET Status=@Status " +
+                    "WHERE ReqID=@ReqID",
+                    myconnection);
+
+                mycommand.Parameters.AddWithValue(
+                    "@Status",
+                    "Rejected");
+
+                mycommand.Parameters.AddWithValue(
+                    "@ReqID",
+                    ReqID);
+
+                mycommand.ExecuteNonQuery();
+            }
+
+            else if (click == "View")
+            {
+                Response.Redirect("ApprovePage.aspx");
+            }
+
+            ASPxGridView1.DataBind();
+            ASPxGridView3.DataBind();
         }
-        else if (click == "Reject")
+        catch (Exception ex)
         {
-            myconnection.Open();
-            SqlCommand mycommand = new SqlCommand("Update POSRequisitionParent Set Status='Rejected' Where ReqID='" + ReqID + "'", myconnection);
-            mycommand.ExecuteNonQuery();
+            Response.Write(ex.Message);
         }
-        else
+        finally
         {
-            Response.Redirect("ApprovePage.aspx");
+            myconnection.Close();
         }
-        ASPxGridView1.DataBind();
-        myconnection.Close();
     }
-    protected void ASPxGridView2_BeforePerformDataSelect(object sender, EventArgs e)
+
+    protected void ASPxGridView2_BeforePerformDataSelect(
+        object sender,
+        EventArgs e)
     {
-        Session["ReqID"] = (sender as ASPxGridView).GetMasterRowKeyValue();
+        Session["ReqID"] =
+            (sender as ASPxGridView).GetMasterRowKeyValue();
     }
 }
