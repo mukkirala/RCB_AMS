@@ -94,11 +94,11 @@
          </dx:GridViewDataTextColumn>
          <dx:GridViewDataTextColumn FieldName="ItemID" VisibleIndex="2">
          </dx:GridViewDataTextColumn>
-         <dx:GridViewDataTextColumn FieldName="ItemCode" VisibleIndex="3">
+         <dx:GridViewDataTextColumn FieldName="ItemCode" Visible="false" VisibleIndex="3">
          </dx:GridViewDataTextColumn>
-         <dx:GridViewDataTextColumn FieldName="ItemName" VisibleIndex="4">
+         <dx:GridViewDataTextColumn FieldName="AssetClass" VisibleIndex="4">
          </dx:GridViewDataTextColumn>
-         <dx:GridViewDataTextColumn FieldName="Brand" VisibleIndex="5" Visible="false">
+         <dx:GridViewDataTextColumn FieldName="AssetType" VisibleIndex="5">
          </dx:GridViewDataTextColumn>
          <dx:GridViewDataTextColumn FieldName="Colour" VisibleIndex="6"  Visible="false">
          </dx:GridViewDataTextColumn>
@@ -153,15 +153,14 @@
     PRD.[ReqDetailsID],
     PRD.[ReqID],
     PRD.[ItemID],
-    AM.AssetDesc AS ItemName,
-    AM.AssetID AS ItemCode,
-    AM.Make AS Brand,
-    AM.Model AS Colour,
+    ATM.AssetClassName AS AssetClass,
+    ATM.AssetTypeName AS AssetType,
     PRD.[Quantity],
-    PRD.[Status]
-FROM [POSRequisitionDetails] PRD
-INNER JOIN [RCBSAP].[dbo].[AssetMaster] AM
-    ON PRD.ItemID = AM.SLNO
+    PRD.[Status],
+    ISNULL(PRD.[ApproverQuantity],0) AS ApproverQuantity
+FROM POSRequisitionDetails PRD
+INNER JOIN [RCBSAP].[dbo].[AssetTypeMaster] ATM
+    ON PRD.ItemID = ATM.AssetTypeID
 WHERE PRD.ReqID = @ReqID">
      <SelectParameters>
          <asp:ControlParameter ControlID="lbl_Req_ID" Name="ReqID" />

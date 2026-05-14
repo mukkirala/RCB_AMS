@@ -161,6 +161,7 @@
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <dx:ASPxLabel ID="lbl_error" runat="server" 
                      style="font-weight: 700; color: #FF0000 ">
                  </dx:ASPxLabel>
@@ -641,7 +642,7 @@
     </dx:ASPxGridView>
     <br />
    
-       <asp:UpdatePanel ID="UpdatePanel1" runat="server" Visible="false">
+       <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <dx:ASPxLabel ID="lbl_innererror" runat="server" 
                             style="color: #FF0000; font-weight: 700" >

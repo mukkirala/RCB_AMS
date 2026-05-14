@@ -559,9 +559,9 @@
                             <asp:ListItem Selected="True" Value="0" Text="Requestor">Requestor</asp:ListItem>
                             <asp:ListItem Value="1" Text="Auditor">Auditor</asp:ListItem>
                             <asp:ListItem Value="2" Text="Admin">Admin</asp:ListItem>
-                              <asp:ListItem Value="3" Text="DepartmentHead">DeptHead</asp:ListItem>
-                              <asp:ListItem Value="5" Text="POAdmin">PO Inc</asp:ListItem>
-                               <asp:ListItem Value="4" Text="StoreIncharge">Store Inc</asp:ListItem>
+                              <asp:ListItem Value="3" Text="DepartmentHead">DepartmentHead</asp:ListItem>
+                              <asp:ListItem Value="5" Text="POAdmin">POAdmin</asp:ListItem>
+                               <asp:ListItem Value="4" Text="StoreIncharge">StoreIncharge</asp:ListItem>
                           </asp:RadioButtonList>
                         </div>
 
