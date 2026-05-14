@@ -43,10 +43,7 @@
         {
             width: 121px;
         }
-    .style105
-    {
-        width: 92px;
-    }
+   
         .style107
         {
             width: 201px;
@@ -65,12 +62,8 @@
         .auto-style16 {
             width: 286px;
         }
-        .auto-style18 {
-            width: 180px;
-        }
-        .auto-style20 {
-            width: 165px;
-        }
+     
+  
         .auto-style22 {
             width: 180px;
             height: 22px;
@@ -90,12 +83,53 @@
             height: 22px;
             width: 54px;
         }
-    .auto-style28 {
-        width: 54px;
-    }
+  
     .auto-style29 {
         width: 108px;
     }
+    .req-table {
+    margin-left: 55px;
+    width: 1000px;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+}
+
+.req-table td {
+    padding-right: 25px;
+    vertical-align: top;
+}
+
+.req-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    padding-bottom: 6px;
+}
+
+.req-btn-cell {
+    padding-top: 25px;
+}
+.auto-style18 {
+    width: 220px;
+    padding-bottom: 14px;
+}
+
+.auto-style20 {
+    width: 260px;
+    padding-left: 80px;
+    padding-bottom: 14px;
+}
+
+.auto-style28 {
+    width: 260px;
+    padding-bottom: 14px;
+}
+
+.style105 {
+    width: 180px;
+    padding-left: 90px;
+    padding-bottom: 14px;
+}
     </style>
     <script type="text/javascript">
 
@@ -115,7 +149,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-     
+     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
 
      <asp:Label ID="ASPxLabel2" runat="server" Text="" style="color: #FF0000"></asp:Label>
@@ -139,31 +173,60 @@
             <td class="auto-style29"></td>
             <td class="auto-style26"></td>
         </tr>
-        <tr>
-            <td class="auto-style18">Requisition Send by</td>
-            <td class="auto-style28">
-                <dx:ASPxLabel ID="lbl_user" runat="server" 
-                    style="font-weight: 700; color: #FF3300; font-size: medium;" >
-                </dx:ASPxLabel>
-            </td>
-            <td class="style105">
-                Unit Name
-            </td>
-            <td class="auto-style20">
-                 <dx:ASPxLabel ID="lbl_unitname" runat="server" 
-     style="font-weight: 700; color: #FF3300; font-size: medium; margin-left: 0px;" >
- </dx:ASPxLabel>
-            </td>
-            <td class="auto-style29">
-                Category Name
-            </td>
-            <td>
+      <tr>
+    <td class="auto-style18">
+        Staff Number:
+    </td>
+    <td class="auto-style28">
+        <dx:ASPxLabel ID="reqid" runat="server"
+            style="font-weight:700; color:#000000; font-size:medium;">
+        </dx:ASPxLabel>
+    </td>
 
-                 <dx:ASPxLabel ID="lbl_category" runat="server" 
-     style="font-weight: 700; color: #FF3300; font-size: medium;" Width="44px" >
- </dx:ASPxLabel>
-            </td>
-        </tr>
+    <td class="style105">
+        User Name:
+    </td>
+
+    <td class="auto-style20">
+        <dx:ASPxLabel ID="lbl_requestername" runat="server"
+            style="font-weight:700; color:#000000; font-size:medium;">
+        </dx:ASPxLabel>
+    </td>
+</tr>
+
+<tr>
+    <td class="auto-style18">
+        Department:
+    </td>
+
+    <td class="auto-style28">
+        <dx:ASPxLabel ID="reqdept" runat="server"
+            style="font-weight:700; color:#000000; font-size:medium;">
+        </dx:ASPxLabel>
+    </td>
+
+    <td class="style105">
+        Designation:
+    </td>
+
+    <td class="auto-style20">
+        <dx:ASPxLabel ID="reqdesign" runat="server"
+            style="font-weight:700; color:#000000; font-size:medium;">
+        </dx:ASPxLabel>
+    </td>
+</tr>
+
+<tr>
+    <td class="auto-style18">
+        Email:
+    </td>
+
+    <td class="auto-style28">
+        <dx:ASPxLabel ID="lblmail" runat="server"
+            style="font-weight:700; color:#000000; font-size:medium;">
+        </dx:ASPxLabel>
+    </td>
+</tr>
         <tr>
            <%-- <td class="auto-style18">Warehouse<span class="auto-style12"><strong> *</strong></span></td>
             <td class="auto-style28">
@@ -297,118 +360,132 @@
                 style="color: #FF3300; font-weight: 700;">
             </dx:ASPxLabel>
         <br />
-            <span class="style6"><strong style="margin-left:55px">Select Items</strong></span><table 
-                border="1" style="margin-left:55px" width="800px">
-                <tr class="style16">
-                    <td class="auto-style13">
-                        Asset Name</td>
-                    <td class="style107">
-                        Required Qty</td>
-                    <td class="auto-style16">
-                        Add</td>
-                </tr>
-                <tr>
-                    <td class="auto-style13">
-                        <dx:ASPxGridLookup ID="ASPxGridLookup1" runat="server" ClientInstanceName="ASPxGridLookup1"
-                            AutoGenerateColumns="False" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" 
-                            CssPostfix="PlasticBlue" DataSourceID="SqlDataSource4" 
-                            IncrementalFilteringMode="Contains" KeyFieldName="AssetID" 
-                            SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" Width="255px">
-                            <GridViewProperties>
-                                <SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True" />
-                                <SettingsPager PageSize="5">
-                                </SettingsPager>
-                                <SettingsBehavior AllowFocusedRow="True" AllowSelectByRowClick="true" 
-                                    AllowSelectSingleRowOnly="True" />
-                                <Settings ShowFilterRow="True" ShowStatusBar="Visible" />
-                            </GridViewProperties>
-                            <Columns>
+           <strong style="margin-left:55px">
+    <span class="style6">Select Items</span>
+</strong>
 
-    <dx:GridViewDataTextColumn FieldName="AssetID"
-        Visible="false" VisibleIndex="0">
-    </dx:GridViewDataTextColumn>
+<table border="0"
+    style="margin-left:55px; width:1100px; border-collapse:separate; border-spacing:0 12px;">
 
-    <dx:GridViewDataTextColumn FieldName="MainAssetNumber"
-        Caption="Asset Number" VisibleIndex="1">
-        <Settings AutoFilterCondition="Contains" />
-    </dx:GridViewDataTextColumn>
+    <tr>
 
-    <dx:GridViewDataTextColumn FieldName="AssetSubNumber"
-        Caption="Sub Number" VisibleIndex="2">
-        <Settings AutoFilterCondition="Contains" />
-    </dx:GridViewDataTextColumn>
+        <!-- Asset Class -->
+        <td style="width:280px; padding-right:30px;">
 
-    <dx:GridViewDataTextColumn FieldName="AssetDesc"
-        Caption="Asset Description" VisibleIndex="3">
-        <Settings AutoFilterCondition="Contains" />
-    </dx:GridViewDataTextColumn>
+            <div style="font-weight:600; margin-bottom:6px;">
+                Asset Class
+            </div>
 
-    <dx:GridViewDataTextColumn FieldName="SerialNumber"
-        Caption="Serial Number" VisibleIndex="4">
-        <Settings AutoFilterCondition="Contains" />
-    </dx:GridViewDataTextColumn>
+            <dx:ASPxComboBox ID="cmb_AssetClass"
+                runat="server"
+                TextField="AssetClassName"
+                ValueField="AssetClassName"
+                ValueType="System.String"
+                AutoPostBack="True"
+                Width="320px"
+                Height="28px"
+                DataSourceID="AssetClassDS"
+                CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"
+                CssPostfix="PlasticBlue"
+                SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
 
-    <dx:GridViewDataTextColumn FieldName="Location"
-        VisibleIndex="5">
-        <Settings AutoFilterCondition="Contains" />
-    </dx:GridViewDataTextColumn>
+            </dx:ASPxComboBox>
 
-    <dx:GridViewDataTextColumn FieldName="Department"
-        VisibleIndex="6">
-        <Settings AutoFilterCondition="Contains" />
-    </dx:GridViewDataTextColumn>
+        </td>
 
-</Columns>
-                            <GridViewImages SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
-                                <LoadingPanelOnStatusBar Url="~/App_Themes/PlasticBlue/GridView/gvLoadingOnStatusBar.gif">
-                                </LoadingPanelOnStatusBar>
-                                <LoadingPanel Url="~/App_Themes/PlasticBlue/GridView/Loading.gif">
-                                </LoadingPanel>
-                            </GridViewImages>
-                            <GridViewImagesFilterControl>
-                                <LoadingPanel Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
-                                </LoadingPanel>
-                            </GridViewImagesFilterControl>
-                            <GridViewStyles CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue">
-                                <Header ImageSpacing="10px" SortingImageSpacing="10px">
-                                </Header>
-                            </GridViewStyles>
-                            <GridViewStylesEditors>
-                                <CalendarHeader Spacing="11px">
-                                </CalendarHeader>
-                                <ProgressBar Height="25px">
-                                </ProgressBar>
-                            </GridViewStylesEditors>
-                            <ValidationSettings>
-                                <ErrorFrameStyle ImageSpacing="4px">
-                                    <ErrorTextPaddings PaddingLeft="4px" />
-                                </ErrorFrameStyle>
-                            </ValidationSettings>
-                        </dx:ASPxGridLookup>
-                    </td> 
-                    <td class="style107">
-                        <dx:ASPxSpinEdit ID="txt_Qty" runat="server" ClientInstanceName="txt_Qty"
-                            CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
-                            MaxValue="9999999999999999" Number="0" 
-                            SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" Width="200px" Height="22px">
-                        </dx:ASPxSpinEdit>
-                    </td>
-                    <td class="auto-style16">
-                         <div style="display:flex; justify-content:center;">
-                        <dx:ASPxButton ID="lbl_add" runat="server" onclick="lbl_add_Click" Text="Add"  
-                            Width="93px" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange" SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css">                           
-                        </dx:ASPxButton>
-                             </div>
-                    </td>
+        <!-- Asset -->
+        <td style="width:360px; padding-right:30px;">
 
-                </tr>
-            </table>
+            <div style="font-weight:600; margin-bottom:6px;">
+                Asset Name
+            </div>
+
+            <dx:ASPxGridLookup ID="ASPxGridLookup1"
+                runat="server"
+                ClientInstanceName="ASPxGridLookup1"
+                AutoGenerateColumns="False"
+                CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"
+                CssPostfix="PlasticBlue"
+                DataSourceID="SqlDataSource1"
+                IncrementalFilteringMode="Contains"
+                KeyFieldName="AssetTypeID"
+                SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css"
+                Width="320px">
+
+                <GridViewProperties>
+                    <SettingsBehavior AllowFocusedRow="True"
+                        AllowSelectSingleRowOnly="True" />
+                    <SettingsPager PageSize="5"></SettingsPager>
+                    <Settings ShowFilterRow="True"
+                        ShowStatusBar="Visible" />
+                </GridViewProperties>
+
+                <Columns>
+
+                    <dx:GridViewDataTextColumn
+                        FieldName="AssetTypeID"
+                        Visible="false"
+                        VisibleIndex="0">
+                    </dx:GridViewDataTextColumn>
+
+                    <dx:GridViewDataTextColumn
+                        FieldName="AssetTypeName"
+                        Caption="Asset Name"
+                        VisibleIndex="1">
+                    </dx:GridViewDataTextColumn>
+
+                </Columns>
+
+            </dx:ASPxGridLookup>
+
+        </td>
+
+        <!-- Qty -->
+        <td style="width:180px; padding-right:30px;">
+
+            <div style="font-weight:600; margin-bottom:6px;">
+                Required Qty
+            </div>
+
+            <dx:ASPxSpinEdit ID="txt_Qty"
+                runat="server"
+                ClientInstanceName="txt_Qty"
+                CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"
+                CssPostfix="PlasticBlue"
+                MaxValue="9999999999999999"
+                Number="0"
+                Width="140px"
+                Height="28px"
+                SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
+            </dx:ASPxSpinEdit>
+
+        </td>
+
+        <!-- Button -->
+        <td style="padding-top:28px;">
+
+            <dx:ASPxButton ID="lbl_add"
+                runat="server"
+                onclick="lbl_add_Click"
+                Text="ADD"
+                Width="100px"
+                Height="38px"
+                CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css"
+                CssPostfix="SoftOrange"
+                SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css">
+            </dx:ASPxButton>
+
+        </td>
+
+    </tr>
+
+</table>
             <br />
             <strong style="margin-left:55px"><span class="style6">Items List</span></strong><dx:ASPxGridView 
                 ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" 
                 CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                 KeyFieldName="ItemID" onrowcommand="ASPxGridView1_RowCommand" 
-                Style="margin-left:55px" Width="800px">
+                Style="margin-left:55px" Width="1000px">
                 <ClientSideEvents CallbackError="function(s, e) {alert('Session expired!'); location.href='Login.aspx';}" />
                 <TotalSummary>
                     <dx:ASPxSummaryItem FieldName="RequiredQuantity" SummaryType="Sum" />
@@ -568,6 +645,36 @@
     FROM AssetMaster
     WHERE Status!='InActive'
     ORDER BY MainAssetNumber">
+</asp:SqlDataSource>
+
+
+    <asp:SqlDataSource ID="AssetClassDS" runat="server"
+    ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
+    SelectCommand="
+    SELECT AssetClassName
+    FROM AssetClassMaster
+    WHERE Status='Active'">
+</asp:SqlDataSource>
+
+
+<asp:SqlDataSource ID="SqlDataSource1" runat="server"
+    ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>"
+    SelectCommand="
+    select AssetTypeID,
+           AssetTypeName,
+           AssetTypeCode
+    from AssetTypeMaster
+    where AssetClassName=@AssetClassName">
+
+    <SelectParameters>
+
+        <asp:ControlParameter
+            ControlID="cmb_AssetClass"
+            Name="AssetClassName"
+            PropertyName="Value" />
+
+    </SelectParameters>
+
 </asp:SqlDataSource>
         
                <%-- <asp:SqlDataSource ID="SqlDSGodown" runat="server" 

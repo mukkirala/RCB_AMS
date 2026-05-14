@@ -41,11 +41,11 @@ public partial class RequestOrder : System.Web.UI.Page
     {
         if (Session["UserID"] != null)
         {
-            //lbl_user.Text = Session["UserID"].ToString();
-            //lbl_user.Text = Session["GodownName"].ToString();
-            //lbl_unitname.Text = Session["UnitName"].ToString();
-            //lbl_category.Text = Session["DivisionName"].ToString();
-
+            reqid.Text = Session["UserID"].ToString();
+            lbl_requestername.Text = Session["USR_NAME"].ToString();
+            reqdept.Text = Session["DepartmentName"].ToString();
+            reqdesign.Text = Session["DESIGNATION"].ToString();
+            lblmail.Text = Session["Mail"].ToString();
 
         }
         else
@@ -84,11 +84,11 @@ public partial class RequestOrder : System.Web.UI.Page
         //    lbl_error.Text = "Please select Item";
         //    return;
         //}
-        if (ASPxGridLookup1.Text == "")
-        {
-            lbl_error.Text = "Please Select ItemName";
-            return;
-        }
+        //if (ASPxGridLookup1.Text == "")
+        //{
+        //    lbl_error.Text = "Please Select ItemName";
+        //    return;
+        //}
         if (Convert.ToInt32(txt_Qty.Text) <= 0)
         {
             lbl_error.Text = "Please enter alteast One Quantity ";
@@ -312,7 +312,7 @@ string Qty)
 
             myCommand.Parameters.AddWithValue("@date", System.DateTime.Now);
             myCommand.Parameters.AddWithValue("@Description", ASPxMemo2.Text);
-            myCommand.Parameters.AddWithValue("@sendby", lbl_user.Text);
+          //  myCommand.Parameters.AddWithValue("@sendby", lbl_user.Text);
             myCommand.Parameters.AddWithValue("@Status", "Requisition Sent to POadmin");
             myCommand.Parameters.AddWithValue("@ReqSendBy", Session["GodownID"].ToString());
 
@@ -367,7 +367,7 @@ string Qty)
         "",
         requestid,
         "",
-        lbl_user.Text
+     //   lbl_user.Text
     };
 
         RequestOrderReport report = new RequestOrderReport(dt2, values);
