@@ -504,42 +504,24 @@
     </dx:GridViewDataTextColumn>
 
     <dx:GridViewDataTextColumn FieldName="AssetID"
-        Visible="false"
-        VisibleIndex="1">
-    </dx:GridViewDataTextColumn>
+    Visible="false"
+    VisibleIndex="0">
+</dx:GridViewDataTextColumn>
 
-    <dx:GridViewDataTextColumn FieldName="MainAssetNumber"
-        Caption="Asset Number"
-        VisibleIndex="2">
-    </dx:GridViewDataTextColumn>
+<dx:GridViewDataTextColumn FieldName="AssetName"
+    Caption="Asset Name"
+    VisibleIndex="1">
+</dx:GridViewDataTextColumn>
 
-    <dx:GridViewDataTextColumn FieldName="AssetSubNumber"
-        Caption="Sub Number"
-        VisibleIndex="3">
-    </dx:GridViewDataTextColumn>
+<dx:GridViewDataTextColumn FieldName="AssetCode"
+    Caption="Asset Code"
+    VisibleIndex="2">
+</dx:GridViewDataTextColumn>
 
-    <dx:GridViewDataTextColumn FieldName="AssetDesc"
-        Caption="Asset Description"
-        VisibleIndex="4">
-    </dx:GridViewDataTextColumn>
-
-    <dx:GridViewDataTextColumn FieldName="SerialNumber"
-        Caption="Serial Number"
-        VisibleIndex="5">
-    </dx:GridViewDataTextColumn>
-
-    <dx:GridViewDataTextColumn FieldName="Location"
-        VisibleIndex="6">
-    </dx:GridViewDataTextColumn>
-
-    <dx:GridViewDataTextColumn FieldName="Department"
-        VisibleIndex="7">
-    </dx:GridViewDataTextColumn>
-
-    <dx:GridViewDataTextColumn FieldName="RequiredQuantity"
-        Caption="Quantity"
-        VisibleIndex="8">
-    </dx:GridViewDataTextColumn>
+<dx:GridViewDataTextColumn FieldName="RequiredQuantity"
+    Caption="Quantity"
+    VisibleIndex="3">
+</dx:GridViewDataTextColumn>
 
 </Columns>
                 <SettingsPager PageSize="1000" showdefaultimages="False">

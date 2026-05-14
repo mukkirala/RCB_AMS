@@ -80,7 +80,7 @@ where POSRequisitionParent.ReqID='" + Session["ReqID"] + "'", myconnection);
         myconnection.Open();
         SqlCommand mycommand = new SqlCommand("Update POSRequisitionParent Set Status=@Status Where ReqID='" + lbl_Req_ID.Text + "'", myconnection);
         mycommand.Parameters.AddWithValue("@ReqID", lbl_Req_ID.Text);
-        mycommand.Parameters.AddWithValue("@Status", "Approved");
+        mycommand.Parameters.AddWithValue("@Status", "Approved by POInc");
         mycommand.ExecuteNonQuery();
         myconnection.Close();
         //=== For Updation of Requested Quantity in Approver Access
@@ -115,7 +115,7 @@ where POSRequisitionParent.ReqID='" + Session["ReqID"] + "'", myconnection);
         SqlCommand mycommand = new SqlCommand("Update POSRequisitionParent Set Status=@Status,Remarks=@Remarks Where ReqID=@ReqID", myconnection);
         mycommand.Parameters.AddWithValue("@ReqID", lbl_Req_ID.Text);
         mycommand.Parameters.AddWithValue("@Remarks", Memo_remarks.Text);
-        mycommand.Parameters.AddWithValue("@Status", "Rejected");
+        mycommand.Parameters.AddWithValue("@Status", "Rejected by POInc");
         mycommand.ExecuteNonQuery();
         myconnection.Close();
         Response.Redirect("ApproverAuthorizationRequisition.aspx");

@@ -72,75 +72,50 @@ public partial class RequestOrder : System.Web.UI.Page
     protected void lbl_add_Click(object sender, EventArgs e)
     {
         lbl_error.Text = "";
-        //if (ASPxGridLookup3.Text == "")
-        //{
-        //    //Messages.SetErrorMessage("2153", null, null, null, Session);
-        //    lbl_error.Text = "Please Select Warehouse";
-        //    return;
-        //}
-        //if (ASPxGridLookup1.Text == "")
-        //{
-        //   // Messages.SetErrorMessage("2147", null, null, null, Session);
-        //    lbl_error.Text = "Please select Item";
-        //    return;
-        //}
-        //if (ASPxGridLookup1.Text == "")
-        //{
-        //    lbl_error.Text = "Please Select ItemName";
-        //    return;
-        //}
-        if (Convert.ToInt32(txt_Qty.Text) <= 0)
+
+        if (ASPxGridLookup1.Value == null)
         {
-            lbl_error.Text = "Please enter alteast One Quantity ";
+            lbl_error.Text = "Please Select Asset";
             return;
         }
-        if (txt_Qty.Text == "")
+
+        if (txt_Qty.Text == "" || Convert.ToInt32(txt_Qty.Text) <= 0)
         {
-            txt_Qty.Text = "1";
+            lbl_error.Text = "Please Enter Quantity";
+            return;
         }
+
         string AssetID = ASPxGridLookup1.Value.ToString();
 
-        string MainAssetNumber =
-        ASPxGridLookup1.GridView.GetRowValues(
-        ASPxGridLookup1.GridView.FocusedRowIndex,
-        "MainAssetNumber").ToString();
+        string AssetName = "";
+        object objName = ASPxGridLookup1.GridView.GetRowValues(
+            ASPxGridLookup1.GridView.FocusedRowIndex,
+            "AssetTypeName");
 
-        string AssetSubNumber =
-        ASPxGridLookup1.GridView.GetRowValues(
-        ASPxGridLookup1.GridView.FocusedRowIndex,
-        "AssetSubNumber").ToString();
+        if (objName != null)
+        {
+            AssetName = objName.ToString();
+        }
 
-        string AssetDesc =
-        ASPxGridLookup1.GridView.GetRowValues(
-        ASPxGridLookup1.GridView.FocusedRowIndex,
-        "AssetDesc").ToString();
+        string AssetCode = "";
+        object objCode = ASPxGridLookup1.GridView.GetRowValues(
+            ASPxGridLookup1.GridView.FocusedRowIndex,
+            "AssetTypeCode");
 
-        string SerialNumber =
-        ASPxGridLookup1.GridView.GetRowValues(
-        ASPxGridLookup1.GridView.FocusedRowIndex,
-        "SerialNumber").ToString();
-
-        string Location =
-        ASPxGridLookup1.GridView.GetRowValues(
-        ASPxGridLookup1.GridView.FocusedRowIndex,
-        "Location").ToString();
-
-        string Department =
-        ASPxGridLookup1.GridView.GetRowValues(
-        ASPxGridLookup1.GridView.FocusedRowIndex,
-        "Department").ToString();
+        if (objCode != null)
+        {
+            AssetCode = objCode.ToString();
+        }
 
         BindItems(
             AssetID,
-            MainAssetNumber,
-            AssetSubNumber,
-            AssetDesc,
-            SerialNumber,
-            Location,
-            Department,
-            txt_Qty.Text);
+            AssetName,
+            AssetCode,
+            txt_Qty.Text
+        );
 
         Clear();
+
         ASPxGridLookup1.Focus();
     }
     protected void Clear()
@@ -149,14 +124,10 @@ public partial class RequestOrder : System.Web.UI.Page
         txt_Qty.Text = "";
     }
     protected void BindItems(
-string AssetID,
-string MainAssetNumber,
-string AssetSubNumber,
-string AssetDesc,
-string SerialNumber,
-string Location,
-string Department,
-string Qty)
+    string AssetID,
+    string AssetName,
+    string AssetCode,
+    string Qty)
     {
         DateTime date = System.DateTime.Now;
 
@@ -167,19 +138,15 @@ string Qty)
         {
             newItemtbl.Rows.Add(
                 AssetID,
-                MainAssetNumber,
-                AssetSubNumber,
-                AssetDesc,
-                SerialNumber,
-                Location,
-                Department,
+                AssetName,
+                AssetCode,
                 Qty,
                 date);
 
             Data(newItemtbl);
         }
 
-        if (newItemtbl == null)
+        else
         {
             if (dt1.Columns.Count == 0)
             {
@@ -188,12 +155,8 @@ string Qty)
 
             dt1.Rows.Add(
                 AssetID,
-                MainAssetNumber,
-                AssetSubNumber,
-                AssetDesc,
-                SerialNumber,
-                Location,
-                Department,
+                AssetName,
+                AssetCode,
                 Qty,
                 date);
 
@@ -304,8 +267,8 @@ string Qty)
         {
             myConnection.Open();
 
-            string query2 = "INSERT INTO POSRequisitionParent(Date,Description,sendby,Status,ReqSendBy) " +
-                            "VALUES(@date,@Description,@sendby,@Status,@ReqSendBy) " +
+            string query2 = "INSERT INTO POSRequisitionParent(Date,Description,Status,ReqSendBy) " +
+                            "VALUES(@date,@Description,@Status,@ReqSendBy) " +
                             "SELECT CAST(scope_identity() AS int)";
 
             myCommand = new SqlCommand(query2, myConnection);
@@ -314,7 +277,7 @@ string Qty)
             myCommand.Parameters.AddWithValue("@Description", ASPxMemo2.Text);
           //  myCommand.Parameters.AddWithValue("@sendby", lbl_user.Text);
             myCommand.Parameters.AddWithValue("@Status", "Requisition Sent to POadmin");
-            myCommand.Parameters.AddWithValue("@ReqSendBy", Session["GodownID"].ToString());
+            myCommand.Parameters.AddWithValue("@ReqSendBy", Session["UserID"].ToString());
 
             reqidpt = (Int32)myCommand.ExecuteScalar();
 
@@ -386,15 +349,14 @@ string Qty)
         "Requestorder_" + requestid.Trim() + ".pdf";
 
         string UpdateQuery =
-        "Update POSRequisitionParent Set Location='" +
-        Location +
-        "' Where ReqID='" +
-        requestid + "' ";
+        "Update POSRequisitionParent Set Location=@Location Where ReqID=@ReqID";
+
 
         myConnection.Open();
 
         myCommand = new SqlCommand(UpdateQuery, myConnection);
-
+        myCommand.Parameters.AddWithValue("@Location", Location);
+        myCommand.Parameters.AddWithValue("@ReqID", requestid);
         myCommand.ExecuteNonQuery();
 
         myConnection.Close();
@@ -523,12 +485,8 @@ string Qty)
     protected void Itemdate()
     {
         dt1.Columns.Add("AssetID");
-        dt1.Columns.Add("MainAssetNumber");
-        dt1.Columns.Add("AssetSubNumber");
-        dt1.Columns.Add("AssetDesc");
-        dt1.Columns.Add("SerialNumber");
-        dt1.Columns.Add("Location");
-        dt1.Columns.Add("Department");
+        dt1.Columns.Add("AssetName");
+        dt1.Columns.Add("AssetCode");
         dt1.Columns.Add("RequiredQuantity");
         dt1.Columns.Add("Date");
     }

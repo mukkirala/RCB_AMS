@@ -34,7 +34,7 @@ public partial class ApproverDashboard : System.Web.UI.Page
                     Status, 
                     CONCAT('Request:', Description) as text 
                     FROM POSRequisitionParent
-                    WHERE Status IN ('Requisition Sent')
+                    WHERE Status IN ('Requisition Sent to POadmin')
                     ORDER BY Date DESC";
 
             using (SqlCommand cmd = new SqlCommand(selectcmd, con))
