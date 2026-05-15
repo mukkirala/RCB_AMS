@@ -99,19 +99,33 @@ public partial class ApprovePage : System.Web.UI.Page
                 ? Convert.ToInt32(txtQty.Value)
                 : 0;
 
-            SqlCommand myCommand = new SqlCommand(@"
-            UPDATE POSRequisitionDetails 
-            SET 
-                ApproverQuantity = @ApproverQuantity,
-                Status = @Status
-            WHERE ReqDetailsID = @ReqDetailsID", myconnection);
+            SqlCommand myCommand =
+new SqlCommand(
 
-            myCommand.Parameters.AddWithValue("@ReqDetailsID", ReqDetailsID);
-            myCommand.Parameters.AddWithValue("@ApproverQuantity", approverQuantity);
-            myCommand.Parameters.AddWithValue("@Status", "Approved by POInc");
+"Update POSRequisitionDetails " +
+"set " +
+"ApproverQuantity=@ApproverQuantity, " +
+"Status=@Status " +
+"where ReqDetailsID=@ReqDetailsID",
+
+myconnection);
+
+            myCommand.Parameters.AddWithValue(
+                "@ReqDetailsID",
+                ReqDetailsID);
+
+            myCommand.Parameters.AddWithValue(
+                "@ApproverQuantity",
+                approverQuantity);
+
+            myCommand.Parameters.AddWithValue(
+                "@Status",
+                "Approved by POInc");
 
             myconnection.Open();
+
             myCommand.ExecuteNonQuery();
+
             myconnection.Close();
         }
 

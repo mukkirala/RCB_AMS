@@ -202,60 +202,67 @@
             <td class="style133">
                 Select Requisition <span class="style115"><strong>*</strong></span></td>
             <td class="style117">
-                <dx:ASPxGridLookup ID="ASPxGridLookup1" runat="server" width="175px" Height="25px"
-                    AutoGenerateColumns="False" DataSourceID="SqlDataSource2" 
-                    KeyFieldName="OutDeliveryID" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" 
-                    CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" 
-                    IncrementalFilteringMode="Contains">
-<GridViewProperties>
-<SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>
-    <Settings ShowFilterRow="True" ShowFilterRowMenu="True" />
-</GridViewProperties>
-                    <Columns>
-                   
-                    <dx:GridViewDataTextColumn FieldName="OutDeliveryID" ReadOnly="True" VisibleIndex="0">
-                            <EditFormSettings Visible="False" />
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="ReqID" ReadOnly="True" VisibleIndex="0">
-                            <EditFormSettings Visible="False" />
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataDateColumn FieldName="Date" VisibleIndex="1" Visible="false">
-                        </dx:GridViewDataDateColumn>
-                        <dx:GridViewDataTextColumn FieldName="Description" VisibleIndex="2">
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="sendby" VisibleIndex="3" Visible="false">
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="Status" VisibleIndex="4" Visible="false">
-                        </dx:GridViewDataTextColumn>
-                         <dx:GridViewDataTextColumn FieldName="GodownName" Caption="Godown Name" VisibleIndex="1">
-                        </dx:GridViewDataTextColumn>
-                    </Columns>
-                    <GridViewImages SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
-                        <LoadingPanelOnStatusBar Url="~/App_Themes/PlasticBlue/GridView/gvLoadingOnStatusBar.gif">
-                        </LoadingPanelOnStatusBar>
-                        <LoadingPanel Url="~/App_Themes/PlasticBlue/GridView/Loading.gif">
-                        </LoadingPanel>
-                    </GridViewImages>
-                    <GridViewImagesFilterControl>
-                        <LoadingPanel Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
-                        </LoadingPanel>
-                    </GridViewImagesFilterControl>
-                    <GridViewStyles CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue">
-                        <Header ImageSpacing="10px" SortingImageSpacing="10px">
-                        </Header>
-                    </GridViewStyles>
-                    <GridViewStylesEditors>
-                        <CalendarHeader Spacing="11px">
-                        </CalendarHeader>
-                        <ProgressBar Height="25px">
-                        </ProgressBar>
-                    </GridViewStylesEditors>
-                    <ValidationSettings>
-                        <ErrorFrameStyle ImageSpacing="4px">
-                            <ErrorTextPaddings PaddingLeft="4px" />
-                        </ErrorFrameStyle>
-                    </ValidationSettings>
-                </dx:ASPxGridLookup>
+               <dx:ASPxGridLookup ID="ASPxGridLookup1"
+    runat="server"
+    Width="300px"
+    Height="25px"
+    AutoGenerateColumns="False"
+    DataSourceID="SqlDataSource2"
+    KeyFieldName="ReqID"
+
+    CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"
+    CssPostfix="PlasticBlue"
+    SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css"
+
+    IncrementalFilteringMode="Contains">
+
+    <GridViewProperties>
+
+        <SettingsBehavior
+            AllowFocusedRow="True"
+            AllowSelectSingleRowOnly="True" />
+
+        <Settings
+            ShowFilterRow="True"
+            ShowFilterRowMenu="True" />
+
+    </GridViewProperties>
+
+    <Columns>
+
+    <dx:GridViewDataTextColumn
+        FieldName="ReqID"
+        Caption="Req ID"
+        VisibleIndex="1">
+    </dx:GridViewDataTextColumn>
+
+    <dx:GridViewDataDateColumn
+        FieldName="Date"
+        Caption="Date"
+        VisibleIndex="2">
+    </dx:GridViewDataDateColumn>
+
+    <dx:GridViewDataTextColumn
+        FieldName="Description"
+        Caption="Description"
+        VisibleIndex="3">
+    </dx:GridViewDataTextColumn>
+
+    <dx:GridViewDataTextColumn
+        FieldName="ReqSendBy"
+        Caption="Requested By"
+        VisibleIndex="4">
+    </dx:GridViewDataTextColumn>
+
+   <%-- <dx:GridViewDataTextColumn
+        FieldName="Status"
+        Caption="Status"
+        VisibleIndex="5">
+    </dx:GridViewDataTextColumn>--%>
+
+</Columns>
+
+</dx:ASPxGridLookup>
             </td>
             <td class="style137">
                <dx:ASPxButton ID="btn_search" runat="server" BackColor="White" 
@@ -564,85 +571,101 @@
         </table>
 
     <br />
-    <span class="style105"><strong  style="margin-left:75px">List Of Send Items</strong></span><dx:ASPxGridView 
-        ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" 
-        DataSourceID="SqlDataSource1" KeyFieldName="DeliveryItemId" 
-        style="margin-left: 75px" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" 
-        CssPostfix="PlasticBlue" Width="969px">
-        <TotalSummary>
-            <dx:ASPxSummaryItem FieldName="Quantity" SummaryType="Sum" />
-            <dx:ASPxSummaryItem FieldName="ItemCode" SummaryType="Count" />
-        </TotalSummary>
-        <Columns>
-            <dx:GridViewCommandColumn VisibleIndex="0">
-                <ClearFilterButton Visible="True">
-                </ClearFilterButton>
-            </dx:GridViewCommandColumn>
-            <dx:GridViewDataTextColumn FieldName="DeliveryItemId" ReadOnly="True" Visible="false" 
-                VisibleIndex="1">
-                <EditFormSettings Visible="False" />
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="ReqID" VisibleIndex="2" Visible="false">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="ItemID" VisibleIndex="3" Visible="false">
-            </dx:GridViewDataTextColumn>
-             <dx:GridViewDataTextColumn FieldName="ItemCode" VisibleIndex="4">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="ItemName" VisibleIndex="4" Width="300px">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="Size" VisibleIndex="5" Visible="false">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="Colour" VisibleIndex="6" Visible="false">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="Brand" VisibleIndex="7" Visible="false">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="Style" VisibleIndex="8" Visible="false">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="Quantity" VisibleIndex="9" Caption="SendQuantity">
-            </dx:GridViewDataTextColumn>
-             <dx:GridViewDataTextColumn FieldName="Quantity" Caption="Received Qty" VisibleIndex="10">
-  <DataItemTemplate>
-                 <dx:ASPxSpinEdit ID="txt_qty" runat="server" 
-                         CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue"
-                     Height="21px" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" 
-                     Text='<%# Eval("Quantity") %>'>
-                 </dx:ASPxSpinEdit>
-             </DataItemTemplate>
- </dx:GridViewDataTextColumn>
-        </Columns>
-        <SettingsPager PageSize="1000" ShowDefaultImages="False">
-            <allbutton text="All">
-            </allbutton>
-            <nextpagebutton text="Next &gt;">
-            </nextpagebutton>
-            <prevpagebutton text="&lt; Prev">
-            </prevpagebutton>
-        </SettingsPager>
-        <Settings ShowGroupPanel="True" ShowFilterRow="True" ShowFooter="True" />
-        <Images SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
-            <LoadingPanelOnStatusBar Url="~/App_Themes/PlasticBlue/GridView/gvLoadingOnStatusBar.gif">
-            </LoadingPanelOnStatusBar>
-            <LoadingPanel Url="~/App_Themes/PlasticBlue/GridView/Loading.gif">
-            </LoadingPanel>
-        </Images>
-        <ImagesFilterControl>
-            <LoadingPanel Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
-            </LoadingPanel>
-        </ImagesFilterControl>
-        <Styles CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue">
-            <Header ImageSpacing="10px" SortingImageSpacing="10px">
-            </Header>
-        </Styles>
-        <StylesEditors>
-            <CalendarHeader Spacing="11px">
-            </CalendarHeader>
-            <ProgressBar Height="25px">
-            </ProgressBar>
-        </StylesEditors>
-    </dx:ASPxGridView>
+    <span class="style105"><strong  style="margin-left:75px">List Of Send Items</strong></span>
+    <dx:ASPxGridView ID="ASPxGridView1" runat="server"
+    AutoGenerateColumns="False"
+    DataSourceID="SqlDataSource1"
+    KeyFieldName="ReqDetailsID"
+    Width="100%"
+    CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"
+    CssPostfix="PlasticBlue">
+
+    <Columns>
+
+        <dx:GridViewDataTextColumn
+            FieldName="ReqDetailsID"
+            Visible="false"
+            VisibleIndex="0">
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn
+            FieldName="ReqID"
+            Caption="Req ID"
+            VisibleIndex="1">
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn
+            FieldName="ItemID"
+            Caption="Item ID"
+            VisibleIndex="2">
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn
+            FieldName="AssetClass"
+            Caption="Asset Class"
+            VisibleIndex="3">
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn
+            FieldName="AssetType"
+            Caption="Asset Type"
+            VisibleIndex="4">
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn
+            FieldName="Quantity"
+            Caption="Quantity"
+            VisibleIndex="5">
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn
+            FieldName="ApproverQuantity"
+            Caption="Approved Qty"
+            VisibleIndex="6">
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn
+            FieldName="Status"
+            Caption="Status"
+            VisibleIndex="7">
+        </dx:GridViewDataTextColumn>
+
+        <dx:GridViewDataTextColumn
+            Caption="Receive Quantity"
+            VisibleIndex="8">
+
+            <DataItemTemplate>
+
+                <dx:ASPxSpinEdit ID="txt_qty"
+                    runat="server"
+                    Number="0"
+                    Width="120px"
+                    MinValue="0"
+                    MaxValue="999999">
+
+                </dx:ASPxSpinEdit>
+
+            </DataItemTemplate>
+
+        </dx:GridViewDataTextColumn>
+
+    </Columns>
+
+    <SettingsPager PageSize="1000" ShowDefaultImages="False">
+        <AllButton Text="All"></AllButton>
+        <NextPageButton Text="Next >"></NextPageButton>
+        <PrevPageButton Text="< Prev"></PrevPageButton>
+    </SettingsPager>
+
+    <Settings
+        ShowFilterRow="True"
+        ShowGroupPanel="True"
+        ShowFooter="True" />
+
+</dx:ASPxGridView>
     <br />
    
-       <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+       <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <dx:ASPxLabel ID="lbl_innererror" runat="server" 
                             style="color: #FF0000; font-weight: 700" >
@@ -655,9 +678,9 @@
                 Items</td>
             <td class="style110">
              
-                        <dx:ASPxTextBox ID="txt_ScanItem" runat="server" AutoPostBack="True" 
-                            ontextchanged="txt_ScanItem_TextChanged" Width="200px">
-                        </dx:ASPxTextBox>                   
+                        <dx:ASPxTextBox ID="txt_ScanItem" runat="server"
+    Width="200px">
+</dx:ASPxTextBox>                 
             </td>
         </tr>
     </table>
@@ -694,34 +717,62 @@
             <dx:ASPxSummaryItem FieldName="ItemCode" SummaryType="Count" />
         </TotalSummary>
         <Columns>
-            <dx:GridViewDataTextColumn FieldName="ItemID" VisibleIndex="0">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="ItemCode" VisibleIndex="1">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="ItemName" VisibleIndex="2" Width="300px">
-            </dx:GridViewDataTextColumn>            
-            <dx:GridViewDataTextColumn FieldName="Size" VisibleIndex="3">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="Color" VisibleIndex="4">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="Brand" VisibleIndex="5">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="Style" VisibleIndex="6">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="SQuantity" VisibleIndex="6" Caption="SendQuantity">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="Quantity" VisibleIndex="7">
-             <DataItemTemplate>
-                            <dx:ASPxSpinEdit ID="txt_qty" runat="server" 
-                                    CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
-                                Height="21px" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css"  
-                                Text='<%# Eval("Quantity") %>'>
-                            </dx:ASPxSpinEdit>
-                        </DataItemTemplate>
-            </dx:GridViewDataTextColumn>
-             <dx:GridViewDataTextColumn FieldName="Date" VisibleIndex="6" Visible="false">
-            </dx:GridViewDataTextColumn>
-        </Columns>
+
+    <dx:GridViewDataTextColumn
+        FieldName="ReqDetailsID"
+        Visible="false"
+        VisibleIndex="0">
+    </dx:GridViewDataTextColumn>
+
+    <dx:GridViewDataTextColumn
+        FieldName="ReqID"
+        Caption="Req ID"
+        VisibleIndex="1">
+    </dx:GridViewDataTextColumn>
+
+    <dx:GridViewDataTextColumn
+        FieldName="ItemID"
+        Caption="Item ID"
+        VisibleIndex="2">
+    </dx:GridViewDataTextColumn>
+
+    <dx:GridViewDataTextColumn
+        FieldName="ItemCode"
+        Caption="Asset Code"
+        VisibleIndex="3">
+    </dx:GridViewDataTextColumn>
+
+    <dx:GridViewDataTextColumn
+        FieldName="ItemName"
+        Caption="Asset Name"
+        VisibleIndex="4">
+    </dx:GridViewDataTextColumn>
+
+    <dx:GridViewDataTextColumn
+        FieldName="Brand"
+        Caption="Asset Class"
+        VisibleIndex="5">
+    </dx:GridViewDataTextColumn>
+
+    <dx:GridViewDataTextColumn
+        FieldName="Quantity"
+        Caption="Quantity"
+        VisibleIndex="6">
+    </dx:GridViewDataTextColumn>
+
+    <dx:GridViewDataTextColumn
+        FieldName="ApproverQuantity"
+        Caption="Approved Qty"
+        VisibleIndex="7">
+    </dx:GridViewDataTextColumn>
+
+    <dx:GridViewDataTextColumn
+        FieldName="Status"
+        Caption="Status"
+        VisibleIndex="8">
+    </dx:GridViewDataTextColumn>
+
+</Columns>
         <SettingsPager PageSize="1000" ShowDefaultImages="False">
             <allbutton text="All">
             </allbutton>
@@ -757,7 +808,7 @@
                         <asp:AsyncPostBackTrigger ControlID="txt_ScanItem" EventName="TextChanged" />
                     </Triggers>
                 </asp:UpdatePanel>
-    <br />
+    <br />--%>
     <dx:ASPxButton ID="btn_Save" runat="server" Text="Received & Print" 
         Width="180px" onclick="btn_Save_Click" style="margin-left: 74px" 
         CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange" 
@@ -781,18 +832,25 @@
         <asp:SessionParameter SessionField="GodownID" Name="GodownID"  />
         </SelectParameters>
     </asp:SqlDataSource>--%>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
-        SelectCommand="SELECT POStblOutDelivery.OutDeliveryID,POStblOutDelivery.ReqID,[Date], [Description],
-sendby,POStblOutDelivery.[Status],GodownMaster.GodownName,* FROM POStblOutDelivery
-INNER JOIN POSRequisitionParent ON POSRequisitionParent.ReqID = POStblOutDelivery.ReqID
-INNER JOIN GodownMaster ON POSRequisitionParent.ReqReceivedBy = GodownMaster.GodownId
-WHERE ReqSendBy = @GodownID AND (POStblOutDelivery.[Status] IN ('transfered', 'PartiallyReceived'))
-ORDER BY POStblOutDelivery.OutDeliveryID DESC">
-        <SelectParameters>
-        <asp:SessionParameter SessionField="GodownID" Name="GodownID"  />
-        </SelectParameters>
-    </asp:SqlDataSource>
+      <asp:SqlDataSource ID="SqlDataSource2" runat="server"
+    ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
+
+    SelectCommand="
+
+SELECT
+    ReqID,
+    Date,
+    Description,
+    ReqSendBy,
+    Status
+
+FROM POSRequisitionParent
+
+WHERE Status='Approved by POInc'
+
+ORDER BY ReqID DESC">
+
+</asp:SqlDataSource>
     <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:PentagonLogistixPvtLtdConnectionString %>"
         SelectCommand="SELECT        dbo.POStblOutDeliveryDetails .ItemCode, dbo.ItemMaster.ItemName, dbo.SizeMaster.Code AS Size, dbo.ItemMaster.Colour, dbo.ItemMaster.Brand, dbo.POStblOutDeliveryDetails .Quantity, 
@@ -807,20 +865,42 @@ WHERE        (dbo.POStblOutDelivery.ReqID = @ReqId) AND (POStblOutDelivery.OutDe
         <asp:SessionParameter Name="OutID" SessionField="OutID" />
         </SelectParameters>
     </asp:SqlDataSource>--%>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
-        SelectCommand="SELECT        dbo.POStblOutDeliveryDetails .ItemCode, dbo.ItemMaster.ItemName,  dbo.ItemMaster.Colour, dbo.ItemMaster.Brand, dbo.POStblOutDeliveryDetails .Quantity, 
-                         dbo.POStblOutDeliveryDetails .DeliveryItemId, dbo.POStblOutDelivery.ReqID, dbo.ItemMaster.Style,dbo.POStblOutDeliveryDetails .ItemID
-FROM            dbo.POStblOutDelivery INNER JOIN
-                         dbo.POStblOutDeliveryDetails  ON dbo.POStblOutDeliveryDetails .OutDeliveryID = dbo.POStblOutDelivery.OutDeliveryID INNER JOIN
-                         dbo.ItemMaster ON dbo.POStblOutDeliveryDetails .ItemID = dbo.ItemMaster.ItemID 
-                       
-WHERE        (dbo.POStblOutDelivery.ReqID = @ReqId) AND (POStblOutDelivery.OutDeliveryID=@OutID) AND (dbo.POStblOutDeliveryDetails .Status = 'Transfered')">
-        <SelectParameters>
-        <asp:SessionParameter Name="ReqId" SessionField="RequestID" />
-        <asp:SessionParameter Name="OutID" SessionField="OutID" />
-        </SelectParameters>
-    </asp:SqlDataSource>
+     <asp:SqlDataSource ID="SqlDataSource1" runat="server"
+    ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
+
+    SelectCommand="
+
+SELECT
+    PRD.ReqDetailsID,
+    PRD.ReqID,
+    PRD.ItemID,
+    ATM.AssetClassName AS AssetClass,
+    ATM.AssetTypeName AS AssetType,
+    PRD.Quantity,
+    PRD.ApproverQuantity,
+    PRD.Status
+
+FROM POSRequisitionDetails PRD
+
+INNER JOIN POSRequisitionParent PRP
+    ON PRD.ReqID = PRP.ReqID
+
+INNER JOIN [RCBSAP].[dbo].[AssetTypeMaster] ATM
+    ON PRD.ItemID = ATM.AssetTypeID
+
+WHERE
+    PRP.Status = 'Approved by POInc'
+    AND PRD.ReqID = @ReqID">
+
+    <SelectParameters>
+
+        <asp:SessionParameter
+            Name="ReqID"
+            SessionField="ReqID" />
+
+    </SelectParameters>
+
+</asp:SqlDataSource>
         
     
         

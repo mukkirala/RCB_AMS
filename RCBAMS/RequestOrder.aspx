@@ -484,7 +484,7 @@
             <strong style="margin-left:55px"><span class="style6">Items List</span></strong><dx:ASPxGridView 
                 ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" 
                 CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
-                KeyFieldName="ItemID" onrowcommand="ASPxGridView1_RowCommand" 
+                KeyFieldName="AssetID" onrowcommand="ASPxGridView1_RowCommand" 
                 Style="margin-left:55px" Width="1000px">
                 <ClientSideEvents CallbackError="function(s, e) {alert('Session expired!'); location.href='Login.aspx';}" />
                 <TotalSummary>
