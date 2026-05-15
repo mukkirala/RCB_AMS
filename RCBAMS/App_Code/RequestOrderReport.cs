@@ -65,12 +65,15 @@ public class RequestOrderReport : DevExpress.XtraReports.UI.XtraReport
     {
         InitializeComponent();
 
-        this.xrLabel3.Text = values[0];
-        this.xrLabel5.Text = values[1];
-        this.xrLabel7.Text = values[2];
-        this.xrLabel8.Text = values[3];
-        this.xrLabel12.Text = values[4];
-        this.xrLabel14.Text = values[5];
+        this.xrLabel3.Text = values[0];      // Date
+        this.xrLabel19.Text = values[1];     // Requisition From
+        this.xrLabel5.Text = values[2];      // Contact Number
+        this.xrLabel7.Text = values[3];      // Email
+        this.xrLabel8.Text = values[4];      // Department
+        this.xrLabel12.Text = values[5];     // Req No
+       // this.xrLabel14.Text = values[6];     // Description
+
+       
 
         this.xrTable1.Borders = DevExpress.XtraPrinting.BorderSide.All;
         this.xrTable1.BeginInit();
@@ -376,15 +379,15 @@ public class RequestOrderReport : DevExpress.XtraReports.UI.XtraReport
         // 
         // xrLabel14
         // 
-        this.xrLabel14.Borders = DevExpress.XtraPrinting.BorderSide.None;
-        this.xrLabel14.Font = new System.Drawing.Font("Verdana", 8F);
-        this.xrLabel14.LocationFloat = new DevExpress.Utils.PointFloat(151.0415F, 176.0832F);
-        this.xrLabel14.Name = "xrLabel14";
-        this.xrLabel14.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-        this.xrLabel14.SizeF = new System.Drawing.SizeF(161.4584F, 23F);
-        this.xrLabel14.StylePriority.UseBorders = false;
-        this.xrLabel14.StylePriority.UseFont = false;
-        this.xrLabel14.Text = "xrLabel14";
+        //this.xrLabel14.Borders = DevExpress.XtraPrinting.BorderSide.None;
+        //this.xrLabel14.Font = new System.Drawing.Font("Verdana", 8F);
+        //this.xrLabel14.LocationFloat = new DevExpress.Utils.PointFloat(151.0415F, 176.0832F);
+        //this.xrLabel14.Name = "xrLabel14";
+        //this.xrLabel14.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+        //this.xrLabel14.SizeF = new System.Drawing.SizeF(161.4584F, 23F);
+        //this.xrLabel14.StylePriority.UseBorders = false;
+        //this.xrLabel14.StylePriority.UseFont = false;
+        //this.xrLabel14.Text = "xrLabel14";
         // 
         // xrLine1
         // 
@@ -467,35 +470,35 @@ public class RequestOrderReport : DevExpress.XtraReports.UI.XtraReport
         // 
         // xrTableCell4
         // 
-        this.xrTableCell4.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold);
-        this.xrTableCell4.Name = "xrTableCell4";
-        this.xrTableCell4.StylePriority.UseFont = false;
-        this.xrTableCell4.Text = "Wing";
-        this.xrTableCell4.Weight = 0.73882027673927619D;
+        //this.xrTableCell4.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold);
+        //this.xrTableCell4.Name = "xrTableCell4";
+        //this.xrTableCell4.StylePriority.UseFont = false;
+        //this.xrTableCell4.Text = "Wing";
+        //this.xrTableCell4.Weight = 0.73882027673927619D;
         // 
         // xrTableCell5
         // 
-        this.xrTableCell5.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold);
-        this.xrTableCell5.Name = "xrTableCell5";
-        this.xrTableCell5.StylePriority.UseFont = false;
-        this.xrTableCell5.Text = "Floor";
-        this.xrTableCell5.Weight = 0.66590376412157537D;
+        //this.xrTableCell5.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold);
+        //this.xrTableCell5.Name = "xrTableCell5";
+        //this.xrTableCell5.StylePriority.UseFont = false;
+        //this.xrTableCell5.Text = "Floor";
+        //this.xrTableCell5.Weight = 0.66590376412157537D;
         // 
         // xrTableCell6
         // 
-        this.xrTableCell6.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold);
-        this.xrTableCell6.Name = "xrTableCell6";
-        this.xrTableCell6.StylePriority.UseFont = false;
-        this.xrTableCell6.Text = "Unit";
-        this.xrTableCell6.Weight = 0.76692811917718418D;
+        //this.xrTableCell6.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold);
+        //this.xrTableCell6.Name = "xrTableCell6";
+        //this.xrTableCell6.StylePriority.UseFont = false;
+        //this.xrTableCell6.Text = "Unit";
+        //this.xrTableCell6.Weight = 0.76692811917718418D;
         // 
         // xrTableCell7
         // 
-        this.xrTableCell7.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold);
-        this.xrTableCell7.Name = "xrTableCell7";
-        this.xrTableCell7.StylePriority.UseFont = false;
-        this.xrTableCell7.Text = "Style";
-        this.xrTableCell7.Weight = 0.867123069548863D;
+        //this.xrTableCell7.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold);
+        //this.xrTableCell7.Name = "xrTableCell7";
+        //this.xrTableCell7.StylePriority.UseFont = false;
+        //this.xrTableCell7.Text = "Style";
+        //this.xrTableCell7.Weight = 0.867123069548863D;
         // 
         // xrTableCell3
         // 
@@ -527,7 +530,7 @@ public class RequestOrderReport : DevExpress.XtraReports.UI.XtraReport
         this.xrLabel4.SizeF = new System.Drawing.SizeF(133.3333F, 23F);
         this.xrLabel4.StylePriority.UseBorders = false;
         this.xrLabel4.StylePriority.UseFont = false;
-        this.xrLabel4.Text = "Contact Person";
+        this.xrLabel4.Text = "Contact Number";
         // 
         // xrLabel7
         // 
@@ -551,7 +554,7 @@ public class RequestOrderReport : DevExpress.XtraReports.UI.XtraReport
         this.xrLabel6.SizeF = new System.Drawing.SizeF(91.25F, 23F);
         this.xrLabel6.StylePriority.UseBorders = false;
         this.xrLabel6.StylePriority.UseFont = false;
-        this.xrLabel6.Text = "Contact No";
+        this.xrLabel6.Text = "Email";
         // 
         // xrLabel8
         // 
@@ -567,15 +570,15 @@ public class RequestOrderReport : DevExpress.XtraReports.UI.XtraReport
         // 
         // xrLabel9
         // 
-        this.xrLabel9.Borders = DevExpress.XtraPrinting.BorderSide.None;
-        this.xrLabel9.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold);
-        this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(481.7985F, 176.0832F);
-        this.xrLabel9.Name = "xrLabel9";
-        this.xrLabel9.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-        this.xrLabel9.SizeF = new System.Drawing.SizeF(91.24997F, 23F);
-        this.xrLabel9.StylePriority.UseBorders = false;
-        this.xrLabel9.StylePriority.UseFont = false;
-        this.xrLabel9.Text = "Address";
+        //this.xrLabel9.Borders = DevExpress.XtraPrinting.BorderSide.None;
+        //this.xrLabel9.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold);
+        //this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(481.7985F, 176.0832F);
+        //this.xrLabel9.Name = "xrLabel9";
+        //this.xrLabel9.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+        //this.xrLabel9.SizeF = new System.Drawing.SizeF(91.24997F, 23F);
+        //this.xrLabel9.StylePriority.UseBorders = false;
+        //this.xrLabel9.StylePriority.UseFont = false;
+        //this.xrLabel9.Text = "Address";
         // 
         // xrLabel11
         // 
@@ -601,13 +604,13 @@ public class RequestOrderReport : DevExpress.XtraReports.UI.XtraReport
         // 
         // xrLabel13
         // 
-        this.xrLabel13.Borders = DevExpress.XtraPrinting.BorderSide.None;
-        this.xrLabel13.LocationFloat = new DevExpress.Utils.PointFloat(17.70824F, 176.0832F);
-        this.xrLabel13.Name = "xrLabel13";
-        this.xrLabel13.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-        this.xrLabel13.SizeF = new System.Drawing.SizeF(133.3333F, 23F);
-        this.xrLabel13.StylePriority.UseBorders = false;
-        this.xrLabel13.Text = "Requisition To";
+        //this.xrLabel13.Borders = DevExpress.XtraPrinting.BorderSide.None;
+        //this.xrLabel13.LocationFloat = new DevExpress.Utils.PointFloat(17.70824F, 176.0832F);
+        //this.xrLabel13.Name = "xrLabel13";
+        //this.xrLabel13.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+        //this.xrLabel13.SizeF = new System.Drawing.SizeF(133.3333F, 23F);
+        //this.xrLabel13.StylePriority.UseBorders = false;
+        //this.xrLabel13.Text = "Requisition To";
         // 
         // xrLabel10
         // 

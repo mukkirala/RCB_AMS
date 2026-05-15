@@ -39,6 +39,25 @@ public partial class RequestOrder : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            SqlCommand cmd = new SqlCommand(
+                "SELECT PhoneNo FROM CustodianMaster WHERE CustodianID=@CustodianID",
+                myConnection);
+
+            cmd.Parameters.AddWithValue("@CustodianID", Session["UserID"].ToString());
+
+            myConnection.Open();
+
+            object phone = cmd.ExecuteScalar();
+
+            if (phone != null)
+            {
+                Session["PhoneNo"] = phone.ToString();
+            }
+
+            myConnection.Close();
+        }
         if (Session["UserID"] != null)
         {
             reqid.Text = Session["UserID"].ToString();
@@ -323,15 +342,15 @@ public partial class RequestOrder : System.Web.UI.Page
         dt2 = ViewState["Itemtbl"] as DataTable;
 
         string[] values =
-        {
-        System.DateTime.Now.ToString("dd-MM-yyyy"),
-        "",
-        "",
-        "",
-        requestid,
-        "",
-     //   lbl_user.Text
-    };
+{
+    System.DateTime.Now.ToString("dd-MM-yyyy"),
+    lbl_requestername.Text,
+    Session["PhoneNo"].ToString(),
+    lblmail.Text,
+    reqdept.Text,
+    requestid,
+    ASPxMemo2.Text
+};
 
         RequestOrderReport report = new RequestOrderReport(dt2, values);
 
