@@ -276,7 +276,7 @@ public partial class RequestOrder : System.Web.UI.Page
             myCommand.Parameters.AddWithValue("@date", System.DateTime.Now);
             myCommand.Parameters.AddWithValue("@Description", ASPxMemo2.Text);
           //  myCommand.Parameters.AddWithValue("@sendby", lbl_user.Text);
-            myCommand.Parameters.AddWithValue("@Status", "Requisition Sent to POadmin");
+            myCommand.Parameters.AddWithValue("@Status", "Requisition Sent to POInc");
             myCommand.Parameters.AddWithValue("@ReqSendBy", Session["UserID"].ToString());
 
             reqidpt = (Int32)myCommand.ExecuteScalar();
@@ -298,7 +298,7 @@ public partial class RequestOrder : System.Web.UI.Page
                 myCommand.Parameters.AddWithValue("@ReqID", reqidpt);
                 myCommand.Parameters.AddWithValue("@ItemID", AssetID);
                 myCommand.Parameters.AddWithValue("@Quantity", Quantity);
-                myCommand.Parameters.AddWithValue("@Status", "Requisition Sent to POadmin");
+                myCommand.Parameters.AddWithValue("@Status", "Requisition Sent to POInc");
 
                 myCommand.ExecuteNonQuery();
             }
@@ -337,10 +337,8 @@ public partial class RequestOrder : System.Web.UI.Page
 
         report.CreateDocument();
 
-        report.ExportToPdf(Server.MapPath(
-        @"PdfReports//RequestOrder//Requestorder_" +
-        requestid.Trim() + ".pdf"));
-
+        
+        report.ExportToPdf(Server.MapPath(@"PdfReports//RequestOrder//Requestorder_" + requestid.Trim() + ".pdf"));
         Response.Write("<script>");
         Response.Write("window.open('RequestOrderPdf.aspx','_blank')");
         Response.Write("</script>");
