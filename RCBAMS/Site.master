@@ -225,7 +225,7 @@
                    <li id="a16" class=""><a href="/CustodianDashboard.aspx"><span class="glyphicon glyphicon-home"></span></a></li>
 				   <li class=""><a href="/ViewAllocatedAssets.aspx">ViewAllocatedAssets</a></li>
 				   <li class=""><a href="/RequestAsset.aspx">Request Asset</a></li>
-				 <%--  <li class=""><a href="/BuybackRequest.aspx">Buyback</a></li>--%>
+				    <li class=""><a href="/BuybackRequest.aspx">Buyback</a></li>
 				   <li class=""><a href="/RequestLocationChange.aspx">Location Transfer</a></li>
 				   <li class=""><a href="/RequestCustodianChange.aspx">Custodian Transfer</a></li>
 				   <li class=""><a href="/AssetReturnRequest.aspx">Asset Return</a></li>
@@ -347,7 +347,7 @@
                     <li><a href="ViewApprovedAssetReturn">View  Returned Assets</a></li>
                 </ul>
               </li>                        
-               <li class="dropdown-submenu" id="Li2" runat="server" visible="false">
+               <li class="dropdown-submenu" id="Li2" runat="server" >
                 <a class="test">Asset BuyBack<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                      <li><a href="/AdminViewBuyBackAssets">Approve Buy Back Requests</a></li>
