@@ -87,7 +87,7 @@ public partial class ReceiveItems : System.Web.UI.Page
 
                     "UPDATE POSRequisitionDetails " +
                     "SET " +
-                    "Status='Received', " +
+                    "Status='StoreInc Received', " +
                     "Quantity=@Quantity " +
                     "WHERE ReqID=@ReqID " +
                     "AND ItemID=@ItemID",
