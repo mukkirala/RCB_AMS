@@ -138,7 +138,7 @@
                         <Settings AutoFilterCondition="Contains" />
                     </dx:GridViewDataDateColumn>
 
-                    <dx:GridViewDataDateColumn FieldName="ExpiryDate" VisibleIndex="14" Caption="Expiry Date" Width="120px">
+                    <dx:GridViewDataDateColumn FieldName="ExpiryDate" VisibleIndex="14" Visible="false" Caption="Expiry Date" Width="120px">
                         <PropertiesDateEdit DisplayFormatString="dd-MMM-yyyy" />
                         <Settings AutoFilterCondition="Contains" />
                     </dx:GridViewDataDateColumn>
@@ -189,7 +189,13 @@
 
            
             <asp:SqlDataSource ID="SqlAssetsWithRFID" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
-                SelectCommand="SELECT AM.SLNO, AM.AssetID, AM.MainAssetNumber,AM.FirstAcquisitionDate, AM.AssetSubNumber, AM.CustodianDepartment, AM.CustodianID, AM.Location, AM.LocationDesc, AM.BLOCK, AM.CreationDate, AM.LocationID, AM.CapitalizationDate, AM.RFIDCardNumber, AM.RFIDMAPDATE, AM.ExpiryDate, RM.RFIDMappinghistoryID, RM.RFIDCardNumber AS RM_RFIDCardNumber, RM.SRNO AS RFID_SRNO, RM.RFIDHistoryDate, RM.RFIDStatus FROM INCSAP..AssetMaster AM INNER JOIN INCSAP..RFIDMappingHistory RM ON AM.SLNO = RM.SRNO ORDER BY CASE WHEN RM.RFIDStatus = 'Active' THEN 0 ELSE 1 END, RM.RFIDHistoryDate DESC">
+                SelectCommand=" SELECT AM.SLNO, AM.AssetID, AM.MainAssetNumber,AM.FirstAcquisitionDate, 
+ AM.AssetSubNumber, AM.CustodianDepartment, AM.CustodianID, AM.Location,
+ AM.LocationDesc, AM.BLOCK, AM.CreationDate, AM.LocationID, AM.CapitalizationDate,
+ AM.RFIDCardNumber, AM.RFIDMAPDATE, RM.RFIDMappinghistoryID, RM.RFIDCardNumber AS
+ RM_RFIDCardNumber, RM.SRNO AS RFID_SRNO, RM.RFIDHistoryDate, RM.RFIDStatus FROM RCBSAP..AssetMaster AM
+ INNER JOIN RCBSAP..RFIDMappingHistory RM
+ ON AM.SLNO = RM.SRNO ORDER BY CASE WHEN RM.RFIDStatus = 'Active' THEN 0 ELSE 1 END, RM.RFIDHistoryDate DESC">
             </asp:SqlDataSource>
 
         </div>
