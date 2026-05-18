@@ -71,9 +71,8 @@ public class RequestOrderReport : DevExpress.XtraReports.UI.XtraReport
         this.xrLabel7.Text = values[3];      // Email
         this.xrLabel8.Text = values[4];      // Department
         this.xrLabel12.Text = values[5];     // Req No
-       // this.xrLabel14.Text = values[6];     // Description
-
-       
+     // this.xrLabel14.Text = values[6];     // Description
+        this.xrLabel14.Text = values[7];
 
         this.xrTable1.Borders = DevExpress.XtraPrinting.BorderSide.All;
         this.xrTable1.BeginInit();
@@ -377,20 +376,21 @@ public class RequestOrderReport : DevExpress.XtraReports.UI.XtraReport
         this.xrLabel16.StylePriority.UseBorders = false;
         this.xrLabel16.Text = "VAT TIN";
         // 
-        // xrLabel14
-        // 
-        //this.xrLabel14.Borders = DevExpress.XtraPrinting.BorderSide.None;
-        //this.xrLabel14.Font = new System.Drawing.Font("Verdana", 8F);
-        //this.xrLabel14.LocationFloat = new DevExpress.Utils.PointFloat(151.0415F, 176.0832F);
-        //this.xrLabel14.Name = "xrLabel14";
-        //this.xrLabel14.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-        //this.xrLabel14.SizeF = new System.Drawing.SizeF(161.4584F, 23F);
-        //this.xrLabel14.StylePriority.UseBorders = false;
-        //this.xrLabel14.StylePriority.UseFont = false;
-        //this.xrLabel14.Text = "xrLabel14";
-        // 
-        // xrLine1
-        // 
+
+
+
+        this.xrLabel14.Borders = DevExpress.XtraPrinting.BorderSide.None;
+        this.xrLabel14.Font = new System.Drawing.Font("Verdana", 8F);
+        this.xrLabel14.LocationFloat = new DevExpress.Utils.PointFloat(151.0415F, 176.0832F);
+        this.xrLabel14.Name = "xrLabel14";
+        this.xrLabel14.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+        this.xrLabel14.SizeF = new System.Drawing.SizeF(161.4584F, 23F);
+        this.xrLabel14.StylePriority.UseBorders = false;
+        this.xrLabel14.StylePriority.UseFont = false;
+        this.xrLabel14.Text = "xrLabel14";
+
+
+       
         this.xrLine1.Borders = DevExpress.XtraPrinting.BorderSide.None;
         this.xrLine1.LocationFloat = new DevExpress.Utils.PointFloat(640.5067F, 346.4165F);
         this.xrLine1.Name = "xrLine1";
@@ -582,6 +582,7 @@ public class RequestOrderReport : DevExpress.XtraReports.UI.XtraReport
         // 
         // xrLabel11
         // 
+
         this.xrLabel11.Borders = DevExpress.XtraPrinting.BorderSide.None;
         this.xrLabel11.LocationFloat = new DevExpress.Utils.PointFloat(16.70829F, 117.6249F);
         this.xrLabel11.Name = "xrLabel11";
@@ -592,6 +593,18 @@ public class RequestOrderReport : DevExpress.XtraReports.UI.XtraReport
         // 
         // xrLabel12
         // 
+
+        this.xrLabel9.Borders = DevExpress.XtraPrinting.BorderSide.None;
+        this.xrLabel9.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold);
+        this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(481.7985F, 176.0832F);
+        this.xrLabel9.Name = "xrLabel9";
+        this.xrLabel9.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+        this.xrLabel9.SizeF = new System.Drawing.SizeF(91.24997F, 23F);
+        this.xrLabel9.StylePriority.UseBorders = false;
+        this.xrLabel9.StylePriority.UseFont = false;
+        this.xrLabel9.Text = "Department";
+
+
         this.xrLabel12.Borders = DevExpress.XtraPrinting.BorderSide.None;
         this.xrLabel12.Font = new System.Drawing.Font("Verdana", 8F);
         this.xrLabel12.LocationFloat = new DevExpress.Utils.PointFloat(151.0415F, 117.6249F);
@@ -614,6 +627,15 @@ public class RequestOrderReport : DevExpress.XtraReports.UI.XtraReport
         // 
         // xrLabel10
         // 
+        this.xrLabel13.Borders = DevExpress.XtraPrinting.BorderSide.None;
+        this.xrLabel13.LocationFloat = new DevExpress.Utils.PointFloat(17.70824F, 176.0832F);
+        this.xrLabel13.Name = "xrLabel13";
+        this.xrLabel13.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+        this.xrLabel13.SizeF = new System.Drawing.SizeF(133.3333F, 23F);
+        this.xrLabel13.StylePriority.UseBorders = false;
+        this.xrLabel13.Text = "Custodian ID";
+
+
         this.xrLabel10.Borders = DevExpress.XtraPrinting.BorderSide.None;
         this.xrLabel10.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Bold);
         this.xrLabel10.LocationFloat = new DevExpress.Utils.PointFloat(540.5067F, 346.4165F);
