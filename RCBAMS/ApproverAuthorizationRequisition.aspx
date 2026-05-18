@@ -207,7 +207,7 @@
                                 VisibleIndex="1">
                                 <EditFormSettings Visible="False" />
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn FieldName="ReqID" VisibleIndex="2" >
+                            <dx:GridViewDataTextColumn FieldName="ReqID" Width="200px" VisibleIndex="2" >
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn FieldName="ItemID" VisibleIndex="2">
                             </dx:GridViewDataTextColumn>
@@ -284,7 +284,7 @@
         ReqSendBy,
         Location
     FROM POSRequisitionParent
-    WHERE Status='Requisition Sent to POadmin'
+    WHERE Status='Requisition Sent to POInc'
     ORDER BY Date DESC">
 </asp:SqlDataSource>
    <br />

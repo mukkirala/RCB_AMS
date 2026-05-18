@@ -41,13 +41,13 @@ public partial class ApprovePage : System.Web.UI.Page
                 lbl_Req_ID.Text = dt.Rows[0]["ReqID"].ToString();
                 lbl_RequisitionDate.Text = dt.Rows[0]["Date"].ToString();
                 lbl_Req_Desc.Text = dt.Rows[0]["Description"].ToString();
-                lbl_Req_Send_by.Text = dt.Rows[0]["sendby"].ToString();
+                lbl_Req_Send_by.Text = dt.Rows[0]["ReqSendBy"].ToString();
             }
         }
         else
         {
             SqlDataAdapter da = new SqlDataAdapter(@"
-            SELECT ReqID,Date,Description,sendby,Status,Location,* 
+            SELECT ReqID,Date,Description,ReqSendBy,Status,Location,* 
             FROM POSRequisitionParent
             WHERE POSRequisitionParent.ReqID='" + Session["ReqID"] + "'", myconnection);
 
@@ -59,7 +59,7 @@ public partial class ApprovePage : System.Web.UI.Page
                 lbl_Req_ID.Text = dt.Rows[0]["ReqID"].ToString();
                 lbl_RequisitionDate.Text = dt.Rows[0]["Date"].ToString();
                 lbl_Req_Desc.Text = dt.Rows[0]["Description"].ToString();
-                lbl_Req_Send_by.Text = dt.Rows[0]["sendby"].ToString();
+                lbl_Req_Send_by.Text = dt.Rows[0]["ReqSendBy"].ToString();
             }
         }
     }

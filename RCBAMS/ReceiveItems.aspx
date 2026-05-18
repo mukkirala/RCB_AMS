@@ -166,29 +166,29 @@
                      style="font-weight: 700; color: #FF0000 ">
                  </dx:ASPxLabel>
                  <br />
-    <strong  style="margin-left:75px"><span class="style105">Received Items From Warehouse</span></strong><br />
+    <strong  style="margin-left:75px"><span class="style105">Received Items </span></strong><br />
     <table style="margin-left:75px">
         <tr>
-            <td class="auto-style14">
-                WareHouse</td>
+           <%-- <td class="auto-style14">
+                WareHouse</td>--%>
             <td class="auto-style10">
-                <dx:ASPxLabel ID="lbl_name" runat="server" Font-Size="Larger" Font-Bold="true" ForeColor="Red" >
+                <dx:ASPxLabel ID="lbl_name" runat="server" Visible="false" Font-Size="Larger" Font-Bold="true" ForeColor="Red" >
                 </dx:ASPxLabel>
             </td>
-                                                     <td class="auto-style12">
+                                                 <%--    <td class="auto-style12">
                Unit Name
-           </td>
+           </td>--%>
            <td class="auto-style13">
-                <dx:ASPxLabel ID="lbl_unitname" runat="server" 
+                <dx:ASPxLabel ID="lbl_unitname" Visible="false" runat="server" 
     style="font-weight: 700; color: #FF3300; font-size: medium; margin-left: 0px;" >
 </dx:ASPxLabel>
            </td>
-           <td class="auto-style11">
+           <%--<td class="auto-style11">
                Category Name
-           </td>
+           </td>--%>
            <td>
 
-                <dx:ASPxLabel ID="lbl_category" runat="server" 
+                <dx:ASPxLabel ID="lbl_category" Visible="false" runat="server" 
     style="font-weight: 700; color: #FF3300; font-size: medium;" >
 </dx:ASPxLabel>
            </td>
@@ -564,7 +564,7 @@
             <td class="style146">
                 Remarks</td>
             <td>
-                <asp:TextBox ID="ASPxMemo1" runat="server" Width="175px" TextMode="MultiLine" Rows="2" Columns="18">
+                <asp:TextBox ID="ASPxMemo1" runat="server" Width="175px" TextMode="MultiLine" Rows="2" Columns="38">
                 </asp:TextBox>
             </td>
         </tr>

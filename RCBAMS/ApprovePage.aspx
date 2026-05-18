@@ -52,26 +52,26 @@
 		</div>
 
 
+<div class="col-sm-2">
+	 <strong>Description: </strong>
+ <%--<dx:ASPxLabel ID="ASPxLabel4" runat="server" Text="Requisition Description:" Font-Bold="true"></dx:ASPxLabel>--%>
+	</div>
 
-	<div class="col-sm-2">
+<div class="col-sm-5">
+ <dx:ASPxLabel ID="lbl_Req_Desc" runat="server" Text=""></dx:ASPxLabel>
+	</div>
+	<%--<div class="col-sm-2">
 		 <strong>Warehouse: </strong>
-	 <%--<dx:ASPxLabel ID="ASPxLabel5" runat="server" Text="Warehouse :" Font-Bold="true"></dx:ASPxLabel>--%>
-		</div>
+	 <dx:ASPxLabel ID="ASPxLabel5" runat="server" Text="Warehouse :" Font-Bold="true"></dx:ASPxLabel>
+		</div>--%>
 
 	<div class="col-sm-3">
-	 <dx:ASPxLabel ID="lbl_Warehouse" runat="server" Text=""></dx:ASPxLabel>
+	 <dx:ASPxLabel ID="lbl_Warehouse" Visible="false" runat="server" Text=""></dx:ASPxLabel>
 		</div>
 </div>
 		  <br />
 		            <div class="col-sm-12"> 
-	<div class="col-sm-2">
-		 <strong>Description: </strong>
-	 <%--<dx:ASPxLabel ID="ASPxLabel4" runat="server" Text="Requisition Description:" Font-Bold="true"></dx:ASPxLabel>--%>
-		</div>
-
-	<div class="col-sm-5">
-	 <dx:ASPxLabel ID="lbl_Req_Desc" runat="server" Text=""></dx:ASPxLabel>
-		</div>
+	
 						</div>
 
 
