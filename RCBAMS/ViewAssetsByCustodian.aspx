@@ -48,7 +48,7 @@
           <label>Select AssetUser</label>
            </div>
                 <div class="col-sm-2" style="padding-left:0px">
-                    <dx:ASPxComboBox ID="cmb_Dep" runat="server" Width="90%" DataSourceID="SqbDBaircraft"  Height="5px" AutoPostBack="true"
+                    <dx:ASPxComboBox ID="cmb_Dep" runat="server" Width="190px" DataSourceID="SqbDBaircraft"  Height="5px" AutoPostBack="true"
                         TextField="AssetUser" ValueField="AssetUser"  ValueType="System.String" IncrementalFilteringMode="Contains"
                           CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" 
                         >
@@ -71,6 +71,7 @@
 
                 
              </div>
+         
    <div class="col-sm-12">
 		<div class="col-sm-3">
             <dx:ASPxButton ID="ASPxButton1" runat="server" ClientInstanceName="button1" Text="Show Customization Window"

@@ -31,38 +31,51 @@
       <h4> <strong>ASSETS BY YEAR WISE </strong></h4>
       
       <br />
-       <div class="col-sm-2">
-             
-                 <label>SELECT YEAR</label>
-           </div>
-                <div class="col-sm-2" >
-                    <dx:ASPxComboBox ID="cmb_Dep" runat="server" Width="100%" DataSourceID="SqbDBaircraft"  Height="5px" 
-                        TextField="YearofPurchase" ValueField="YearofPurchase"  ValueType="System.String" IncrementalFilteringMode="Contains"
-                          CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" 
-                        >
-                        <validationsettings errortextposition="bottom" validationgroup="btn">
-                            <requiredfield errortext="please select Asset Type" isrequired="true" />
-                        </validationsettings>
-                        <loadingpanelimage url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
-                        </loadingpanelimage>
-                        <validationsettings>
-                            <errorframestyle imagespacing="4px">
-                                <errortextpaddings paddingleft="4px" />
-                            </errorframestyle>
-                        </validationsettings>
-                    </dx:ASPxComboBox>                   
-  
-                 <asp:SqlDataSource ID="SqbDBaircraft" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
-        SelectCommand="SELECT DISTINCT [YearofPurchase] FROM [AssetMaster]">
-         </asp:SqlDataSource>
+      <div class="col-sm-2">
+    <label>SELECT YEAR</label>
+</div>
 
-                
-             </div>
-       <div class="col-sm-1">
-                <asp:ImageButton  OnClick="search_Click"  ID="search"  ImageUrl="~/Images/search1.png" runat="server" />
-            </div>
-               </div>
+<div class="col-sm-3">
+    <dx:ASPxComboBox ID="cmb_Dep" runat="server"
+        Width="220px"
+        Height="30px"
+        DataSourceID="SqbDBaircraft"
+        TextField="YearofPurchase"
+        ValueField="YearofPurchase"
+        ValueType="System.String"
+        IncrementalFilteringMode="Contains"
+        CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"
+        CssPostfix="PlasticBlue"
+        SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
+
+        <ValidationSettings ErrorTextPosition="Bottom" ValidationGroup="btn">
+            <RequiredField ErrorText="please select Asset Type" IsRequired="true" />
+        </ValidationSettings>
+
+        <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
+        </LoadingPanelImage>
+
+        <ValidationSettings>
+            <ErrorFrameStyle ImageSpacing="4px">
+                <ErrorTextPaddings PaddingLeft="4px" />
+            </ErrorFrameStyle>
+        </ValidationSettings>
+
+    </dx:ASPxComboBox>
+
+    <asp:SqlDataSource ID="SqbDBaircraft" runat="server"
+        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
+        SelectCommand="SELECT DISTINCT [YearofPurchase] FROM [AssetMaster]">
+    </asp:SqlDataSource>
+</div>
+
+<div class="col-sm-1" style="padding-left:25px; padding-top:2px;">
+    <asp:ImageButton
+        OnClick="search_Click"
+        ID="search"
+        ImageUrl="~/Images/search1.png"
+        runat="server" />
+</div>
 
               
                   <dxchartsui:webchartcontrol ID="WebChartControl1" runat="server" 

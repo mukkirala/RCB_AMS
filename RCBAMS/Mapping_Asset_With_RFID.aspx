@@ -145,24 +145,36 @@
 <td>
     &nbsp;</td></tr>
        
-        <tr>
-            
-            <td style="font-size:large">Scan RFID Card
-                <%--<dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Scan RFID Card :">
-                </dx:ASPxLabel>--%>
-            </td>
-            <td>
-                <dx:ASPxTextBox ID="txt_REIDCard" runat="server" Width="300px" Height="25px" AutoPostBack="true" OnTextChanged="txt_REIDCard_TextChanged">
-                </dx:ASPxTextBox>
-                   <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txt_REIDCard" errortextposition="bottom"
-       ForeColor="Red" Width="200px" ValidationGroup="btn" runat="server" ErrorMessage="   Enter RFID Number"></asp:RequiredFieldValidator>
-            </td>
-             <td>
-                
-            
-          </td>
-           
-        </tr>
+      <tr>
+    <td style="font-size:large; padding-right:20px;">
+        Scan RFID Card
+    </td>
+
+    <td>
+        <dx:ASPxTextBox 
+            ID="txt_REIDCard" 
+            runat="server" 
+            Width="300px" 
+            Height="25px" 
+            AutoPostBack="true" 
+            OnTextChanged="txt_REIDCard_TextChanged">
+        </dx:ASPxTextBox>
+
+        <asp:RequiredFieldValidator 
+            ID="RequiredFieldValidator2" 
+            ControlToValidate="txt_REIDCard" 
+            errortextposition="bottom"
+            ForeColor="Red" 
+            Width="200px" 
+            ValidationGroup="btn" 
+            runat="server" 
+            ErrorMessage="Enter RFID Number">
+        </asp:RequiredFieldValidator>
+    </td>
+
+    <td>
+    </td>
+</tr>
         <tr>
 <td>
     &nbsp;</td></tr>

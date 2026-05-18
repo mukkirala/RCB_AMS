@@ -197,7 +197,9 @@
 
  </div>
              <div class="col-sm-4">
-                <asp:TextBox ID="txt_AuditDiscription" runat="server" TextMode="MultiLine" Rows="3" Columns="38"></asp:TextBox>             
+                <asp:TextBox ID="txt_AuditDiscription" runat="server" TextMode="MultiLine" Rows="3" Columns="38"
+    Width="300px"
+    Height="80px"></asp:TextBox>             
              </div>
              </div>
             <div class="row form_div">

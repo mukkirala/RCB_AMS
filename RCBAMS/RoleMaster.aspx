@@ -64,7 +64,7 @@
         <td  class="style7">
            Select Role<span class="style5">*</span></td>
         <td class="style6">
-            <dx:ASPxComboBox ID="ASPxComboBox1" runat="server" Width="300px" Height="25px"
+            <dx:ASPxComboBox ID="ASPxComboBox1" runat="server" Width="280px" Height="25px"
                 CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
                
                 SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" 

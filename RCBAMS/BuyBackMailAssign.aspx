@@ -255,7 +255,7 @@
         SelectCommand="Select distinct RoleMaster.ROLE_ID,RoleMaster.ROLE_NAME as CustodianDepartment, RoleMaster.CustodianID ,
  CustodianName,Designation,email,RoleMaster.ROLE_STATUS from RoleMaster
 inner join CustodianMaster  ON  CustodianMaster.CustodianID=RoleMaster.CustodianID
-  where RoleMaster.ROLE_NAME in('Human Resources','Finance') and RoleMaster.ROLE_STATUS='Active'">
+  where RoleMaster.ROLE_NAME in('PO','Store') and RoleMaster.ROLE_STATUS='Active'">
          </asp:SqlDataSource>
        
 

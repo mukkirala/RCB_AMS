@@ -72,7 +72,7 @@
                     Select  Wing <span style="color:red">*</span>
                 </div>
                 <div class="col-sm-2" style="padding-left:0px">
-                    <dx:ASPxComboBox ID="cmb_Location" runat="server" Width="100px" DataSourceID="SqbDBaircraft"  Height="5px" AutoPostBack="true"
+                    <dx:ASPxComboBox ID="cmb_Location" runat="server" Width="225px" DataSourceID="SqbDBaircraft"  Height="5px" AutoPostBack="true"
                         TextField="Location" ValueField="Location"  ValueType="System.String" IncrementalFilteringMode="Contains"
                           CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" 
                         >

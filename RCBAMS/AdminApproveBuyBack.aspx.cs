@@ -108,7 +108,7 @@ public partial class AdminApproveBuyBack : System.Web.UI.Page
     public string GetFinCustodianID()
     {
         string id = "";
-        string query = "SELECT top 1 CustodianID FROM [RoleMaster] where ROLE_NAME ='Finance' and ROLE_STATUS='Active'";
+        string query = "SELECT top 1 CustodianID FROM [RoleMaster] where ROLE_NAME ='PO' and ROLE_STATUS='Active'";
         SqlDataAdapter da = new SqlDataAdapter(query, conAMS);
         DataTable dt = new DataTable();
         da.Fill(dt);
@@ -123,7 +123,7 @@ public partial class AdminApproveBuyBack : System.Web.UI.Page
     public string GetHRCustodianID()
     {
         string id = "";
-        string query = "SELECT top 1 CustodianID FROM [RoleMaster] where ROLE_NAME ='Human Resources' and ROLE_STATUS='Active'";
+        string query = "SELECT top 1 CustodianID FROM [RoleMaster] where ROLE_NAME ='Store' and ROLE_STATUS='Active'";
         SqlDataAdapter da = new SqlDataAdapter(query, conAMS);
         DataTable dt = new DataTable();
         da.Fill(dt);
@@ -164,7 +164,7 @@ public partial class AdminApproveBuyBack : System.Web.UI.Page
             string msg2 = "Request of Asset Buyback from Employee ID: <b>" + reqid.Text + ", " + lbl_empname.Text + "</b> for Asset with MainAssetNumber: <b>" + lbl_mainassetnumber.Text + "</b> and Asset Description: <b>" + lbl_reqasset.Text + "</b> is approved.<br/><br/>" + "<b></b>";
             if (Fin != "")
             {
-                bool response = MailSending.sendMailAttach(Fin, subject, msg2);
+                bool response = MailSending.sendMailAttach( Fin, subject, msg2);
             }
             if (HR != "")
             {

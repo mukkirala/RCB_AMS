@@ -200,7 +200,7 @@
              Remarks
         </div>
         <div class="col-sm-3">
-            <asp:TextBox ID="txt_cmt" runat="server" TextMode="MultiLine" Rows="2"  Columns="38"></asp:TextBox>
+            <asp:TextBox ID="txt_cmt" runat="server" TextMode="MultiLine" Rows="2"  Columns="40"></asp:TextBox>
         </div>
     </div>
       <div class="clearfix"></div>
@@ -211,7 +211,9 @@
               
          </div>
          <div class="col-sm-3">
-              <dx:ASPxButton ID="AuditComplete" runat="server" Text="Mark Audit Complete" OnClick="AuditComplete_Click"></dx:ASPxButton>
+              <dx:ASPxButton ID="AuditComplete" runat="server" Text="Mark Audit Complete" OnClick="AuditComplete_Click" Width="191px" 
+        CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange" 
+        SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css"></dx:ASPxButton>
          </div>
         </div>
 

@@ -141,13 +141,26 @@
        </StylesEditors>
 
    </dx:ASPxGridView>
-	
+	<br />
 	
 <dx:ASPxButton ID="btn_save" ValidationGroup="btn" runat="server" Text="Send Email" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange" SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css" OnClick="ASPxButton1_Click" Width="204px" ></dx:ASPxButton>
 
-<asp:SqlDataSource ID="DS_Satis" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
-SelectCommand="select assetid,MainAssetNumber,MaintenanceContract,DueUnit,Span,CalibrationOn,CalibrationDue from AssetCalibration">
-   </asp:SqlDataSource>
+<asp:SqlDataSource ID="DS_Satis"
+runat="server"
+ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
+
+SelectCommand="
+select
+CalibrationID,
+assetid,
+MainAssetNumber,
+MaintenanceContract,
+DueUnit,
+Span,
+CalibrationOn,
+CalibrationDue
+from AssetCalibration">
+</asp:SqlDataSource>
 		
    </div>
 

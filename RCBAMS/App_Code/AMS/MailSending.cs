@@ -15,7 +15,7 @@ using System.Web.Services.Description;
 public class MailSending
 {
    static SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
-   static  SqlConnection myConnectionString = new SqlConnection(WebConfigurationManager.ConnectionStrings["ASSETManagementConnectionString"].ConnectionString);
+   static  SqlConnection myConnectionString = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
 
     public MailSending()
     {
@@ -27,7 +27,7 @@ public class MailSending
     public static string GetReportingMail(string custid)
     {
         string rmail = "";
-        string query = "SELECT email FROM [vEmpDtlsAssetApp] where CustodianID = '" + custid + "'";
+        string query = "SELECT email FROM CustodianMaster where CustodianID = '" + custid + "'";
         SqlDataAdapter da = new SqlDataAdapter(query, myConnectionString);
         DataTable dt = new DataTable();
         da.Fill(dt);
@@ -40,7 +40,7 @@ public class MailSending
     public static string GetReportingName(string custid)
     {
         string name = "";
-        string query = "SELECT CustodianName FROM [vEmpDtlsAssetApp] where CustodianID = '" + custid + "'";
+        string query = "SELECT CustodianName FROM CustodianMaster where CustodianID = '" + custid + "'";
         SqlDataAdapter da = new SqlDataAdapter(query, myConnectionString);
         DataTable dt = new DataTable();
         da.Fill(dt);
@@ -53,7 +53,7 @@ public class MailSending
     public static string GetAdminMail(string custid)
     {
         string rmail = "";
-        string query = "SELECT email FROM [vEmpDtlsAssetApp] where CustodianID = '" + custid + "'";
+        string query = "SELECT email FROM CustodianMaster where CustodianID = '" + custid + "'";
         SqlDataAdapter da2 = new SqlDataAdapter(query, myConnectionString);
         DataTable dt2 = new DataTable();
         da2.Fill(dt2);
@@ -66,7 +66,7 @@ public class MailSending
     public static string GetAdminName(string custid)
     {
         string name = "";
-        string query1 = "SELECT CustodianName FROM [vEmpDtlsAssetApp] where CustodianID = '" + custid + "'";
+        string query1 = "SELECT CustodianName FROM CustodianMaster where CustodianID = '" + custid + "'";
         SqlDataAdapter da1 = new SqlDataAdapter(query1, myConnectionString);
         DataTable dt1 = new DataTable();
         da1.Fill(dt1);
@@ -79,7 +79,7 @@ public class MailSending
     public static string GetRequesterMail(string custid)
     {
         string rmail = "";
-        string query = "SELECT email FROM [vEmpDtlsAssetApp] where CustodianID = '" + custid + "'";
+        string query = "SELECT email FROM CustodianMaster where CustodianID = '" + custid + "'";
         SqlDataAdapter da3 = new SqlDataAdapter(query, myConnectionString);
         DataTable dt3 = new DataTable();
         da3.Fill(dt3);
@@ -92,7 +92,7 @@ public class MailSending
     public static string GetRequesterName(string custid)
     {
         string name = "";
-        string query = "SELECT CustodianName FROM [vEmpDtlsAssetApp] where CustodianID = '" + custid + "'";
+        string query = "SELECT CustodianName FROM CustodianMaster where CustodianID = '" + custid + "'";
         SqlDataAdapter da4 = new SqlDataAdapter(query, myConnectionString);
         DataTable dt4 = new DataTable();
         da4.Fill(dt4);
@@ -132,7 +132,7 @@ public class MailSending
         //client.Credentials = new System.Net.NetworkCredential(EmailFromAddress, AppCredentialPassword);//neemus
         //client.EnableSsl = true;//neemus
         string appr = approvermail;
-       // string appr = "vishnu.vardhan103@gmail.com";
+        //string appr = "sandeepsapparapu@gmail.com";
 
         foreach (var address in appr.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries))
         {
@@ -268,13 +268,13 @@ public class MailSending
  
 
             // Set the credentials for the Exchange Server
-            NetworkCredential credentials = new NetworkCredential("assetadmin@bstc.bel.com", "P@ssword");
+            NetworkCredential credentials = new NetworkCredential("sandeep.sapparapu@neemus.com", "Sandy@8555");
             client.Credentials = credentials;
 
  
 
             // Set the sender and recipient email addresses
-            MailAddress fromAddress = new MailAddress("assetadmin@bstc.bel.com");
+            MailAddress fromAddress = new MailAddress("sandeep.sapparapu@neemus.com");
             MailAddress toAddress = new MailAddress(approvermail);
 
  
