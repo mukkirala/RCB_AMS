@@ -297,14 +297,33 @@
          </div>
     </div>
      <div class="clearfix"></div> 
-     <div class="row form_div">
-         <div class="col-sm-1">
-             <dx:ASPxButton ID="AddAssets" runat="server" Text="Approve" Width="20" OnClick="AddAssets_Click" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange"></dx:ASPxButton>             
-         </div>
-         <div class="col-sm-4">
-          <dx:ASPxButton ID="RejectAsset" runat="server" Text="Reject" Width="20" OnClick="RejectAsset_Click" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange"></dx:ASPxButton><br /><br />
-         </div>
-     </div>
+    <div class="row form_div">
+
+    <div class="col-sm-2">
+        <dx:ASPxButton 
+            ID="AddAssets" 
+            runat="server" 
+            Text="Approve"
+            Width="120px"
+            OnClick="AddAssets_Click"
+            CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css"
+            CssPostfix="SoftOrange">
+        </dx:ASPxButton>
+    </div>
+
+    <div class="col-sm-2">
+        <dx:ASPxButton 
+            ID="RejectAsset" 
+            runat="server" 
+            Text="Reject"
+            Width="120px"
+            OnClick="RejectAsset_Click"
+            CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css"
+            CssPostfix="SoftOrange">
+        </dx:ASPxButton>
+    </div>
+
+</div>
 
    
     <div class="clearfix"></div>

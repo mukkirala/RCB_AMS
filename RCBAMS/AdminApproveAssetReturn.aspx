@@ -217,57 +217,7 @@
      </div>
      <div class="clearfix"></div>
      <br />
-     <%--<strong>Approver Details:</strong>
-         <hr />            
-     <div class="row form_div">
-         <div class="col-sm-2">
-               <label> Approver ID:</label>
-         </div>
-          <div class="col-sm-4">
-             <dx1:ASPxLabel ID="apprID" runat="server"  Text="" Font-Bold="True" ForeColor="Blue">
-		   </dx1:ASPxLabel>
-         </div>
-         <div class="col-sm-2">
-            <label> Approver Name:</label>
-         </div>
-         <div class="col-sm-4">
-             <dx1:ASPxLabel ID="apprName" runat="server"  Text="" Font-Bold="True" ForeColor="Blue">
-		   </dx1:ASPxLabel>          
-         </div>      
-    </div>
-     <div class="row form_div">
-         <div class="col-sm-2">
-               <label> Department Code:</label>
-         </div>
-          <div class="col-sm-4">
-             <dx1:ASPxLabel ID="apprDeptCode" runat="server"  Text="" Font-Bold="True" ForeColor="Blue">
-		   </dx1:ASPxLabel>
-         </div>
-         <div class="col-sm-2">
-            <label> Department Name:</label>
-         </div>
-         <div class="col-sm-4">
-             <dx1:ASPxLabel ID="apprDept" runat="server"  Text="" Font-Bold="True" ForeColor="Blue">
-		   </dx1:ASPxLabel>          
-         </div>      
-    </div>
-     <div class="row form_div">
-         <div class="col-sm-2">
-             <label>Designation:</label>
-         </div>
-         <div class="col-sm-4">
-             <dx1:ASPxLabel ID="apprdesign" runat="server"  Text="" Font-Bold="True" ForeColor="Blue">
-		   </dx1:ASPxLabel>  
-         </div>
-     
-         <div class="col-sm-2">
-             <label>Remarks:</label>  
-         </div>
-          <div class="col-sm-4">
-            <dx1:ASPxLabel ID="apprcmts" runat="server"  Text="" Font-Bold="True" ForeColor="Blue">
-		   </dx1:ASPxLabel>  
-         </div>
-    </div>--%>
+ 
      
      <div class="clearfix"></div>
      <div class="row">   
@@ -296,17 +246,35 @@
      </div>  
      
      <div class="clearfix"></div>
-     <div class="row form_div">
-         <div class="col-sm-1">
-             <dx:ASPxButton ID="AddAssets" runat="server" Text="Approve" Width="20" OnClick="AddAssets_Click" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange" 
-        SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css"></dx:ASPxButton>
-              
-         </div>
-         <div class="col-sm-4">
-          <dx:ASPxButton ID="RejectAsset" runat="server" Text="Reject" Width="20" OnClick="RejectAsset_Click" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange" 
-        SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css"></dx:ASPxButton><br /><br />
-         </div>
-     </div>
+<div class="row form_div">
+
+    <div class="col-sm-2">
+        <dx:ASPxButton 
+            ID="AddAssets" 
+            runat="server" 
+            Text="Approve"
+            Width="120px"
+            OnClick="AddAssets_Click"
+            CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css"
+            CssPostfix="SoftOrange"
+            SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css">
+        </dx:ASPxButton>
+    </div>
+
+    <div class="col-sm-2">
+        <dx:ASPxButton 
+            ID="RejectAsset" 
+            runat="server" 
+            Text="Reject"
+            Width="120px"
+            OnClick="RejectAsset_Click"
+            CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css"
+            CssPostfix="SoftOrange"
+            SpriteCssFilePath="~/App_Themes/SoftOrange/{0}/sprite.css">
+        </dx:ASPxButton>
+    </div>
+
+</div>
    
     <div class="clearfix"></div>
     <div class="row"> 

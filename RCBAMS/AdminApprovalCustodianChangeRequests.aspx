@@ -228,53 +228,7 @@
          </div>
      </div>
        <br />
-      <%--<h4> <strong>Approver Details:</strong></h4>
-         <hr />       
-      
-     <div class="row form_div">
-         <div class="col-sm-2" style="font-size:larger">
-               <label> Approver ID:</label>
-         </div>
-          <div class="col-sm-4">
-             <dx1:ASPxLabel ID="apprID" runat="server"  Text="" Font-Bold="True"  ForeColor="Black"  Font-Size="Medium">
-		   </dx1:ASPxLabel>
-         </div>
-         <div class="col-sm-2" style="font-size:larger">
-            <label> Approver Name:</label>
-         </div>
-         <div class="col-sm-4">
-             <dx1:ASPxLabel ID="apprName" runat="server"  Text="" Font-Bold="True"  ForeColor="Black"  Font-Size="Medium">
-		   </dx1:ASPxLabel>          
-         </div>      
-    </div>
-     <div class="row form_div">
-         
-         <div class="col-sm-2"  style="font-size:larger">
-            <label> Department Name:</label>
-         </div>
-         <div class="col-sm-4">
-             <dx1:ASPxLabel ID="apprDept" runat="server"  Text="" Font-Bold="True"  ForeColor="Black"  Font-Size="Medium">
-		   </dx1:ASPxLabel>          
-         </div>  
-        <div class="col-sm-2"  style="font-size:larger">
-             <label> Designation:</label>
-         </div>
-         <div class="col-sm-4">
-             <dx1:ASPxLabel ID="apprdesign" runat="server"  Text="" Font-Bold="True" ForeColor="Black"  Font-Size="Medium">
-		   </dx1:ASPxLabel>  
-         </div>
-    </div>
-    <div class="row form_div">
-         
-     
-         <div class="col-sm-2" style="font-size:larger">
-           <span class="auto-style7">Remarks:</span>        
-         </div>
-          <div class="col-sm-4">
-            <dx1:ASPxLabel ID="apprcmts" runat="server"  Text="" Font-Bold="True" ForeColor="Black"  Font-Size="Medium">
-		   </dx1:ASPxLabel> 
-         </div>
-    </div>--%>
+    
    <div class="clearfix"></div>
     <div class="row">   <div class="col-sm-12"><strong></strong>
         <hr/>
@@ -299,14 +253,32 @@
          </div>
     </div>
      <div class="row form_div">
-         <div class="col-sm-1">
-             <dx:ASPxButton ID="AddAssets" runat="server" Text="Approve" Width="20" OnClick="AddAssets_Click"   CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css"  CssPostfix="SoftOrange" ></dx:ASPxButton>
-              
-         </div>
-         <div class="col-sm-4">
-          <dx:ASPxButton ID="RejectAsset" runat="server" Text="Reject" Width="20" OnClick="RejectAsset_Click"    CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css"   CssPostfix="SoftOrange" ></dx:ASPxButton><br /><br />
-         </div>
-     </div>
+
+    <div class="col-sm-2">
+        <dx:ASPxButton 
+            ID="AddAssets" 
+            runat="server" 
+            Text="Approve"
+            Width="120px"
+            OnClick="AddAssets_Click"
+            CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css"
+            CssPostfix="SoftOrange">
+        </dx:ASPxButton>
+    </div>
+
+    <div class="col-sm-2">
+        <dx:ASPxButton 
+            ID="RejectAsset" 
+            runat="server" 
+            Text="Reject"
+            Width="120px"
+            OnClick="RejectAsset_Click"
+            CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css"
+            CssPostfix="SoftOrange">
+        </dx:ASPxButton>
+    </div>
+
+</div>
 </div>
 </asp:Content>
 

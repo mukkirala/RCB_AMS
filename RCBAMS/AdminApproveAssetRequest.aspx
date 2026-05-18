@@ -118,193 +118,9 @@
 						 </dx1:ASPxLabel>           
             </div>
         </div>
-    <%--<div class="row form_div">
-         <div class="col-sm-2">
-           <label>Requested Status:</label>
-         </div>
-         <div class="col-sm-4">
-            
-             <dx1:ASPxLabel ID="lbl_req" runat="server"  Text="" Font-Bold="True">
-                         </dx1:ASPxLabel>
-         </div>
-     
-         <div class="col-sm-2">
-          
-        
-         </div>
-          <div class="col-sm-4">
-       
-             
-         </div>
-              </div>--%>
+
      <br />
-     <%--<div class="clearfix"></div>
-     <strong>Approver Details</strong>
-         <hr />       
-     
-     <div class="row form_div">
-         <div class="col-sm-2"  style="Font-Size:large">
-               <label>Approver ID:</label>
-         </div>
-          <div class="col-sm-4">
-             <dx1:ASPxLabel ID="apprID" runat="server"  Text="" Font-Bold="True" ForeColor="Black" Font-Size="Medium">
-		   </dx1:ASPxLabel>
-         </div>
-         <div class="col-sm-2"  style="Font-Size:large">
-            <label> Approver Name:</label>
-         </div>
-         <div class="col-sm-4">
-             <dx1:ASPxLabel ID="apprName" runat="server"  Text="" Font-Bold="True" ForeColor="Black" Font-Size="Medium">
-		   </dx1:ASPxLabel>          
-         </div>      
-    </div>
-     <div class="row form_div">
-        
-         <div class="col-sm-2"  style="Font-Size:large">
-            <label> Department Name:</label>
-         </div>
-         <div class="col-sm-4">
-             <dx1:ASPxLabel ID="apprDept" runat="server"  Text="" Font-Bold="True" ForeColor="Black" Font-Size="Medium">
-		   </dx1:ASPxLabel>          
-         </div>  
-          <div class="col-sm-2"  style="Font-Size:large">
-             <label> Designation:</label>
-         </div>
-         <div class="col-sm-4">
-             <dx1:ASPxLabel ID="apprdesign" runat="server"  Text="" Font-Bold="True" ForeColor="Black" Font-Size="Medium">
-		   </dx1:ASPxLabel>  
-         </div>
-     
-    </div>
-     <div class="row form_div">
-       
-         <div class="col-sm-2"  style="Font-Size:large">
-            <span class="auto-style7">Remarks:</span>         
-         </div>
-          <div class="col-sm-4">
-           <dx1:ASPxLabel ID="apprcmts" runat="server"  Text="" Font-Bold="True" ForeColor="Black" Font-Size="Medium">
-		            </dx1:ASPxLabel>   
-         </div>
-    </div>--%>
-
-      <hr/>
-<%--      <div class="row form_div">
-          <div class="col-sm-2 ">
-                   
-                    <label>Select Location</label>
-                </div>
-                <div class="col-sm-2">
-                    <dx:ASPxGridLookup ID="LocationGridLookup1" runat="server"  AutoGenerateColumns="False"
-                     DataSourceID="LocationSqlDataSource1" IncrementalFilteringMode="Contains" TextFormatString="{1}"
-                     KeyFieldName="LocationCode"   Height="25px"
-                    CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
-                    SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" width="170px">
-        <GridViewProperties>
-       <SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>
-      <Settings ShowFilterRow="True" />
-      <SettingsPager PageSize="5"></SettingsPager>
-    </GridViewProperties>
-                    <Columns>
-                        <dx:gridviewdatatextcolumn FieldName="LocationID"  ReadOnly="True" 
-                            VisibleIndex="0" Visible="false">
-                            <EditFormSettings Visible="True" />
-                        </dx:gridviewdatatextcolumn>                        
-                        <dx:gridviewdatatextcolumn FieldName="Location" VisibleIndex="1" >
-                        </dx:gridviewdatatextcolumn>
-                        <dx:gridviewdatatextcolumn FieldName="LocationCode" VisibleIndex="2" Caption="LocationCode">
-                        </dx:gridviewdatatextcolumn>
-                    </Columns>
-                     <GridViewImages SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
-                         <LoadingPanelOnStatusBar Url="~/App_Themes/PlasticBlue/GridView/gvLoadingOnStatusBar.gif">
-                         </LoadingPanelOnStatusBar>
-                         <LoadingPanel Url="~/App_Themes/PlasticBlue/GridView/Loading.gif">
-                         </LoadingPanel>
-                     </GridViewImages>
-                     <GridViewImagesFilterControl>
-                         <LoadingPanel Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
-                         </LoadingPanel>
-                     </GridViewImagesFilterControl>
-                     <GridViewStyles CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue">
-                         <Header ImageSpacing="10px" SortingImageSpacing="10px">
-                         </Header>
-                     </GridViewStyles>
-                     <GridViewStylesEditors>
-                         <CalendarHeader Spacing="11px">
-                         </CalendarHeader>
-                         <ProgressBar Height="25px">
-                         </ProgressBar>
-                     </GridViewStylesEditors>
-                     <ValidationSettings>
-                         <ErrorFrameStyle ImageSpacing="4px">
-                             <ErrorTextPaddings PaddingLeft="4px" />
-                         </ErrorFrameStyle>
-                     </ValidationSettings>
-                </dx:ASPxGridLookup>
-                </div>
-      </div>
-           <div class="row form_div">
-                <div class="col-sm-2 ">
-                   
-                    <label>Select Asset Type</label>
-                </div>
-                <div class="col-sm-2">
-                  <%--  <dx:ASPxComboBox ID="cmb_Assetname" runat="server" DataSourceID="SqlDataSource1" ValueField="AssetID" TextField="MainAssetNumber"></dx:ASPxComboBox>
-                      <dx:ASPxGridLookup ID="gridlkup_Asset" runat="server"  AutoGenerateColumns="False" OnInit="gridlkup_Asset_Init"
-                     DataSourceID="SqlDataSource1" IncrementalFilteringMode="Contains"  TextFormatString="{1}"
-                     KeyFieldName="AssetTypeID"   Height="25px"
-                    CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
-                    SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" Width="170px">
-        <GridViewProperties>
-       <SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>
-      <Settings ShowFilterRow="True" />
-      <SettingsPager PageSize="10"></SettingsPager>
-    </GridViewProperties>
-                    <Columns>
-                      
-                        <dx:GridViewDataTextColumn FieldName="AssetTypeID" ReadOnly="True" VisibleIndex="0" Visible="false">
-                            <EditFormSettings Visible="False" />
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="AssetTypeName" VisibleIndex="1" Width="100%">
-                        </dx:GridViewDataTextColumn>
-                    </Columns>
-                     <GridViewImages SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
-                         <LoadingPanelOnStatusBar Url="~/App_Themes/PlasticBlue/GridView/gvLoadingOnStatusBar.gif">
-                         </LoadingPanelOnStatusBar>
-                         <LoadingPanel Url="~/App_Themes/PlasticBlue/GridView/Loading.gif">
-                         </LoadingPanel>
-                     </GridViewImages>
-                     <GridViewImagesFilterControl>
-                         <LoadingPanel Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
-                         </LoadingPanel>
-                     </GridViewImagesFilterControl>
-                     <GridViewStyles CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue">
-                         <Header ImageSpacing="10px" SortingImageSpacing="10px">
-                         </Header>
-                     </GridViewStyles>
-                     <GridViewStylesEditors>
-                         <CalendarHeader Spacing="11px">
-                         </CalendarHeader>
-                         <ProgressBar Height="25px">
-                         </ProgressBar>
-                     </GridViewStylesEditors>
-                     <ValidationSettings>
-                         <ErrorFrameStyle ImageSpacing="4px">
-                             <ErrorTextPaddings PaddingLeft="4px" />
-                         </ErrorFrameStyle>
-                     </ValidationSettings>
-                </dx:ASPxGridLookup>
-
-                  
-                </div>
-
-                 <dx:ASPxButton ID="btn_search" runat="server" BackColor="White" 
-                    
-                    Width="20px" Height="25px" OnClick="btn_search_Click">
-                    <Image Url="~/Images/search1.png" Width="20px" Height="20px">
-                    </Image>
-                    <Border BorderColor="White" />                   
-                </dx:ASPxButton>
-             </div>--%>
+   
 
       <div class="row form_div">
          <div class="col-sm-2" style="font-size:Medium">
@@ -489,15 +305,31 @@
      
     <div class="clearfix"></div>
      
-     <div class="row form_div">
-         <div class="col-sm-1">
-             <dx:ASPxButton ID="AddAssets" runat="server" Text="Approve" Width="20" OnClick="Assets_Click" CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange" ></dx:ASPxButton>
-              
-         </div>
-         <div class="col-sm-4">
-          <dx:ASPxButton ID="RejectAsset" runat="server" Text="Reject" Width="20" OnClick="RejectAsset_Click"  CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css" CssPostfix="SoftOrange"></dx:ASPxButton><br /><br />
-         </div>
-     </div>
+<div class="row form_div">
+
+    <div class="col-sm-2">
+        <dx:ASPxButton 
+            ID="AddAssets" 
+            runat="server" 
+            Text="Approve"
+            Width="120px"
+            CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css"
+            CssPostfix="SoftOrange">
+        </dx:ASPxButton>
+    </div>
+
+    <div class="col-sm-2">
+        <dx:ASPxButton 
+            ID="RejectAsset" 
+            runat="server" 
+            Text="Reject"
+            Width="120px"
+            CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css"
+            CssPostfix="SoftOrange">
+        </dx:ASPxButton>
+    </div>
+
+</div>
 
 
 <asp:SqlDataSource ID="AssetTypesGridViewDS" runat="server"  ConnectionString="<%$ConnectionStrings:RCBSAPConnectionString %>" 

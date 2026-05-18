@@ -28,82 +28,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
             <br />
         <h3><strong style="margin-left:75px"><span class="style1">Authorizing Requisitions</span></strong></h3><br />
-   <%--     <table style="margin-left:75px; width: 411px;">
-            <tr>
-                <td class="style2">
-                    Select Warehouse</td>
-                <td></td>
-                <td class="style3">
-                    <dx:ASPxGridLookup ID="ASPxGridLookup1" runat="server"  AutoPostBack="true"
-                        CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" 
-                        SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" 
-                        AutoGenerateColumns="False" DataSourceID="SqlDataSource2" 
-                        KeyFieldName="GodownId" IncrementalFilteringMode="Contains" >
-<GridViewProperties>
-<SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>
-    <Settings ShowFilterRow="True" />
-</GridViewProperties>
-                        <Columns>
-                            <dx:GridViewDataTextColumn FieldName="GodownId" ReadOnly="True" Visible="false">
-                                <Settings AutoFilterCondition="Contains" />
-                                <EditFormSettings Visible="False" />
-                            </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn FieldName="GodownName" VisibleIndex="1">
-                                <Settings AutoFilterCondition="Contains" />
-                            </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn FieldName="ContactPerson" Visible="false">
-                                <Settings AutoFilterCondition="Contains" />
-                            </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn FieldName="ContactNo" Visible="false">
-                                <Settings AutoFilterCondition="Contains" />
-                            </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn FieldName="Area" Visible="false">
-                                <Settings AutoFilterCondition="Contains" />
-                            </dx:GridViewDataTextColumn>
-                        </Columns>
-                        <GridViewImages SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
-                            <LoadingPanelOnStatusBar Url="~/App_Themes/PlasticBlue/GridView/gvLoadingOnStatusBar.gif">
-                            </LoadingPanelOnStatusBar>
-                            <LoadingPanel Url="~/App_Themes/PlasticBlue/GridView/Loading.gif">
-                            </LoadingPanel>
-                        </GridViewImages>
-                        <GridViewImagesFilterControl>
-                            <LoadingPanel Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
-                            </LoadingPanel>
-                        </GridViewImagesFilterControl>
-                        <GridViewStyles CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue">
-                            <Header ImageSpacing="10px" SortingImageSpacing="10px">
-                            </Header>
-                        </GridViewStyles>
-                        <GridViewStylesEditors>
-                            <CalendarHeader Spacing="11px">
-                            </CalendarHeader>
-                            <ProgressBar Height="25px">
-                            </ProgressBar>
-                        </GridViewStylesEditors>
-                        <ButtonStyle Width="13px">
-                        </ButtonStyle>
-                        <ValidationSettings>
-                            <ErrorFrameStyle ImageSpacing="4px">
-                                <ErrorTextPaddings PaddingLeft="4px" />
-                            </ErrorFrameStyle>
-                        </ValidationSettings>
-                    </dx:ASPxGridLookup>
-                </td>
-                <td>
-                    <%--    <dx:ASPxButton ID="btn_search" runat="server" BackColor="White" 
-                        CssClass="auto-style8" Image-Url="~/Images/search1.png" 
-                        onclick="btn_search_Click" Width="16px">
-                        <Image Height="20px" Url="~/Images/search1.png" Width="20px">
-                        </Image>
-                        <Border BorderColor="White" />
-                    <ClientSideEvents Click="function(s, e) {  lpanel.Show(); e.processOnServer = true;}" />
-                    </dx:ASPxButton>--%
-                </td>
-                <td>
-                    &nbsp;</td>
-            </tr>
-            </table>--%>
+
     
         <span class="style1"><strong  style="margin-left:75px" > Pending Requisitions List</strong></span><br />
         <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" 
@@ -413,26 +338,24 @@
     ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
 
     SelectCommand="
-    SELECT
-        ReqID,
-        Date,
-        Description,
-     
-        Status,
-        ReqSendBy,
-        Location
-    FROM POSRequisitionParent
-    WHERE Status='Approved by POInc'
-    ORDER BY Date DESC">
+   SELECT
+    POSRequisitionParent. ReqID,
+     Date,
+     Description,
+  
+     POSRequisitionDetails.Status,
+     ReqSendBy,
+     Location
+ FROM POSRequisitionParent
+ inner join POSRequisitionDetails on POSRequisitionDetails.ReqID = POSRequisitionParent.ReqID
+ WHERE POSRequisitionDetails.Status != 'Requisition Sent to POInc'
+ ORDER BY Date DESC">
 </asp:SqlDataSource>
 
 
    <dxlp:ASPxLoadingPanel ID="ASPxLoadingPanel1" runat="server" ClientInstanceName="lpanel" Modal="True" >
                         </dxlp:ASPxLoadingPanel>
-       <%-- <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
-            SelectCommand="SELECT [GodownId], [GodownName], [ContactPerson], [ContactNo], [Area] FROM [GodownMaster] order by GodownName ASC">
-        </asp:SqlDataSource>--%>
+   
         <br />
         <br />
 </asp:Content>
