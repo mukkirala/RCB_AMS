@@ -282,12 +282,12 @@
                 &nbsp;</td>
         </tr>
         <tr>
-            <td class="style133">
+            <%--<td class="style133">
                 Reason For Sending Less items</td>
             <td class="style117" colspan="2">
                 <dx:ASPxLabel ID="lbl_reason" runat="server" style="font-weight: 700" >
                 </dx:ASPxLabel>
-            </td>
+            </td>--%>
             <td class="style116">
                 &nbsp;</td>
             <td>
@@ -564,7 +564,7 @@
             <td class="style146">
                 Remarks</td>
             <td>
-                <asp:TextBox ID="ASPxMemo1" runat="server" Width="175px" TextMode="MultiLine" Rows="2" Columns="38">
+                <asp:TextBox ID="ASPxMemo1" runat="server" Width="300px" TextMode="MultiLine" Rows="2" Columns="38">
                 </asp:TextBox>
             </td>
         </tr>
