@@ -315,7 +315,7 @@
         </td>
         </tr>
          </table>--%>
-                            <table style="margin-left: 75px">
+                            <%--<table style="margin-left: 75px">
                             <tr>
                                 <td class="style133">
                                     Vehicle Type 
@@ -324,7 +324,7 @@
                                                                           <dx:ASPxLabel ID="vehicletypeid" Visible="false" runat="server" style="font-weight: 700" >
 </dx:ASPxLabel>
                                       <dx:ASPxLabel ID="cmbVehicleType" runat="server" style="font-weight: 700" >
- </dx:ASPxLabel>
+ </dx:ASPxLabel>--%>
                                <%--       <dx:ASPxComboBox ID="cmbVehicleType" runat="server" Width="175px"
      ValueField="VehicleTypeID" TextField="VehicleType"
      DataSourceID="SqlDataSource6"
@@ -336,7 +336,7 @@
      Height="25px">
 </dx:ASPxComboBox>--%>
 
-<asp:SqlDataSource ID="SqlDataSource6" runat="server"
+<%--<asp:SqlDataSource ID="SqlDataSource6" runat="server"
      ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
      SelectCommand="SELECT VehicleTypeID, VehicleType FROM VehicleTypeMaster WHERE Status='Active'">
 </asp:SqlDataSource>
@@ -350,7 +350,7 @@
                                                                                                                <dx:ASPxLabel ID="vehid" Visible="false" runat="server" style="font-weight: 700" >
 </dx:ASPxLabel>
                                                                           <dx:ASPxLabel ID="comb_VehNumb" runat="server" style="font-weight: 700" >
-</dx:ASPxLabel>
+</dx:ASPxLabel>--%>
                                     <%--  <dx:ASPxGridLookup ID="comb_VehNumb" runat="server"   width="175px"
      DataSourceID="SqlDataSource_Vehicles"
      KeyFieldName="VehicleID"
@@ -376,7 +376,7 @@
      </Columns>
 </dx:ASPxGridLookup>--%>
 
-<asp:SqlDataSource ID="SqlDataSource_Vehicles" runat="server"
+<%--<asp:SqlDataSource ID="SqlDataSource_Vehicles" runat="server"
      ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
      SelectCommand="SELECT VehicleID, RegistrationNumber, VehicleName, Model, ManufacturedYear
                     FROM Vehicle_master
@@ -387,7 +387,7 @@
 </asp:SqlDataSource>
                                      </td>
                             </tr>
-                        </table>
+                        </table>--%>
          <br />
         <%-- <dx:ASPxPanel ID="ASPxPanel1" runat="server" style="margin-left:75px" 
         Visible="false">

@@ -53,13 +53,11 @@ public partial class ReceiveItems : System.Web.UI.Page
             return;
         }
 
-        string ReqID =
-            ASPxGridLookup1.Value.ToString();
+        string ReqID = ASPxGridLookup1.Value.ToString();
 
         Myconnection.Open();
 
-        SqlTransaction trans =
-            Myconnection.BeginTransaction();
+        SqlTransaction trans = Myconnection.BeginTransaction();
 
         try
         {
@@ -81,8 +79,7 @@ public partial class ReceiveItems : System.Web.UI.Page
 
                 if (qty != null && qty.Value != null)
                 {
-                    ReceiveQty =
-                        Convert.ToInt32(qty.Value);
+                    ReceiveQty = Convert.ToInt32(qty.Value);
                 }
 
                 SqlCommand cmd =
@@ -98,17 +95,9 @@ public partial class ReceiveItems : System.Web.UI.Page
                     Myconnection,
                     trans);
 
-                cmd.Parameters.AddWithValue(
-                    "@ReqID",
-                    ReqID);
-
-                cmd.Parameters.AddWithValue(
-                    "@ItemID",
-                    ItemID);
-
-                cmd.Parameters.AddWithValue(
-                    "@Quantity",
-                    ReceiveQty);
+                cmd.Parameters.AddWithValue("@ReqID", ReqID);
+                cmd.Parameters.AddWithValue("@ItemID", ItemID);
+                cmd.Parameters.AddWithValue("@Quantity", ReceiveQty);
 
                 cmd.ExecuteNonQuery();
             }
@@ -123,36 +112,152 @@ public partial class ReceiveItems : System.Web.UI.Page
                 Myconnection,
                 trans);
 
-            parent.Parameters.AddWithValue(
-                "@ReqID",
-                ReqID);
+            parent.Parameters.AddWithValue("@ReqID", ReqID);
 
             parent.ExecuteNonQuery();
 
             trans.Commit();
 
-            lbl_error.Text =
-                "Items Received Successfully";
+            Myconnection.Close();
 
-            ASPxGridView1.DataBind();
+            // GENERATE PDF
+            getpdf(ReqID);
 
-            ASPxGridLookup1.Value = null;
+            lbl_error.Text = "Items Received Successfully";
 
-            Response.Write(
-            @"<script>
-        alert('Received Successfully');
-        window.location='ReceiveItems.aspx';
-        </script>");
+            Response.Write("<script>");
+            Response.Write("alert('Received Successfully');");
+            Response.Write("window.open('RequestOrderPdf.aspx','_blank');");
+            Response.Write("window.location='ReceiveItems.aspx';");
+            Response.Write("</script>");
         }
         catch (Exception ex)
         {
             trans.Rollback();
 
+            Myconnection.Close();
+
             lbl_error.Text = ex.Message;
         }
-        finally
+    }
+    protected void getpdf(string ReqID)
+    {
+        Session["reqid"] = ReqID;
+
+        DataTable dt = new DataTable();
+
+        SqlDataAdapter da = new SqlDataAdapter(
+
+        "SELECT " +
+        "PRD.ItemID AS AssetID, " +
+        "ATM.AssetTypeName AS AssetName, " +
+        "ATM.AssetTypeCode AS AssetCode, " +
+        "PRD.Quantity AS RequiredQuantity, " +
+        "GETDATE() AS Date " +
+        "FROM POSRequisitionDetails PRD " +
+        "INNER JOIN [RCBSAP].[dbo].[AssetTypeMaster] ATM " +
+        "ON PRD.ItemID = ATM.AssetTypeID " +
+        "WHERE PRD.ReqID=@ReqID",
+
+        Myconnection);
+
+        da.SelectCommand.Parameters.AddWithValue("@ReqID", ReqID);
+
+        da.Fill(dt);
+
+        // GET SAME DETAILS LIKE REQUEST ORDER
+        SqlCommand cmdDetails = new SqlCommand(
+
+ "SELECT " +
+ "P.Description, " +
+ "C.CustodianID, " +
+ "C.CustodianName, " +
+ "C.PhoneNo, " +
+ "C.email, " +
+ "C.CustodianDepartmentCode " +
+ "FROM POSRequisitionParent P " +
+ "INNER JOIN CustodianMaster C " +
+ "ON P.ReqSendBy = C.CustodianID " +
+ "WHERE P.ReqID=@ReqID",
+
+ Myconnection);
+
+        cmdDetails.Parameters.AddWithValue("@ReqID", ReqID);
+
+        DataTable dtDetails = new DataTable();
+
+        SqlDataAdapter daDetails =
+            new SqlDataAdapter(cmdDetails);
+
+        daDetails.Fill(dtDetails);
+
+        string UserName = "";
+        string PhoneNo = "";
+        string Email = "";
+        string Department = "";
+        string Description = "";
+
+        if (dtDetails.Rows.Count > 0)
         {
-            Myconnection.Close();
+            UserName =
+                dtDetails.Rows[0]["CustodianName"].ToString();
+
+            PhoneNo =
+                dtDetails.Rows[0]["PhoneNo"].ToString();
+
+            Email =
+                dtDetails.Rows[0]["email"].ToString();
+
+            Department =
+                dtDetails.Rows[0]["CustodianDepartmentCode"].ToString();
+
+            Description =
+                dtDetails.Rows[0]["Description"].ToString();
         }
+
+        // SAME VALUES LIKE REQUEST ORDER
+        string[] values =
+        {
+        System.DateTime.Now.ToString("dd-MM-yyyy"),
+        UserName,
+        PhoneNo,
+        Email,
+        Department,
+        ReqID,
+        Description,
+        dtDetails.Rows[0]["CustodianID"].ToString()
+    };
+
+        RequestOrderReport report =
+            new RequestOrderReport(dt, values);
+
+        report.CreateDocument();
+
+        string FileName =
+            "Requestorder_" + ReqID + ".pdf";
+
+        string path =
+            Server.MapPath(
+            @"PdfReports//RequestOrder//" + FileName);
+
+        report.ExportToPdf(path);
+
+        Myconnection.Open();
+
+        SqlCommand cmd =
+            new SqlCommand(
+
+            "UPDATE POSRequisitionParent " +
+            "SET Location=@Location " +
+            "WHERE ReqID=@ReqID",
+
+            Myconnection);
+
+        cmd.Parameters.AddWithValue("@Location", FileName);
+        cmd.Parameters.AddWithValue("@ReqID", ReqID);
+
+        cmd.ExecuteNonQuery();
+
+        Myconnection.Close();
     }
 }

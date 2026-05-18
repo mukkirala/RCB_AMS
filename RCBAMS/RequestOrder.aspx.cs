@@ -45,7 +45,17 @@ public partial class RequestOrder : System.Web.UI.Page
                 "SELECT PhoneNo FROM CustodianMaster WHERE CustodianID=@CustodianID",
                 myConnection);
 
-            cmd.Parameters.AddWithValue("@CustodianID", Session["UserID"].ToString());
+            if (Session["UserID"] != null)
+            {
+                cmd.Parameters.AddWithValue(
+                    "@CustodianID",
+                    Session["UserID"].ToString());
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
 
             myConnection.Open();
 
@@ -62,9 +72,30 @@ public partial class RequestOrder : System.Web.UI.Page
         {
             reqid.Text = Session["UserID"].ToString();
             lbl_requestername.Text = Session["USR_NAME"].ToString();
-            reqdept.Text = Session["DepartmentName"].ToString();
             reqdesign.Text = Session["DESIGNATION"].ToString();
             lblmail.Text = Session["Mail"].ToString();
+
+            SqlCommand cmdDept = new SqlCommand(
+                "SELECT CustodianDepartmentCode FROM CustodianMaster WHERE CustodianID=@CustodianID",
+                myConnection);
+
+            cmdDept.Parameters.AddWithValue(
+                "@CustodianID",
+                Session["UserID"].ToString());
+
+            if (myConnection.State == ConnectionState.Closed)
+            {
+                myConnection.Open();
+            }
+
+            object dept = cmdDept.ExecuteScalar();
+
+            if (dept != null)
+            {
+                reqdept.Text = dept.ToString();
+            }
+
+            myConnection.Close();
 
         }
         else
@@ -341,39 +372,91 @@ public partial class RequestOrder : System.Web.UI.Page
 
         dt2 = ViewState["Itemtbl"] as DataTable;
 
-        string[] values =
-{
-    System.DateTime.Now.ToString("dd-MM-yyyy"),
-    lbl_requestername.Text,
-    Session["PhoneNo"].ToString(),
-    lblmail.Text,
-    reqdept.Text,
-    requestid,
-    ASPxMemo2.Text
-};
+        // GET DEPARTMENT FROM DATABASE
+        string Department = "";
 
-        RequestOrderReport report = new RequestOrderReport(dt2, values);
+        SqlCommand cmdDept = new SqlCommand(
+
+        "SELECT CustodianDepartmentCode " +
+        "FROM CustodianMaster " +
+        "WHERE CustodianID=@CustodianID",
+
+        myConnection);
+
+        cmdDept.Parameters.AddWithValue(
+            "@CustodianID",
+            Session["UserID"].ToString());
+
+        if (myConnection.State == ConnectionState.Closed)
+        {
+            myConnection.Open();
+        }
+
+        object dept = cmdDept.ExecuteScalar();
+
+        if (dept != null)
+        {
+            Department = dept.ToString();
+        }
+
+        myConnection.Close();
+
+        // PASS VALUES TO REPORT
+        string[] values =
+        {
+        System.DateTime.Now.ToString("dd-MM-yyyy"),
+
+        lbl_requestername.Text,
+
+        Session["PhoneNo"] == null
+        ? ""
+        : Session["PhoneNo"].ToString(),
+
+        lblmail.Text,
+
+        Department,
+
+        requestid,
+
+        ASPxMemo2.Text,
+        Session["UserID"].ToString()
+    };
+
+        RequestOrderReport report =
+            new RequestOrderReport(dt2, values);
 
         report.CreateDocument();
 
-        
-        report.ExportToPdf(Server.MapPath(@"PdfReports//RequestOrder//Requestorder_" + requestid.Trim() + ".pdf"));
+        report.ExportToPdf(
+            Server.MapPath(
+            @"PdfReports//RequestOrder//Requestorder_"
+            + requestid.Trim() + ".pdf"));
+
         Response.Write("<script>");
-        Response.Write("window.open('RequestOrderPdf.aspx','_blank')");
+        Response.Write(
+            "window.open('RequestOrderPdf.aspx','_blank')");
         Response.Write("</script>");
 
         string Location =
-        "Requestorder_" + requestid.Trim() + ".pdf";
+            "Requestorder_" + requestid.Trim() + ".pdf";
 
         string UpdateQuery =
-        "Update POSRequisitionParent Set Location=@Location Where ReqID=@ReqID";
-
+            "Update POSRequisitionParent " +
+            "Set Location=@Location " +
+            "Where ReqID=@ReqID";
 
         myConnection.Open();
 
         myCommand = new SqlCommand(UpdateQuery, myConnection);
-        myCommand.Parameters.AddWithValue("@Location", Location);
-        myCommand.Parameters.AddWithValue("@ReqID", requestid);
+
+        myCommand.Parameters.AddWithValue(
+            "@Location",
+            Location);
+
+        myCommand.Parameters.AddWithValue(
+            "@ReqID",
+            requestid);
+
         myCommand.ExecuteNonQuery();
 
         myConnection.Close();
