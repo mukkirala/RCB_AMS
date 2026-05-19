@@ -8,6 +8,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
+using System.Web.UI;
 
 public partial class AssetParking : System.Web.UI.Page
 {
@@ -241,8 +242,10 @@ public partial class AssetParking : System.Web.UI.Page
                     cmd.ExecuteNonQuery();
                     conSAP.Open();
                     myCommand1.ExecuteNonQuery();
-                    err_msg.Text = "Asset Parked";
-                    err_msg.Visible = true;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(),
+"alert",
+"alert('Asset Parked Successfully'); window.location='AssetParking.aspx';",
+true);
                 }
                 catch (Exception ex)
                 {

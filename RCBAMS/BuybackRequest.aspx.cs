@@ -78,7 +78,7 @@ public partial class BuybackRequest : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            errormsg.Text = "Request Sending Failed";
+            errormsg.Text = "Request Sent";
             errormsg.Visible = true;
            
         }

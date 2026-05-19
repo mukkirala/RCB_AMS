@@ -46,7 +46,7 @@
              
           <label>Select Employee</label>
            </div>
-            <div class="col-sm-2">
+           <div class="col-sm-4" style="display:flex; align-items:center;">
              <dx:ASPxGridLookup ID="Cust_gridlookup" runat="server"
                     AutoGenerateColumns="False" DataSourceID="CustSqlDataSource" TextFormatString="{0}" Width="300px" Height="25px"
                     KeyFieldName="CustodianID" IncrementalFilteringMode="Contains"  CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
@@ -96,17 +96,18 @@
          </asp:SqlDataSource>
 
                 
-             </div>
+     
            
          <dx:ASPxButton ID="btn_search" runat="server" BackColor="White" 
                     CssClass="auto-style8" 
-                     Width="16px" Height="16px" OnClick="btn_search_Click">
-                    <Image Url="~/Images/search1.png" Width="20px" Height="20px">
+                     Width="16px" Height="16px" OnClick="btn_search_Click" style="margin-left:10px; margin-top:0px; display:inline-block">
+                    <Image Url="~/Images/search1.png" Width="20px" Height="20px" >
                     </Image>
                     <Border BorderColor="White" />                   
                 </dx:ASPxButton>
         
      </div>
+          </div>
         <div id="RequestorDetails"  runat="server" visible="false">
                  
                   <div class="row">  
@@ -263,7 +264,7 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
                    
                     <label>Select Asset Name</label>
                 </div>
-                <div class="col-sm-2">
+              <div class="col-sm-4" style="display:flex; align-items:center;">
                   <%--  <dx:ASPxComboBox ID="cmb_Assetname" runat="server" DataSourceID="SqlDataSource1" ValueField="AssetID" TextField="MainAssetNumber"></dx:ASPxComboBox>--%>
                       <dx:ASPxGridLookup ID="gridlkup_Asset" runat="server"  AutoGenerateColumns="False" OnInit="gridlkup_Asset_Init"
                      DataSourceID="SqlDataSource1" IncrementalFilteringMode="Contains"  TextFormatString="{1}"
@@ -311,17 +312,17 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
                 </dx:ASPxGridLookup>
 
                   
-                </div>
+                
 
                  <dx:ASPxButton ID="btn_gridlkup_Asset" runat="server" BackColor="White" 
                     
-                    Width="20px" Height="25px" OnClick="gridlkup_Asset_Click">
-                    <Image Url="~/Images/search1.png" Width="20px" Height="20px">
+                    Width="20px" Height="25px" OnClick="gridlkup_Asset_Click" style="margin-left:10px; margin-top:0px; display:inline-block">
+                    <Image Url="~/Images/search1.png" Width="20px" Height="20px" >
                     </Image>
                     <Border BorderColor="White" />                   
                 </dx:ASPxButton>
              </div>
-
+            </div>
       <div class="row form_div">
          <div class="col-sm-2" style="font-size:large">
          <label">Allocate Quantity:</label>

@@ -691,7 +691,7 @@ where AuditMaster.AuditStatus='Active' group by AuditMaster.[AuditID],AuditMaste
             <PrevPageButton Text="&lt; Prev">
             </PrevPageButton>
         </SettingsPager>
-        <SettingsPager PageSize="20"></SettingsPager>
+        <SettingsPager PageSize="7"></SettingsPager>
         <Settings ShowFooter="true" ShowGroupFooter="VisibleIfExpanded" 
             ShowFilterRow="True" />
          <Settings ShowFilterRow="True" ShowGroupPanel="True" ShowFooter="True" />

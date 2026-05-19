@@ -27,6 +27,9 @@ public partial class AddmanualAssetMaster : System.Web.UI.Page
         {
             btn_Update.Visible = false;
             btn_save.Visible = true;
+
+            txtCompany.Text = "Regional Centre for Biotechnology";
+            txtplant.Text = "Faridabad";
         }
         ASPxGridView1.DataBind();
         string AssetClass = WebConfigurationManager.AppSettings.Get("AssetClass");
@@ -116,49 +119,7 @@ public partial class AddmanualAssetMaster : System.Web.UI.Page
 
        
        
-        //if (txtStaffNumber.Text == "")
-        //{
-        //    lbl_msg.Text = "Enter main Staff Number";
-        //    lbl_msg.Visible = true;
-        //    return;
-        //}
-        //if (txttxtSerial.Text == "")
-        //{
-        //    lbl_msg.Text = "Enter main Serial Number";
-        //    lbl_msg.Visible = true;
-        //    return;
-        //}
-        //if (txtMAcid.Text == "")
-        //{
-        //    lbl_msg.Text = "Enter MacID";
-        //    lbl_msg.Visible = true;
-        //    return;
-        //}
-        //if (txtmodel.Text == "")
-        //{
-        //    lbl_msg.Text = "Enter Model Number";
-        //    lbl_msg.Visible = true;
-        //    return;
-        //}
-        //if (txtgrnumber.Text == "")
-        //{
-        //    lbl_msg.Text = "Enter GR Number";
-        //    lbl_msg.Visible = true;
-        //    return;
-        //}
-
-        //if (cmb_yearofpurchase.Text == "")
-        //{
-        //    lbl_msg.Text = "Enter Year Of Purchase";
-        //    lbl_msg.Visible = true;
-        //    return;
-        //}
-        //if (txt_locationid.Text == "")
-        //{
-        //    lbl_msg.Text = "Enter Location ID";
-        //    lbl_msg.Visible = true;
-        //    return;
-        //}
+      
         if (txtLocationid.Text == "")
         {
             lbl_msg.Text = "Select Wing";
@@ -195,37 +156,7 @@ public partial class AddmanualAssetMaster : System.Web.UI.Page
             lbl_msg.Visible = true;
             return;
         }
-        //if (txtcostno.Text == "")
-        //{
-        //    lbl_msg.Text = "Enter Cost Number";
-        //    lbl_msg.Visible = true;
-        //    return;
-        //}
-        //if (txtmaterialno.Text == "")
-        //{
-        //    lbl_msg.Text = "Enter Equipment Number";
-        //    lbl_msg.Visible = true;
-        //    return;
-        //}
-       
-        //if (cmb_Acceptdatebyuser.Text == "")
-        //{
-        //    lbl_msg.Text = "Enter Accept Date By User";
-        //    lbl_msg.Visible = true;
-        //    return;
-        //}
-        //if (txtpono.Text == "")
-        //{
-        //    lbl_msg.Text = "Enter PONO For Reference";
-        //    lbl_msg.Visible = true;
-        //    return;
-        //}
-        //if (txtAssetUser.Text == "")
-        //{
-        //    lbl_msg.Text = "Enter Asset User";
-        //    lbl_msg.Visible = true;
-        //   return;
-        //}
+    
         if (Dep_ComboBox1.Text == "")
         {
             lbl_msg.Text = "Select Department ";
@@ -300,13 +231,7 @@ public partial class AddmanualAssetMaster : System.Web.UI.Page
         myCommand1.ExecuteNonQuery();
         myConnection.Close();
 
-        //SqlCommand selectQuery = new SqlCommand("select Company,Plant,AssetID,MainAssetNumber,AssetSubNumber,AssetDesc,AssetOwner,AssetUser,StaffNumber,SerialNumber,MACID,LocationID,BLOCK,Model,GRNumber,YearofPurchase,CapitalizationDate,AssetClass,CostCenter,MaterialNumber,AcceptDatebyUser,PONoforReference,WBSNumberforReference,InstallationDateforReference,Remarks,Department,CreationDate,Status,StatusDesc where MainAssetNumber=@MainAssetNumber And AssetSubNumber=@AssetSubNumber";
-        //SqlCommand selectCommand = new SqlCommand(selectQuery, myConnection);
-        //selectCommand.Parameters.AddWithValue("MainAssetNumber", txtMainAssetID.Text);
-        //selectCommand.Parameters.AddWithValue("AssetSubNumber", txtsubassetno.Text);
-        //if (dt.Rows.Count > 0)
-        //{
-       
+   
     
         myCommand = new SqlCommand("IF(NOT EXISTS(SELECT * FROM AssetMaster WHERE MainAssetNumber = @MainAssetNumber And AssetSubNumber=@AssetSubNumber))BEGIN Insert into AssetMaster(Company,Plant,SupplierID,InstitutePKID,AssetID,MainAssetNumber,AssetSubNumber,CustodianID,AssetDesc,AssetOwner,AssetUser,SerialNumber,MACID,LocationID,Location,BLOCK,LocationDesc,Model,GRNumber,YearofPurchase,CapitalizationDate,AssetClass,CostCenter,Indentor,IndentNumber,Cost,WarrantyDate,AcceptDatebyUser,PONoforReference,PODate,Make,WBSNumberforReference,InstallationDateforReference,Remarks,Department,Code,CreationDate,Status,StatusDesc)values(@Company,@Plant,@SupplierID,@InstitutePKID,@AssetID,@MainAssetNumber,@AssetSubNumber,@CustodianID,@AssetDesc,@AssetOwner,@AssetUser,@SerialNumber,@MACID,@LocationID,@Location,@BLOCK,@LocationDesc,@Model,@GRNumber,@YearofPurchase,@CapitalizationDate,@AssetClass,@CostCenter,@Indentor,@IndentNumber,@Cost,@WarrantyDate,@AcceptDatebyUser,@PONoforReference,@PODate,@Make,@WBSNumberforReference,@InstallationDateforReference,@Remarks,@Department,@Code,@CreationDate,@Status,@StatusDesc)END", myConnection);
         myCommand.Parameters.AddWithValue("@Company", txtCompany.Text);
@@ -464,31 +389,7 @@ public partial class AddmanualAssetMaster : System.Web.UI.Page
     }
     protected void btn_Update_Click(object sender, EventArgs e)
     {
-        //lbl_msg.Visible = false;
-        //if (txtCompany.Text == "")
-        //{
-        //    lbl_msg.Text = "Enter Company";
-        //    lbl_msg.Visible = true;
-        //    return;
-        //}
-        //if (txtplant.Text == "")
-        //{
-        //    lbl_msg.Text = "Enter Plant";
-        //    lbl_msg.Visible = true;
-        //    return;
-        //}
-        //if (txtAssetID.Text == "")
-        //{
-        //    lbl_msg.Text = "Enter AssetID";
-        //    lbl_msg.Visible = true;
-        //    return;
-        //}
-        //if (txtMainAssetID.Text == "")
-        //{
-        //    lbl_msg.Text = "Enter main Asset Number";
-        //    lbl_msg.Visible = true;
-        //    return;
-        //}
+     
 
         if (custodianlookup.Value != null)
         {
@@ -528,59 +429,6 @@ public partial class AddmanualAssetMaster : System.Web.UI.Page
 
 
 
-
-    ////  protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
-    //  {
-    //      lbl_msg.Visible = false;
-    //      string btn = e.CommandArgs.CommandName.ToString();
-    //      if (btn == "Edit")
-    //      {
-    //          string SLNO = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "SLNO").ToString();
-    //Session["SLNO"] = SLNO;
-    //          txtCompany.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "Company").ToString();
-    //txtplant.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "Plant").ToString();
-    //txtAssetID.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "AssetID").ToString();
-    //txtMainAssetID.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "MainAssetNumber").ToString();
-    //txtsubassetno.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "AssetSubNumber").ToString();
-    //txtAssetDesc.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "AssetDesc").ToString();
-    //txtAssetOwner.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "AssetOwner").ToString();
-    //txtAssetUser.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "AssetUser").ToString();
-    //txtStaffNumber.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "StaffNumber").ToString();
-    //txttxtSerial.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "SerialNumber").ToString();
-    //txtMAcid.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "MACID").ToString();
-    //txtLocationid.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "LocationID").ToString();
-    //txtbolck.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "BLOCK").ToString();
-    //txtmodel.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "Model").ToString();
-    //txtgrnumber.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "GRNumber").ToString();
-    //cmb_yearofpurchase.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "YearofPurchase").ToString();
-    //cmb_Capitalizationdate.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "CapitalizationDate").ToString();
-    //txtassetclass.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "AssetClass").ToString();
-    //txtcostno.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "CostCenter").ToString();
-    //txtmaterialno.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "MaterialNumber").ToString();
-    //cmb_Acceptdatebyuser.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "AcceptDatebyUser").ToString();
-    //txtpono.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "PONoforReference").ToString();
-    //txtwnfr.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "WBSNumberforReference").ToString();
-    //cmb_IDFR.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "InstallationDateforReference").ToString();
-    //txtremark.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "Remarks").ToString();
-
-
-
-    // if (btn == "delete")
-        
-
-    //lbl_msg.text = "";
-    //string slno = aspxgridview1.getrowvaluesbykeyvalue(e.keyvalue, "slno").tostring();
-    //string query2 = "update [assetmaster] set status='inactive' where slno='" + slno + "'";
-    //mycommand = new sqlcommand(query2, myconnection);
-    //myconnection.open();
-    //mycommand.executenonquery();
-    //myconnection.close();
-    //aspxgridview1.databind();
-    //btn_update.visible = false;
-    //btn_save.visible = true;
-    //// messages.setsuccessmessage("0061", null, session);
-    //clear();
-
       
 
     protected void ASPxGridView1_RowCommand(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewRowCommandEventArgs e)
@@ -594,36 +442,7 @@ public partial class AddmanualAssetMaster : System.Web.UI.Page
             string SLNO = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "SLNO").ToString();
             Session["SLNO"] = SLNO;
 
-            //string warrantyDateString = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "WarrantyDate").ToString();
-
-            //if (!string.IsNullOrEmpty(warrantyDateString))
-            //{
-            //    DateTime warrantyDate;
-            //    // Specify the expected date format(s). Adjust the format string as needed.
-            //    string[] formats = { "yyyy-MM-dd" };
-
-            //    if (DateTime.TryParseExact(warrantyDateString, formats,
-            //        System.Globalization.CultureInfo.InvariantCulture,
-            //        System.Globalization.DateTimeStyles.None, out warrantyDate))
-            //    {
-            //        cmb_warrantydate.Date = warrantyDate;
-            //    }
-            //    else
-            //    {
-            //        // Handle the case where the date string is not in a valid format
-            //        // For example, set to a default date or show an error message
-            //        cmb_warrantydate.Date = DateTime.MinValue; // or any default date
-            //                                                   // Optionally, log the error or inform the user
-            //    }
-            //}
-            //else
-            //{
-            //    // Handle the case where the date string is null or empty
-            //    // For example, set to a default date or show an error message
-            //    cmb_warrantydate.Date = DateTime.MinValue; // or any default date
-            //                                               // Optionally, log the error or inform the user
-            //}
-
+       
 
             txtCompany.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "Company").ToString();
             txtplant.Text = ASPxGridView1.GetRowValuesByKeyValue(e.KeyValue, "Plant").ToString();
