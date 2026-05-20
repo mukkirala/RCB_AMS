@@ -232,7 +232,7 @@
     </dx:ASPxGridView>
   <asp:SqlDataSource ID="Sql_Role" runat="server" 
         ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
-        SelectCommand="SELECT * FROM [RoleMaster] where ROLE_NAME in('Admin','Auditor') and ROLE_STATUS='Active' ">
+        SelectCommand="SELECT * FROM [RoleMaster] where ROLE_STATUS='Active' ">
          </asp:SqlDataSource>
 
         <asp:SqlDataSource ID="CustSqlDataSource" runat="server" 
