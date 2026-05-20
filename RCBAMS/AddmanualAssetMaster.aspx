@@ -117,7 +117,7 @@
             </td>
             
             <td>
-              <dx:ASPxTextBox ID="txtCompany" runat="server" Height="25PX" Width="300px"> </dx:ASPxTextBox>
+              <dx:ASPxLabel  ID="txtCompany" runat="server" Font-Bold="true" ForeColor="Blue" Text="Regional Centre for Biotechnology" Height="25PX" Width="300px"> </dx:ASPxLabel>
     <ValidationSettings ValidationGroup="btn" ErrorTextPosition="Bottom">
         <RequiredField IsRequired="true" ErrorText="Company Is Required" />
         <ErrorFrameStyle ImageSpacing="4px">
@@ -133,7 +133,7 @@
             </td>
            
             <td>
-                <dx:ASPxTextBox ID="txtplant" runat="server" Height="25PX" Width="300px"> </dx:ASPxTextBox>
+                <dx:ASPxLabel  ID="txtplant" runat="server" Font-Bold="true" ForeColor="Blue"  Text="Faridabad" Height="25PX" Width="300px"> </dx:ASPxLabel>
                 <ValidationSettings ErrorTextPosition="Bottom" ValidationGroup="btn">
                         <RequiredField IsRequired="true" ErrorText="Enter Plant" />
                         <ErrorFrameStyle ImageSpacing="4px">
@@ -402,83 +402,22 @@ SelectCommand="SELECT DISTINCT [AssetTypeName] FROM [AssetTypeMaster] WHERE [Ass
                                                 <td></td>
 <td class="auto-style2"></td>                       
               <td>
-    Serial Number: <span class="style10"color="red"><strong></strong></span>
+    Macid:  <span class="style10"color="red"><strong></strong></span>
  </td>
- <td>
-     <dx:ASPxTextBox ID="txttxtSerial" runat="server" Height="25PX" Width="170px"      > </dx:ASPxTextBox>
-      <%-- <ValidationSettings ErrorTextPosition="Bottom" >
-             <RequiredField IsRequired="true" ErrorText="Enter Serial No" />
-             <ErrorFrameStyle ImageSpacing="4px">
-                 <ErrorTextPaddings PaddingLeft="4px" />
-             </ErrorFrameStyle>
-         </ValidationSettings>--%>
- </td>
+                        <td> 
+    <dx:ASPxTextBox ID="txtMAcid" runat="server" Height="25PX" Width="170px"   onkeypress="onlyNuss(event, 25);" > 
+
+    </dx:ASPxTextBox>
+</td>
+
                      </tr>
                   <tr>
 <td>
     &nbsp;</td></tr>
         <tr>  
            <td>
-     Macid:<span class="style10"color="red"><strong></strong></span>
+     Wing:<span class="style10"color="red"><strong>*</strong></span>
 </td>
-
-<td> 
-    <dx:ASPxTextBox ID="txtMAcid" runat="server" Height="25PX" Width="170px"   onkeypress="onlyNuss(event, 25);" > 
-
-    </dx:ASPxTextBox>
-</td>
-                                                        <td></td>
-<td class="auto-style2"></td>                   
-                             <%--<td>
-       LocationID: <span class="style10"color="red"><strong>*</strong></span>
-    </td>
-    <td> <dx:ASPxComboBox ID="txt_locationid" runat="server" Width="100%" Height="25px" DataSourceID="locationid" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
-              CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" TextField="LocationID" ValueField="LocationID" OnSelectedIndexChanged="txtLocationid_SelectedIndexChanged"
-            CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String"  PageSize="10"
-            >                
-            <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
-            </LoadingPanelImage>
-            <ValidationSettings ErrorTextPosition="Bottom" >
-                <RequiredField IsRequired="true" ErrorText=" Select LocationID " />
-                <ErrorFrameStyle ImageSpacing="4px">
-                    <ErrorTextPaddings PaddingLeft="4px" />
-                </ErrorFrameStyle>
-            </ValidationSettings>
-        </dx:ASPxComboBox>
-        <asp:SqlDataSource ID="locationid" runat="server" 
-ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
-SelectCommand="SELECT DISTINCT [LocationID] FROM [LocationMaster] ">
- </asp:SqlDataSource>
-    </td>   --%>
-             <%--<td>
-    Locationid: <span class="style10" color="red"><strong>*</strong></span>
-</td>
-<td>
-    <dx:ASPxComboBox ID="txtLocationid" runat="server" Width="100%" Height="25px" DataSourceID="locationid" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
-          CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" TextField="LocationCode" ValueField="LocationCode" OnSelectedIndexChanged="txtLocationid_SelectedIndexChanged"
-        CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String" PageSize="10">
-        <Columns>
-            <dx:ListBoxColumn FieldName="Location" Caption="Wing" />
-            <dx:ListBoxColumn FieldName="Block" Caption="Floor" />
-            <dx:ListBoxColumn FieldName="LocationCode" Caption="Lab" />
-        </Columns>
-        <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
-        </LoadingPanelImage>
-        <ValidationSettings ErrorTextPosition="Bottom">
-            <RequiredField IsRequired="true" ErrorText=" Select Location " />
-            <ErrorFrameStyle ImageSpacing="4px">
-                <ErrorTextPaddings PaddingLeft="4px" />
-            </ErrorFrameStyle>
-        </ValidationSettings>
-    </dx:ASPxComboBox>
-    <asp:SqlDataSource ID="locationid" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>" 
-        SelectCommand="SELECT DISTINCT Location, Block, LocationCode FROM LocationMaster">
-    </asp:SqlDataSource>
-</td>--%>                                
-            <td>
-       Wing: <span class="style10"color="red"><strong>*</strong></span>
-    </td>
     <td> <dx:ASPxComboBox ID="txtLocationid" runat="server" Width="100%" Height="25px" DataSourceID="location1" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
               CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" TextField="Location" ValueField="Location" OnSelectedIndexChanged="txtLocationid_SelectedIndexChanged"
             CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String"  PageSize="10"
@@ -497,16 +436,17 @@ ConnectionString="<%$ ConnectionStrings:RCBAMSConnectionString %>"
 SelectCommand="SELECT DISTINCT [Location] FROM [LocationMaster] where Status='Active'">
  </asp:SqlDataSource>
     </td>   
-     </tr>
-     <tr>
-<td>
-    &nbsp;</td></tr>
-        <tr>                 
-                <td>
-         Floor: <span class="style10"color="red"><strong></strong>*</span>
-    </td>
-    
-    <td><dx:ASPxComboBox ID="txtbolck" runat="server" Width="100%" Height="25px" DataSourceID="Blockid" TextField="Block" AutoPostBack="true" ValueField="Block"
+
+                                                        <td></td>
+<td class="auto-style2"></td>          
+        
+
+
+                                       <td>
+        Floor: <span class="style10"color="red"><strong></strong>*</span>
+   </td>      
+         
+            <td><dx:ASPxComboBox ID="txtbolck" runat="server" Width="100%" Height="25px" DataSourceID="Blockid" TextField="Block" AutoPostBack="true" ValueField="Block"
               OnSelectedIndexChanged="txtbolck_SelectedIndexChanged" CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"  PageSize="10"
             CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String">
             <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
@@ -527,13 +467,18 @@ SelectCommand="SELECT DISTINCT [BLOCK] FROM [LocationMaster]  where Location=@Lo
         
  </asp:SqlDataSource>
        
-    </td>
-              <td></td>
-<td class="auto-style2"></td>    
-                            <td>
-       LAB: <span class="style10"color="red"><strong>*</strong></span>
-    </td>
-    <td> <dx:ASPxComboBox ID="txt_lab" runat="server" Width="100%" Height="25px" DataSourceID="SqlDataSource4" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
+    </td>   
+   
+     </tr>
+     <tr>
+<td>
+    &nbsp;</td></tr>
+        <tr>      
+            
+                        <td>
+   LAB: <span class="style10"color="red"><strong>*</strong></span>
+</td>
+                <td> <dx:ASPxComboBox ID="txt_lab" runat="server" Width="100%" Height="25px" DataSourceID="SqlDataSource4" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
               CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" TextField="LocationCode" ValueField="LocationID" 
             CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String"  PageSize="10"
             >                
@@ -555,7 +500,27 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
             </SelectParameters>
  </asp:SqlDataSource>
     </td>
-     </tr>
+  
+    
+   
+              <td></td>
+<td class="auto-style2"></td>    
+              
+                    <td>
+   Serial Number:
+</td>             
+    
+   
+           <td>
+    <dx:ASPxTextBox ID="txttxtSerial" runat="server" Height="25PX" Width="170px"      > </dx:ASPxTextBox>
+     <%-- <ValidationSettings ErrorTextPosition="Bottom" >
+            <RequiredField IsRequired="true" ErrorText="Enter Serial No" />
+            <ErrorFrameStyle ImageSpacing="4px">
+                <ErrorTextPaddings PaddingLeft="4px" />
+            </ErrorFrameStyle>
+        </ValidationSettings>--%>
+</td>
+            </tr>
      <tr>
 <td>
     &nbsp;</td></tr>
@@ -575,12 +540,12 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
                  <td></td>
 <td class="auto-style2"></td>                                        
             <td>
-     GR Number: <span class="style10"color="red"><strong></strong></span>
+     Make: <span class="style10"color="red"><strong></strong></span>
+</td>
+<td>
+    <dx:ASPxTextBox ID="txt_make" runat="server" Height="25PX" Width="170px"> </dx:ASPxTextBox>
 </td>
 
-<td>
-    <dx:ASPxTextBox ID="txtgrnumber" runat="server" Height="25PX" Width="170px"   > </dx:ASPxTextBox>
-</td>
       </tr>
    <tr>
       <td>
@@ -745,12 +710,12 @@ SelectCommand="SELECT DISTINCT [LocationCode],[LocationID] FROM [LocationMaster]
         <td></td>
 <td class="auto-style2"></td>
       <td>
-           Make: <%--<span class="style10"color="red"><strong>*</strong></span>--%>
+           GR Number: 
       </td>
-      
       <td>
-          <dx:ASPxTextBox ID="txt_make" runat="server" Height="25PX" Width="170px"> </dx:ASPxTextBox>
-      </td>
+    <dx:ASPxTextBox ID="txtgrnumber" runat="server" Height="25PX" Width="170px"   > </dx:ASPxTextBox>
+</td>
+      
          </tr>
    <tr>
       <td>

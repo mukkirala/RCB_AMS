@@ -1,16 +1,18 @@
-﻿using System;
+﻿using DevExpress.Web.ASPxGridView;
+using DevExpress.XtraCharts;
+using System;
+using System.Collections;
+using System.Data;
+using System.Data.SqlClient;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.Configuration;
-using System.Data.Sql;
-using System.Data.SqlClient;
-using System.Data;
+using Series = DevExpress.XtraCharts.Series;
+using System.Configuration;
+using DevExpress.CodeParser;
+using DevExpress.Web.ASPxEditors;
 using DevExpress.XtraCharts.Web;
-using DevExpress.Web.ASPxObjectContainer;
-using EnvDTE;
-using System.Activities.Expressions;
-using System.Web.UI.DataVisualization.Charting;
-using System.Drawing;
+using System.Linq;
 
 
 public partial class AdminDashboard : System.Web.UI.Page
@@ -20,6 +22,10 @@ public partial class AdminDashboard : System.Web.UI.Page
     SqlConnection conAMS = new SqlConnection(WebConfigurationManager.ConnectionStrings["RCBAMSConnectionString"].ConnectionString);
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            ShowCalibrationPopup();
+        }
         if (Session["UserID"] != null)
         {
             string select1 = "select Count(AssetID) from AssetMaster where  Status !='InActive'";
@@ -116,7 +122,7 @@ public partial class AdminDashboard : System.Web.UI.Page
 
         //        //enable to show legend
         //        Chart1.Legends[0].Enabled = true;
-              
+
         //        //show pie chart in 3d
         //        Chart1.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
         //        //anusha
@@ -126,7 +132,27 @@ public partial class AdminDashboard : System.Web.UI.Page
 
     }
 
+    private void ShowCalibrationPopup()
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["RCBSAPConnectionString"].ConnectionString;
 
+        using (SqlConnection con = new SqlConnection(connStr))
+        {
+            string query = @"
+        select AssetID, MainAssetNumber,MaintenanceContract,CalibrationOn,CalibrationDue from AssetCalibration ";
+
+            SqlCommand cmd = new SqlCommand(query, con);
+
+            con.Open();
+            int count = (int)cmd.ExecuteScalar();
+            con.Close();
+
+            if (count > 0)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "popup", "pcCalibrationAlert.Show();", true);
+            }
+        }
+    }
     protected void GetAllRequests()
     {
         int id = 1;
@@ -163,7 +189,7 @@ public partial class AdminDashboard : System.Web.UI.Page
 
             }
         }
-        lbl_parkedassets.Text = datatable1.Rows.Count.ToString();       
+        lbl_parkedassets.Text = datatable1.Rows.Count.ToString();
     }
 
 
@@ -258,7 +284,14 @@ public partial class AdminDashboard : System.Web.UI.Page
             req2.Visible = false;
         }
 
-        
+
+    }
+    protected void ASPxGridView1_CustomUnboundColumnData(object sender, ASPxGridViewColumnDataEventArgs e)
+    {
+        if (e.Column.FieldName == "Number")
+        {
+            e.Value = string.Format("{0}", e.ListSourceRowIndex + 1);
+        }
     }
 
     protected void lbtn_assetrequest_Click(object sender, EventArgs e)

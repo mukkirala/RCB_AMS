@@ -311,6 +311,7 @@
         <dx:ASPxButton 
             ID="AddAssets" 
             runat="server" 
+            OnClick="Assets_Click"
             Text="Approve"
             Width="120px"
             CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css"
@@ -322,6 +323,7 @@
         <dx:ASPxButton 
             ID="RejectAsset" 
             runat="server" 
+            OnClick="RejectAsset_Click"
             Text="Reject"
             Width="120px"
             CssFilePath="~/App_Themes/SoftOrange/{0}/styles.css"

@@ -435,6 +435,7 @@
     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Gatepass<span class="caret"></span></a>
 <ul class="dropdown-menu">              
       <li class="dropdown-submenu">
+           <a class="test" >GatePass <span class="caret"></span></a>
         <ul class="dropdown-menu">  
      
          <li><a href="/Issues_Items_To_Employee_Using_RFID_Reader.aspx">Issue Item</a></li>
@@ -483,7 +484,7 @@
               <li><a href="/ViewAssetDetails">Asset Documents </a></li>
              <li><a href="ViewDepartmentsList">Department Details</a></li>  
                 <li><a href="ViewEmployeeList">Employee Details</a></li>  
-             <li><a href="/ViewCustodianByDepartment.aspx">Departmentwise Employees</a></li>
+<%--             <li><a href="/ViewCustodianByDepartment.aspx">Departmentwise Employees</a></li>--%>
             <li><a href="/ViewBargraphofAssest.aspx">Year Wise BarGraph Presentation</a></li>
              <li><a href="/ViewDateWiseAssets.aspx">DateWise Assets List</a></li>
               <li><a href="/AssetManagemetHistory.aspx">Asset History</a></li>
@@ -531,6 +532,7 @@
              <li><a href="/AddSupplier.aspx"> Supplier Master</a></li> 
                <li><a href="/DepartmentMaster.aspx">Department Master</a></li>   
 <%--            <li><a href="ViewDepartmentsList">Department Details</a></li>  --%>
+            <li><a href="/BuyBackMailAssign.aspx">PO/Store Master</a></li>
             <li><a href="/AddmanualAssetMaster.aspx">Add Asset Manually</a></li>
                          
         </ul>

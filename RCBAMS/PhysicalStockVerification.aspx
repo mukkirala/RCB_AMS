@@ -113,7 +113,7 @@ SelectCommand="SELECT DISTINCT [Block] FROM [LocationMaster]  where Location=@Lo
     <div class="col-sm-4">
         <dx:ASPxComboBox ID="txt_Lab" runat="server" Width="300px" Height="25px" DataSourceID="SqlDataSource4" AutoPostBack="true" IncrementalFilteringMode="StartsWith"
               CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" TextField="LocationCode" ValueField="LocationID" OnSelectedIndexChanged="txt_Lab_SelectedIndexChanged"
-            CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.Int32"  PageSize="10">                
+            CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css" ValueType="System.String"  PageSize="10">                
             <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
             </LoadingPanelImage>
             <ValidationSettings ErrorTextPosition="Bottom" >
@@ -379,10 +379,12 @@ AuditDetails.AuditStatus,AuditDetails.RFIDCardNumber,
 AuditDetails.AuditBy  from RCBAMS..AuditDetails 
 inner join RCBAMS..AuditMaster on AuditMaster.AuditID=AuditDetails.AuditID
 inner join RCBSAP..AssetMaster on AssetMaster.AssetID=AuditDetails.AssetID
-inner join RCBAMS..LocationMaster on LocationMaster.LocationID=AuditMaster.LocationID
+inner join RCBAMS..LocationMaster 
+on CAST(LocationMaster.LocationID AS VARCHAR(50)) =
+   CAST(AssetMaster.LocationID AS VARCHAR(50))
 where RCBAMS..AuditDetails.AuditID=@AuditID  order by AuditDate desc">
       <SelectParameters>
-          <asp:SessionParameter SessionField="AuditID" Name="AuditID" />
+          <asp:SessionParameter SessionField="AuditID" Type="String" Name="AuditID" />
       </SelectParameters>
   </asp:SqlDataSource> 
           <asp:SqlDataSource ID="SqlDSGrid2" runat="server" ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
@@ -391,12 +393,14 @@ AssetMaster.AssetDesc,AssetMaster.AssetClass,LocationMaster.Location,LocationMas
 AuditMaster.AuditStatus,AssetMaster.RFIDCardNumber,
 AuditMaster.AuditBy
               from RCBSAP..AssetMaster 
-inner join RCBAMS..LocationMaster on LocationMaster.LocationID=AssetMaster.LocationID
+inner join RCBAMS..LocationMaster 
+on CAST(LocationMaster.LocationID AS VARCHAR(50)) =
+   CAST(AssetMaster.LocationID AS VARCHAR(50))
 inner join RCBAMS..AuditMaster on AuditMaster.LocationID=LocationMaster.LocationID
 left join RCBAMS..AuditDetails ON AuditDetails.AssetID = AssetMaster.AssetID AND AuditDetails.AuditID = @AuditID
 WHERE AuditMaster.AuditID=@AuditID AND AssetMaster.AssetID NOT IN (SELECT AssetID FROM RCBAMS..AuditDetails WHERE AuditID=@AuditID)">
       <SelectParameters>
-          <asp:SessionParameter SessionField="AuditID" Name="AuditID" />
+          <asp:SessionParameter SessionField="AuditID" Type="String" Name="AuditID"  />
       </SelectParameters>
   </asp:SqlDataSource> 
 

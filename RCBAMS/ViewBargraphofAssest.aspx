@@ -31,114 +31,155 @@
       <h4> <strong>ASSETS BY YEAR WISE </strong></h4>
       
       <br />
-      <div class="col-sm-2">
-    <label>SELECT YEAR</label>
+      <div class="row">
+
+    <div class="col-sm-2">
+        <label>SELECT YEAR</label>
+    </div>
+
+    <div class="col-sm-4" style="display:flex; align-items:center;">
+
+        <dx:ASPxComboBox ID="cmb_Dep" runat="server"
+            Width="250px"
+            Height="30px"
+            DataSourceID="SqbDBaircraft"
+            TextField="YearofPurchase"
+            ValueField="YearofPurchase"
+            ValueType="System.String"
+            IncrementalFilteringMode="StartsWith"
+            DropDownStyle="DropDownList"
+            CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"
+            CssPostfix="PlasticBlue"
+            SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
+
+            <ValidationSettings ErrorTextPosition="Bottom" ValidationGroup="btn">
+                <RequiredField ErrorText="please select Asset Type" IsRequired="true" />
+            </ValidationSettings>
+
+            <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
+            </LoadingPanelImage>
+
+            <ValidationSettings>
+                <ErrorFrameStyle ImageSpacing="4px">
+                    <ErrorTextPaddings PaddingLeft="4px" />
+                </ErrorFrameStyle>
+            </ValidationSettings>
+
+        </dx:ASPxComboBox>
+
+        <asp:SqlDataSource ID="SqbDBaircraft" runat="server"
+            ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
+            SelectCommand="SELECT DISTINCT [YearofPurchase] FROM [AssetMaster]">
+        </asp:SqlDataSource>
+
+        <div style="margin-left:15px; margin-top:5px;">
+
+            <asp:ImageButton
+                OnClick="search_Click"
+                ID="search"
+                ImageUrl="~/Images/search1.png"
+                runat="server" />
+
+        </div>
+
+    </div>
+
 </div>
 
-<div class="col-sm-3">
-    <dx:ASPxComboBox ID="cmb_Dep" runat="server"
-        Width="220px"
-        Height="30px"
-        DataSourceID="SqbDBaircraft"
-        TextField="YearofPurchase"
-        ValueField="YearofPurchase"
-        ValueType="System.String"
-        IncrementalFilteringMode="Contains"
-        CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css"
-        CssPostfix="PlasticBlue"
-        SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
+<br />
 
-        <ValidationSettings ErrorTextPosition="Bottom" ValidationGroup="btn">
-            <RequiredField ErrorText="please select Asset Type" IsRequired="true" />
-        </ValidationSettings>
+<div class="row">
 
-        <LoadingPanelImage Url="~/App_Themes/PlasticBlue/Editors/Loading.gif">
-        </LoadingPanelImage>
+    <div class="col-sm-12">
 
-        <ValidationSettings>
-            <ErrorFrameStyle ImageSpacing="4px">
-                <ErrorTextPaddings PaddingLeft="4px" />
-            </ErrorFrameStyle>
-        </ValidationSettings>
+        <dxchartsui:webchartcontrol ID="WebChartControl1"
+            runat="server"
+            Height="450px"
+            Width="1050px"
+            SeriesDataMember="noofAssets">
 
-    </dx:ASPxComboBox>
+            <BorderOptions Visible="False"></BorderOptions>
 
-    <asp:SqlDataSource ID="SqbDBaircraft" runat="server"
-        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
-        SelectCommand="SELECT DISTINCT [YearofPurchase] FROM [AssetMaster]">
-    </asp:SqlDataSource>
+            <diagramserializable>
+                <cc2:XYDiagram>
+
+                    <axisx visibleinpanesserializable="-1">
+                        <range sidemarginsenabled="True" />
+                        <Range SideMarginsEnabled="True"></Range>
+                    </axisx>
+
+                    <axisy visibleinpanesserializable="-1">
+                        <range sidemarginsenabled="True" />
+                        <Range SideMarginsEnabled="True"></Range>
+                    </axisy>
+
+                </cc2:XYDiagram>
+            </diagramserializable>
+
+            <FillStyle>
+                <OptionsSerializable>
+                    <cc1:SolidFillOptions></cc1:SolidFillOptions>
+                </OptionsSerializable>
+            </FillStyle>
+
+            <SeriesTemplate
+                argumentdatamember="AssetDesc"
+                valuedatamembersserializable="noofAssets"
+                showinlegend="False">
+
+                <ViewSerializable>
+                    <cc1:SideBySideBarSeriesView></cc1:SideBySideBarSeriesView>
+                </ViewSerializable>
+
+                <LabelSerializable>
+                    <cc1:SideBySideBarSeriesLabel LineVisible="True">
+
+                        <FillStyle>
+                            <OptionsSerializable>
+                                <cc1:SolidFillOptions></cc1:SolidFillOptions>
+                            </OptionsSerializable>
+                        </FillStyle>
+
+                    </cc1:SideBySideBarSeriesLabel>
+                </LabelSerializable>
+
+                <PointOptionsSerializable>
+                    <cc1:PointOptions></cc1:PointOptions>
+                </PointOptionsSerializable>
+
+                <LegendPointOptionsSerializable>
+                    <cc1:PointOptions></cc1:PointOptions>
+                </LegendPointOptionsSerializable>
+
+            </SeriesTemplate>
+
+            <titles>
+                <cc2:ChartTitle Font="Tahoma, 12pt" Text="Assest Wise list" />
+            </titles>
+
+            <palettewrappers>
+                <dxchartsui:PaletteWrapper Name="Palette 1" ScaleMode="Repeat">
+
+                    <palette>
+                        <cc2:PaletteEntry Color="Silver" Color2="Silver" />
+                    </palette>
+
+                </dxchartsui:PaletteWrapper>
+            </palettewrappers>
+
+        </dxchartsui:webchartcontrol>
+
+    </div>
+
 </div>
 
-<div class="col-sm-1" style="padding-left:25px; padding-top:2px;">
-    <asp:ImageButton
-        OnClick="search_Click"
-        ID="search"
-        ImageUrl="~/Images/search1.png"
-        runat="server" />
-</div>
+<asp:SqlDataSource ID="SqlDataSource1" runat="server"
+    ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>"
+    SelectCommand="SELECT COUNT(AssetMaster.AssetDesc),AssetDesc as NoOfAssets FROM AssetMaster group by AssetDesc">
 
-              
-                  <dxchartsui:webchartcontrol ID="WebChartControl1" runat="server" 
-                                         Height="450px" Width="1400px" 
-                                        SeriesDataMember="noofAssets" >
-                                        <borderoptions visible="False" />
-<BorderOptions Visible="False"></BorderOptions>
-                                        <diagramserializable>
-                                            <cc2:XYDiagram>
-                                                <axisx visibleinpanesserializable="-1">
-                                                    <range sidemarginsenabled="True" />
-<Range SideMarginsEnabled="True"></Range>
-                                                </axisx>
-                                                <axisy visibleinpanesserializable="-1">
-                                                    <range sidemarginsenabled="True" />
-<Range SideMarginsEnabled="True"></Range>
-                                                </axisy>
-                                            </cc2:XYDiagram>
-                                        </diagramserializable>
-<FillStyle><OptionsSerializable>
-<cc1:SolidFillOptions></cc1:SolidFillOptions>
-</OptionsSerializable>
-</FillStyle>
+    <SelectParameters>
+        <asp:SessionParameter Name=" " SessionField=" " />
+    </SelectParameters>
 
-<SeriesTemplate argumentdatamember="AssetDesc" valuedatamembersserializable="noofAssets" showinlegend="False"><ViewSerializable>
-<cc1:SideBySideBarSeriesView></cc1:SideBySideBarSeriesView>
-</ViewSerializable>
-<LabelSerializable>
-<cc1:SideBySideBarSeriesLabel LineVisible="True">
-<FillStyle><OptionsSerializable>
-<cc1:SolidFillOptions></cc1:SolidFillOptions>
-</OptionsSerializable>
-</FillStyle>
-</cc1:SideBySideBarSeriesLabel>
-</LabelSerializable>
-<PointOptionsSerializable>
-<cc1:PointOptions></cc1:PointOptions>
-</PointOptionsSerializable>
-<LegendPointOptionsSerializable>
-<cc1:PointOptions></cc1:PointOptions>
-</LegendPointOptionsSerializable>
-</SeriesTemplate>
-                                        <titles>
-                                            <cc2:ChartTitle Font="Tahoma, 12pt" Text="Assest Wise list" />
-                                        </titles>
-                                        <palettewrappers>
-                                            <dxchartsui:PaletteWrapper Name="Palette 1" ScaleMode="Repeat">
-                                                <palette>
-                                                    <cc2:PaletteEntry Color="Silver" Color2="Silver" />
-                                                </palette>
-                                            </dxchartsui:PaletteWrapper>
-                                        </palettewrappers>
-                                    </dxchartsui:webchartcontrol>
-          
-     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                                        ConnectionString="<%$ ConnectionStrings:RCBSAPConnectionString %>" 
-                                        SelectCommand="SELECT COUNT(AssetMaster.AssetDesc),AssetDesc as NoOfAssets  FROM AssetMaster group by AssetDesc">
-                                                      <SelectParameters>
-                                <asp:SessionParameter Name=" " SessionField=" " />
-                                
-                            </SelectParameters>
-                                                </asp:SqlDataSource>
-</asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-</asp:Content>
-
+</asp:SqlDataSource>
+          </asp:Content>
