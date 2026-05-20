@@ -127,7 +127,7 @@
                 </div>
                 <div class="col-sm-4">
                      <dx:ASPxGridLookup ID="ASPxComboBox1" runat="server"
-                    AutoGenerateColumns="False" DataSourceID="DeptSqlDataSource" TextFormatString="{1}" Width="300px" Height="25px" valueField="DepartmentCode" KeyFieldName="DepartmentCode"
+                    AutoGenerateColumns="False" DataSourceID="DeptSqlDataSource" TextFormatString="{0}" Width="300px" Height="25px" valueField="DepartmentCode" KeyFieldName="DepartmentCode"
                    IncrementalFilteringMode="Contains"  CssFilePath="~/App_Themes/PlasticBlue/{0}/styles.css" CssPostfix="PlasticBlue" SpriteCssFilePath="~/App_Themes/PlasticBlue/{0}/sprite.css">
                            <GridViewProperties>
                         <%--<SettingsBehavior AllowFocusedRow="True" AllowSelectSingleRowOnly="True"></SettingsBehavior>--%>
